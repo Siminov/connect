@@ -1,0 +1,70 @@
+
+
+<!-- Design of ConnectDescriptor.si.xml -->
+
+<connect-descriptor>
+
+   	<!-- Services -->
+    <service-descriptors>
+  		
+  			<!-- Service -->
+        <service-descriptor>full_path_of_service</service-descriptor>
+    
+    </service-descriptors>
+
+    
+	
+    <!-- Refresh Handlers -->
+    	<!-- Refresh Handler -->
+    <refresh-handlers>
+        
+        <refresh-handler>
+            
+           		<!-- Mandatory Field -->
+     		<property name="name">name_of_refresh_handler</property>
+     		
+			
+     		<!-- Services -->
+     			<!-- Service -->
+     		<services>
+     		    
+     		    	<!-- name: Mandatory Field -->
+     		    	<!-- api: Optional Field  -->
+     		    <service name="name_of_service" api="name_of_api"></service>
+     		    
+     		</services>
+     		
+        </refresh-handler>
+        
+    </refresh-handlers>
+    
+
+    <!-- Authentication -->
+    <authentication>
+        
+        	<!-- Mandatory Field -->
+        <property name="type">type_of_authentication</property>
+        
+    </authentication>
+
+    
+    
+    <!-- Library Needed Under This HybridDescriptor -->
+    <libraries>
+        
+        <library>full_path_of_library_descriptor_file</library>
+        
+    </libraries>
+    
+    
+</connect-descriptor>
+
+
+
+
+
+
+
+
+
+
