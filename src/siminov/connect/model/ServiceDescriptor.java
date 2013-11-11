@@ -9,7 +9,7 @@ import siminov.connect.Constants;
 public class ServiceDescriptor implements Constants {
 		
 	private Map<String, String> properties = new HashMap<String, String> ();
-	private Map<String, Api> apis = new HashMap<String, Api> ();
+	private Map<String, API> apis = new HashMap<String, API> ();
 	
 	public String getName() {
 		return this.properties.get(SERVICE_DESCRIPTOR_NAME);
@@ -76,15 +76,15 @@ public class ServiceDescriptor implements Constants {
 		this.properties.remove(name);
 	}
 
-	public Iterator<Api> getApis() {
+	public Iterator<API> getApis() {
 		return this.apis.values().iterator();
 	}
 	
-	public Api getApi(final String name) {
+	public API getApi(final String name) {
 		return this.apis.get(name);
 	}
 	
-	public void addApi(final Api api) {
+	public void addApi(final API api) {
 		this.apis.put(api.getName(), api);
 	}
 	
@@ -92,11 +92,11 @@ public class ServiceDescriptor implements Constants {
 		return this.containApi(name);
 	}
 	
-	public void removeApi(final Api api) {
+	public void removeApi(final API api) {
 		this.apis.remove(api);
 	}
 	
-	public static class Api {
+	public static class API {
 	
 		private Map<String, String> properties = new HashMap<String, String>();
 

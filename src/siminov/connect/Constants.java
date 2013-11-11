@@ -40,4 +40,11 @@ public interface Constants {
 	public String SERVICE_DESCRIPTOR_API_API = "api";
 	public String SERVICE_DESCRIPTOR_API_MODE = "mode";
 
+	public String CONNECT_LIBRARY_DESCRIPTOR_FILE_NAME = "LibraryDescriptor.si.xml";
+	public String CONNECT_LIBRARY_DESCRIPTOR_PROPERTY = "property";
+	
+	public String CONNECT_LIBRARY_DESCRIPTOR_SERVICE_DESCRIPTOR = "service-descriptor";
+	public String CONNECT_LIBRARY_DESCRIPTOR_SERVICE_DESCRIPTOR_PATH = "path";
+	public String CONNECT_LIBRARY_DESCRIPTOR_PROPERTY_NAME = "name";
+	
 }

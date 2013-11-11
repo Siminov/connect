@@ -2,6 +2,7 @@ package siminov.connect.resource;
 
 import siminov.connect.model.ConnectDescriptor;
 import siminov.connect.model.ServiceDescriptor;
+import siminov.connect.model.ServiceDescriptor.API;
 import siminov.connect.reader.QuickServiceDescriptorReader;
 import siminov.connect.reader.ServiceDescriptorReader;
 import siminov.orm.exception.SiminovCriticalException;
@@ -68,5 +69,17 @@ public class Resources {
 		String serviceDescriptorPath = connectDescriptor.getServiceDescriptorPathBasedOnName(serviceDescriptorName);
 		return requiredServiceDescriptorBasedOnPath(serviceDescriptorPath);
 	}
+
+		
+	public API requiredAPIBasedOnServiceDescriptorPath(String serviceDescriptorPath, String apiName) {
+		
+		ServiceDescriptor serviceDescriptor = this.requiredServiceDescriptorBasedOnPath(serviceDescriptorPath);
+		return serviceDescriptor.getApi(apiName);
+	}
 	
+	public API requireAPIBasedOnServiceDescriptorName(String serviceDescriptorName, String apiName) {
+		
+		ServiceDescriptor serviceDescriptor = this.requiredServiceDescriptorBasedOnName(serviceDescriptorName);
+		return serviceDescriptor.getApi(apiName);
+	}
 }

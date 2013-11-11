@@ -8,9 +8,9 @@ import org.xml.sax.SAXException;
 
 import siminov.connect.Constants;
 import siminov.connect.model.ServiceDescriptor;
-import siminov.connect.model.ServiceDescriptor.Api;
-import siminov.connect.model.ServiceDescriptor.Api.HeaderParameter;
-import siminov.connect.model.ServiceDescriptor.Api.QueryParameter;
+import siminov.connect.model.ServiceDescriptor.API;
+import siminov.connect.model.ServiceDescriptor.API.HeaderParameter;
+import siminov.connect.model.ServiceDescriptor.API.QueryParameter;
 import siminov.orm.exception.DeploymentException;
 import siminov.orm.log.Log;
 import siminov.orm.reader.SiminovSAXDefaultHandler;
@@ -24,7 +24,7 @@ public class ServiceDescriptorReader extends SiminovSAXDefaultHandler implements
 	
 	private ServiceDescriptor serviceDescriptor = new ServiceDescriptor();
 	
-	private Api api = null;
+	private API api = null;
 	private boolean isApi = false;
 
 	private String propertyName = null;
@@ -100,7 +100,7 @@ public class ServiceDescriptorReader extends SiminovSAXDefaultHandler implements
 			initializeProperty(attributes);
 		} else if(localName.equalsIgnoreCase(SERVICE_DESCRIPTOR_API)) {
 			
-			api = new ServiceDescriptor.Api();
+			api = new ServiceDescriptor.API();
 			isApi = true;
 		}
 	}
