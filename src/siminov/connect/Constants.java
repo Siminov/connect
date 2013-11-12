@@ -46,5 +46,8 @@ public interface Constants {
 	public String CONNECT_LIBRARY_DESCRIPTOR_SERVICE_DESCRIPTOR = "service-descriptor";
 	public String CONNECT_LIBRARY_DESCRIPTOR_SERVICE_DESCRIPTOR_PATH = "path";
 	public String CONNECT_LIBRARY_DESCRIPTOR_PROPERTY_NAME = "name";
+
+	public String CONNECT_DESCRIPTOR_LIBRARY = "library";
+	public String CONNECT_DESCRIPTOR_LIBRARY_PATH = "path";
 	
 }

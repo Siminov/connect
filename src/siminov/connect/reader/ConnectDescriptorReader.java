@@ -96,6 +96,7 @@ public class ConnectDescriptorReader extends SiminovSAXDefaultHandler implements
 		if(localName.equalsIgnoreCase(CONNECT_DESCRIPTOR_PROPERTY)) {
 			initializeProperty(attributes);
 		}
+
 	}
 	
 	public void characters(char[] ch, int start, int length) throws SAXException {
@@ -114,6 +115,8 @@ public class ConnectDescriptorReader extends SiminovSAXDefaultHandler implements
 			processProperty();
 		} else if(localName.equalsIgnoreCase(CONNECT_DESCRIPTOR_SERVICE_DESCRIPTOR)) {
 			connectDescriptor.addServiceDescriptorPath(tempValue);
+		} else if(localName.equalsIgnoreCase(CONNECT_DESCRIPTOR_LIBRARY)) {
+			connectDescriptor.addLibraryPath(tempValue);
 		}
 	}
 	
