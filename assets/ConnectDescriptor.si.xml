@@ -47,16 +47,6 @@
         
     </authentication>
 
-    
-    
-    <!-- Library Needed Under This HybridDescriptor -->
-    <libraries>
-        
-        <library>full_path_of_library_descriptor_file</library>
-        
-    </libraries>
-    
-    
 </connect-descriptor>
 
 

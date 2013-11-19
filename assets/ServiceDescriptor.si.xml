@@ -59,7 +59,11 @@
           		<header-parameter name="name_of_header_parameter">value_of_header_parameter</header-parameter>
 
         	</header-parameters>
-      	
+
+      		
+      		<!-- Stream of Data Under Request Body -->
+      		<data-stream>stream_of_data</data-stream>	
+     	
      	</api>
     </apis>
     

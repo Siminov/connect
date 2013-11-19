@@ -1,9 +1,14 @@
 
 
-- onServiceStarted
-- onServiceQueued
-- onServiceStopped
+- onServiceStart()
 
-- onServiceApiInvoke
-- onServiceApiFinished
+- onServiceQueue()
+- onServicePause()
+- onServiceResume()
 
+- onServiceFinish()
+
+- onServiceApiInvoke(ConnectionRequest)
+- onServiceApiFinish(ConnectionResponse)
+
+- onServiceTerminate(SiminovException)
