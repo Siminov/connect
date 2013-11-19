@@ -32,11 +32,11 @@ public class Resources {
 		return this.connectDescriptor;
 	}
 	
-	public void setConnectDescriptor(ConnectDescriptor connectDescriptor) {
+	public void setConnectDescriptor(final ConnectDescriptor connectDescriptor) {
 		this.connectDescriptor = connectDescriptor;
 	}
 	
-	public ServiceDescriptor requiredServiceDescriptorBasedOnPath(String serviceDescriptorPath) {
+	public ServiceDescriptor requiredServiceDescriptorBasedOnPath(final String serviceDescriptorPath) {
 		
 		ServiceDescriptorReader serviceDescriptorReader = new ServiceDescriptorReader(serviceDescriptorPath);
 		ServiceDescriptor serviceDescriptor = serviceDescriptorReader.getServiceDescriptor();
@@ -45,8 +45,8 @@ public class Resources {
 		
 		return serviceDescriptor;
 	}
-	
-	public ServiceDescriptor requiredServiceDescriptorBasedOnName(String serviceDescriptorName) {
+
+	public ServiceDescriptor requiredServiceDescriptorBasedOnName(final String serviceDescriptorName) {
 		
 		if(!connectDescriptor.containServiceDescriptorPathBasedOnName(serviceDescriptorName)) {
 
@@ -71,13 +71,14 @@ public class Resources {
 	}
 
 		
-	public API requiredAPIBasedOnServiceDescriptorPath(String serviceDescriptorPath, String apiName) {
+	
+	public API requiredAPIBasedOnServiceDescriptorPath(final String serviceDescriptorPath, final String apiName) {
 		
 		ServiceDescriptor serviceDescriptor = this.requiredServiceDescriptorBasedOnPath(serviceDescriptorPath);
 		return serviceDescriptor.getApi(apiName);
 	}
 	
-	public API requireAPIBasedOnServiceDescriptorName(String serviceDescriptorName, String apiName) {
+	public API requireAPIBasedOnServiceDescriptorName(final String serviceDescriptorName, final String apiName) {
 		
 		ServiceDescriptor serviceDescriptor = this.requiredServiceDescriptorBasedOnName(serviceDescriptorName);
 		return serviceDescriptor.getApi(apiName);

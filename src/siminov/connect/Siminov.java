@@ -4,7 +4,7 @@ import java.util.Iterator;
 
 import siminov.connect.model.ConnectDescriptor;
 import siminov.connect.reader.ConnectDescriptorReader;
-import siminov.connect.reader.ConnectLibraryDescriptorReader;
+import siminov.connect.reader.LibraryDescriptorReader;
 import siminov.connect.resource.Resources;
 import siminov.orm.IInitializer;
 import siminov.orm.exception.DeploymentException;
@@ -82,10 +82,10 @@ public class Siminov extends siminov.orm.Siminov {
 			/*
 			 * Parse LibraryDescriptor.
 			 */
-			ConnectLibraryDescriptorReader libraryDescriptorParser = null;
+			LibraryDescriptorReader libraryDescriptorParser = null;
 			
 			try {
-				libraryDescriptorParser = new ConnectLibraryDescriptorReader(libraryPath);
+				libraryDescriptorParser = new LibraryDescriptorReader(libraryPath);
 			} catch(SiminovException se) {
 				Log.loge(Siminov.class.getName(), "processLibraries", "SiminovException caught while parsing library descriptor, LIBRARY-NAME: " + libraryPath + ", " + se.getMessage());
 				throw new DeploymentException(Siminov.class.getName(), "processLibraries", se.getMessage());

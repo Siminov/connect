@@ -31,14 +31,14 @@ import siminov.orm.reader.SiminovSAXDefaultHandler;
 import siminov.orm.resource.Resources;
 import android.content.Context;
 
-public class ConnectLibraryDescriptorReader extends SiminovSAXDefaultHandler implements Constants {
+public class LibraryDescriptorReader extends SiminovSAXDefaultHandler implements Constants {
 
 	private String tempValue = null;
 	private LibraryDescriptor libraryDescriptor = new LibraryDescriptor();
 	
 	private String propertyName = "";
 	
-	public ConnectLibraryDescriptorReader(final String libraryName) throws SiminovException {
+	public LibraryDescriptorReader(final String libraryName) throws SiminovException {
 		if(libraryName == null || libraryName.length() <= 0) {
 			Log.loge(getClass().getName(), "Constructor", "Invalid Library Name Found.");
 			throw new SiminovException(getClass().getName(), "Constructor", "Invalid Library Name Found.");
@@ -70,10 +70,7 @@ public class ConnectLibraryDescriptorReader extends SiminovSAXDefaultHandler imp
 		
 		if(localName.equalsIgnoreCase(CONNECT_LIBRARY_DESCRIPTOR_PROPERTY)) {
 			initializeProperty(attributes);
-		} else if(localName.equalsIgnoreCase(CONNECT_LIBRARY_DESCRIPTOR_SERVICE_DESCRIPTOR)) {
-			String adapterPath = attributes.getValue(CONNECT_LIBRARY_DESCRIPTOR_SERVICE_DESCRIPTOR_PATH);
-			libraryDescriptor.addServiceDescriptorPath(adapterPath);
-		}
+		} 
 
 		super.startElement(uri, localName, qName, attributes);
 	}
@@ -92,7 +89,11 @@ public class ConnectLibraryDescriptorReader extends SiminovSAXDefaultHandler imp
 		
 		if(localName.equalsIgnoreCase(CONNECT_LIBRARY_DESCRIPTOR_PROPERTY)) {
 			libraryDescriptor.addProperty(propertyName, tempValue);
-		} 
+		} else if(localName.equalsIgnoreCase(CONNECT_LIBRARY_DESCRIPTOR_SERVICE_DESCRIPTOR)) {
+			libraryDescriptor.addServiceDescriptorPath(tempValue);
+		}
+		
+		super.endElement(uri, localName, qName);
 	}
 	
 	private void initializeProperty(final Attributes attributes) {

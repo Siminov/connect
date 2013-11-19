@@ -32,6 +32,7 @@ public class LibraryDescriptor extends siminov.orm.model.LibraryDescriptor {
 	
 	public void addServiceDescriptorPath(String serviceDescriptorPath) {
 		this.serviceDescriptorPaths.add(serviceDescriptorPath);
+		this.serviceDescriptorNamesBasedOnPath.put(serviceDescriptorPath, null);
 	}
 	
 	public void removeServiceDescriptorPath(String serviceDescriptorPath) {

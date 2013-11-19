@@ -43,17 +43,25 @@ public class ServiceDescriptor implements Constants {
 		this.properties.put(SERVICE_DESCRIPTOR_INSTANCE, instance);
 	}
 	
-	public int getPort() {
+	public long getPort() {
 		String port = this.properties.get(SERVICE_DESCRIPTOR_PORT);
 		if(port == null || port.length() <= 0) {
 			return 0;
 		}
 		
-		return Integer.parseInt(port);
+		return Long.parseLong(port);
 	}
 	
-	public void setPort(final int port) {
-		this.properties.put(SERVICE_DESCRIPTOR_PORT, Integer.toString(port));
+	public void setPort(final long port) {
+		this.properties.put(SERVICE_DESCRIPTOR_PORT, Long.toString(port));
+	}
+
+	public String getContext() {
+		return this.properties.get(SERVICE_DESCRIPTOR_CONTEXT);
+	}
+	
+	public void setContext(String context) {
+		this.properties.put(SERVICE_DESCRIPTOR_CONTEXT, context);
 	}
 	
 	public Iterator<String> getProperties() {
