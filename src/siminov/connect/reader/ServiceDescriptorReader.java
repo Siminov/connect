@@ -139,6 +139,9 @@ public class ServiceDescriptorReader extends SiminovSAXDefaultHandler implements
 			headerParameter.setValue(tempValue);
 			
 			api.addHeaderParameter(headerParameter);
+		} else if(localName.equalsIgnoreCase(SERVICE_DESCRIPTOR_API_DATA_STREAM)) {
+			
+			api.setDataStream(tempValue);
 		}
 	}
 	
