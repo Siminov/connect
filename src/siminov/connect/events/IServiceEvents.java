@@ -18,7 +18,7 @@ public interface IServiceEvents {
 	public void onServiceResume();
 	
 	
-	public void onServiceStop();
+	public void onServiceFinish();
 	
 	
 	public void onServiceApiInvoke(final ConnectionRequest connectionRequest);
