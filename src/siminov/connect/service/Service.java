@@ -1,14 +1,10 @@
 package siminov.connect.service;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import siminov.connect.events.IServiceEvents;
-import siminov.connect.model.ServiceDescriptor;
-import siminov.connect.model.ServiceDescriptor.API;
 import siminov.orm.exception.SiminovException;
-import siminov.orm.log.Log;
 
 public abstract class Service implements IServiceEvents {
 
@@ -16,13 +12,13 @@ public abstract class Service implements IServiceEvents {
 	private String apiName = null;
 	
 	
-	private Map<String, String> inlineParameters = new HashMap<String, String>();
+	private Map<String, String> inlineResources = new HashMap<String, String>();
 	
 	public String getServiceName() {
 		return this.serviceName;
 	}
 	
-	public void setServiceName(String serviceName) {
+	public void setServiceName(final String serviceName) {
 		this.serviceName = serviceName;
 	}
 	
@@ -30,58 +26,29 @@ public abstract class Service implements IServiceEvents {
 		return this.apiName;
 	}
 	
-	public void setAPIName(String apiName) {
+	public void setAPIName(final String apiName) {
 		this.apiName = apiName;
 	}
 	
-	public Iterator<String> getInlineParameters() {
-		return this.inlineParameters.values().iterator();
+	public Map<String, String> getInlineResources() {
+		return this.inlineResources;
 	}
 	
-	public String getInlineParameter(String key) {
-		return this.inlineParameters.get(key);
+	public String getInlineResource(final String key) {
+		return this.inlineResources.get(key);
+	}
+
+	public void addInlineResource(final String key, final String value) {
+		this.inlineResources.put(key, value);
 	}
 	
-	public void invoke() {
+	public boolean containInlineResource(final String key) {
+		return this.inlineResources.containsKey(key);
+	}
+	
+	public void invoke() throws SiminovException {
 		
 		ServiceHandler serviceHandler = new ServiceHandler();
-		try {
-			serviceHandler.handle(this);
-		} catch(SiminovException siminovException) {
-			Log.loge(Service.class.getName(), "invoke", "Siminov Exception caught while processing service request, " + siminovException.getMessage());
-			
-			
-		}
-	}
-	
-
-	
-	/**
-	 * Service Events
-	 */
-	
-	public abstract void onServiceStarted(final ServiceDescriptor serviceDescriptor);
-	
-	
-	public abstract void onServiceQueued(final ServiceDescriptor serviceDescriptor);
-	
-	
-	public void onServiceStopped(final ServiceDescriptor serviceDescriptor) {
-		
-	}
-	
-	
-	public void onServiceApiInvoked(final ServiceDescriptor serviceDescriptor, final API api) {
-		
-	}
-	
-	
-	public void onServiceApiFinished(final ServiceDescriptor serviceDescriptor, final API api) {
-		
-	}
-	
-
-	public void onServiceTerminated(final ServiceDescriptor serviceDescriptor) {
-		
+		serviceHandler.handle(this);
 	}
 }
