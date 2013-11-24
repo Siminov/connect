@@ -1,8 +1,9 @@
 package siminov.connect;
 
+
 public interface Constants {
 
-	//Konnect Descriptor
+	//Connect Descriptor
 	public String CONNECT_DESCRIPTOR_FILE_NAME = "ConnectDescriptor.si.xml";
 	
 	public String CONNECT_DESCRIPTOR_PROPERTY_NAME = "name";
@@ -33,13 +34,28 @@ public interface Constants {
 	public String SERVICE_DESCRIPTOR_INSTANCE = "instance";
 	public String SERVICE_DESCRIPTOR_PORT = "port";
 	public String SERVICE_DESCRIPTOR_CONTEXT = "context";
+
+	public String SERVICE_DESCRIPTOR_HTTP_PROTOCOL = "http";
+	public String SERVICE_DESCRIPTOR_HTTPS_PROTOCOL = "https";
+	
+	
+	public String SERVICE_CONNECTION_API_GET_TYPE = "GET";
+	public String SERVICE_CONNECTION_API_HEAD_TYPE = "HEAD";
+	public String SERVICE_CONNECTION_API_POST_TYPE = "POST";
+	public String SERVICE_CONNECTION_API_PUT_TYPE = "PUT";
+	public String SERVICE_CONNECTION_API_DELETE_TYPE = "DELETE";
+	public String SERVICE_CONNECTION_API_TRACE_TYPE = "TRACE";
+	public String SERVICE_CONNECTION_API_OPTIONS_TYPE = "OPTIONS";
+	public String SERVICE_CONNECTION_API_CONNECT_TYPE = "CONNECT";
+	public String SERVICE_CONNECTION_API_PATCH_TYPE = "PATCH";
 	
 	
 	public String SERVICE_DESCRIPTOR_API_NAME = "name";
 	public String SERVICE_DESCRIPTOR_API_TYPE = "type";
 	public String SERVICE_DESCRIPTOR_API_API = "api";
 	public String SERVICE_DESCRIPTOR_API_MODE = "mode";
-
+	public String SERVICE_DESCRIPTOR_API_DATA_STREAM = "data-stream";
+	
 	public String CONNECT_LIBRARY_DESCRIPTOR_FILE_NAME = "LibraryDescriptor.si.xml";
 	public String CONNECT_LIBRARY_DESCRIPTOR_PROPERTY = "property";
 	
@@ -49,6 +65,19 @@ public interface Constants {
 	public String CONNECT_DESCRIPTOR_LIBRARY = "library";
 	public String CONNECT_DESCRIPTOR_LIBRARY_PATH = "path";
 
+
+	public String SERVICE_DESCRIPTOR_API_SYNC_REQUEST_MODE = "SYNC";
+	public String SERVICE_DESCRIPTOR_API_ASYNC_REQUEST_MODE = "ASYNC";
+	
+
+	
+	/**
+	 * Inline Resource Constants
+	 */
+	public String INLINE_RESOURCE_HASH = "#";
+	public String INLINE_RESOURCE_OPEN_CURLY_BRACKET = "{";
+	public String INLINE_RESOURCE_CLOSE_CURLY_BRACKET = "}";
+	public String INLINE_RESOURCE_DOT = ".";
 	
 	
 	/**
