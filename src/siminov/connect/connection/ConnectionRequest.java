@@ -29,6 +29,10 @@ public class ConnectionRequest {
 		return this.queryParameters.get(key);
 	}
 	
+	public void setQueryParameters(Map<String, String> queryParameters) {
+		this.queryParameters = queryParameters;
+	}
+	
 	public void addQueryParameter(String key, String value) {
 		this.queryParameters.put(key, value);
 	}
@@ -40,11 +44,15 @@ public class ConnectionRequest {
 	public String getHeaderParameter(String key) {
 		return this.headerParameters.get(key);
 	}
+
+	public void setHeaderParameters(Map<String, String> headerParameters) {
+		this.headerParameters = headerParameters;
+	}
 	
 	public void addHeaderParameter(String key, String value) {
 		this.headerParameters.put(key, value);
 	}
-	
+
 	public byte[] getDataStream() {
 		return this.dataStream;
 	}
