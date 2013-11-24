@@ -43,17 +43,12 @@ public class ServiceDescriptor implements Constants {
 		this.properties.put(SERVICE_DESCRIPTOR_INSTANCE, instance);
 	}
 	
-	public long getPort() {
-		String port = this.properties.get(SERVICE_DESCRIPTOR_PORT);
-		if(port == null || port.length() <= 0) {
-			return 0;
-		}
-		
-		return Long.parseLong(port);
+	public String getPort() {
+		return this.properties.get(SERVICE_DESCRIPTOR_PORT);
 	}
 	
-	public void setPort(final long port) {
-		this.properties.put(SERVICE_DESCRIPTOR_PORT, Long.toString(port));
+	public void setPort(final String port) {
+		this.properties.put(SERVICE_DESCRIPTOR_PORT, port);
 	}
 
 	public String getContext() {
@@ -111,6 +106,8 @@ public class ServiceDescriptor implements Constants {
 		private Map<String, QueryParameter> queryParameters = new HashMap<String, QueryParameter> ();
 		private Map<String, HeaderParameter> headerParameters = new HashMap<String, HeaderParameter> ();
 		
+		private String dataStream = null;
+		
 		public String getName() {
 			return this.properties.get(SERVICE_DESCRIPTOR_API_NAME);
 		}
@@ -142,6 +139,15 @@ public class ServiceDescriptor implements Constants {
 		public void setMode(final String mode) {
 			this.properties.put(SERVICE_DESCRIPTOR_API_MODE, mode);
 		}
+		
+		public String getDataStream() {
+			return this.dataStream;
+		}
+		
+		public void setDataStream(final String dataStream) {
+			this.dataStream = dataStream;
+		}
+		
 		
 		public Iterator<String> getProperties() {
 			return this.properties.keySet().iterator();
