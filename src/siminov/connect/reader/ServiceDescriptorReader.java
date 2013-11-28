@@ -77,11 +77,8 @@ public class ServiceDescriptorReader extends SiminovSAXDefaultHandler implements
 		try {
 			applicationDescriptorStream = context.getAssets().open(fileName);
 		} catch(IOException ioException) {
-			Log.logd(getClass().getName(), "Constructor", "IOException caught while getting input stream of application descriptor, " + ioException.getMessage());
-			
-			//Ignore If Hybrid Descriptor Not Defined.
-			
-			return;
+			Log.logd(getClass().getName(), "Constructor", "IOException caught while getting input stream of service descriptor, " + ioException.getMessage());
+			throw new DeploymentException(getClass().getName(), "Constructor", "IOException caught while getting input stream of service descriptor, " + ioException.getMessage());
 		}
 		
 		try {

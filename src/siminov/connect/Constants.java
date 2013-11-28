@@ -80,6 +80,9 @@ public interface Constants {
 	public String INLINE_RESOURCE_DOT = ".";
 	
 	
+	public String CONNECTION_HTTP = "http";
+	public String CONNECTION_HTTPS = "https";
+	
 	/**
 		1** Informational
 	*/

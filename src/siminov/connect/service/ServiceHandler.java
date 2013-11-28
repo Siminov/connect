@@ -1,7 +1,5 @@
 package siminov.connect.service;
 
-import org.apache.http.client.methods.HttpGet;
-
 import siminov.connect.Constants;
 import siminov.connect.connection.ConnectionHelper;
 import siminov.connect.connection.ConnectionRequest;
@@ -16,7 +14,7 @@ public class ServiceHandler {
 
 	private Resources resources = Resources.getInstance();
 	
-	public void handle(final Service service) throws SiminovException {
+	public void handle(final Service service) {
 		
 		String serviceName = service.getServiceName();
 		String apiName = service.getAPIName();
@@ -26,7 +24,12 @@ public class ServiceHandler {
 		
 		String requestMode = api.getMode();
 		if(requestMode.equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_API_SYNC_REQUEST_MODE)) {
-			this.handleSynchronousRequest(service);
+			
+			try {
+				this.handleSynchronousRequest(service);
+			} catch(SiminovException se) {
+				
+			}
 		} else if(requestMode.equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_API_ASYNC_REQUEST_MODE)) {
 			this.handleAsynchronousRequest(service);
 		}

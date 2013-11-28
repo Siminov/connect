@@ -78,7 +78,7 @@ public class QuickServiceDescriptorReader extends SiminovSAXDefaultHandler imple
 			
 			if(doesMatch) {
 
-				ServiceDescriptorReader serviceDescriptor = new ServiceDescriptorReader(finalServiceDescriptorName);
+				ServiceDescriptorReader serviceDescriptor = new ServiceDescriptorReader(serviceDescriptorPath);
 				this.serviceDescriptor = serviceDescriptor.getServiceDescriptor();
 				
 				return;

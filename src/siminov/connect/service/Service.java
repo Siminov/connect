@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import siminov.connect.events.IServiceEvents;
-import siminov.orm.exception.SiminovException;
 
 public abstract class Service implements IServiceEvents {
 
@@ -13,6 +12,11 @@ public abstract class Service implements IServiceEvents {
 	
 	
 	private Map<String, String> inlineResources = new HashMap<String, String>();
+	
+	
+	public Service() {
+		
+	}
 	
 	public String getServiceName() {
 		return this.serviceName;
@@ -46,7 +50,7 @@ public abstract class Service implements IServiceEvents {
 		return this.inlineResources.containsKey(key);
 	}
 	
-	public void invoke() throws SiminovException {
+	public void invoke() {
 		
 		ServiceHandler serviceHandler = new ServiceHandler();
 		serviceHandler.handle(this);
