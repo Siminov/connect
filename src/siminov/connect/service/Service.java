@@ -11,7 +11,7 @@ public abstract class Service implements IServiceEvents {
 	private String apiName = null;
 	
 	
-	private Map<String, String> inlineResources = new HashMap<String, String>();
+	private Map<String, String> resources = new HashMap<String, String>();
 	
 	
 	public Service() {
@@ -34,20 +34,20 @@ public abstract class Service implements IServiceEvents {
 		this.apiName = apiName;
 	}
 	
-	public Map<String, String> getInlineResources() {
-		return this.inlineResources;
+	public Map<String, String> getResources() {
+		return this.resources;
 	}
 	
-	public String getInlineResource(final String key) {
-		return this.inlineResources.get(key);
+	public String getResource(final String key) {
+		return this.resources.get(key);
 	}
 
-	public void addInlineResource(final String key, final String value) {
-		this.inlineResources.put(key, value);
+	public void addResource(final String key, final String value) {
+		this.resources.put(key, value);
 	}
 	
-	public boolean containInlineResource(final String key) {
-		return this.inlineResources.containsKey(key);
+	public boolean containResource(final String key) {
+		return this.resources.containsKey(key);
 	}
 	
 	public void invoke() {

@@ -11,7 +11,7 @@ import siminov.connect.model.ServiceDescriptor.API.HeaderParameter;
 import siminov.connect.model.ServiceDescriptor.API.QueryParameter;
 import siminov.connect.resource.Resources;
 import siminov.connect.service.Service;
-import siminov.connect.utils.InlineResourceUtils;
+import siminov.connect.utils.ServiceResourceUtils;
 import siminov.orm.exception.SiminovException;
 
 
@@ -46,7 +46,7 @@ public class ConnectionHelper {
 		ServiceDescriptor serviceDescriptor = resources.requiredServiceDescriptorBasedOnName(serviceName);
 		API api = serviceDescriptor.getApi(apiName);
 		
-		Map<String, String> inlineResources = service.getInlineResources();
+		Map<String, String> serviceResources = service.getResources();
 		
 		String protocol = serviceDescriptor.getProtocol();
 		
@@ -57,13 +57,13 @@ public class ConnectionHelper {
 		String apiPath = api.getApi();
 		
 
-		protocol = (String) InlineResourceUtils.resolve(protocol, inlineResources);
+		protocol = (String) ServiceResourceUtils.resolve(protocol, serviceResources);
 		
-		instance = (String) InlineResourceUtils.resolve(instance, inlineResources);
-		port = (String) InlineResourceUtils.resolve(port, inlineResources);
+		instance = (String) ServiceResourceUtils.resolve(instance, serviceResources);
+		port = (String) ServiceResourceUtils.resolve(port, serviceResources);
 		
-		context = (String) InlineResourceUtils.resolve(context, inlineResources);
-		apiPath = (String) InlineResourceUtils.resolve(apiPath, inlineResources);
+		context = (String) ServiceResourceUtils.resolve(context, serviceResources);
+		apiPath = (String) ServiceResourceUtils.resolve(apiPath, serviceResources);
 
 		
 		StringBuilder url = new StringBuilder();
@@ -104,7 +104,7 @@ public class ConnectionHelper {
 		ServiceDescriptor serviceDescriptor = resources.requiredServiceDescriptorBasedOnName(serviceName);
 		API api = serviceDescriptor.getApi(apiName);
 		
-		Map<String, String> inlineResources = service.getInlineResources();
+		Map<String, String> serviceResources = service.getResources();
 
 		
 		Map<String, String> parameters = new HashMap<String, String>();
@@ -113,7 +113,7 @@ public class ConnectionHelper {
 		while(queryParameters.hasNext()) {
 			
 			QueryParameter queryParameter = queryParameters.next();
-			String value = (String) InlineResourceUtils.resolve(queryParameter.getValue(), inlineResources);
+			String value = (String) ServiceResourceUtils.resolve(queryParameter.getValue(), serviceResources);
 			
 			parameters.put(queryParameter.getName(), value);
 		}
@@ -129,7 +129,7 @@ public class ConnectionHelper {
 		ServiceDescriptor serviceDescriptor = resources.requiredServiceDescriptorBasedOnName(serviceName);
 		API api = serviceDescriptor.getApi(apiName);
 		
-		Map<String, String> inlineResources = service.getInlineResources();
+		Map<String, String> serviceResources = service.getResources();
 
 		
 		Map<String, String> parameters = new HashMap<String, String>();
@@ -138,7 +138,7 @@ public class ConnectionHelper {
 		while(headerParameters.hasNext()) {
 			
 			HeaderParameter headerParameter = headerParameters.next();
-			String value = (String) InlineResourceUtils.resolve(headerParameter.getValue(), inlineResources);
+			String value = (String) ServiceResourceUtils.resolve(headerParameter.getValue(), serviceResources);
 			
 			parameters.put(headerParameter.getName(), value);
 		}

@@ -74,10 +74,10 @@ public interface Constants {
 	/**
 	 * Inline Resource Constants
 	 */
-	public String INLINE_RESOURCE_HASH = "#";
-	public String INLINE_RESOURCE_OPEN_CURLY_BRACKET = "{";
-	public String INLINE_RESOURCE_CLOSE_CURLY_BRACKET = "}";
-	public String INLINE_RESOURCE_DOT = ".";
+	public String SERVICE_RESOURCE_HASH = "#";
+	public String SERVICE_RESOURCE_OPEN_CURLY_BRACKET = "{";
+	public String SERVICE_RESOURCE_CLOSE_CURLY_BRACKET = "}";
+	public String SERVICE_RESOURCE_DOT = ".";
 	
 	
 	public String CONNECTION_HTTP = "http";

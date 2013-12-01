@@ -6,16 +6,12 @@ import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
 
-import oauth.signpost.OAuthConsumer;
-import oauth.signpost.commonshttp.CommonsHttpOAuthConsumer;
-
 import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpHead;
 import org.apache.http.client.methods.HttpOptions;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
-import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.client.methods.HttpTrace;
 import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -29,10 +25,6 @@ import siminov.connect.connection.ConnectionStatusCodes;
 import siminov.connect.connection.IConnection;
 import siminov.orm.exception.SiminovException;
 import siminov.orm.log.Log;
-
-import com.siminov.authentication.goplan.GoplanAuthenticationConstants;
-import com.siminov.authentication.goplan.GoplanCredentialManager;
-import com.siminov.authentication.model.Credential;
 
 public class Connection implements IConnection{
 
@@ -66,10 +58,6 @@ public class Connection implements IConnection{
 			throw new SiminovException(Connection.class.getName(), "get", "Exception caught while creating http get, URL: " + url + ", " + exception.getMessage());
 		}
 
-		
-		
-		sign(httpGet);
-		
 		
 		/*
 		 * Add Query Parameters
@@ -167,9 +155,6 @@ public class Connection implements IConnection{
 		}
 
 
-		sign(httpHead);
-		
-		
 		/*
 		 * Add Query Parameters
 		 */
@@ -267,8 +252,6 @@ public class Connection implements IConnection{
 			throw new SiminovException(Connection.class.getName(), "post", "Exception caught while creating http post, URL: " + url + ", " + exception.getMessage());
 		}
 
-		
-		sign(httpPost);
 		
 		/*
 		 * Add Query Parameters
@@ -374,8 +357,6 @@ public class Connection implements IConnection{
 		}
 
 		
-		sign(httpPut);
-		
 		/*
 		 * Add Query Parameters
 		 */
@@ -479,8 +460,6 @@ public class Connection implements IConnection{
 		}
 
 		
-		sign(httpDelete);
-		
 		/*
 		 * Add Query Parameters
 		 */
@@ -579,8 +558,6 @@ public class Connection implements IConnection{
 			throw new SiminovException(Connection.class.getName(), "trace", "Exception caught while creating http trace, URL: " + url + ", " + exception.getMessage());
 		}
 
-		
-		sign(httpTrace);
 		
 		/*
 		 * Add Query Parameters
@@ -681,8 +658,6 @@ public class Connection implements IConnection{
 		}
 
 		
-		sign(httpOptions);
-		
 		/*
 		 * Add Query Parameters
 		 */
@@ -769,38 +744,4 @@ public class Connection implements IConnection{
 
 		return null;
 	}
-
-    private static void sign(HttpRequestBase httpRequestBase) throws SiminovException {
-    	if(httpRequestBase == null) {
-    		Log.loge(Connection.class.getName(), "sign", "Invalid HttpRequestBase Found.");
-    		throw new SiminovException(Connection.class.getName(), "sign", "Invalid HttpRequestBase Found.");
-    	}
-    	
-    	Credential credential = GoplanCredentialManager.getInstance().getCredential();
-    	if(credential == null) {
-    		Log.loge(Connection.class.getName(), "sign", "Invalid Credential Found.");
-    		throw new SiminovException(Connection.class.getName(), "sign", "Invalid Credential Found.");
-    	}
-    	
-    	String consumerKey = GoplanAuthenticationConstants.CONSUMER_KEY;
-    	String consumerSecret = GoplanAuthenticationConstants.CONSUMER_SECRET;
-    	
-    	if(consumerKey == null || consumerKey.length() <= 0) {
-    		Log.loge(Connection.class.getName(), "sign", "Inavlid ConsumerKey Found.");
-    		throw new SiminovException(Connection.class.getName(), "sign", "Inavlid ConsumerKey Found.");
-    	} else if(consumerSecret == null || consumerSecret.length() <= 0) {
-    		Log.loge(Connection.class.getName(), "sign", "Inavlid ConsumerSecret Found.");
-    		throw new SiminovException(Connection.class.getName(), "sign", "Inavlid ConsumerSecret Found.");
-    	}
-    	
-    	OAuthConsumer consumer = new CommonsHttpOAuthConsumer(consumerKey, consumerSecret);
-    	consumer.setTokenWithSecret(credential.getToken().substring(0, credential.getToken().indexOf(":")), credential.getToken().substring(credential.getToken().indexOf(":") + 1, credential.getToken().length()));
-    	
-    	try {
-    		consumer.sign(httpRequestBase);    		
-    	} catch(Exception exception) {
-    		Log.loge(Connection.class.getName(), "sign", "Exception caught while signing request url, " + exception.getMessage());
-    		throw new SiminovException(Connection.class.getName(), "sign", "Exception caught while signing request url, " + exception.getMessage());
-    	}
-    }
 }
