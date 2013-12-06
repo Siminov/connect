@@ -26,7 +26,7 @@ public class ServiceHandler {
 		if(requestMode.equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_API_SYNC_REQUEST_MODE)) {
 			
 			try {
-				this.handleSynchronousRequest(service);
+				this.handleSynchronousRequest(serviceDescriptor, service);
 			} catch(SiminovException se) {
 				
 			}
@@ -36,15 +36,14 @@ public class ServiceHandler {
 	}
 	
 	
-	private void handleSynchronousRequest(final Service service) throws SiminovException {
+	private void handleSynchronousRequest(final ServiceDescriptor serviceDescriptor, final Service service) throws SiminovException {
 		
 		String serviceName = service.getServiceName();
 		String apiName = service.getAPIName();
 		
-		ServiceDescriptor serviceDescriptor = resources.requiredServiceDescriptorBasedOnName(serviceName);
 		API api = serviceDescriptor.getApi(apiName);
 
-		ConnectionRequest connectionRequest = new ConnectionHelper().prepareConnectionRequest(service);
+		ConnectionRequest connectionRequest = new ConnectionHelper().prepareConnectionRequest(serviceDescriptor, service);
 		
 		IConnection connection = null;
 		if(serviceDescriptor.getProtocol().equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_HTTP_PROTOCOL)) {
