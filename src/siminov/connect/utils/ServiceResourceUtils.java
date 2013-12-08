@@ -1,6 +1,9 @@
 package siminov.connect.utils;
 
+import java.util.Collection;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.StringTokenizer;
 
 import siminov.connect.Constants;
 import siminov.connect.model.ServiceDescriptor;
@@ -22,7 +25,8 @@ public class ServiceResourceUtils {
 		while(serviceDescriptorProperties.hasNext()) {
 			
 			String serviceDescriptorProperty = serviceDescriptorProperties.next();
-			String serviceDescriptorValue = resolve(serviceDescriptorProperty, serviceDescriptor, service);
+			String serviceDescriptorValue = serviceDescriptor.getProperty(serviceDescriptorProperty);
+			serviceDescriptorValue = resolve(serviceDescriptorProperty, serviceDescriptorValue, serviceDescriptor, service);
 			
 			serviceDescriptor.addProperty(serviceDescriptorProperty, serviceDescriptorValue);
 		}
@@ -36,8 +40,9 @@ public class ServiceResourceUtils {
 		while(apiProperties.hasNext()) {
 			
 			String apiProperty = apiProperties.next();
-			String apiValue = resolve(apiProperty, serviceDescriptor, service);
-		
+			String apiValue = api.getProperty(apiProperty);
+			apiValue = resolve(apiProperty, apiValue, serviceDescriptor, service);
+			
 			api.addProperty(apiProperty, apiValue);
 		}
 
@@ -51,7 +56,8 @@ public class ServiceResourceUtils {
 			QueryParameter queryParameter = queryParameters.next();
 			
 			String queryProperty = queryParameter.getName();
-			String queryValue = resolve(queryProperty, serviceDescriptor, service);
+			String queryValue = queryParameter.getValue();
+			queryValue = resolve(queryProperty, queryValue, serviceDescriptor, service);
 			
 			queryParameter.setValue(queryValue);
 		}
@@ -66,28 +72,15 @@ public class ServiceResourceUtils {
 			HeaderParameter headerParameter = headerParameters.next();
 			
 			String headerProperty = headerParameter.getName();
-			String headerValue = resolve(headerProperty, serviceDescriptor, service);
+			String headerValue = headerParameter.getValue();
+			headerValue = resolve(headerProperty, headerValue, serviceDescriptor, service);
 			
 			headerParameter.setValue(headerValue);
 		}
 	}
 
-	private static String resolve(final String resourceName, final ServiceDescriptor serviceDescriptor, final Service service) throws SiminovException {
+	private static String resolve(final String resourceName, final String resourceValue, final ServiceDescriptor serviceDescriptor, final Service service) throws SiminovException {
 
-		String resourceValue = null;
-		
-		boolean containProperty = serviceDescriptor.containProperty(resourceName);
-		if(containProperty) {
-			resourceValue = serviceDescriptor.getProperty(resourceName);
-		} else {
-			
-			API api = serviceDescriptor.getApi(service.getAPIName());
-			if(api.containProperty(resourceName)) {
-				resourceValue = api.getProperty(resourceName);	
-			}
-		}
-		
-		
 		if(resourceValue == null) {
 			return resourceValue;
 		}
@@ -96,26 +89,102 @@ public class ServiceResourceUtils {
 		
 		if(resourceValue.contains(Constants.SERVICE_RESOURCE_HASH + Constants.SERVICE_RESOURCE_OPEN_CURLY_BRACKET)) {
 
-			String serviceResourceKey = resourceValue.substring(resourceValue.indexOf(Constants.SERVICE_RESOURCE_HASH + Constants.SERVICE_RESOURCE_OPEN_CURLY_BRACKET) + 2, resourceValue.indexOf(Constants.SERVICE_RESOURCE_CLOSE_CURLY_BRACKET));
+			//Find {}
+			int openingCurlyBracketIndex = resourceValue.indexOf(Constants.SERVICE_RESOURCE_HASH + Constants.SERVICE_RESOURCE_OPEN_CURLY_BRACKET) + 2;
 			
-			String serviceResourceClass = serviceResourceKey.substring(0, serviceResourceKey.lastIndexOf(Constants.SERVICE_RESOURCE_DOT));
-			String serviceResourceAPI = serviceResourceKey.substring(serviceResourceKey.lastIndexOf(Constants.SERVICE_RESOURCE_DOT) + 1, serviceResourceKey.length());
+			int singleClosingCurlyBracketIndex = resourceValue.indexOf(Constants.SERVICE_RESOURCE_CLOSE_CURLY_BRACKET);
+			int doubleClosingCurlyBracketIndex = resourceValue.indexOf(Constants.SERVICE_RESOURCE_CLOSE_CURLY_BRACKET + Constants.SERVICE_RESOURCE_CLOSE_CURLY_BRACKET);
+
+			String serviceResourceKey;
 			
-			Object classObject = ClassUtils.createClassInstance(serviceResourceClass);
-			String serviceResourceValue = (String) ClassUtils.getValue(classObject, serviceResourceAPI);
-		
-			resourceValue = resourceValue.replace(Constants.SERVICE_RESOURCE_HASH + Constants.SERVICE_RESOURCE_OPEN_CURLY_BRACKET + serviceResourceKey + Constants.SERVICE_RESOURCE_CLOSE_CURLY_BRACKET, serviceResourceValue);
-			resolve(resourceValue, serviceDescriptor, service);
+			if(doubleClosingCurlyBracketIndex != -1) {
+				serviceResourceKey = resourceValue.substring(openingCurlyBracketIndex, doubleClosingCurlyBracketIndex + 1);
+			} else {
+				serviceResourceKey = resourceValue.substring(openingCurlyBracketIndex, singleClosingCurlyBracketIndex);
+			}
+			
+
+			//Find first index of -
+			int slashIndex = serviceResourceKey.lastIndexOf(Constants.SERVICE_RESOURCE_SLASH);
+			//Find first index of .
+			int dotIndex = serviceResourceKey.lastIndexOf(Constants.SERVICE_RESOURCE_DOT);
+
+			String serviceResourceClass;
+			if(slashIndex != -1 && slashIndex < dotIndex) {
+				//Find {-
+				
+				serviceResourceClass = serviceResourceKey.substring(0, serviceResourceKey.substring(0, slashIndex).lastIndexOf(Constants.SERVICE_RESOURCE_DOT));
+				String serviceResourceAPI = serviceResourceKey.substring(serviceResourceKey.substring(0, slashIndex).lastIndexOf(Constants.SERVICE_RESOURCE_DOT) + 1, serviceResourceKey.substring(0, slashIndex).length());
+
+				Collection<Class<?>> serviceResourceAPIParameterTypes = new LinkedList<Class<?>>();
+				Collection<String> serviceResourceAPIParameters = new LinkedList<String>();
+				
+				
+				//Find -}}
+				String apiParameters = serviceResourceKey.substring(slashIndex + 1, serviceResourceKey.lastIndexOf(Constants.SERVICE_RESOURCE_CLOSE_CURLY_BRACKET) + 1);
+				
+				//Resolve all API parameters
+				StringTokenizer apiParameterTokenizer = new StringTokenizer(apiParameters, Constants.SERVICE_RESOURCE_COMMA);
+				
+				while(apiParameterTokenizer.hasMoreElements()) {
+					String apiParameter = apiParameterTokenizer.nextToken();
+					
+					serviceResourceAPIParameterTypes.add(String.class);
+					serviceResourceAPIParameters.add(resolve(resourceName, apiParameter, serviceDescriptor, service));
+				}
+				
+			
+				int count = 0;
+				Class<?>[] apiParameterTypes = new Class<?>[serviceResourceAPIParameters.size()];
+				for(Class<?> serviceResourceAPIParameterType : serviceResourceAPIParameterTypes) {
+					apiParameterTypes[count++] = serviceResourceAPIParameterType;
+				}
+				
+
+				Object classObject = ClassUtils.createClassInstance(serviceResourceClass);
+				String resolvedValue = (String) ClassUtils.invokeMethod(classObject, serviceResourceAPI, apiParameterTypes, serviceResourceAPIParameters.toArray());
+				
+				return resolve(resourceName, resolvedValue, serviceDescriptor, service);
+			} else if(dotIndex != -1) {
+				serviceResourceClass = serviceResourceKey.substring(0, dotIndex);
+
+				String serviceResourceAPI = serviceResourceKey.substring(serviceResourceKey.lastIndexOf(Constants.SERVICE_RESOURCE_DOT) + 1, serviceResourceKey.length());
+				
+				Object classObject = ClassUtils.createClassInstance(serviceResourceClass);
+				String serviceResourceValue = (String) ClassUtils.getValue(classObject, serviceResourceAPI);
+			
+				String resolvedValue = resourceValue.replace(Constants.SERVICE_RESOURCE_HASH + Constants.SERVICE_RESOURCE_OPEN_CURLY_BRACKET + serviceResourceKey + Constants.SERVICE_RESOURCE_CLOSE_CURLY_BRACKET, serviceResourceValue);
+				return resolve(resourceName, resolvedValue, serviceDescriptor, service);
+			}
+		} else if(resourceValue.contains(Constants.SERVICE_RESOURCE_OPEN_CURLY_BRACKET + Constants.SERVICE_RESOURCE_SELF_REFERENCE + Constants.SERVICE_RESOURCE_DOT)) {
+			
+			String serviceResourceKey = resourceValue.substring(resourceValue.indexOf(Constants.SERVICE_RESOURCE_OPEN_CURLY_BRACKET + Constants.SERVICE_RESOURCE_SELF_REFERENCE + Constants.SERVICE_RESOURCE_DOT) + 1 + (Constants.SERVICE_RESOURCE_SELF_REFERENCE + Constants.SERVICE_RESOURCE_DOT).length(), resourceValue.indexOf(Constants.SERVICE_RESOURCE_CLOSE_CURLY_BRACKET));
+			String serviceResourceValue = null;
+			
+			if(serviceDescriptor.containProperty(serviceResourceKey)) {
+				serviceResourceValue = serviceDescriptor.getProperty(serviceResourceKey);
+			} else {
+				
+				API api = serviceDescriptor.getApi(service.getAPIName());
+				if(api.containProperty(serviceResourceKey)) {
+					serviceResourceValue = api.getProperty(serviceResourceKey);
+				} else if(api.containQueryParameter(serviceResourceKey)) {
+					serviceResourceValue = api.getQueryParameter(serviceResourceKey).getValue();
+				} else if(api.containHeaderParameter(serviceResourceKey)) {
+					serviceResourceValue = api.getHeaderParameter(serviceResourceKey).getValue();
+				}
+			}
+			
+			return resolve(serviceResourceKey, serviceResourceValue, serviceDescriptor, service);
 		} else if(resourceValue.contains(Constants.SERVICE_RESOURCE_OPEN_CURLY_BRACKET)) {
 			
 			String serviceResourceKey = resourceValue.substring(resourceValue.indexOf(Constants.SERVICE_RESOURCE_OPEN_CURLY_BRACKET) + 1, resourceValue.indexOf(Constants.SERVICE_RESOURCE_CLOSE_CURLY_BRACKET));
-			String serviceResourceValue = serviceDescriptor.getProperty(serviceResourceKey);
+			String serviceResourceValue = service.getResource(serviceResourceKey);
 			
-			String resolved = resourceValue.replace(Constants.SERVICE_RESOURCE_OPEN_CURLY_BRACKET + serviceResourceKey + Constants.SERVICE_RESOURCE_CLOSE_CURLY_BRACKET, serviceResourceValue);
-			resolve(resolved, serviceDescriptor, service);
-		}
+			String resolvedValue = resourceValue.replace(Constants.SERVICE_RESOURCE_OPEN_CURLY_BRACKET + serviceResourceKey + Constants.SERVICE_RESOURCE_CLOSE_CURLY_BRACKET, serviceResourceValue);
+			return resolve(resourceName, resolvedValue, serviceDescriptor, service);
+		} 
 		
 		return resourceValue;
 	}
-	
 }

@@ -25,6 +25,10 @@ public class ServiceDescriptorReader extends SiminovSAXDefaultHandler implements
 	private ServiceDescriptor serviceDescriptor = new ServiceDescriptor();
 	
 	private API api = null;
+	
+	private QueryParameter queryParameter = null;
+	private HeaderParameter headerParameter = null;
+	
 	private boolean isApi = false;
 
 	private String propertyName = null;
@@ -99,6 +103,20 @@ public class ServiceDescriptorReader extends SiminovSAXDefaultHandler implements
 			
 			api = new ServiceDescriptor.API();
 			isApi = true;
+		} else if(localName.equalsIgnoreCase(SERVICE_DESCRIPTOR_API_QUERY_PARAMETER)) {
+		
+			queryParameter = new QueryParameter();
+			queryParameter.setName(attributes.getValue(SERVICE_DESCRIPTOR_API_QUERY_PARAMETER_NAME_ATTRIBUTE));
+			queryParameter.setValue(tempValue);
+			
+			api.addQueryParameter(queryParameter);
+		} else if(localName.equalsIgnoreCase(SERVICE_DESCRIPTOR_API_HEADER_PARAMETER)) {
+			
+			headerParameter = new HeaderParameter();
+			headerParameter.setName(attributes.getValue(SERVICE_DESCRIPTOR_API_HEADER_PARAMETER_NAME_ATTRIBUTE));
+			headerParameter.setValue(tempValue);
+			
+			api.addHeaderParameter(headerParameter);
 		}
 	}
 	
@@ -124,17 +142,11 @@ public class ServiceDescriptorReader extends SiminovSAXDefaultHandler implements
 			isApi = false;
 		} else if(localName.equalsIgnoreCase(SERVICE_DESCRIPTOR_API_QUERY_PARAMETER)) {
 			
-			QueryParameter queryParameter = new QueryParameter();
-			queryParameter.setName(localName);
 			queryParameter.setValue(tempValue);
-			
 			api.addQueryParameter(queryParameter);
 		} else if(localName.equalsIgnoreCase(SERVICE_DESCRIPTOR_API_HEADER_PARAMETER)) {
 			
-			HeaderParameter headerParameter = new HeaderParameter();
-			headerParameter.setName(localName);
 			headerParameter.setValue(tempValue);
-			
 			api.addHeaderParameter(headerParameter);
 		} else if(localName.equalsIgnoreCase(SERVICE_DESCRIPTOR_API_DATA_STREAM)) {
 			
