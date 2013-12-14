@@ -3,19 +3,33 @@ package siminov.connect.service;
 import java.util.HashMap;
 import java.util.Map;
 
-import siminov.connect.events.IServiceEvents;
+import siminov.connect.model.ServiceDescriptor;
+import siminov.orm.exception.SiminovException;
+import siminov.orm.log.Log;
 
-public abstract class Service implements IServiceEvents {
+public abstract class Service implements IService {
 
+	private String serviceId;
+	
 	private String serviceName = null;
 	private String apiName = null;
 	
 	
 	private Map<String, String> resources = new HashMap<String, String>();
 	
+	private ServiceDescriptor serviceDescriptor = null;
+	
 	
 	public Service() {
-		
+		serviceId = java.util.UUID.randomUUID().toString();
+	}
+
+	public String getServiceId() {
+		return this.serviceId;
+	}
+	
+	public void setServiceId(String serviceId) {
+		this.serviceId = serviceId;
 	}
 	
 	public String getServiceName() {
@@ -49,10 +63,24 @@ public abstract class Service implements IServiceEvents {
 	public boolean containResource(final String key) {
 		return this.resources.containsKey(key);
 	}
+
+	public ServiceDescriptor getServiceDescriptor() {
+		return this.serviceDescriptor;
+	}
+	
+	public void setServiceDescriptor(final ServiceDescriptor serviceDescriptor) {
+		this.serviceDescriptor = serviceDescriptor;
+	}
 	
 	public void invoke() {
 		
-		ServiceHandler serviceHandler = new ServiceHandler();
-		serviceHandler.handle(this);
+		ServiceHandler serviceHandler = ServiceHandler.getInstance();
+		try {
+			serviceHandler.handle(this);
+		} catch(SiminovException se) {
+			Log.loge(Service.class.getName(), "invoke", "SiminovException caught while invoking service, " + se.getMessage());
+			
+			this.onServiceTerminate(se);
+		}
 	}
 }

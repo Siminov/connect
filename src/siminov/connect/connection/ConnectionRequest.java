@@ -6,6 +6,9 @@ import java.util.Map;
 public class ConnectionRequest {
 
 	private String url;
+
+	private String protocol;
+	private String type;
 	
 	private Map<String, String> queryParameters = new HashMap<String, String>();
 	private Map<String, String> headerParameters = new HashMap<String, String>();
@@ -21,6 +24,22 @@ public class ConnectionRequest {
 		this.url = url;
 	}
 
+	public String getProtocol() {
+		return this.protocol;
+	}
+	
+	public void setProtocol(final String protocol) {
+		this.protocol = protocol;
+	}
+	
+	public String getType() {
+		return this.type;
+	}
+	
+	public void setType(final String type) {
+		this.type = type;
+	}
+	
 	public Map<String, String> getQueryParameters() {
 		return this.queryParameters;
 	}

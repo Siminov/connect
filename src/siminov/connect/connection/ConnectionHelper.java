@@ -9,30 +9,29 @@ import siminov.connect.model.ServiceDescriptor;
 import siminov.connect.model.ServiceDescriptor.API;
 import siminov.connect.model.ServiceDescriptor.API.HeaderParameter;
 import siminov.connect.model.ServiceDescriptor.API.QueryParameter;
-import siminov.connect.service.Service;
-import siminov.connect.utils.ServiceResourceUtils;
-import siminov.orm.exception.SiminovException;
-
+import siminov.connect.service.IService;
 
 public class ConnectionHelper {
 
-	public ConnectionRequest prepareConnectionRequest(final ServiceDescriptor serviceDescriptor, final Service service) throws SiminovException {
+	public static ConnectionRequest prepareConnectionRequest(final IService service) {
 
 		/*
 		 * Resolve All Referring Resources
 		 */
-		ServiceResourceUtils.resolve(serviceDescriptor, service);
+		ServiceDescriptor serviceDescriptor = service.getServiceDescriptor();
+		API api = serviceDescriptor.getApi(service.getAPIName());
 		
+		String url = formUrl(service);
 		
-		String url = formUrl(serviceDescriptor, service);
+		Map<String, String> queryParameters = formQueryParameters(service);
+		Map<String, String> headerParameters = formHeaderParameters(service);
 		
-		Map<String, String> queryParameters = formQueryParameters(serviceDescriptor, service);
-		Map<String, String> headerParameters = formHeaderParameters(serviceDescriptor, service);
-		
-		byte[] dataStream = formDataStream(serviceDescriptor, service);
+		byte[] dataStream = formDataStream(service);
 		
 		ConnectionRequest connectionRequest = new ConnectionRequest();
 		connectionRequest.setUrl(url);
+		connectionRequest.setProtocol(serviceDescriptor.getProtocol());
+		connectionRequest.setType(api.getType());
 		connectionRequest.setQueryParameters(queryParameters);
 		connectionRequest.setHeaderParameters(headerParameters);
 		connectionRequest.setDataStream(dataStream);
@@ -41,7 +40,9 @@ public class ConnectionHelper {
 	}
 
 
-	private String formUrl(final ServiceDescriptor serviceDescriptor, Service service) throws SiminovException {
+	private static String formUrl(final IService service) {
+		
+		ServiceDescriptor serviceDescriptor = service.getServiceDescriptor();
 		
 		String apiName = service.getAPIName();
 		API api = serviceDescriptor.getApi(apiName);
@@ -84,7 +85,9 @@ public class ConnectionHelper {
 		return url.toString();
 	}
 	
-	private Map<String, String> formQueryParameters(final ServiceDescriptor serviceDescriptor, final Service service) throws SiminovException {
+	private static Map<String, String> formQueryParameters(final IService service) {
+		
+		ServiceDescriptor serviceDescriptor = service.getServiceDescriptor();
 		
 		String apiName = service.getAPIName();
 		API api = serviceDescriptor.getApi(apiName);
@@ -103,8 +106,10 @@ public class ConnectionHelper {
 		return parameters;
 	}
 	
-	private Map<String, String> formHeaderParameters(final ServiceDescriptor serviceDescriptor, final Service service) throws SiminovException {
+	private static Map<String, String> formHeaderParameters(final IService service) {
 
+		ServiceDescriptor serviceDescriptor = service.getServiceDescriptor();
+		
 		String apiName = service.getAPIName();
 		API api = serviceDescriptor.getApi(apiName);
 		
@@ -122,7 +127,9 @@ public class ConnectionHelper {
 		return parameters;
 	}
 	
-	private byte[] formDataStream(final ServiceDescriptor serviceDescriptor, final Service service) {
+	private static byte[] formDataStream(final IService service) {
+		
+		ServiceDescriptor serviceDescriptor = service.getServiceDescriptor();
 		
 		String apiName = service.getAPIName();
 		API api = serviceDescriptor.getApi(apiName);
