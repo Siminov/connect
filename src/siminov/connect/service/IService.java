@@ -7,25 +7,21 @@ import siminov.connect.model.ServiceDescriptor;
 
 public interface IService extends IServiceEvents {
 
-	public String getServiceId();
-
-	public void setServiceId(final String serviceId);
+	public String getService();
 	
-	public String getServiceName();
+	public void setService(final String service);
 	
-	public void setServiceName(final String serviceName);
+	public String getApi();
 	
-	public String getAPIName();
-	
-	public void setAPIName(final String apiName);
+	public void setApi(final String api);
 	
 	public Map<String, String> getResources();
 	
-	public String getResource(final String key);
+	public String getResource(final String name);
 
-	public void addResource(final String key, final String value);
+	public void addResource(final String name, final String value);
 	
-	public boolean containResource(final String key);
+	public boolean containResource(final String name);
 	
 	public ServiceDescriptor getServiceDescriptor();
 	

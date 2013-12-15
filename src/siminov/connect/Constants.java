@@ -3,6 +3,8 @@ package siminov.connect;
 
 public interface Constants {
 
+	public String CONNECT_DATABASE_DESSCRIPTOR_PATH = "siminov/connect/resource/DatabaseDescriptor.si.xml";
+	
 	//Connect Descriptor
 	public String CONNECT_DESCRIPTOR_FILE_NAME = "ConnectDescriptor.si.xml";
 	

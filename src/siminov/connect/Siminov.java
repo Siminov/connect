@@ -10,6 +10,9 @@ import siminov.orm.IInitializer;
 import siminov.orm.exception.DeploymentException;
 import siminov.orm.exception.SiminovException;
 import siminov.orm.log.Log;
+import siminov.orm.model.ApplicationDescriptor;
+import siminov.orm.model.DatabaseDescriptor;
+import siminov.orm.reader.DatabaseDescriptorReader;
 
 public class Siminov extends siminov.orm.Siminov {
 
@@ -34,7 +37,8 @@ public class Siminov extends siminov.orm.Siminov {
 		processEvents();
 		
 		
-		siminov.orm.Siminov.processDatabaseDescriptors();
+		
+		processDatabaseDescriptor();
 		siminov.orm.Siminov.processLibraries();
 		siminov.orm.Siminov.processDatabaseMappingDescriptors();
 		siminov.orm.Siminov.processDatabase();
@@ -54,6 +58,16 @@ public class Siminov extends siminov.orm.Siminov {
 		siminov.orm.Siminov.shutdown();
 	}
 
+	protected static void processDatabaseDescriptor() {
+		siminov.orm.Siminov.processDatabaseDescriptors();
+		
+		DatabaseDescriptorReader databaseDescriptorReader = new DatabaseDescriptorReader(Constants.CONNECT_DATABASE_DESSCRIPTOR_PATH);
+		DatabaseDescriptor databaseDescriptor = databaseDescriptorReader.getDatabaseDescriptor();
+		
+		ApplicationDescriptor applicationDescriptor = siminov.orm.resource.Resources.getInstance().getApplicationDescriptor();
+		applicationDescriptor.addDatabaseDescriptor(Constants.CONNECT_DATABASE_DESSCRIPTOR_PATH, databaseDescriptor);
+	}
+	
 	protected static void processEvents() {
 		
 	}

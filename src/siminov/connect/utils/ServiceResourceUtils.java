@@ -37,7 +37,7 @@ public class ServiceResourceUtils {
 		/*
 		 * Resolve API Properties
 		 */
-		API api = serviceDescriptor.getApi(service.getAPIName());
+		API api = serviceDescriptor.getApi(service.getApi());
 		Iterator<String> apiProperties = api.getProperties();
 		while(apiProperties.hasNext()) {
 			
@@ -168,7 +168,7 @@ public class ServiceResourceUtils {
 				serviceResourceValue = serviceDescriptor.getProperty(serviceResourceKey);
 			} else {
 				
-				API api = serviceDescriptor.getApi(service.getAPIName());
+				API api = serviceDescriptor.getApi(service.getApi());
 				if(api.containProperty(serviceResourceKey)) {
 					serviceResourceValue = api.getProperty(serviceResourceKey);
 				} else if(api.containQueryParameter(serviceResourceKey)) {

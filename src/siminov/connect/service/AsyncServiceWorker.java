@@ -10,6 +10,8 @@ public class AsyncServiceWorker implements IServiceWorker {
 	}
 	
 	public void process(final IService service) {
+
+		
 		
 	}
 	

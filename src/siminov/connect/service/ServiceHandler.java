@@ -39,12 +39,12 @@ public class ServiceHandler {
 	
 	void handle(final IService service) throws SiminovException {
 
-		ServiceDescriptor serviceDescriptor = resources.requiredServiceDescriptorBasedOnName(service.getServiceName());
+		ServiceDescriptor serviceDescriptor = resources.requiredServiceDescriptorBasedOnName(service.getService());
 		service.setServiceDescriptor(serviceDescriptor);
 		
 		ServiceResourceUtils.resolve(service);
 		
-		API api = serviceDescriptor.getApi(service.getAPIName());
+		API api = serviceDescriptor.getApi(service.getApi());
 		if(api.getMode().equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_API_SYNC_REQUEST_MODE)) {
 			syncServiceWorker.process(service);
 		} else if(api.getMode().equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_API_ASYNC_REQUEST_MODE)) {

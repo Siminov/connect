@@ -19,7 +19,7 @@ public class ConnectionHelper {
 		 * Resolve All Referring Resources
 		 */
 		ServiceDescriptor serviceDescriptor = service.getServiceDescriptor();
-		API api = serviceDescriptor.getApi(service.getAPIName());
+		API api = serviceDescriptor.getApi(service.getApi());
 		
 		String url = formUrl(service);
 		
@@ -44,7 +44,7 @@ public class ConnectionHelper {
 		
 		ServiceDescriptor serviceDescriptor = service.getServiceDescriptor();
 		
-		String apiName = service.getAPIName();
+		String apiName = service.getApi();
 		API api = serviceDescriptor.getApi(apiName);
 		
 		String protocol = serviceDescriptor.getProtocol();
@@ -89,7 +89,7 @@ public class ConnectionHelper {
 		
 		ServiceDescriptor serviceDescriptor = service.getServiceDescriptor();
 		
-		String apiName = service.getAPIName();
+		String apiName = service.getApi();
 		API api = serviceDescriptor.getApi(apiName);
 		
 		Map<String, String> parameters = new HashMap<String, String>();
@@ -110,7 +110,7 @@ public class ConnectionHelper {
 
 		ServiceDescriptor serviceDescriptor = service.getServiceDescriptor();
 		
-		String apiName = service.getAPIName();
+		String apiName = service.getApi();
 		API api = serviceDescriptor.getApi(apiName);
 		
 		Map<String, String> parameters = new HashMap<String, String>();
@@ -131,7 +131,7 @@ public class ConnectionHelper {
 		
 		ServiceDescriptor serviceDescriptor = service.getServiceDescriptor();
 		
-		String apiName = service.getAPIName();
+		String apiName = service.getApi();
 		API api = serviceDescriptor.getApi(apiName);
 
 		if(api.getDataStream() == null) {
