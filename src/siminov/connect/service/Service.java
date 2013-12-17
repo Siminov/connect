@@ -1,6 +1,7 @@
 package siminov.connect.service;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import siminov.connect.model.ServiceDescriptor;
@@ -11,7 +12,7 @@ public abstract class Service implements IService {
 
 	private String service = null;
 	private String api = null;
-	
+
 	private Map<String, String> resources = new HashMap<String, String>();
 	
 	private ServiceDescriptor serviceDescriptor = null;
@@ -36,8 +37,8 @@ public abstract class Service implements IService {
 		this.api = api;
 	}
 	
-	public Map<String, String> getResources() {
-		return this.resources;
+	public Iterator<String> getResources() {
+		return this.resources.keySet().iterator();
 	}
 	
 	public String getResource(final String name) {

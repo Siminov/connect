@@ -1,6 +1,6 @@
 package siminov.connect.service;
 
-import java.util.Map;
+import java.util.Iterator;
 
 import siminov.connect.events.IServiceEvents;
 import siminov.connect.model.ServiceDescriptor;
@@ -15,7 +15,7 @@ public interface IService extends IServiceEvents {
 	
 	public void setApi(final String api);
 	
-	public Map<String, String> getResources();
+	public Iterator<String> getResources();
 	
 	public String getResource(final String name);
 

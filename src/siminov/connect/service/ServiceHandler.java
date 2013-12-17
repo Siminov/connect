@@ -23,7 +23,7 @@ public class ServiceHandler {
 	private ServiceHandler() {
 		
 		syncServiceWorker =  new SyncServiceWorker();
-		asyncServiceWorker = new AsyncServiceWorker();
+		asyncServiceWorker = AsyncServiceWorker.getInstance();
 		
 		resources = Resources.getInstance();
 	}
