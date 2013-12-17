@@ -90,10 +90,10 @@ public class ServiceResourceUtils {
 		
 		ServiceDescriptor serviceDescriptor = service.getServiceDescriptor();
 		
-		if(resourceValue.contains(Constants.SERVICE_RESOURCE_HASH + Constants.SERVICE_RESOURCE_OPEN_CURLY_BRACKET)) {
+		if(resourceValue.contains(Constants.SERVICE_RESOURCE_OPEN_CURLY_BRACKET + Constants.SERVICE_RESOURCE_REFER_REFERENCE)) {
 
 			//Find {}
-			int openingCurlyBracketIndex = resourceValue.indexOf(Constants.SERVICE_RESOURCE_HASH + Constants.SERVICE_RESOURCE_OPEN_CURLY_BRACKET) + 2;
+			int openingCurlyBracketIndex = resourceValue.indexOf(Constants.SERVICE_RESOURCE_SPACE) + 1;
 			
 			int singleClosingCurlyBracketIndex = resourceValue.indexOf(Constants.SERVICE_RESOURCE_CLOSE_CURLY_BRACKET);
 			int doubleClosingCurlyBracketIndex = resourceValue.indexOf(Constants.SERVICE_RESOURCE_CLOSE_CURLY_BRACKET + Constants.SERVICE_RESOURCE_CLOSE_CURLY_BRACKET);
@@ -101,22 +101,12 @@ public class ServiceResourceUtils {
 			String serviceResourceKey;
 			
 			if(doubleClosingCurlyBracketIndex != -1) {
+
 				serviceResourceKey = resourceValue.substring(openingCurlyBracketIndex, doubleClosingCurlyBracketIndex + 1);
-			} else {
-				serviceResourceKey = resourceValue.substring(openingCurlyBracketIndex, singleClosingCurlyBracketIndex);
-			}
-			
+				int slashIndex = serviceResourceKey.lastIndexOf(Constants.SERVICE_RESOURCE_SLASH);
 
-			//Find first index of -
-			int slashIndex = serviceResourceKey.lastIndexOf(Constants.SERVICE_RESOURCE_SLASH);
-			//Find first index of .
-			int dotIndex = serviceResourceKey.lastIndexOf(Constants.SERVICE_RESOURCE_DOT);
-
-			String serviceResourceClass;
-			if(slashIndex != -1 && slashIndex < dotIndex) {
 				//Find {-
-				
-				serviceResourceClass = serviceResourceKey.substring(0, serviceResourceKey.substring(0, slashIndex).lastIndexOf(Constants.SERVICE_RESOURCE_DOT));
+				String serviceResourceClass = serviceResourceKey.substring(0, serviceResourceKey.substring(0, slashIndex).lastIndexOf(Constants.SERVICE_RESOURCE_DOT));
 				String serviceResourceAPI = serviceResourceKey.substring(serviceResourceKey.substring(0, slashIndex).lastIndexOf(Constants.SERVICE_RESOURCE_DOT) + 1, serviceResourceKey.substring(0, slashIndex).length());
 
 				Collection<Class<?>> serviceResourceAPIParameterTypes = new LinkedList<Class<?>>();
@@ -148,20 +138,24 @@ public class ServiceResourceUtils {
 				String resolvedValue = (String) ClassUtils.invokeMethod(classObject, serviceResourceAPI, apiParameterTypes, serviceResourceAPIParameters.toArray());
 				
 				return resolve(service, resourceName, resolvedValue);
-			} else if(dotIndex != -1) {
-				serviceResourceClass = serviceResourceKey.substring(0, dotIndex);
+			} else {
+
+				serviceResourceKey = resourceValue.substring(openingCurlyBracketIndex, singleClosingCurlyBracketIndex);
+				int dotIndex = serviceResourceKey.lastIndexOf(Constants.SERVICE_RESOURCE_DOT);
+
+				String serviceResourceClass = serviceResourceKey.substring(0, dotIndex);
 
 				String serviceResourceAPI = serviceResourceKey.substring(serviceResourceKey.lastIndexOf(Constants.SERVICE_RESOURCE_DOT) + 1, serviceResourceKey.length());
 				
 				Object classObject = ClassUtils.createClassInstance(serviceResourceClass);
 				String serviceResourceValue = (String) ClassUtils.getValue(classObject, serviceResourceAPI);
 			
-				String resolvedValue = resourceValue.replace(Constants.SERVICE_RESOURCE_HASH + Constants.SERVICE_RESOURCE_OPEN_CURLY_BRACKET + serviceResourceKey + Constants.SERVICE_RESOURCE_CLOSE_CURLY_BRACKET, serviceResourceValue);
+				String resolvedValue = resourceValue.replace(Constants.SERVICE_RESOURCE_OPEN_CURLY_BRACKET + Constants.SERVICE_RESOURCE_REFER_REFERENCE + Constants.SERVICE_RESOURCE_SPACE + serviceResourceKey + Constants.SERVICE_RESOURCE_CLOSE_CURLY_BRACKET, serviceResourceValue);
 				return resolve(service, resourceName, resolvedValue);
 			}
-		} else if(resourceValue.contains(Constants.SERVICE_RESOURCE_OPEN_CURLY_BRACKET + Constants.SERVICE_RESOURCE_SELF_REFERENCE + Constants.SERVICE_RESOURCE_DOT)) {
+		} else if(resourceValue.contains(Constants.SERVICE_RESOURCE_OPEN_CURLY_BRACKET + Constants.SERVICE_RESOURCE_SELF_REFERENCE)) {
 			
-			String serviceResourceKey = resourceValue.substring(resourceValue.indexOf(Constants.SERVICE_RESOURCE_OPEN_CURLY_BRACKET + Constants.SERVICE_RESOURCE_SELF_REFERENCE + Constants.SERVICE_RESOURCE_DOT) + 1 + (Constants.SERVICE_RESOURCE_SELF_REFERENCE + Constants.SERVICE_RESOURCE_DOT).length(), resourceValue.indexOf(Constants.SERVICE_RESOURCE_CLOSE_CURLY_BRACKET));
+			String serviceResourceKey = resourceValue.substring(resourceValue.indexOf(Constants.SERVICE_RESOURCE_SPACE) + 1, resourceValue.indexOf(Constants.SERVICE_RESOURCE_CLOSE_CURLY_BRACKET));
 			String serviceResourceValue = null;
 			
 			if(serviceDescriptor.containProperty(serviceResourceKey)) {
@@ -179,7 +173,7 @@ public class ServiceResourceUtils {
 			}
 			
 			return resolve(service, serviceResourceKey, serviceResourceValue);
-		} else if(resourceValue.contains(Constants.SERVICE_RESOURCE_OPEN_CURLY_BRACKET)) {
+		} else if(resourceValue.contains(Constants.SERVICE_RESOURCE_OPEN_CURLY_BRACKET) && resourceValue.contains(Constants.SERVICE_RESOURCE_CLOSE_CURLY_BRACKET)) {
 			
 			String serviceResourceKey = resourceValue.substring(resourceValue.indexOf(Constants.SERVICE_RESOURCE_OPEN_CURLY_BRACKET) + 1, resourceValue.indexOf(Constants.SERVICE_RESOURCE_CLOSE_CURLY_BRACKET));
 			String serviceResourceValue = service.getResource(serviceResourceKey);
