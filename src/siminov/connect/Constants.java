@@ -76,13 +76,14 @@ public interface Constants {
 	/**
 	 * Inline Resource Constants
 	 */
-	public String SERVICE_RESOURCE_HASH = "#";
 	public String SERVICE_RESOURCE_OPEN_CURLY_BRACKET = "{";
 	public String SERVICE_RESOURCE_CLOSE_CURLY_BRACKET = "}";
-	public String SERVICE_RESOURCE_DOT = ".";
 	public String SERVICE_RESOURCE_SLASH = "-";
 	public String SERVICE_RESOURCE_COMMA = ",";
-	public String SERVICE_RESOURCE_SELF_REFERENCE = "self";
+	public String SERVICE_RESOURCE_SPACE = " ";
+	public String SERVICE_RESOURCE_SELF_REFERENCE = "@self";
+	public String SERVICE_RESOURCE_REFER_REFERENCE = "@refer";
+	public String SERVICE_RESOURCE_DOT = ".";
 	
 	public String CONNECTION_HTTP = "http";
 	public String CONNECTION_HTTPS = "https";

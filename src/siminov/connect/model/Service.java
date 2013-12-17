@@ -9,20 +9,12 @@ import siminov.orm.database.Database;
 
 public class Service extends Database implements Constants {
 	
-	private long id;
-	
 	private String service = null;
 	private String api = null;
 	
+	private String instanceOf = null;
+	
 	private Map<String, ServiceResource> serviceResources = new HashMap<String, ServiceResource>();
-	
-	public long getId() {
-		return this.id;
-	}
-	
-	public void setId(long id) {
-		this.id = id;
-	}
 	
 	public String getService() {
 		return this.service;
@@ -38,6 +30,14 @@ public class Service extends Database implements Constants {
 	
 	public void setApi(String api) {
 		this.api = api;
+	}
+	
+	public String getInstanceOf() {
+		return this.instanceOf;
+	}
+	
+	public void setInstanceOf(String instanceOf) {
+		this.instanceOf = instanceOf;
 	}
 	
 	public Iterator<ServiceResource> getServiceResources() {
