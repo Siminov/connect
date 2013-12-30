@@ -16,9 +16,9 @@
 	
     <!-- Refresh Handlers -->
     	<!-- Refresh Handler -->
-    <refresh-handlers>
+    <refresh-descriptors>
         
-        <refresh-handler>
+        <refresh-descriptor>
             
            		<!-- Mandatory Field -->
      		<property name="name">name_of_refresh_handler</property>
@@ -34,18 +34,18 @@
      		    
      		</services>
      		
-        </refresh-handler>
+        </refresh-descriptor>
         
-    </refresh-handlers>
+    </refresh-descriptors>
     
 
     <!-- Authentication -->
-    <authentication>
+    <authentication-descriptor>
         
         	<!-- Mandatory Field -->
         <property name="type">type_of_authentication</property>
-        
-    </authentication>
+		
+    </authentication-descriptor>
 
 </connect-descriptor>
 
