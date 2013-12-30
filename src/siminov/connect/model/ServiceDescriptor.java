@@ -5,58 +5,59 @@ import java.util.Iterator;
 import java.util.Map;
 
 import siminov.connect.Constants;
+import siminov.orm.model.IDescriptor;
 
-public class ServiceDescriptor implements Constants {
+public class ServiceDescriptor implements IDescriptor {
 		
 	private Map<String, String> properties = new HashMap<String, String> ();
 	private Map<String, API> apis = new HashMap<String, API> ();
 	
 	public String getName() {
-		return this.properties.get(SERVICE_DESCRIPTOR_NAME);
+		return this.properties.get(Constants.SERVICE_DESCRIPTOR_NAME);
 	}
 	
 	public void setName(final String name) {
-		this.properties.put(SERVICE_DESCRIPTOR_NAME, name);
+		this.properties.put(Constants.SERVICE_DESCRIPTOR_NAME, name);
 	}
 	
 	public String getDescription() {
-		return this.properties.get(SERVICE_DESCRIPTOR_DESCRIPTION);
+		return this.properties.get(Constants.SERVICE_DESCRIPTOR_DESCRIPTION);
 	}
 	
 	public void setDescription(final String description) {
-		this.properties.put(SERVICE_DESCRIPTOR_DESCRIPTION, description);
+		this.properties.put(Constants.SERVICE_DESCRIPTOR_DESCRIPTION, description);
 	}
 	
 	public String getProtocol() {
-		return this.properties.get(SERVICE_DESCRIPTOR_PROTOCOL);
+		return this.properties.get(Constants.SERVICE_DESCRIPTOR_PROTOCOL);
 	}
 	
 	public void setProtocol(final String protocol) {
-		this.properties.put(SERVICE_DESCRIPTOR_PROTOCOL, protocol);
+		this.properties.put(Constants.SERVICE_DESCRIPTOR_PROTOCOL, protocol);
 	}
 	
 	public String getInstance() {
-		return this.properties.get(SERVICE_DESCRIPTOR_INSTANCE);
+		return this.properties.get(Constants.SERVICE_DESCRIPTOR_INSTANCE);
 	}
 	
 	public void setInstance(final String instance) {
-		this.properties.put(SERVICE_DESCRIPTOR_INSTANCE, instance);
+		this.properties.put(Constants.SERVICE_DESCRIPTOR_INSTANCE, instance);
 	}
 	
 	public String getPort() {
-		return this.properties.get(SERVICE_DESCRIPTOR_PORT);
+		return this.properties.get(Constants.SERVICE_DESCRIPTOR_PORT);
 	}
 	
 	public void setPort(final String port) {
-		this.properties.put(SERVICE_DESCRIPTOR_PORT, port);
+		this.properties.put(Constants.SERVICE_DESCRIPTOR_PORT, port);
 	}
 
 	public String getContext() {
-		return this.properties.get(SERVICE_DESCRIPTOR_CONTEXT);
+		return this.properties.get(Constants.SERVICE_DESCRIPTOR_CONTEXT);
 	}
 	
 	public void setContext(String context) {
-		this.properties.put(SERVICE_DESCRIPTOR_CONTEXT, context);
+		this.properties.put(Constants.SERVICE_DESCRIPTOR_CONTEXT, context);
 	}
 	
 	public Iterator<String> getProperties() {
@@ -99,7 +100,7 @@ public class ServiceDescriptor implements Constants {
 		this.apis.remove(api);
 	}
 	
-	public static class API {
+	public static class API implements IDescriptor {
 	
 		private Map<String, String> properties = new HashMap<String, String>();
 
@@ -109,35 +110,35 @@ public class ServiceDescriptor implements Constants {
 		private String dataStream = null;
 		
 		public String getName() {
-			return this.properties.get(SERVICE_DESCRIPTOR_API_NAME);
+			return this.properties.get(Constants.SERVICE_DESCRIPTOR_API_NAME);
 		}
 		
 		public void setName(final String name) {
-			this.properties.put(SERVICE_DESCRIPTOR_API_NAME, name);
+			this.properties.put(Constants.SERVICE_DESCRIPTOR_API_NAME, name);
 		}
 		
 		public String getType() {
-			return this.properties.get(SERVICE_DESCRIPTOR_API_TYPE);
+			return this.properties.get(Constants.SERVICE_DESCRIPTOR_API_TYPE);
 		}
 		
 		public void setType(final String type) {
-			this.properties.put(SERVICE_DESCRIPTOR_API_TYPE, type);
+			this.properties.put(Constants.SERVICE_DESCRIPTOR_API_TYPE, type);
 		}
 		
 		public String getApi() {
-			return this.properties.get(SERVICE_DESCRIPTOR_API_API);
+			return this.properties.get(Constants.SERVICE_DESCRIPTOR_API_API);
 		}
 		
 		public void setApi(final String api) {
-			this.properties.put(SERVICE_DESCRIPTOR_API_API, api);
+			this.properties.put(Constants.SERVICE_DESCRIPTOR_API_API, api);
 		}
 		
 		public String getMode() {
-			return this.properties.get(SERVICE_DESCRIPTOR_API_MODE);
+			return this.properties.get(Constants.SERVICE_DESCRIPTOR_API_MODE);
 		}
 		
 		public void setMode(final String mode) {
-			this.properties.put(SERVICE_DESCRIPTOR_API_MODE, mode);
+			this.properties.put(Constants.SERVICE_DESCRIPTOR_API_MODE, mode);
 		}
 		
 		public String getDataStream() {
@@ -209,8 +210,10 @@ public class ServiceDescriptor implements Constants {
 			this.queryParameters.remove(headerParameter);
 		}
 
-		public static class QueryParameter {
+		public static class QueryParameter implements IDescriptor {
 			
+			private Map<String, String> properties = new HashMap<String, String> (); 
+
 			private String name;
 			private String value;
 			
@@ -228,11 +231,33 @@ public class ServiceDescriptor implements Constants {
 			
 			public void setValue(final String value) {
 				this.value = value;
+			}
+
+			public Iterator<String> getProperties() {
+				return this.properties.keySet().iterator();
+			}
+			
+			public String getProperty(String name) {
+				return this.properties.get(name);
+			}
+
+			public boolean containProperty(String name) {
+				return this.properties.containsKey(name);
+			}
+			
+			public void addProperty(String name, String value) {
+				this.properties.put(name, value);
+			}
+			
+			public void removeProperty(String name) {
+				this.properties.remove(name);
 			}
 		}
 		
-		public static class HeaderParameter {
+		public static class HeaderParameter implements IDescriptor {
 			
+			private Map<String, String> properties = new HashMap<String, String> (); 
+
 			private String name;
 			private String value;
 			
@@ -250,6 +275,26 @@ public class ServiceDescriptor implements Constants {
 			
 			public void setValue(final String value) {
 				this.value = value;
+			}
+
+			public Iterator<String> getProperties() {
+				return this.properties.keySet().iterator();
+			}
+			
+			public String getProperty(String name) {
+				return this.properties.get(name);
+			}
+
+			public boolean containProperty(String name) {
+				return this.properties.containsKey(name);
+			}
+			
+			public void addProperty(String name, String value) {
+				this.properties.put(name, value);
+			}
+			
+			public void removeProperty(String name) {
+				this.properties.remove(name);
 			}
 		}
 	}
