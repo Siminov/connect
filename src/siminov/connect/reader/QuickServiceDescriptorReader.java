@@ -23,7 +23,7 @@ import android.content.Context;
  */
 public class QuickServiceDescriptorReader extends SiminovSAXDefaultHandler implements Constants {
 
-	private String tempValue = null;
+	private StringBuilder tempValue = new StringBuilder();
 	private String finalServiceDescriptorName = null;
 	
 	private Context context = null;
@@ -88,7 +88,7 @@ public class QuickServiceDescriptorReader extends SiminovSAXDefaultHandler imple
 	
 	public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
 		
-		tempValue = "";
+		tempValue = new StringBuilder();
 
 		if(localName.equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_PROPERTY)) {
 			String propertyName = attributes.getValue(SERVICE_DESCRIPTOR_PROPERTY_NAME);
@@ -100,13 +100,14 @@ public class QuickServiceDescriptorReader extends SiminovSAXDefaultHandler imple
 	}
 	
 	public void characters(char[] ch, int start, int length) throws SAXException {
-		tempValue = new String(ch,start,length);
+		String value = new String(ch,start,length);
 		
-		if(tempValue == null || tempValue.length() <= 0) {
+		if(value == null || value.length() <= 0 || value.equalsIgnoreCase(siminov.orm.Constants.NEW_LINE)) {
 			return;
 		}
 		
-		tempValue.trim();
+		value = value.trim();
+		tempValue.append(value);
 	}
 
 	public void endElement(String uri, String localName, String qName) throws SAXException {
@@ -114,7 +115,7 @@ public class QuickServiceDescriptorReader extends SiminovSAXDefaultHandler imple
 		if(localName.equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_PROPERTY)) {
 			
 			if(isNameProperty) {
-				if(tempValue.equalsIgnoreCase(finalServiceDescriptorName)) {
+				if(tempValue.toString().equalsIgnoreCase(finalServiceDescriptorName)) {
 					doesMatch = true;
 				}
 				

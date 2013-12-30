@@ -16,7 +16,7 @@ import android.content.Context;
 
 public class ConnectDescriptorReader extends SiminovSAXDefaultHandler implements Constants {
 
-	private String tempValue = null;
+	private StringBuilder tempValue = new StringBuilder();
 	private Resources resources = Resources.getInstance();
 	
 	private ConnectDescriptor connectDescriptor = new ConnectDescriptor();
@@ -91,7 +91,7 @@ public class ConnectDescriptorReader extends SiminovSAXDefaultHandler implements
 	
 	public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
 
-		tempValue = "";
+		tempValue = new StringBuilder();
 
 		if(localName.equalsIgnoreCase(CONNECT_DESCRIPTOR_PROPERTY)) {
 			initializeProperty(attributes);
@@ -100,13 +100,14 @@ public class ConnectDescriptorReader extends SiminovSAXDefaultHandler implements
 	}
 	
 	public void characters(char[] ch, int start, int length) throws SAXException {
-		tempValue = new String(ch,start,length);
+		String value = new String(ch,start,length);
 		
-		if(tempValue == null || tempValue.length() <= 0) {
+		if(value == null || value.length() <= 0 || value.equalsIgnoreCase(siminov.orm.Constants.NEW_LINE)) {
 			return;
 		}
 		
-		tempValue.trim();
+		value = value.trim();
+		tempValue.append(value);
 	}
 
 	public void endElement(String uri, String localName, String qName) throws SAXException {
@@ -114,9 +115,9 @@ public class ConnectDescriptorReader extends SiminovSAXDefaultHandler implements
 		if(localName.equalsIgnoreCase(CONNECT_DESCRIPTOR_PROPERTY)) {
 			processProperty();
 		} else if(localName.equalsIgnoreCase(CONNECT_DESCRIPTOR_SERVICE_DESCRIPTOR)) {
-			connectDescriptor.addServiceDescriptorPath(tempValue);
+			connectDescriptor.addServiceDescriptorPath(tempValue.toString());
 		} else if(localName.equalsIgnoreCase(CONNECT_DESCRIPTOR_LIBRARY)) {
-			connectDescriptor.addLibraryPath(tempValue);
+			connectDescriptor.addLibraryPath(tempValue.toString());
 		}
 	}
 	
@@ -125,7 +126,7 @@ public class ConnectDescriptorReader extends SiminovSAXDefaultHandler implements
 	}
 	
 	private void processProperty() {
-		connectDescriptor.addProperty(propertyName, tempValue);
+		connectDescriptor.addProperty(propertyName, tempValue.toString());
 	}
 
 	public ConnectDescriptor getConnectDescriptor() {

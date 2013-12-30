@@ -33,7 +33,7 @@ import android.content.Context;
 
 public class LibraryDescriptorReader extends SiminovSAXDefaultHandler implements Constants {
 
-	private String tempValue = null;
+	private StringBuilder tempValue = new StringBuilder();
 	private LibraryDescriptor libraryDescriptor = new LibraryDescriptor();
 	
 	private String propertyName = "";
@@ -68,6 +68,8 @@ public class LibraryDescriptorReader extends SiminovSAXDefaultHandler implements
 	
 	public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
 		
+		tempValue = new StringBuilder();
+		
 		if(localName.equalsIgnoreCase(CONNECT_LIBRARY_DESCRIPTOR_PROPERTY)) {
 			initializeProperty(attributes);
 		} 
@@ -76,21 +78,22 @@ public class LibraryDescriptorReader extends SiminovSAXDefaultHandler implements
 	}
 	
 	public void characters(char[] ch, int start, int length) throws SAXException {
-		tempValue = new String(ch,start,length);
+		String value = new String(ch,start,length);
 		
-		if(tempValue == null || tempValue.length() <= 0) {
+		if(value == null || value.length() <= 0 || value.equalsIgnoreCase(siminov.orm.Constants.NEW_LINE)) {
 			return;
 		}
 		
-		tempValue.trim();
+		value = value.trim();
+		tempValue.append(value);
 	}
 
 	public void endElement(String uri, String localName, String qName) throws SAXException {
 		
 		if(localName.equalsIgnoreCase(CONNECT_LIBRARY_DESCRIPTOR_PROPERTY)) {
-			libraryDescriptor.addProperty(propertyName, tempValue);
+			libraryDescriptor.addProperty(propertyName, tempValue.toString());
 		} else if(localName.equalsIgnoreCase(CONNECT_LIBRARY_DESCRIPTOR_SERVICE_DESCRIPTOR)) {
-			libraryDescriptor.addServiceDescriptorPath(tempValue);
+			libraryDescriptor.addServiceDescriptorPath(tempValue.toString());
 		}
 		
 		super.endElement(uri, localName, qName);

@@ -19,7 +19,7 @@ import android.content.Context;
 
 public class ServiceDescriptorReader extends SiminovSAXDefaultHandler implements Constants {
 
-	private String tempValue = null;
+	private StringBuilder tempValue = new StringBuilder();
 	private Resources resources = Resources.getInstance();
 	
 	private ServiceDescriptor serviceDescriptor = new ServiceDescriptor();
@@ -95,7 +95,7 @@ public class ServiceDescriptorReader extends SiminovSAXDefaultHandler implements
 	
 	public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
 
-		tempValue = "";
+		tempValue = new StringBuilder();
 
 		if(localName.equalsIgnoreCase(SERVICE_DESCRIPTOR_PROPERTY)) {
 			initializeProperty(attributes);
@@ -107,27 +107,28 @@ public class ServiceDescriptorReader extends SiminovSAXDefaultHandler implements
 		
 			queryParameter = new QueryParameter();
 			queryParameter.setName(attributes.getValue(SERVICE_DESCRIPTOR_API_QUERY_PARAMETER_NAME_ATTRIBUTE));
-			queryParameter.setValue(tempValue);
+			queryParameter.setValue(tempValue.toString());
 			
 			api.addQueryParameter(queryParameter);
 		} else if(localName.equalsIgnoreCase(SERVICE_DESCRIPTOR_API_HEADER_PARAMETER)) {
 			
 			headerParameter = new HeaderParameter();
 			headerParameter.setName(attributes.getValue(SERVICE_DESCRIPTOR_API_HEADER_PARAMETER_NAME_ATTRIBUTE));
-			headerParameter.setValue(tempValue);
+			headerParameter.setValue(tempValue.toString());
 			
 			api.addHeaderParameter(headerParameter);
 		}
 	}
 	
 	public void characters(char[] ch, int start, int length) throws SAXException {
-		tempValue = new String(ch,start,length);
+		String value = new String(ch,start,length);
 		
-		if(tempValue == null || tempValue.length() <= 0) {
+		if(value == null || value.length() <= 0 || value.equalsIgnoreCase(siminov.orm.Constants.NEW_LINE)) {
 			return;
 		}
 		
-		tempValue.trim();
+		value = value.trim();
+		tempValue.append(value);
 	}
 
 	public void endElement(String uri, String localName, String qName) throws SAXException {
@@ -142,15 +143,15 @@ public class ServiceDescriptorReader extends SiminovSAXDefaultHandler implements
 			isApi = false;
 		} else if(localName.equalsIgnoreCase(SERVICE_DESCRIPTOR_API_QUERY_PARAMETER)) {
 			
-			queryParameter.setValue(tempValue);
+			queryParameter.setValue(tempValue.toString());
 			api.addQueryParameter(queryParameter);
 		} else if(localName.equalsIgnoreCase(SERVICE_DESCRIPTOR_API_HEADER_PARAMETER)) {
 			
-			headerParameter.setValue(tempValue);
+			headerParameter.setValue(tempValue.toString());
 			api.addHeaderParameter(headerParameter);
 		} else if(localName.equalsIgnoreCase(SERVICE_DESCRIPTOR_API_DATA_STREAM)) {
 			
-			api.setDataStream(tempValue);
+			api.setDataStream(tempValue.toString());
 		}
 	}
 	
@@ -161,9 +162,9 @@ public class ServiceDescriptorReader extends SiminovSAXDefaultHandler implements
 	private void processProperty() {
 		
 		if(isApi) {
-			api.addProperty(propertyName, tempValue);
+			api.addProperty(propertyName, tempValue.toString());
 		} else {
-			serviceDescriptor.addProperty(propertyName, tempValue);
+			serviceDescriptor.addProperty(propertyName, tempValue.toString());
 		}
 	}
 
