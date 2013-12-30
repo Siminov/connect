@@ -12,6 +12,7 @@ import org.apache.http.client.methods.HttpHead;
 import org.apache.http.client.methods.HttpOptions;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
+import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.client.methods.HttpTrace;
 import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -19,6 +20,8 @@ import org.apache.http.message.BasicHttpResponse;
 import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpParams;
 
+import siminov.connect.authentication.AuthenticationFactory;
+import siminov.connect.authentication.IAuthenticate;
 import siminov.connect.connection.ConnectionRequest;
 import siminov.connect.connection.ConnectionResponse;
 import siminov.connect.connection.ConnectionStatusCodes;
@@ -90,6 +93,9 @@ public class Connection implements IConnection{
 		}
 		
 
+		/* Authenticate */
+		sign(httpGet);
+		
 		
         /* execute */
         BasicHttpResponse httpResponse = null;
@@ -185,6 +191,9 @@ public class Connection implements IConnection{
 	        httpHead.setHeader(header, headerValue);
 		}
 		
+
+		/* Authenticate */
+		sign(httpHead);
 
 		
         /* execute */
@@ -290,7 +299,11 @@ public class Connection implements IConnection{
 		}
 		
 		
-        /* execute */
+		/* Authenticate */
+		sign(httpPost);
+
+		
+		/* execute */
         BasicHttpResponse httpResponse = null;
         
         try {
@@ -393,6 +406,9 @@ public class Connection implements IConnection{
 			httpPut.setEntity(new ByteArrayEntity(dataStream));	
 		}
 		
+		/* Authenticate */
+		sign(httpPut);
+
 		
         /* execute */
         BasicHttpResponse httpResponse = null;
@@ -490,6 +506,9 @@ public class Connection implements IConnection{
 	        httpDelete.setHeader(header, headerValue);
 		}
 		
+
+		/* Authenticate */
+		sign(httpDelete);
 
 		
         /* execute */
@@ -590,6 +609,8 @@ public class Connection implements IConnection{
 		}
 		
 
+		/* Authenticate */
+		sign(httpTrace);
 		
 		
         /* execute */
@@ -690,6 +711,9 @@ public class Connection implements IConnection{
 		
 
 		
+		/* Authenticate */
+		sign(httpOptions);
+
 		
         /* execute */
         BasicHttpResponse httpResponse = null;
@@ -743,5 +767,14 @@ public class Connection implements IConnection{
 		}
 
 		return null;
+	}
+
+	
+	private void sign(final HttpRequestBase httpRequestBase) throws SiminovException {
+		
+		AuthenticationFactory authenticationFactory = AuthenticationFactory.getInstance();
+		IAuthenticate authenticate = authenticationFactory.getAuthenticate();
+		
+		authenticate.doSignature(httpRequestBase);
 	}
 }
