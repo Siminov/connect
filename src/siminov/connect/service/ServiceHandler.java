@@ -1,5 +1,7 @@
 package siminov.connect.service;
 
+import java.util.Iterator;
+
 import siminov.connect.Constants;
 import siminov.connect.connection.ConnectionRequest;
 import siminov.connect.connection.ConnectionResponse;
@@ -7,8 +9,11 @@ import siminov.connect.connection.IConnection;
 import siminov.connect.model.ServiceDescriptor;
 import siminov.connect.model.ServiceDescriptor.API;
 import siminov.connect.resource.Resources;
+import siminov.connect.service.worker.AsyncServiceWorker;
+import siminov.connect.service.worker.SyncServiceWorker;
 import siminov.connect.utils.ServiceResourceUtils;
 import siminov.orm.exception.SiminovException;
+import siminov.orm.utils.ResourceUtils;
 
 
 public class ServiceHandler {
@@ -37,22 +42,31 @@ public class ServiceHandler {
 		return serviceHandler;
 	}
 	
-	void handle(final IService service) throws SiminovException {
+	public void handle(final IService service) throws SiminovException {
 
 		ServiceDescriptor serviceDescriptor = resources.requiredServiceDescriptorBasedOnName(service.getService());
 		service.setServiceDescriptor(serviceDescriptor);
-		
-		ServiceResourceUtils.resolve(service);
+
+		Iterator<String> inlineResources = service.getResources();
+		while(inlineResources.hasNext()) {
+			String inlineResource = inlineResources.next();
+			serviceDescriptor.addProperty(inlineResource, service.getResource(inlineResource));
+		}
+
 		
 		API api = serviceDescriptor.getApi(service.getApi());
-		if(api.getMode().equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_API_SYNC_REQUEST_MODE)) {
+		String mode = ResourceUtils.resolve(Constants.SERVICE_DESCRIPTOR_API_MODE, api.getMode(), serviceDescriptor);
+		
+		if(mode.equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_API_SYNC_REQUEST_MODE)) {
+
+			ServiceResourceUtils.resolve(service);
 			syncServiceWorker.process(service);
-		} else if(api.getMode().equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_API_ASYNC_REQUEST_MODE)) {
+		} else if(mode.equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_API_ASYNC_REQUEST_MODE)) {
 			asyncServiceWorker.process(service);
 		}
 	}
 
-	ConnectionResponse invokeConnection(final ConnectionRequest connectionRequest) throws SiminovException {
+	public ConnectionResponse invokeConnection(final ConnectionRequest connectionRequest) throws SiminovException {
 		
 		IConnection connection = null;
 		if(connectionRequest.getProtocol().equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_HTTP_PROTOCOL)) {

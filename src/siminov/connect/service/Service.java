@@ -3,6 +3,7 @@ package siminov.connect.service;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Random;
 
 import siminov.connect.model.ServiceDescriptor;
 import siminov.orm.exception.SiminovException;
@@ -10,17 +11,27 @@ import siminov.orm.log.Log;
 
 public abstract class Service implements IService {
 
+	private long requestId;
+	
 	private String service = null;
 	private String api = null;
 
 	private Map<String, String> resources = new HashMap<String, String>();
 	
 	private ServiceDescriptor serviceDescriptor = null;
-	
-	
+
 	public Service() {
+		requestId = new Random().nextLong();
 	}
 
+	public long getRequestId() {
+		return this.requestId;
+	}
+	
+	public void setRequestId(long request) {
+		this.requestId = request;
+	}
+	
 	public String getService() {
 		return this.service;
 	}

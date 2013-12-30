@@ -7,6 +7,10 @@ import siminov.connect.model.ServiceDescriptor;
 
 public interface IService extends IServiceEvents {
 
+	public long getRequestId();
+	
+	public void setRequestId(long requestId);
+	
 	public String getService();
 	
 	public void setService(final String service);
