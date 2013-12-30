@@ -6,9 +6,9 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-import siminov.connect.Constants;
+import siminov.orm.model.IDescriptor;
 
-public class ConnectDescriptor implements Constants {
+public class ConnectDescriptor implements IDescriptor {
 
 	private Map<String, String> properties = new HashMap<String, String> (); 
 
@@ -17,6 +17,8 @@ public class ConnectDescriptor implements Constants {
 	
 	private Map<String, LibraryDescriptor> librariesBasedOnPath = new HashMap<String, LibraryDescriptor>();
 	private Map<String, LibraryDescriptor> librariesBasedOnName = new HashMap<String, LibraryDescriptor>();
+	
+	private AuthenticationDescriptor authenticationDescriptor = null;
 	
 	public Iterator<String> getProperties() {
 		return this.properties.keySet().iterator();
@@ -117,5 +119,22 @@ public class ConnectDescriptor implements Constants {
 	public boolean containLibraryBasedOnPath(final String libraryPath) {
 		return this.librariesBasedOnPath.containsKey(libraryPath);
 	}
+
+
+	public AuthenticationDescriptor getAuthenticationDescriptor() {
+		return this.authenticationDescriptor;
+	}
 	
+	public void setAuthenticationDescriptor(AuthenticationDescriptor authenticationDescriptor) {
+		this.authenticationDescriptor = authenticationDescriptor;
+	}
+	
+	public boolean containAuthenticationDescriptor() {
+		
+		if(this.authenticationDescriptor != null) {
+			return true;
+		}
+		
+		return false;
+	}
 }
