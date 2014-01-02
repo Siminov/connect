@@ -1,5 +1,7 @@
 package siminov.connect.resource;
 
+import siminov.connect.events.EventHandler;
+import siminov.connect.events.IAuthenticationEvents;
 import siminov.connect.model.ConnectDescriptor;
 import siminov.connect.model.ServiceDescriptor;
 import siminov.connect.model.ServiceDescriptor.API;
@@ -82,5 +84,9 @@ public class Resources {
 		
 		ServiceDescriptor serviceDescriptor = this.requiredServiceDescriptorBasedOnName(serviceDescriptorName);
 		return serviceDescriptor.getApi(apiName);
+	}
+	
+	public IAuthenticationEvents getAuthenticationEventHandler() {
+		return EventHandler.getInstance().getAuthenticationEventHandler();
 	}
 }

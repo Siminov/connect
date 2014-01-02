@@ -774,6 +774,11 @@ public class Connection implements IConnection{
 		
 		AuthenticationFactory authenticationFactory = AuthenticationFactory.getInstance();
 		IAuthenticate authenticate = authenticationFactory.getAuthenticate();
+
+		if(authenticate == null) {
+			return;
+		}
+		
 		
 		authenticate.doSignature(httpRequestBase);
 	}

@@ -8,6 +8,7 @@ import org.apache.http.client.methods.HttpRequestBase;
 import siminov.connect.authentication.Credential;
 import siminov.connect.authentication.CredentialManager;
 import siminov.connect.authentication.IAuthenticate;
+import siminov.connect.events.IAuthenticationEvents;
 import siminov.connect.model.AuthenticationDescriptor;
 import siminov.connect.model.ConnectDescriptor;
 import siminov.connect.resource.Resources;
@@ -18,9 +19,17 @@ import siminov.orm.utils.ResourceUtils;
 import android.content.Context;
 import android.content.Intent;
 
-public abstract class OauthAuthentication implements IAuthenticate {
+public class Authentication implements IAuthenticate {
 
+	private Resources resources = Resources.getInstance();
+	
 	public void doAuthorization(final Credential credential) throws SiminovException {
+		
+		IAuthenticationEvents authenticationEvents = resources.getAuthenticationEventHandler();
+		if(authenticationEvents != null) {
+			authenticationEvents.onAuthenticationStart(credential);
+		}
+		
 		
 		siminov.orm.resource.Resources ormResources = siminov.orm.resource.Resources.getInstance();
 		Resources connectResources = Resources.getInstance();
@@ -39,20 +48,20 @@ public abstract class OauthAuthentication implements IAuthenticate {
 		String callbackUrl = authenticationDescriptor.getProperty(OauthConstants.CALLBACK_URL);
 		
 		if(consumerKey == null || consumerKey.length() <= 0) {
-			Log.loge(OauthAuthentication.class.getName(), "Constructor", "Invalid Consumer Key.");
-			throw new SiminovException(OauthAuthentication.class.getName(), "Constructor", "Invalid Consumer Key.");
+			Log.loge(Authentication.class.getName(), "Constructor", "Invalid Consumer Key.");
+			throw new SiminovException(Authentication.class.getName(), "Constructor", "Invalid Consumer Key.");
 		} else if(consumerSecret == null || consumerSecret.length() <= 0) {
-			Log.loge(OauthAuthentication.class.getName(), "Constructor", "Invalid Consumer Secret.");
-			throw new SiminovException(OauthAuthentication.class.getName(), "Constructor", "Invalid Consumer Secret.");
+			Log.loge(Authentication.class.getName(), "Constructor", "Invalid Consumer Secret.");
+			throw new SiminovException(Authentication.class.getName(), "Constructor", "Invalid Consumer Secret.");
 		} else if(requestTokenUrl == null || requestTokenUrl.length() <= 0) {
-			Log.loge(OauthAuthentication.class.getName(), "Constructor", "Invalid Request Token Url.");
-			throw new SiminovException(OauthAuthentication.class.getName(), "Constructor", "Invalid Request Token Url.");
+			Log.loge(Authentication.class.getName(), "Constructor", "Invalid Request Token Url.");
+			throw new SiminovException(Authentication.class.getName(), "Constructor", "Invalid Request Token Url.");
 		} else if(accessTokenUrl == null || accessTokenUrl.length() <= 0) {
-			Log.loge(OauthAuthentication.class.getName(), "Constructor", "Invalid Access Token Url.");
-			throw new SiminovException(OauthAuthentication.class.getName(), "Constructor", "Invalid Access Token Url.");
+			Log.loge(Authentication.class.getName(), "Constructor", "Invalid Access Token Url.");
+			throw new SiminovException(Authentication.class.getName(), "Constructor", "Invalid Access Token Url.");
 		} else if(callbackUrl == null || callbackUrl.length() <= 0) {
-			Log.loge(OauthAuthentication.class.getName(), "Constructor", "Invalid Callback Url.");
-			throw new SiminovException(OauthAuthentication.class.getName(), "Constructor", "Invalid Callback Url.");
+			Log.loge(Authentication.class.getName(), "Constructor", "Invalid Callback Url.");
+			throw new SiminovException(Authentication.class.getName(), "Constructor", "Invalid Callback Url.");
 		}
 		
 		
@@ -63,8 +72,8 @@ public abstract class OauthAuthentication implements IAuthenticate {
 			accessTokenUrl = ResourceUtils.resolve(OauthConstants.ACCESS_TOKEN_URL, accessTokenUrl, authenticationDescriptor);
 			callbackUrl = ResourceUtils.resolve(OauthConstants.CALLBACK_URL, requestTokenUrl, authenticationDescriptor);
 		} catch(SiminovException se) {
-			Log.loge(OauthAuthentication.class.getName(), "Constructor", "SiminovException caught while resolving inline values, " + se.getMessage());
-			throw new SiminovCriticalException(OauthAuthentication.class.getName(), "Constructor", se.getMessage());
+			Log.loge(Authentication.class.getName(), "Constructor", "SiminovException caught while resolving inline values, " + se.getMessage());
+			throw new SiminovCriticalException(Authentication.class.getName(), "Constructor", se.getMessage());
 		}
 
 		
@@ -84,8 +93,8 @@ public abstract class OauthAuthentication implements IAuthenticate {
 	public void doSignature(final HttpRequestBase httpRequestBase) throws SiminovException {
 		
     	if(httpRequestBase == null) {
-    		Log.loge(OauthAuthentication.class.getName(), "doSignature", "Invalid HttpRequestBase.");
-    		throw new SiminovException(OauthAuthentication.class.getName(), "doSignature", "Invalid HttpRequestBase.");
+    		Log.loge(Authentication.class.getName(), "doSignature", "Invalid HttpRequestBase.");
+    		throw new SiminovException(Authentication.class.getName(), "doSignature", "Invalid HttpRequestBase.");
     	}
     	
 		Resources connectResources = Resources.getInstance();
@@ -100,26 +109,26 @@ public abstract class OauthAuthentication implements IAuthenticate {
     	
     	boolean anyActiveUser = credentialManager.isAnyActiveAccount();
     	if(!anyActiveUser) {
-    		Log.loge(OauthAuthentication.class.getName(), "doSignature", "No Active User Found.");
+    		Log.loge(Authentication.class.getName(), "doSignature", "No Active User Found.");
     		return;
     	}
     	
     	
     	Credential credential = credentialManager.getActiveAccount();
     	if(credential == null) {
-    		Log.loge(OauthAuthentication.class.getName(), "doSignature", "Invalid Credential.");
-    		throw new SiminovException(OauthAuthentication.class.getName(), "doSignature", "Invalid Credential.");
+    		Log.loge(Authentication.class.getName(), "doSignature", "Invalid Credential.");
+    		throw new SiminovException(Authentication.class.getName(), "doSignature", "Invalid Credential.");
     	}
     	
 		
 		String consumerKey = authenticationDescriptor.getProperty(OauthConstants.CONSUMER_KEY);
 		String consumerSecret = authenticationDescriptor.getProperty(OauthConstants.CONSUMER_SECRET);
     	if(consumerKey == null || consumerKey.length() <= 0) {
-    		Log.loge(OauthAuthentication.class.getName(), "doSignature", "Inavlid ConsumerKey.");
-    		throw new SiminovException(OauthAuthentication.class.getName(), "doSignature", "Inavlid ConsumerKey.");
+    		Log.loge(Authentication.class.getName(), "doSignature", "Inavlid ConsumerKey.");
+    		throw new SiminovException(Authentication.class.getName(), "doSignature", "Inavlid ConsumerKey.");
     	} else if(consumerSecret == null || consumerSecret.length() <= 0) {
-    		Log.loge(OauthAuthentication.class.getName(), "doSignature", "Inavlid ConsumerSecret.");
-    		throw new SiminovException(OauthAuthentication.class.getName(), "doSignature", "Inavlid ConsumerSecret.");
+    		Log.loge(Authentication.class.getName(), "doSignature", "Inavlid ConsumerSecret.");
+    		throw new SiminovException(Authentication.class.getName(), "doSignature", "Inavlid ConsumerSecret.");
     	}
     	
     	
@@ -129,8 +138,8 @@ public abstract class OauthAuthentication implements IAuthenticate {
     	try {
     		consumer.sign(httpRequestBase);    		
     	} catch(Exception exception) {
-    		Log.loge(OauthAuthentication.class.getName(), "doSignature", "Exception caught while signing request url, " + exception.getMessage());
-    		throw new SiminovException(OauthAuthentication.class.getName(), "doSignature", exception.getMessage());
+    		Log.loge(Authentication.class.getName(), "doSignature", "Exception caught while signing request url, " + exception.getMessage());
+    		throw new SiminovException(Authentication.class.getName(), "doSignature", exception.getMessage());
     	}
 	}
 }

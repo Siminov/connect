@@ -13,6 +13,7 @@ public interface Constants {
 
 	public String CONNECT_DESCRIPTOR_SERVICE_DESCRIPTORS = "service-descriptors";
 	public String CONNECT_DESCRIPTOR_SERVICE_DESCRIPTOR = "service-descriptor";
+	public String CONNECT_DESCRIPTOR_AUTHENTICATION_DESCRIPTOR = "authentication-descriptor";
 	
 	
 	public String CONNECT_DESCRIPTOR_AUTHENTICATION_TYPE = "type";
@@ -67,10 +68,6 @@ public interface Constants {
 	
 	public String CONNECT_LIBRARY_DESCRIPTOR_SERVICE_DESCRIPTOR = "service-descriptor";
 	public String CONNECT_LIBRARY_DESCRIPTOR_PROPERTY_NAME = "name";
-
-	public String CONNECT_DESCRIPTOR_LIBRARY = "library";
-	public String CONNECT_DESCRIPTOR_LIBRARY_PATH = "path";
-
 
 	public String SERVICE_DESCRIPTOR_API_SYNC_REQUEST_MODE = "SYNC";
 	public String SERVICE_DESCRIPTOR_API_ASYNC_REQUEST_MODE = "ASYNC";

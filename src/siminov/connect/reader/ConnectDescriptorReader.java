@@ -7,6 +7,7 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 
 import siminov.connect.Constants;
+import siminov.connect.model.AuthenticationDescriptor;
 import siminov.connect.model.ConnectDescriptor;
 import siminov.orm.exception.DeploymentException;
 import siminov.orm.log.Log;
@@ -20,8 +21,11 @@ public class ConnectDescriptorReader extends SiminovSAXDefaultHandler implements
 	private Resources resources = Resources.getInstance();
 	
 	private ConnectDescriptor connectDescriptor = new ConnectDescriptor();
-	private String propertyName = null;
+	private AuthenticationDescriptor authenticationDescriptor = null;
 
+	private String propertyName = null;
+	private boolean isAuthenticationDescriptor = false;
+	
 	public ConnectDescriptorReader() {
 		parse(CONNECT_DESCRIPTOR_FILE_NAME);
 	}
@@ -95,8 +99,10 @@ public class ConnectDescriptorReader extends SiminovSAXDefaultHandler implements
 
 		if(localName.equalsIgnoreCase(CONNECT_DESCRIPTOR_PROPERTY)) {
 			initializeProperty(attributes);
+		} else if(localName.equalsIgnoreCase(CONNECT_DESCRIPTOR_AUTHENTICATION_DESCRIPTOR)) {
+			authenticationDescriptor = new AuthenticationDescriptor();
+			isAuthenticationDescriptor = true;
 		}
-
 	}
 	
 	public void characters(char[] ch, int start, int length) throws SAXException {
@@ -116,8 +122,9 @@ public class ConnectDescriptorReader extends SiminovSAXDefaultHandler implements
 			processProperty();
 		} else if(localName.equalsIgnoreCase(CONNECT_DESCRIPTOR_SERVICE_DESCRIPTOR)) {
 			connectDescriptor.addServiceDescriptorPath(tempValue.toString());
-		} else if(localName.equalsIgnoreCase(CONNECT_DESCRIPTOR_LIBRARY)) {
-			connectDescriptor.addLibraryPath(tempValue.toString());
+		} else if(localName.equalsIgnoreCase(CONNECT_DESCRIPTOR_AUTHENTICATION_DESCRIPTOR)) {
+			connectDescriptor.setAuthenticationDescriptor(authenticationDescriptor);
+			isAuthenticationDescriptor = false;
 		}
 	}
 	
@@ -126,11 +133,15 @@ public class ConnectDescriptorReader extends SiminovSAXDefaultHandler implements
 	}
 	
 	private void processProperty() {
-		connectDescriptor.addProperty(propertyName, tempValue.toString());
+		
+		if(isAuthenticationDescriptor) {
+			authenticationDescriptor.addProperty(propertyName, tempValue.toString());
+		} else {
+			connectDescriptor.addProperty(propertyName, tempValue.toString());
+		}
 	}
 
 	public ConnectDescriptor getConnectDescriptor() {
 		return this.connectDescriptor;
 	}
-	
 }

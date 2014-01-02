@@ -206,8 +206,8 @@ public class AsyncServiceWorker implements IServiceWorker {
 			
 			NetworkInfo networkInfo = (NetworkInfo) intent.getExtras().get(ConnectivityManager.EXTRA_NETWORK_INFO);
 			if(networkInfo.isConnected()) {
-				
-				if(asyncServiceWorkerThread.isAlive()) {
+
+				if(asyncServiceWorkerThread != null && asyncServiceWorkerThread.isAlive()) {
 					asyncServiceWorkerThread.interrupt();
 				}
 			} else {

@@ -15,9 +15,6 @@ public class ConnectDescriptor implements IDescriptor {
 	private Collection<String> serviceDescriptorPaths = new ConcurrentLinkedQueue<String> ();
 	private Map<String, String> serviceDescriptorNamesBasedOnPath = new HashMap<String, String>();
 	
-	private Map<String, LibraryDescriptor> librariesBasedOnPath = new HashMap<String, LibraryDescriptor>();
-	private Map<String, LibraryDescriptor> librariesBasedOnName = new HashMap<String, LibraryDescriptor>();
-	
 	private AuthenticationDescriptor authenticationDescriptor = null;
 	
 	public Iterator<String> getProperties() {
@@ -87,40 +84,6 @@ public class ConnectDescriptor implements IDescriptor {
 		this.serviceDescriptorNamesBasedOnPath.remove(serviceDescriptorPath);
 	}
 	
-	public Iterator<String> getLibraryPaths() {
-		return this.librariesBasedOnPath.keySet().iterator();
-	}
-	
-	public void addLibraryPath(final String libraryPath) {
-		this.librariesBasedOnPath.put(libraryPath, null);
-	}
-	
-	public Iterator<LibraryDescriptor> getLibraries() {
-		return this.librariesBasedOnName.values().iterator();
-	}
-	
-	public LibraryDescriptor getLibraryDescriptorBasedOnName(final String libraryName) {
-		return this.librariesBasedOnName.get(libraryName);
-	}
-	
-	public LibraryDescriptor getLibraryDescriptorBasedOnPath(final String libraryPath) {
-		return this.librariesBasedOnPath.get(libraryPath);
-	}
-	
-	public void addLibrary(final String libraryPath, final LibraryDescriptor libraryDescriptor) {
-		this.librariesBasedOnPath.put(libraryPath, libraryDescriptor);
-		this.librariesBasedOnName.put(libraryDescriptor.getName(), libraryDescriptor);
-	}
-	
-	public boolean containLibraryBasedOnName(final String libraryName) {
-		return this.librariesBasedOnName.containsKey(libraryName);
-	}
-	
-	public boolean containLibraryBasedOnPath(final String libraryPath) {
-		return this.librariesBasedOnPath.containsKey(libraryPath);
-	}
-
-
 	public AuthenticationDescriptor getAuthenticationDescriptor() {
 		return this.authenticationDescriptor;
 	}

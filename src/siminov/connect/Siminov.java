@@ -1,15 +1,10 @@
 package siminov.connect;
 
-import java.util.Iterator;
-
 import siminov.connect.model.ConnectDescriptor;
 import siminov.connect.reader.ConnectDescriptorReader;
-import siminov.connect.reader.LibraryDescriptorReader;
 import siminov.connect.resource.Resources;
 import siminov.orm.IInitializer;
 import siminov.orm.exception.DeploymentException;
-import siminov.orm.exception.SiminovException;
-import siminov.orm.log.Log;
 import siminov.orm.model.ApplicationDescriptor;
 import siminov.orm.model.DatabaseDescriptor;
 import siminov.orm.reader.DatabaseDescriptorReader;
@@ -87,26 +82,6 @@ public class Siminov extends siminov.orm.Siminov {
 	
 	protected static void processLibraries() {
 		
-		ConnectDescriptor connectDescriptor = connectResources.getConnectDescriptor();
-		Iterator<String> libraryPaths = connectDescriptor.getLibraryPaths();
-
-		while(libraryPaths.hasNext()) {
-			String libraryPath = libraryPaths.next();
-			
-			/*
-			 * Parse LibraryDescriptor.
-			 */
-			LibraryDescriptorReader libraryDescriptorParser = null;
-			
-			try {
-				libraryDescriptorParser = new LibraryDescriptorReader(libraryPath);
-			} catch(SiminovException se) {
-				Log.loge(Siminov.class.getName(), "processLibraries", "SiminovException caught while parsing library descriptor, LIBRARY-NAME: " + libraryPath + ", " + se.getMessage());
-				throw new DeploymentException(Siminov.class.getName(), "processLibraries", se.getMessage());
-			}
-			
-			connectDescriptor.addLibrary(libraryPath, libraryDescriptorParser.getLibraryDescriptor());
-		}
 	}
 	
 }

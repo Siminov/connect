@@ -48,11 +48,6 @@ public class CredentialManager {
 
 	public Credential getActiveAccount() {
 		
-		if(activeAccount != null) {
-			return activeAccount;
-		}
-		
-		
 		Credential[] credentials = null;
 		try {
 			credentials = (Credential[]) new Credential().select().
@@ -105,7 +100,7 @@ public class CredentialManager {
 		return accounts.iterator();
 	}
 	
-	public void setActiveAccount() {
-		
+	public void setActiveAccount(Credential credential) {
+		activeAccount = credential;
 	}
 }

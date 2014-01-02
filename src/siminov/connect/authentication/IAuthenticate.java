@@ -8,7 +8,5 @@ public interface IAuthenticate {
 
 	public void doAuthorization(final Credential credential) throws SiminovException;
 	
-	public void onAuthentication(final Credential credential) throws SiminovException;
-	
 	public void doSignature(final HttpRequestBase httpRequestBase) throws SiminovException;
 }
