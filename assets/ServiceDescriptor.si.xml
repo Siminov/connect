@@ -72,20 +72,20 @@
 
 
 * Referring Resources
-	- Inline Resource: {KEY_OF_INLINE_RESOURCE}, Pass resource as a parameter to request itself.
+	- Inline Resource: {@inline KEY_OF_INLINE_RESOURCE}, Pass resource as a parameter to request itself.
 		Example:
-			<proprty name="name_of_proprty">{KEY_OF_INLINE_RESOURCE}</proprty>
+			<proprty name="name_of_proprty">{@inline KEY_OF_INLINE_RESOURCE}</proprty>
 			
 			request.addResource(KEY_OF_INLINE_RESOURCE, VALUE_OF_INLINE_RESOURCE);
 			
 			
-	- Reference Resource: #{REFERENCE_RESOURCE_FULL_PATH-PARAMETERS_TO_REFERENCE_RESOURCE}, Call refered resource location to get value for property. 
+	- Reference Resource: {@refer REFERENCE_RESOURCE_FULL_PATH-PARAMETERS_TO_REFERENCE_RESOURCE}, Call refered resource location to get value for property. 
 		Example:
-			<property name=name_of_property"">#{REFERENCE_RESOURCE_FULL_PATH-PARAMETERS_TO_REFERENCE_RESOURCE}</property>
+			<property name=name_of_property"">{@refer REFERENCE_RESOURCE_FULL_PATH-PARAMETERS_TO_REFERENCE_RESOURCE}</property>
 	
 			
-	- Self Reference Resource: {self.NAME_OF_PROPERTY_CONTAINED_WITHIN}, Get self reference resource from service descriptor itself.
+	- Self Reference Resource: {@self NAME_OF_PROPERTY_CONTAINED_WITHIN}, Get self reference resource from service descriptor itself.
 		Example:
-			<property name="name_of_property">{self.NAME_OF_PROPERTY_CONTAINED_WITHIN}</property>		
+			<property name="name_of_property">{@self NAME_OF_PROPERTY_CONTAINED_WITHIN}</property>		
 
 			
