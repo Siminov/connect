@@ -27,7 +27,7 @@ import siminov.orm.database.Database;
 public class Credential extends Database implements Serializable {
 
 	//Table Name.
-	public static final String TABLE_NAME = "CREDENTIAL";
+	public static final String TABLE_NAME = "SIMINOV_CONNECT_CREDENTIAL";
 	
 	
 	//Column Names.
