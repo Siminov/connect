@@ -28,7 +28,6 @@
 	<property name="transaction_safe">true</property>
 	
 	<database-mappings>
-		<database-mapping>siminov/connect/resource/Credential.si.xml</database-mapping>
 	    <database-mapping>siminov/connect/resource/Request.si.xml</database-mapping>
 		<database-mapping>siminov/connect/resource/RequestResource.si.xml</database-mapping>
 	</database-mappings>
