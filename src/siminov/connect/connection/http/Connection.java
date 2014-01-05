@@ -1,11 +1,15 @@
 package siminov.connect.connection.http;
 
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpHead;
@@ -17,6 +21,7 @@ import org.apache.http.client.methods.HttpTrace;
 import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicHttpResponse;
+import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpParams;
 
@@ -265,7 +270,7 @@ public class Connection implements IConnection{
 		/*
 		 * Add Query Parameters
 		 */
-		HttpParams httpParams = new BasicHttpParams();
+		List<NameValuePair> httpQueryParams = new ArrayList<NameValuePair>();  
 
 		Iterator<String> parameters = queryParameters.keySet().iterator();
 		while(parameters.hasNext()) {
@@ -273,11 +278,16 @@ public class Connection implements IConnection{
 			String parameter = parameters.next();
 			String parameterValue = queryParameters.get(parameter);
 			
-			httpParams.setParameter(parameter, parameterValue);
+			httpQueryParams.add(new BasicNameValuePair(parameter, parameterValue));
 		}
 		
 		
-		httpPost.setParams(httpParams);
+		try {
+			httpPost.setEntity(new UrlEncodedFormEntity(httpQueryParams));
+		} catch(Exception e) {
+			Log.loge(Connection.class.getName(), "post", "Exception caught while setting http query parameters, " + e.getMessage());
+			throw new SiminovException(Connection.class.getName(), "post", "Exception caught while setting http query parameters, " + e.getMessage());
+		}
 		
 		
 		/*

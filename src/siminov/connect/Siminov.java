@@ -11,6 +11,7 @@ import siminov.orm.IInitializer;
 import siminov.orm.database.DatabaseBundle;
 import siminov.orm.database.design.IDatabase;
 import siminov.orm.database.design.IQueryBuilder;
+import siminov.orm.events.ISiminovEvents;
 import siminov.orm.exception.DatabaseException;
 import siminov.orm.exception.DeploymentException;
 import siminov.orm.log.Log;
@@ -41,9 +42,6 @@ public class Siminov extends siminov.orm.Siminov {
 	static void start() {
 		
 		siminov.orm.Siminov.processApplicationDescriptor();
-		processEvents();
-		
-		
 		
 		processDatabaseDescriptor();
 		processLibraries();
@@ -57,6 +55,15 @@ public class Siminov extends siminov.orm.Siminov {
 		
 		isActive = true;
 		siminov.orm.Siminov.isActive = true;
+		
+		ISiminovEvents coreEventHandler = ormResources.getSiminovEventHandler();
+		if(ormResources.getSiminovEventHandler() != null) {
+			if(firstTimeProcessed) {
+				coreEventHandler.onFirstTimeSiminovInitialized();
+			} else {
+				coreEventHandler.onSiminovInitialized();
+			}
+		} 
 	}
 
 	public static void shutdown() {
@@ -76,10 +83,6 @@ public class Siminov extends siminov.orm.Siminov {
 
 	protected static void processDatabaseMappingDescriptors() {
 		siminov.orm.Siminov.processDatabaseMappingDescriptors();
-	}
-	
-	protected static void processEvents() {
-		
 	}
 	
 	protected static void processKonnectDescriptor() {
@@ -136,6 +139,9 @@ public class Siminov extends siminov.orm.Siminov {
 					}
 				}
 			}
+
+		
+			siminov.orm.Siminov.processDatabase();
 		} else {
 			siminov.orm.Siminov.processDatabase();
 			
@@ -184,5 +190,4 @@ public class Siminov extends siminov.orm.Siminov {
 			}
 		}
 	}
-	
 }

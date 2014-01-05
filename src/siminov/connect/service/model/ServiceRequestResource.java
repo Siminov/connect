@@ -1,17 +1,19 @@
 package siminov.connect.service.model;
 
-public class RequestResource {
+import siminov.orm.database.Database;
 
-	private Request serviceRequest = null;
+public class ServiceRequestResource extends Database {
+
+	private ServiceRequest serviceRequest = null;
 	
 	private String name = null;
 	private String value = null;
 	
-	public Request getServiceRequest() {
+	public ServiceRequest getServiceRequest() {
 		return this.serviceRequest;
 	}
 	
-	public void setServiceRequest(Request serviceRequest) {
+	public void setServiceRequest(ServiceRequest serviceRequest) {
 		this.serviceRequest = serviceRequest;
 	}
 	

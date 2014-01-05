@@ -6,8 +6,9 @@ import siminov.connect.connection.ConnectionHelper;
 import siminov.connect.connection.ConnectionRequest;
 import siminov.connect.connection.ConnectionResponse;
 import siminov.connect.model.ServiceDescriptor;
-import siminov.connect.model.ServiceResource;
 import siminov.connect.resource.Resources;
+import siminov.connect.service.model.ServiceRequest;
+import siminov.connect.service.model.ServiceRequestResource;
 import siminov.connect.utils.Utils;
 import siminov.orm.exception.SiminovCriticalException;
 import siminov.orm.exception.SiminovException;
@@ -60,11 +61,11 @@ public class AsyncServiceWorker implements IServiceWorker {
 	
 	public void process(final IService iService) {
 		
-		siminov.connect.model.Service service = serviceUtils.convert(iService);
+		ServiceRequest serviceRequest = serviceUtils.convert(iService);
 		boolean contain = false;
 		
 		try {
-			contain = serviceUtils.containService(service);
+			contain = serviceUtils.containService(serviceRequest);
 		} catch(SiminovException se) {
 			Log.loge(AsyncServiceWorker.class.getName(), "process", "SiminovException caught while checking exsisting service, " + se.getMessage());
 			iService.onServiceTerminate(se);
@@ -78,7 +79,7 @@ public class AsyncServiceWorker implements IServiceWorker {
 			
 		
 		try {
-			service.save();
+			serviceRequest.save();
 		} catch(SiminovException se) {
 			Log.loge(AsyncServiceWorker.class.getName(), "process", "SiminovException caught while saving service, " + se.getMessage());
 			iService.onServiceTerminate(se);
@@ -100,21 +101,21 @@ public class AsyncServiceWorker implements IServiceWorker {
 		
 		public void run() {
 		
-			siminov.connect.model.Service[] services = null;
+			ServiceRequest[] serviceRequests = null;
 			try {
-				services = (siminov.connect.model.Service[]) new siminov.connect.model.Service().select().fetch();
+				serviceRequests = (ServiceRequest[]) new ServiceRequest().select().fetch();
 			} catch(SiminovException se) {
 				Log.loge(AsyncServiceWorkerThread.class.getName(), "run", "SiminovException caught while getting queue services, " + se.getMessage());
 				throw new SiminovCriticalException(AsyncServiceWorkerThread.class.getName(), "run", "SiminovException caught while getting queue services, " + se.getMessage());
 			}
 			
-			if(services == null || services.length <= 0) {
+			if(serviceRequests == null || serviceRequests.length <= 0) {
 				return;
 			}
 
-			for(int i = 0;i < services.length;i++) {
-				siminov.connect.model.Service service = services[i];
-				IService iService = serviceUtils.convert(service);
+			for(int i = 0;i < serviceRequests.length;i++) {
+				ServiceRequest serviceRequest = serviceRequests[i];
+				IService iService = serviceUtils.convert(serviceRequest);
 
 				/*
 				 * Check Network Connectivity.	
@@ -190,37 +191,37 @@ public class AsyncServiceWorker implements IServiceWorker {
 	
 	private class ServiceUtils {
 		
-		public boolean containService(siminov.connect.model.Service service) throws SiminovException {
+		public boolean containService(ServiceRequest serviceRequest) throws SiminovException {
 			
-			siminov.connect.model.Service[] services = (siminov.connect.model.Service[]) new siminov.connect.model.Service().select().fetch();
-			if(services == null || services.length <= 0) {
+			ServiceRequest[] serviceRequests = (ServiceRequest[]) new ServiceRequest().select().fetch();
+			if(serviceRequests == null || serviceRequests.length <= 0) {
 				return false;
 			}
 			
-			for(int i = 0;i < services.length;i++) {
+			for(int i = 0;i < serviceRequests.length;i++) {
 				
-				siminov.connect.model.Service savedService = services[i];
-				if(service.getService().equalsIgnoreCase(savedService.getService())) {
+				ServiceRequest savedServiceRequest = serviceRequests[i];
+				if(serviceRequest.getService().equalsIgnoreCase(savedServiceRequest.getService())) {
 					
-					if(service.getApi().equalsIgnoreCase(savedService.getApi())) {
+					if(serviceRequest.getApi().equalsIgnoreCase(savedServiceRequest.getApi())) {
 						
 						boolean contain = true;
 						
-						Iterator<ServiceResource> serviceResources = service.getServiceResources();
-						while(serviceResources.hasNext()) {
+						Iterator<ServiceRequestResource> serviceRequestResources = serviceRequest.getServiceRequestResources();
+						while(serviceRequestResources.hasNext()) {
 							
-							ServiceResource serviceResource = serviceResources.next();
-							ServiceResource savedServiceResource = savedService.getServiceResource(serviceResource.getName());
+							ServiceRequestResource serviceRequestResource = serviceRequestResources.next();
+							ServiceRequestResource savedServiceRequestResource = savedServiceRequest.getServiceRequestResource(serviceRequestResource.getName());
 							
-							if(savedServiceResource == null) {
+							if(savedServiceRequestResource == null) {
 								contain = false;
 								break;
 							}
 							
-							if(!serviceResource.getName().equalsIgnoreCase(savedServiceResource.getName())) {
+							if(!serviceRequestResource.getName().equalsIgnoreCase(savedServiceRequestResource.getName())) {
 								contain = false;
 								break;
-							} else if(!serviceResource.getValue().equalsIgnoreCase(savedServiceResource.getValue())) {
+							} else if(!serviceRequestResource.getValue().equalsIgnoreCase(savedServiceRequestResource.getValue())) {
 								contain = false;
 								break;
 							}
@@ -237,44 +238,44 @@ public class AsyncServiceWorker implements IServiceWorker {
 			return false;
 		}
 		
-		public IService convert(siminov.connect.model.Service service) {
+		public IService convert(ServiceRequest serviceRequest) {
 			
-			IService iService = (IService) ClassUtils.createClassInstance(service.getInstanceOf());
-			iService.setService(service.getService());
-			iService.setApi(service.getApi());
+			IService iService = (IService) ClassUtils.createClassInstance(serviceRequest.getInstanceOf());
+			iService.setService(serviceRequest.getService());
+			iService.setApi(serviceRequest.getApi());
 			
-			ServiceDescriptor serviceDescriptor = resources.requiredServiceDescriptorBasedOnName(service.getService());
+			ServiceDescriptor serviceDescriptor = resources.requiredServiceDescriptorBasedOnName(serviceRequest.getService());
 			iService.setServiceDescriptor(serviceDescriptor);
 			
-			Iterator<ServiceResource> serviceResources = service.getServiceResources();
-			while(serviceResources.hasNext()) {
-				ServiceResource serviceResource = serviceResources.next();
+			Iterator<ServiceRequestResource> serviceRequestResources = serviceRequest.getServiceRequestResources();
+			while(serviceRequestResources.hasNext()) {
+				ServiceRequestResource serviceResource = serviceRequestResources.next();
 				iService.addResource(serviceResource.getName(), serviceResource.getValue());
 			}
 			
 			return iService;
 		}
 		
-		public siminov.connect.model.Service convert(final IService iService) {
+		public ServiceRequest convert(final IService iService) {
 			
-			siminov.connect.model.Service service = new siminov.connect.model.Service();
-			service.setService(iService.getService());
-			service.setApi(iService.getApi());
-			service.setInstanceOf(iService.getClass().getName());
+			ServiceRequest serviceRequest = new ServiceRequest();
+			serviceRequest.setService(iService.getService());
+			serviceRequest.setApi(iService.getApi());
+			serviceRequest.setInstanceOf(iService.getClass().getName());
 			
 			Iterator<String> resources = iService.getResources();
 			while(resources.hasNext()) {
 				String resource = resources.next();
 				
-				ServiceResource serviceResource = new ServiceResource();
-				serviceResource.setService(service);
-				serviceResource.setName(resource);
-				serviceResource.setValue(iService.getResource(resource));
+				ServiceRequestResource serviceRequestResource = new ServiceRequestResource();
+				serviceRequestResource.setServiceRequest(serviceRequest);
+				serviceRequestResource.setName(resource);
+				serviceRequestResource.setValue(iService.getResource(resource));
 				
-				service.addServiceResource(serviceResource);
+				serviceRequest.addServiceRequestResource(serviceRequestResource);
 			}
 			
-			return service;
+			return serviceRequest;
 		}
 	}
 } 

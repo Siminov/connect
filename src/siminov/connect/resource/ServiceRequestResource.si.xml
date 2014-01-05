@@ -22,37 +22,21 @@
 
 <database-mapping>
 
-	<table table_name="REQUEST" class_name="siminov.connect.service.model.Request">
-
-		<column variable_name="requestId" column_name="REQUEST_ID"> 
-			<property name="type">long</property>
-			<property name="primary_key">true</property>
-			<property name="not_null">true</property>
-			<property name="unique">true</property>
-		</column>
-
-		<column variable_name="service" column_name="SERVICE"> 
+	<table table_name="SERVICE_REQUEST_RESOURCE" class_name="siminov.connect.service.model.ServiceRequestResource">
+	
+		<column variable_name="name" column_name="NAME"> 
 			<property name="type">java.lang.String</property>
 			<property name="primary_key">true</property>
 			<property name="not_null">true</property>
 			<property name="unique">true</property>
 		</column>
 
-		<column variable_name="api" column_name="API"> 
-			<property name="type">java.lang.String</property>
-			<property name="primary_key">true</property>
-			<property name="not_null">true</property>
-			<property name="unique">true</property>
-		</column>
-
-		<column variable_name="instanceOf" column_name="INSTANCE_OF"> 
+		<column variable_name="value" column_name="VALUE"> 
 			<property name="type">java.lang.String</property>
 		</column>
 		
 		<relationships>
-   			<one-to-many refer="requestResources" refer_to="siminov.connect.service.model.RequestResource" on_update="cascade" on_delete="cascade">
-   			    <property name="load">true</property>
-   			</one-to-many>		
+   			<many-to-one refer="serviceRequest" refer_to="siminov.connect.service.model.ServiceRequest" on_update="cascade" on_delete="cascade"></many-to-one>		
    		</relationships>
 				
 	</table>
