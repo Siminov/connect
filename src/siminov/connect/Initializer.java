@@ -35,7 +35,7 @@ public class Initializer implements IInitializer {
 		parameters.add(object);
 	}
 	
-	public void start() {
+	public void initialize() {
 		
 		Context context = null;
 		
