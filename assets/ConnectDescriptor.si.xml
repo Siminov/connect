@@ -30,7 +30,7 @@
      		    
      		    	<!-- name: Mandatory Field -->
      		    	<!-- api: Optional Field  -->
-     		    <service name="name_of_service" api="name_of_api"></service>
+     		    <service>name_of_service.name_of_api</service>
      		    
      		</services>
      		

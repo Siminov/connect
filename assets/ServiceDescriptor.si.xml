@@ -35,7 +35,10 @@
 
          		<!-- Mandatory Field -->
          	<property name="api">full_api_path</property>
-         
+
+         		<!-- Mandatory Field -->
+         	<property name="handler">handler_of_api</property>
+         	
       			<!-- Optional Field (DEFAULT: SYNC)-->
       		<property name="mode">SYNC|ASYNC</property>
       
