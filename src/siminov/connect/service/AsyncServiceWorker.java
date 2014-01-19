@@ -2,6 +2,7 @@ package siminov.connect.service;
 
 import java.util.Iterator;
 
+import siminov.connect.IWorker;
 import siminov.connect.connection.ConnectionHelper;
 import siminov.connect.connection.ConnectionRequest;
 import siminov.connect.connection.ConnectionResponse;
@@ -21,7 +22,7 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-public class AsyncServiceWorker implements IServiceWorker {
+public class AsyncServiceWorker implements IServiceWorker, IWorker {
 
 	private static AsyncServiceWorker asyncServiceWorker = null;
 	
@@ -37,8 +38,8 @@ public class AsyncServiceWorker implements IServiceWorker {
 		resources = Resources.getInstance();
 		serviceUtils = new ServiceUtils();
 		
-		asyncServiceWorkerThread = new AsyncServiceWorkerThread();
-		asyncServiceWorkerThread.start();
+		
+		startWorker();
 		
 		/*
 		 * Register Connectivity Change Receiver.
@@ -59,6 +60,7 @@ public class AsyncServiceWorker implements IServiceWorker {
 		return asyncServiceWorker;
 	}
 	
+
 	public void process(final IService iService) {
 		
 		ServiceRequest serviceRequest = serviceUtils.convert(iService);
@@ -91,11 +93,40 @@ public class AsyncServiceWorker implements IServiceWorker {
 		/*
 		 * Notify Async Service Worker Thread.
 		 */
+		startWorker();
+	}
+
+	
+	public void startWorker() {
+		
+		if(asyncServiceWorkerThread == null) {
+			asyncServiceWorkerThread = new AsyncServiceWorkerThread();
+		}
+		
+		asyncServiceWorkerThread.start();
+	}
+	
+	public void stopWorker() {
+		
+		if(asyncServiceWorkerThread == null) {
+			return;
+		}
+		
+		
 		if(!asyncServiceWorkerThread.isAlive()) {
 			asyncServiceWorkerThread.start();
 		}
 	}
-
+	
+	public boolean isWorkerRunning() {
+		
+		if(asyncServiceWorkerThread == null) {
+			return false;
+		}
+		
+		return asyncServiceWorkerThread.isAlive();
+	}
+	
 	
 	private class AsyncServiceWorkerThread extends Thread {
 		
@@ -250,7 +281,7 @@ public class AsyncServiceWorker implements IServiceWorker {
 			Iterator<ServiceRequestResource> serviceRequestResources = serviceRequest.getServiceRequestResources();
 			while(serviceRequestResources.hasNext()) {
 				ServiceRequestResource serviceResource = serviceRequestResources.next();
-				iService.addResource(serviceResource.getName(), serviceResource.getValue());
+				iService.addInlineResource(serviceResource.getName(), serviceResource.getValue());
 			}
 			
 			return iService;
@@ -263,14 +294,14 @@ public class AsyncServiceWorker implements IServiceWorker {
 			serviceRequest.setApi(iService.getApi());
 			serviceRequest.setInstanceOf(iService.getClass().getName());
 			
-			Iterator<String> resources = iService.getResources();
+			Iterator<String> resources = iService.getInlineResources();
 			while(resources.hasNext()) {
 				String resource = resources.next();
 				
 				ServiceRequestResource serviceRequestResource = new ServiceRequestResource();
 				serviceRequestResource.setServiceRequest(serviceRequest);
 				serviceRequestResource.setName(resource);
-				serviceRequestResource.setValue(iService.getResource(resource));
+				serviceRequestResource.setValue(iService.getInlineResource(resource));
 				
 				serviceRequest.addServiceRequestResource(serviceRequestResource);
 			}

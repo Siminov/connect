@@ -28,9 +28,9 @@ public class Siminov extends siminov.orm.Siminov {
 
 	protected static boolean isActive = false;
 
-	public static void validateSiminov() {
+	public static void isActive() {
 		if(!isActive && !siminov.orm.Siminov.isActive) {
-			throw new DeploymentException(Siminov.class.getName(), "validateSiminov", "Siminov Not Active.");
+			throw new DeploymentException(Siminov.class.getName(), "isActive", "Siminov Not Active.");
 		}
 	}
 	

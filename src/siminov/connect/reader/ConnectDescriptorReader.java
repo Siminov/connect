@@ -9,6 +9,7 @@ import org.xml.sax.SAXException;
 import siminov.connect.Constants;
 import siminov.connect.model.AuthenticationDescriptor;
 import siminov.connect.model.ConnectDescriptor;
+import siminov.connect.model.RefreshDescriptor;
 import siminov.orm.exception.DeploymentException;
 import siminov.orm.log.Log;
 import siminov.orm.reader.SiminovSAXDefaultHandler;
@@ -21,9 +22,13 @@ public class ConnectDescriptorReader extends SiminovSAXDefaultHandler implements
 	private Resources resources = Resources.getInstance();
 	
 	private ConnectDescriptor connectDescriptor = new ConnectDescriptor();
+	private RefreshDescriptor refreshDescriptor = null;
+	
 	private AuthenticationDescriptor authenticationDescriptor = null;
 
 	private String propertyName = null;
+	
+	private boolean isRefreshDesriptor = false;
 	private boolean isAuthenticationDescriptor = false;
 	
 	public ConnectDescriptorReader() {
@@ -102,6 +107,10 @@ public class ConnectDescriptorReader extends SiminovSAXDefaultHandler implements
 		} else if(localName.equalsIgnoreCase(CONNECT_DESCRIPTOR_AUTHENTICATION_DESCRIPTOR)) {
 			authenticationDescriptor = new AuthenticationDescriptor();
 			isAuthenticationDescriptor = true;
+		} else if(localName.equalsIgnoreCase(REFRESH_DESCRIPTOR)) {
+			
+			isRefreshDesriptor = true;
+			refreshDescriptor = new RefreshDescriptor();
 		}
 	}
 	
@@ -125,6 +134,10 @@ public class ConnectDescriptorReader extends SiminovSAXDefaultHandler implements
 		} else if(localName.equalsIgnoreCase(CONNECT_DESCRIPTOR_AUTHENTICATION_DESCRIPTOR)) {
 			connectDescriptor.setAuthenticationDescriptor(authenticationDescriptor);
 			isAuthenticationDescriptor = false;
+		} else if(localName.equalsIgnoreCase(REFRESH_DESCRIPTOR)) {
+			connectDescriptor.addRefreshDescriptor(refreshDescriptor);
+		} else if(localName.equalsIgnoreCase(REFRESH_DESCRIPTOR_SERVICE)) {
+			refreshDescriptor.addService(tempValue.toString());
 		}
 	}
 	
@@ -136,6 +149,8 @@ public class ConnectDescriptorReader extends SiminovSAXDefaultHandler implements
 		
 		if(isAuthenticationDescriptor) {
 			authenticationDescriptor.addProperty(propertyName, tempValue.toString());
+		} else if(isRefreshDesriptor) {
+			refreshDescriptor.addProperty(propertyName, tempValue.toString());
 		} else {
 			connectDescriptor.addProperty(propertyName, tempValue.toString());
 		}

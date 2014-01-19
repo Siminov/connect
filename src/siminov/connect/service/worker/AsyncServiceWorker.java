@@ -286,7 +286,7 @@ public class AsyncServiceWorker implements IServiceWorker {
 			Iterator<ServiceRequestResource> serviceRequestResources = service.getServiceRequestResources();
 			while(serviceRequestResources.hasNext()) {
 				ServiceRequestResource serviceResource = serviceRequestResources.next();
-				iService.addResource(serviceResource.getName(), serviceResource.getValue());
+				iService.addInlineResource(serviceResource.getName(), serviceResource.getValue());
 			}
 
 			ServiceDescriptor serviceDescriptor = resources.requiredServiceDescriptorBasedOnName(service.getService());
@@ -305,14 +305,14 @@ public class AsyncServiceWorker implements IServiceWorker {
 			serviceRequest.setApi(iService.getApi());
 			serviceRequest.setInstanceOf(iService.getClass().getName());
 			
-			Iterator<String> resources = iService.getResources();
+			Iterator<String> resources = iService.getInlineResources();
 			while(resources.hasNext()) {
 				String resource = resources.next();
 				
 				ServiceRequestResource serviceRequestResource = new ServiceRequestResource();
 				serviceRequestResource.setServiceRequest(serviceRequest);
 				serviceRequestResource.setName(resource);
-				serviceRequestResource.setValue(iService.getResource(resource));
+				serviceRequestResource.setValue(iService.getInlineResource(resource));
 				
 				serviceRequest.addServiceRequestResource(serviceRequestResource);
 			}

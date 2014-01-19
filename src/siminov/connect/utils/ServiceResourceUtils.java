@@ -19,10 +19,10 @@ public class ServiceResourceUtils {
 		 */
 		ServiceDescriptor serviceDescriptor = service.getServiceDescriptor();
 		
-		Iterator<String> inlineResources = service.getResources();
+		Iterator<String> inlineResources = service.getInlineResources();
 		while(inlineResources.hasNext()) {
 			String inlineResource = inlineResources.next();
-			serviceDescriptor.addProperty(inlineResource, service.getResource(inlineResource));
+			serviceDescriptor.addProperty(inlineResource, service.getInlineResource(inlineResource));
 		}
 		
 		

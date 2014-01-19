@@ -132,6 +132,14 @@ public class ServiceDescriptor implements IDescriptor {
 		public void setApi(final String api) {
 			this.properties.put(Constants.SERVICE_DESCRIPTOR_API_API, api);
 		}
+
+		public String getHandler() {
+			return this.properties.get(Constants.SERVICE_DESCRIPTOR_API_HANDLER);
+		}
+		
+		public void setHandler(String handler) {
+			this.properties.put(Constants.SERVICE_DESCRIPTOR_API_HANDLER, handler);
+		}
 		
 		public String getMode() {
 			return this.properties.get(Constants.SERVICE_DESCRIPTOR_API_MODE);

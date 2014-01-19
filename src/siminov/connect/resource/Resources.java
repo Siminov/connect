@@ -1,8 +1,11 @@
 package siminov.connect.resource;
 
+import java.util.Iterator;
+
 import siminov.connect.events.EventHandler;
 import siminov.connect.events.IAuthenticationEvents;
 import siminov.connect.model.ConnectDescriptor;
+import siminov.connect.model.RefreshDescriptor;
 import siminov.connect.model.ServiceDescriptor;
 import siminov.connect.model.ServiceDescriptor.API;
 import siminov.connect.reader.QuickServiceDescriptorReader;
@@ -88,5 +91,17 @@ public class Resources {
 	
 	public IAuthenticationEvents getAuthenticationEventHandler() {
 		return EventHandler.getInstance().getAuthenticationEventHandler();
+	}
+	
+	public Iterator<RefreshDescriptor> getRefreshDescriptors() {
+		
+		ConnectDescriptor connectDescriptor = getConnectDescriptor();
+		return connectDescriptor.getRefreshDescriptors();
+	}
+	
+	public RefreshDescriptor getRefreshDescriptor(final String refreshDescriptorName) {
+		
+		ConnectDescriptor connectDescriptor = getConnectDescriptor();
+		return connectDescriptor.getRefreshDescriptor(refreshDescriptorName);
 	}
 }

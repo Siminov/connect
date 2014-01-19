@@ -6,7 +6,9 @@ import siminov.orm.exception.SiminovException;
 
 public interface IAuthenticate {
 
-	public void doAuthorization(final Credential credential) throws SiminovException;
+	public void doInitialization(final IAuthenticateResources authenticateResources);
+	
+	public void doAuthorization() throws SiminovException;
 	
 	public void doSignature(final HttpRequestBase httpRequestBase) throws SiminovException;
 }

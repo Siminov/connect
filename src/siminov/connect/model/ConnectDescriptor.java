@@ -14,6 +14,8 @@ public class ConnectDescriptor implements IDescriptor {
 
 	private Collection<String> serviceDescriptorPaths = new ConcurrentLinkedQueue<String> ();
 	private Map<String, String> serviceDescriptorNamesBasedOnPath = new HashMap<String, String>();
+
+	private Map<String, RefreshDescriptor> refreshDescriptors = new HashMap<String, RefreshDescriptor>();
 	
 	private AuthenticationDescriptor authenticationDescriptor = null;
 	
@@ -82,6 +84,26 @@ public class ConnectDescriptor implements IDescriptor {
 	
 	public void removeServiceDescriptorNameBasedOnPath(String serviceDescriptorPath) {
 		this.serviceDescriptorNamesBasedOnPath.remove(serviceDescriptorPath);
+	}
+	
+	public Iterator<RefreshDescriptor> getRefreshDescriptors() {
+		return this.refreshDescriptors.values().iterator();
+	}
+	
+	public RefreshDescriptor getRefreshDescriptor(String refreshDescriptorName) {
+		return this.refreshDescriptors.get(refreshDescriptorName);
+	}
+	
+	public void addRefreshDescriptor(RefreshDescriptor refreshDescriptor) {
+		this.refreshDescriptors.put(refreshDescriptor.getName(), refreshDescriptor);
+	}
+	
+	public boolean containRefreshDescriptor(String refreshDescriptorName) {
+		return this.refreshDescriptors.containsKey(refreshDescriptorName);
+	}
+	
+	public void removeRefreshDescriptors(String refreshDescriptorName) {
+		this.refreshDescriptors.remove(refreshDescriptorName);
 	}
 	
 	public AuthenticationDescriptor getAuthenticationDescriptor() {

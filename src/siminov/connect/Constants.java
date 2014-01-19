@@ -20,6 +20,14 @@ public interface Constants {
 	
 	public String CONNECT_DESCRIPTOR_AUTHENTICATION_TYPE = "type";
 	
+
+	public String REFRESH_DESCRIPTORS = "refresh-descriptors";
+	public String REFRESH_DESCRIPTOR = "refresh-descriptor";
+	public String REFRESH_DESCRIPTOR_SERVICES = "services";
+	public String REFRESH_DESCRIPTOR_SERVICE = "service";
+	public String REFRESH_DESCRIPTOR_NAME = "name";
+
+	public String REFRESH_DESCRIPTOR_SERVICE_SEPARATOR = ".";
 	
 	public String SERVICE_DESCRIPTOR_APIS = "apis";
 	public String SERVICE_DESCRIPTOR_API = "api";
@@ -71,6 +79,8 @@ public interface Constants {
 	public String CONNECT_LIBRARY_DESCRIPTOR_SERVICE_DESCRIPTOR = "service-descriptor";
 	public String CONNECT_LIBRARY_DESCRIPTOR_PROPERTY_NAME = "name";
 
+	public String SERVICE_DESCRIPTOR_API_HANDLER = "handler";
+	
 	public String SERVICE_DESCRIPTOR_API_SYNC_REQUEST_MODE = "SYNC";
 	public String SERVICE_DESCRIPTOR_API_ASYNC_REQUEST_MODE = "ASYNC";
 	

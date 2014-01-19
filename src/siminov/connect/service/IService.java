@@ -1,11 +1,10 @@
 package siminov.connect.service;
 
-import java.util.Iterator;
-
 import siminov.connect.events.IServiceEvents;
 import siminov.connect.model.ServiceDescriptor;
+import siminov.orm.resource.IInlineResource;
 
-public interface IService extends IServiceEvents {
+public interface IService extends IServiceEvents, IInlineResource {
 
 	public long getRequestId();
 	
@@ -18,14 +17,6 @@ public interface IService extends IServiceEvents {
 	public String getApi();
 	
 	public void setApi(final String api);
-	
-	public Iterator<String> getResources();
-	
-	public String getResource(final String name);
-
-	public void addResource(final String name, final String value);
-	
-	public boolean containResource(final String name);
 	
 	public ServiceDescriptor getServiceDescriptor();
 	

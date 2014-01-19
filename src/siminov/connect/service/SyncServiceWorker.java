@@ -29,4 +29,5 @@ public class SyncServiceWorker implements IServiceWorker {
 		
 		service.onServiceApiFinish(connectionResponse);
 	}
+
 }

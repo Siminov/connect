@@ -1,5 +1,7 @@
 package siminov.connect.authentication.oauth;
 
+import java.util.Iterator;
+
 import oauth.signpost.OAuthConsumer;
 import oauth.signpost.commonshttp.CommonsHttpOAuthConsumer;
 
@@ -8,6 +10,7 @@ import org.apache.http.client.methods.HttpRequestBase;
 import siminov.connect.authentication.Credential;
 import siminov.connect.authentication.CredentialManager;
 import siminov.connect.authentication.IAuthenticate;
+import siminov.connect.authentication.IAuthenticateResources;
 import siminov.connect.events.IAuthenticationEvents;
 import siminov.connect.model.AuthenticationDescriptor;
 import siminov.connect.model.ConnectDescriptor;
@@ -16,16 +19,25 @@ import siminov.orm.exception.SiminovCriticalException;
 import siminov.orm.exception.SiminovException;
 import siminov.orm.log.Log;
 import siminov.orm.utils.ResourceUtils;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
 public class Authentication implements IAuthenticate {
 
 	private Resources resources = Resources.getInstance();
+
+	private IAuthenticateResources authenticateResources = null;
 	
-	public void doAuthorization(final Credential credential) throws SiminovException {
+	public void doInitialization(IAuthenticateResources authenticateResources) {
+		this.authenticateResources = authenticateResources;
+	}
+	
+	public void doAuthorization() throws SiminovException {
 		
 		IAuthenticationEvents authenticationEvents = resources.getAuthenticationEventHandler();
+		Credential credential = authenticateResources.getCredential();
+		
 		if(authenticationEvents != null) {
 			authenticationEvents.onAuthenticationStart(credential);
 		}
@@ -65,17 +77,26 @@ public class Authentication implements IAuthenticate {
 		}
 		
 		
+		Iterator<String> inlineResources = authenticateResources.getInlineResources();
+		while(inlineResources.hasNext()) {
+			String inlineResourceKey = inlineResources.next();
+			String inlineResourceValue = authenticateResources.getInlineResource(inlineResourceKey);
+			
+			authenticationDescriptor.addProperty(inlineResourceKey, inlineResourceValue);
+		}
+		
+		
 		try {
 			consumerKey = ResourceUtils.resolve(OauthConstants.CONSUMER_KEY, consumerKey, authenticationDescriptor);
 			consumerSecret = ResourceUtils.resolve(OauthConstants.CONSUMER_SECRET, consumerSecret, authenticationDescriptor);
 			requestTokenUrl = ResourceUtils.resolve(OauthConstants.REQUEST_TOKEN_URL, requestTokenUrl, authenticationDescriptor);
 			accessTokenUrl = ResourceUtils.resolve(OauthConstants.ACCESS_TOKEN_URL, accessTokenUrl, authenticationDescriptor);
+			authorizeUrl = ResourceUtils.resolve(OauthConstants.AUTHORIZE_URL, authorizeUrl, authenticationDescriptor);
 			callbackUrl = ResourceUtils.resolve(OauthConstants.CALLBACK_URL, requestTokenUrl, authenticationDescriptor);
 		} catch(SiminovException se) {
 			Log.loge(Authentication.class.getName(), "Constructor", "SiminovException caught while resolving inline values, " + se.getMessage());
 			throw new SiminovCriticalException(Authentication.class.getName(), "Constructor", se.getMessage());
 		}
-
 		
 		
 		Intent intent = new Intent(applicationContext, OauthAuthenticationActivity.class);
@@ -86,6 +107,8 @@ public class Authentication implements IAuthenticate {
 		intent.putExtra(OauthConstants.ACCESS_TOKEN_URL, accessTokenUrl);
 		intent.putExtra(OauthConstants.AUTHORIZE_URL, authorizeUrl);
 		intent.putExtra(OauthConstants.CALLBACK_URL, callbackUrl);
+		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		
 		
 		applicationContext.startActivity(intent);
 	}
@@ -124,11 +147,11 @@ public class Authentication implements IAuthenticate {
 		String consumerKey = authenticationDescriptor.getProperty(OauthConstants.CONSUMER_KEY);
 		String consumerSecret = authenticationDescriptor.getProperty(OauthConstants.CONSUMER_SECRET);
     	if(consumerKey == null || consumerKey.length() <= 0) {
-    		Log.loge(Authentication.class.getName(), "doSignature", "Inavlid ConsumerKey.");
-    		throw new SiminovException(Authentication.class.getName(), "doSignature", "Inavlid ConsumerKey.");
+    		Log.loge(Authentication.class.getName(), "doSignature", "Invalid ConsumerKey.");
+    		throw new SiminovException(Authentication.class.getName(), "doSignature", "Invalid ConsumerKey.");
     	} else if(consumerSecret == null || consumerSecret.length() <= 0) {
-    		Log.loge(Authentication.class.getName(), "doSignature", "Inavlid ConsumerSecret.");
-    		throw new SiminovException(Authentication.class.getName(), "doSignature", "Inavlid ConsumerSecret.");
+    		Log.loge(Authentication.class.getName(), "doSignature", "Invalid ConsumerSecret.");
+    		throw new SiminovException(Authentication.class.getName(), "doSignature", "Invalid ConsumerSecret.");
     	}
     	
     	

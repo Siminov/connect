@@ -16,7 +16,7 @@ public abstract class Service implements IService {
 	private String service = null;
 	private String api = null;
 
-	private Map<String, String> resources = new HashMap<String, String>();
+	private Map<String, String> inlineResources = new HashMap<String, String>();
 	
 	private ServiceDescriptor serviceDescriptor = null;
 
@@ -48,20 +48,20 @@ public abstract class Service implements IService {
 		this.api = api;
 	}
 	
-	public Iterator<String> getResources() {
-		return this.resources.keySet().iterator();
+	public Iterator<String> getInlineResources() {
+		return this.inlineResources.keySet().iterator();
 	}
 	
-	public String getResource(final String name) {
-		return this.resources.get(name);
+	public String getInlineResource(final String name) {
+		return this.inlineResources.get(name);
 	}
 
-	public void addResource(final String name, final String value) {
-		this.resources.put(name, value);
+	public void addInlineResource(final String name, final String value) {
+		this.inlineResources.put(name, value);
 	}
 	
-	public boolean containResource(final String name) {
-		return this.resources.containsKey(name);
+	public boolean containInlineResource(final String name) {
+		return this.inlineResources.containsKey(name);
 	}
 
 	public ServiceDescriptor getServiceDescriptor() {

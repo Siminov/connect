@@ -44,13 +44,17 @@ public class ServiceHandler {
 	
 	public void handle(final IService service) throws SiminovException {
 
-		ServiceDescriptor serviceDescriptor = resources.requiredServiceDescriptorBasedOnName(service.getService());
-		service.setServiceDescriptor(serviceDescriptor);
+		ServiceDescriptor serviceDescriptor = service.getServiceDescriptor();
+		if(serviceDescriptor == null) {
+			serviceDescriptor = resources.requiredServiceDescriptorBasedOnName(service.getService());
+			service.setServiceDescriptor(serviceDescriptor);
+		}
 
-		Iterator<String> inlineResources = service.getResources();
+
+		Iterator<String> inlineResources = service.getInlineResources();
 		while(inlineResources.hasNext()) {
 			String inlineResource = inlineResources.next();
-			serviceDescriptor.addProperty(inlineResource, service.getResource(inlineResource));
+			serviceDescriptor.addProperty(inlineResource, service.getInlineResource(inlineResource));
 		}
 
 		
