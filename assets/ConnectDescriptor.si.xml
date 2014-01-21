@@ -22,7 +22,10 @@
             
            		<!-- Mandatory Field -->
      		<property name="name">name_of_refresh_handler</property>
-     		
+			
+     			<!-- Optional Field -->
+     		<property name="interval">refresh_interval_in_millisecond</property>
+     				
 			
      		<!-- Services -->
      			<!-- Service -->
