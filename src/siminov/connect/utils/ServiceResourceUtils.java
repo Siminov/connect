@@ -31,7 +31,7 @@ public class ServiceResourceUtils {
 			
 			String serviceDescriptorProperty = serviceDescriptorProperties.next();
 			String serviceDescriptorValue = serviceDescriptor.getProperty(serviceDescriptorProperty);
-			serviceDescriptorValue = ResourceUtils.resolve(serviceDescriptorProperty, serviceDescriptorValue, serviceDescriptor);
+			serviceDescriptorValue = ResourceUtils.resolve(serviceDescriptorValue, serviceDescriptor);
 			
 			serviceDescriptor.addProperty(serviceDescriptorProperty, serviceDescriptorValue);
 		}
@@ -46,7 +46,7 @@ public class ServiceResourceUtils {
 			
 			String apiProperty = apiProperties.next();
 			String apiValue = api.getProperty(apiProperty);
-			apiValue = ResourceUtils.resolve(apiProperty, apiValue, serviceDescriptor, api);
+			apiValue = ResourceUtils.resolve(apiValue, serviceDescriptor, api);
 			
 			api.addProperty(apiProperty, apiValue);
 		}
@@ -60,9 +60,8 @@ public class ServiceResourceUtils {
 			
 			QueryParameter queryParameter = queryParameters.next();
 			
-			String queryProperty = queryParameter.getName();
 			String queryValue = queryParameter.getValue();
-			queryValue = ResourceUtils.resolve(queryProperty, queryValue, serviceDescriptor, api, queryParameter);
+			queryValue = ResourceUtils.resolve(queryValue, serviceDescriptor, api, queryParameter);
 			
 			queryParameter.setValue(queryValue);
 		}
@@ -76,9 +75,8 @@ public class ServiceResourceUtils {
 			
 			HeaderParameter headerParameter = headerParameters.next();
 			
-			String headerProperty = headerParameter.getName();
 			String headerValue = headerParameter.getValue();
-			headerValue = ResourceUtils.resolve(headerProperty, headerValue, serviceDescriptor, api, headerParameter);
+			headerValue = ResourceUtils.resolve(headerValue, serviceDescriptor, api, headerParameter);
 			
 			headerParameter.setValue(headerValue);
 		}

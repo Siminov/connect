@@ -1,20 +1,24 @@
 package siminov.connect.refresh;
 
-import java.util.HashMap;
+import java.util.Collection;
 import java.util.Iterator;
-import java.util.Map;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 import siminov.connect.Constants;
 import siminov.connect.IWorker;
 import siminov.connect.model.RefreshDescriptor;
+import siminov.connect.model.ServiceDescriptor;
+import siminov.connect.model.ServiceDescriptor.API;
 import siminov.connect.resource.Resources;
+import siminov.connect.service.IService;
+import siminov.orm.utils.ClassUtils;
 
 public class RefreshWorker implements IWorker {
 
 	private static RefreshWorker refreshWorker = null;
 	private RefreshWorkerThread refreshWorkerThread = null;
 	
-	private Map<String, RefreshRequest> refreshRequests = new HashMap<String, RefreshRequest>();
+	private Collection<RefreshRequest> refreshRequests = new ConcurrentLinkedQueue<RefreshRequest>();
 	
 	private Resources resources = Resources.getInstance();
 	
@@ -67,10 +71,10 @@ public class RefreshWorker implements IWorker {
 		
 		public void run() {
 			
-			Iterator<String> requestKeys = refreshRequests.keySet().iterator();
-			while(requestKeys.hasNext()) {
+			Iterator<RefreshRequest> requests = refreshRequests.iterator();
+			while(requests.hasNext()) {
 				
-				RefreshRequest refreshRequest = refreshRequests.get(requestKeys.next());
+				RefreshRequest refreshRequest = requests.next();
 				RefreshDescriptor refreshDescriptor = resources.getRefreshDescriptor(refreshRequest.getName());
 				
 				Iterator<String> services = refreshDescriptor.getServices();
@@ -80,9 +84,25 @@ public class RefreshWorker implements IWorker {
 					
 					String serviceName = service.substring(0, service.indexOf(Constants.REFRESH_DESCRIPTOR_SERVICE_SEPARATOR));
 					String apiName = service.substring(service.indexOf(Constants.REFRESH_DESCRIPTOR_SERVICE_SEPARATOR) + 1, service.length());
+
 					
+					ServiceDescriptor serviceDescriptor = resources.requiredServiceDescriptorBasedOnName(serviceName);
+					API api = serviceDescriptor.getApi(apiName);
+					
+					String apiHandler = api.getHandler();
+					
+					IService serviceHandler = (IService) ClassUtils.createClassInstance(apiHandler);
+					serviceHandler.setServiceDescriptor(serviceDescriptor);
+					
+					serviceHandler.invoke();
 				}
+				
+				
+				refreshRequests.remove(refreshRequest);
 			}
+			
+			
+			refreshWorkerThread = null;
 		}
 	}
 	
@@ -94,7 +114,7 @@ public class RefreshWorker implements IWorker {
 		}
 		
 		
-		this.refreshRequests.put(refreshRequest.getName(), refreshRequest);
+		this.refreshRequests.add(refreshRequest);
 	
 		if(!isWorkerRunning()) {
 			startWorker();
@@ -102,10 +122,10 @@ public class RefreshWorker implements IWorker {
 	}
 	
 	public boolean containRequest(final RefreshRequest refreshRequest) {
-		return this.refreshRequests.containsKey(refreshRequest.getName());
+		return this.refreshRequests.contains(refreshRequest);
 	}
 	
 	public void removeRequest(final RefreshRequest refreshRequest) {
-		this.refreshRequests.remove(refreshRequest).getName();
+		this.refreshRequests.remove(refreshRequest);
 	}
 }

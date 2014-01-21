@@ -22,6 +22,19 @@ public class RefreshDescriptor implements IDescriptor {
 	public void setName(String name) {
 		this.properties.get(name);
 	}
+
+	public long getRefreshInterval() {
+		String refreshInterval = this.properties.get(Constants.REFRESH_DESCRIPTOR_INTERVAL);
+		if(refreshInterval == null || refreshInterval.length() <= 0) {
+			return 0;
+		}
+		
+		return Long.valueOf(refreshInterval);
+	}
+	
+	public void setRefreshInterval(long refreshInterval) {
+		this.properties.put(Constants.REFRESH_DESCRIPTOR_INTERVAL, Long.toString(refreshInterval));
+	}
 	
 	public Iterator<String> getProperties() {
 		return this.properties.keySet().iterator();

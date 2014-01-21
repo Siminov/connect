@@ -87,12 +87,12 @@ public class Authentication implements IAuthenticate {
 		
 		
 		try {
-			consumerKey = ResourceUtils.resolve(OauthConstants.CONSUMER_KEY, consumerKey, authenticationDescriptor);
-			consumerSecret = ResourceUtils.resolve(OauthConstants.CONSUMER_SECRET, consumerSecret, authenticationDescriptor);
-			requestTokenUrl = ResourceUtils.resolve(OauthConstants.REQUEST_TOKEN_URL, requestTokenUrl, authenticationDescriptor);
-			accessTokenUrl = ResourceUtils.resolve(OauthConstants.ACCESS_TOKEN_URL, accessTokenUrl, authenticationDescriptor);
-			authorizeUrl = ResourceUtils.resolve(OauthConstants.AUTHORIZE_URL, authorizeUrl, authenticationDescriptor);
-			callbackUrl = ResourceUtils.resolve(OauthConstants.CALLBACK_URL, requestTokenUrl, authenticationDescriptor);
+			consumerKey = ResourceUtils.resolve(consumerKey, authenticationDescriptor);
+			consumerSecret = ResourceUtils.resolve(consumerSecret, authenticationDescriptor);
+			requestTokenUrl = ResourceUtils.resolve(requestTokenUrl, authenticationDescriptor);
+			accessTokenUrl = ResourceUtils.resolve(accessTokenUrl, authenticationDescriptor);
+			authorizeUrl = ResourceUtils.resolve(authorizeUrl, authenticationDescriptor);
+			callbackUrl = ResourceUtils.resolve(requestTokenUrl, authenticationDescriptor);
 		} catch(SiminovException se) {
 			Log.loge(Authentication.class.getName(), "Constructor", "SiminovException caught while resolving inline values, " + se.getMessage());
 			throw new SiminovCriticalException(Authentication.class.getName(), "Constructor", se.getMessage());

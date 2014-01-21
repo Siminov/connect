@@ -21,5 +21,6 @@ public interface IService extends IServiceEvents, IInlineResource {
 	public ServiceDescriptor getServiceDescriptor();
 	
 	public void setServiceDescriptor(final ServiceDescriptor serviceDescriptor);
-	
+
+	public void invoke();
 }

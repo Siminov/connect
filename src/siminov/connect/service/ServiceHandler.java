@@ -59,7 +59,7 @@ public class ServiceHandler {
 
 		
 		API api = serviceDescriptor.getApi(service.getApi());
-		String mode = ResourceUtils.resolve(Constants.SERVICE_DESCRIPTOR_API_MODE, api.getMode(), serviceDescriptor);
+		String mode = ResourceUtils.resolve(api.getMode(), serviceDescriptor);
 		
 		if(mode.equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_API_SYNC_REQUEST_MODE)) {
 
