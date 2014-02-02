@@ -8,6 +8,8 @@ import siminov.connect.connection.ConnectionRequest;
 import siminov.connect.connection.ConnectionResponse;
 import siminov.connect.model.ServiceDescriptor;
 import siminov.connect.resource.Resources;
+import siminov.connect.service.design.IService;
+import siminov.connect.service.design.IServiceWorker;
 import siminov.connect.service.model.ServiceRequest;
 import siminov.connect.service.model.ServiceRequestResource;
 import siminov.connect.utils.Utils;

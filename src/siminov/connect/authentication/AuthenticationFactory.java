@@ -1,5 +1,6 @@
 package siminov.connect.authentication;
 
+import siminov.connect.authentication.design.IAuthenticate;
 import siminov.connect.model.AuthenticationDescriptor;
 import siminov.connect.model.ConnectDescriptor;
 import siminov.connect.resource.Resources;

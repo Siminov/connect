@@ -3,6 +3,8 @@ package siminov.connect.service;
 import siminov.connect.connection.ConnectionHelper;
 import siminov.connect.connection.ConnectionRequest;
 import siminov.connect.connection.ConnectionResponse;
+import siminov.connect.service.design.IService;
+import siminov.connect.service.design.IServiceWorker;
 import siminov.orm.exception.SiminovException;
 import siminov.orm.log.Log;
 

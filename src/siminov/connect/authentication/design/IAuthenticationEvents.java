@@ -1,4 +1,4 @@
-package siminov.connect.events;
+package siminov.connect.authentication.design;
 
 import siminov.connect.authentication.Credential;
 import siminov.orm.exception.SiminovException;

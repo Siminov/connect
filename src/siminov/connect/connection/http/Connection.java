@@ -26,7 +26,7 @@ import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpParams;
 
 import siminov.connect.authentication.AuthenticationFactory;
-import siminov.connect.authentication.IAuthenticate;
+import siminov.connect.authentication.design.IAuthenticate;
 import siminov.connect.connection.ConnectionRequest;
 import siminov.connect.connection.ConnectionResponse;
 import siminov.connect.connection.ConnectionStatusCodes;

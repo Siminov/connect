@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import siminov.connect.authentication.design.IAuthenticateResources;
+
 public class AuthenticateResources implements IAuthenticateResources {
 
 	private Credential credential = null;

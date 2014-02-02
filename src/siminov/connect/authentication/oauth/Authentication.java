@@ -9,17 +9,16 @@ import org.apache.http.client.methods.HttpRequestBase;
 
 import siminov.connect.authentication.Credential;
 import siminov.connect.authentication.CredentialManager;
-import siminov.connect.authentication.IAuthenticate;
-import siminov.connect.authentication.IAuthenticateResources;
-import siminov.connect.events.IAuthenticationEvents;
+import siminov.connect.authentication.design.IAuthenticate;
+import siminov.connect.authentication.design.IAuthenticateResources;
+import siminov.connect.authentication.design.IAuthenticationEvents;
 import siminov.connect.model.AuthenticationDescriptor;
 import siminov.connect.model.ConnectDescriptor;
 import siminov.connect.resource.Resources;
+import siminov.connect.utils.ResourceUtils;
 import siminov.orm.exception.SiminovCriticalException;
 import siminov.orm.exception.SiminovException;
 import siminov.orm.log.Log;
-import siminov.orm.utils.ResourceUtils;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 

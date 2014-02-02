@@ -10,7 +10,7 @@ import siminov.connect.model.RefreshDescriptor;
 import siminov.connect.model.ServiceDescriptor;
 import siminov.connect.model.ServiceDescriptor.API;
 import siminov.connect.resource.Resources;
-import siminov.connect.service.IService;
+import siminov.connect.service.design.IService;
 import siminov.orm.utils.ClassUtils;
 
 public class RefreshWorker implements IWorker {
@@ -93,6 +93,15 @@ public class RefreshWorker implements IWorker {
 					
 					IService serviceHandler = (IService) ClassUtils.createClassInstance(apiHandler);
 					serviceHandler.setServiceDescriptor(serviceDescriptor);
+
+					Iterator<String> inlineResources = refreshRequest.getInlineResources();
+					while(inlineResources.hasNext()) {
+						String inlineResource = inlineResources.next();
+						String inlineResourceValue = refreshRequest.getInlineResource(inlineResource);
+						
+						serviceHandler.addInlineResource(inlineResource, inlineResourceValue);
+					}
+					
 					
 					serviceHandler.invoke();
 				}

@@ -9,6 +9,7 @@ import org.xml.sax.SAXException;
 import siminov.connect.Constants;
 import siminov.connect.model.AuthenticationDescriptor;
 import siminov.connect.model.ConnectDescriptor;
+import siminov.connect.model.NotificationDescriptor;
 import siminov.connect.model.RefreshDescriptor;
 import siminov.orm.exception.DeploymentException;
 import siminov.orm.log.Log;
@@ -26,10 +27,13 @@ public class ConnectDescriptorReader extends SiminovSAXDefaultHandler implements
 	
 	private AuthenticationDescriptor authenticationDescriptor = null;
 
+	private NotificationDescriptor notificationDescriptor = null;
+	
 	private String propertyName = null;
 	
 	private boolean isRefreshDesriptor = false;
 	private boolean isAuthenticationDescriptor = false;
+	private boolean isNotificationDescriptor = false;
 	
 	public ConnectDescriptorReader() {
 		parse(CONNECT_DESCRIPTOR_FILE_NAME);
@@ -111,6 +115,10 @@ public class ConnectDescriptorReader extends SiminovSAXDefaultHandler implements
 			
 			isRefreshDesriptor = true;
 			refreshDescriptor = new RefreshDescriptor();
+		} else if(localName.equalsIgnoreCase(NOTIFICATION_DESCRIPTOR)) {
+			
+			isNotificationDescriptor = true;
+			notificationDescriptor = new NotificationDescriptor();
 		}
 	}
 	
@@ -138,6 +146,8 @@ public class ConnectDescriptorReader extends SiminovSAXDefaultHandler implements
 			connectDescriptor.addRefreshDescriptor(refreshDescriptor);
 		} else if(localName.equalsIgnoreCase(REFRESH_DESCRIPTOR_SERVICE)) {
 			refreshDescriptor.addService(tempValue.toString());
+		} else if(localName.equalsIgnoreCase(NOTIFICATION_DESCRIPTOR)) {
+			connectDescriptor.setNotificationDescriptor(notificationDescriptor);
 		}
 	}
 	
@@ -151,6 +161,8 @@ public class ConnectDescriptorReader extends SiminovSAXDefaultHandler implements
 			authenticationDescriptor.addProperty(propertyName, tempValue.toString());
 		} else if(isRefreshDesriptor) {
 			refreshDescriptor.addProperty(propertyName, tempValue.toString());
+		} else if(isNotificationDescriptor) {
+			notificationDescriptor.addProperty(propertyName, tempValue.toString());
 		} else {
 			connectDescriptor.addProperty(propertyName, tempValue.toString());
 		}

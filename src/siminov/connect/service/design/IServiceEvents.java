@@ -1,4 +1,4 @@
-package siminov.connect.events;
+package siminov.connect.service.design;
 
 import siminov.connect.connection.ConnectionRequest;
 import siminov.connect.connection.ConnectionResponse;

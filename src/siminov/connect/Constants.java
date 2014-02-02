@@ -29,6 +29,12 @@ public interface Constants {
 	public String REFRESH_DESCRIPTOR_INTERVAL = "interval";
 	
 	public String REFRESH_DESCRIPTOR_SERVICE_SEPARATOR = ".";
+
+	public String NOTIFICATION_DESCRIPTOR = "notification-descriptor";
+	public String NOTIFICATION_DESCRIPTOR_PROPERTY = "property";
+	public String NOTIFICATION_DESCRIPTOR_PROPERTY_NAME = "name";
+	
+	public String NOTIFICATION_DESCRIPTOR_SERVICE_SEPARATOR = ".";
 	
 	public String SERVICE_DESCRIPTOR_APIS = "apis";
 	public String SERVICE_DESCRIPTOR_API = "api";

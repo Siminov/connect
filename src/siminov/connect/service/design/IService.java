@@ -1,8 +1,7 @@
-package siminov.connect.service;
+package siminov.connect.service.design;
 
-import siminov.connect.events.IServiceEvents;
 import siminov.connect.model.ServiceDescriptor;
-import siminov.orm.resource.IInlineResource;
+import siminov.connect.resource.IInlineResource;
 
 public interface IService extends IServiceEvents, IInlineResource {
 

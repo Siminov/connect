@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import siminov.orm.resource.IInlineResource;
+import siminov.connect.resource.IInlineResource;
 
 public class RefreshRequest implements IInlineResource {
 

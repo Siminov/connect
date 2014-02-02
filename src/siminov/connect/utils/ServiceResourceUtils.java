@@ -6,9 +6,8 @@ import siminov.connect.model.ServiceDescriptor;
 import siminov.connect.model.ServiceDescriptor.API;
 import siminov.connect.model.ServiceDescriptor.API.HeaderParameter;
 import siminov.connect.model.ServiceDescriptor.API.QueryParameter;
-import siminov.connect.service.IService;
+import siminov.connect.service.design.IService;
 import siminov.orm.exception.SiminovException;
-import siminov.orm.utils.ResourceUtils;
 
 public class ServiceResourceUtils {
 

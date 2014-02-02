@@ -1,4 +1,4 @@
-package siminov.connect.service;
+package siminov.connect.service.design;
 
 
 public interface IServiceWorker {

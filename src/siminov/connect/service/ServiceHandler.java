@@ -9,11 +9,13 @@ import siminov.connect.connection.IConnection;
 import siminov.connect.model.ServiceDescriptor;
 import siminov.connect.model.ServiceDescriptor.API;
 import siminov.connect.resource.Resources;
+import siminov.connect.service.design.IService;
+import siminov.connect.service.design.IServiceWorker;
 import siminov.connect.service.worker.AsyncServiceWorker;
 import siminov.connect.service.worker.SyncServiceWorker;
+import siminov.connect.utils.ResourceUtils;
 import siminov.connect.utils.ServiceResourceUtils;
 import siminov.orm.exception.SiminovException;
-import siminov.orm.utils.ResourceUtils;
 
 
 public class ServiceHandler {

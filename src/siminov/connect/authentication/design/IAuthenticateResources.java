@@ -1,6 +1,8 @@
-package siminov.connect.authentication;
+package siminov.connect.authentication.design;
 
-import siminov.orm.resource.IInlineResource;
+import siminov.connect.authentication.Credential;
+import siminov.connect.resource.IInlineResource;
+
 
 public interface IAuthenticateResources extends IInlineResource {
 

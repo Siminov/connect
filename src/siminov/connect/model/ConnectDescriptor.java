@@ -18,6 +18,8 @@ public class ConnectDescriptor implements IDescriptor {
 	private Map<String, RefreshDescriptor> refreshDescriptors = new HashMap<String, RefreshDescriptor>();
 	
 	private AuthenticationDescriptor authenticationDescriptor = null;
+	private NotificationDescriptor notificationDescriptor = null;
+	
 	
 	public Iterator<String> getProperties() {
 		return this.properties.keySet().iterator();
@@ -121,5 +123,13 @@ public class ConnectDescriptor implements IDescriptor {
 		}
 		
 		return false;
+	}
+	
+	public NotificationDescriptor getNotificationDescriptor() {
+		return this.notificationDescriptor;
+	}
+	
+	public void setNotificationDescriptor(NotificationDescriptor notificationDescriptor) {
+		this.notificationDescriptor = notificationDescriptor;
 	}
 }

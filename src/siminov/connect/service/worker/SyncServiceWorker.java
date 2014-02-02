@@ -3,9 +3,9 @@ package siminov.connect.service.worker;
 import siminov.connect.connection.ConnectionHelper;
 import siminov.connect.connection.ConnectionRequest;
 import siminov.connect.connection.ConnectionResponse;
-import siminov.connect.service.IService;
-import siminov.connect.service.IServiceWorker;
 import siminov.connect.service.ServiceHandler;
+import siminov.connect.service.design.IService;
+import siminov.connect.service.design.IServiceWorker;
 import siminov.orm.exception.SiminovException;
 import siminov.orm.log.Log;
 

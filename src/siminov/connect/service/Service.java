@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Random;
 
 import siminov.connect.model.ServiceDescriptor;
+import siminov.connect.service.design.IService;
 import siminov.orm.exception.SiminovException;
 import siminov.orm.log.Log;
 
