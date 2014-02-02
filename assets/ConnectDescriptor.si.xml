@@ -31,8 +31,6 @@
      			<!-- Service -->
      		<services>
      		    
-     		    	<!-- name: Mandatory Field -->
-     		    	<!-- api: Optional Field  -->
      		    <service>name_of_service.name_of_api</service>
      		    
      		</services>
@@ -50,8 +48,13 @@
 		
     </authentication-descriptor>
 
+    
+    <!-- Push Notification -->
+    <notification-descriptor>
+        
+        	<!-- Optional Field -->
+        <property name="name_of_property">value_of_property</property>
+
+    </notification-descriptor>
+    
 </connect-descriptor>
-
-
-
-
