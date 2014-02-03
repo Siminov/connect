@@ -22,7 +22,7 @@ public class NotificationManager implements INotification {
 	
 	
 	private NotificationManager() {
-		
+
 	}
 	
 	public static NotificationManager getInstance() {
