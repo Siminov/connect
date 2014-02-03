@@ -24,8 +24,11 @@
      		<property name="name">name_of_refresh_handler</property>
 			
      			<!-- Optional Field -->
-     		<property name="interval">refresh_interval_in_millisecond</property>
+     		<property name="refresh_interval">refresh_interval_in_millisecond</property>
      				
+     			<!-- Optional Field -->
+     				<!-- Default: SCREEN -->
+			<property name="type">INTERVAL|SCREEN</property>
 			
      		<!-- Services -->
      			<!-- Service -->
@@ -34,7 +37,6 @@
      		    <service>name_of_service.name_of_api</service>
      		    
      		</services>
-     		
         </refresh-descriptor>
         
     </refresh-descriptors>
@@ -58,3 +60,5 @@
     </notification-descriptor>
     
 </connect-descriptor>
+
+
