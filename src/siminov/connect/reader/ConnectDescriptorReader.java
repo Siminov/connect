@@ -157,12 +157,12 @@ public class ConnectDescriptorReader extends SiminovSAXDefaultHandler implements
 	
 	private void processProperty() {
 		
-		if(isAuthenticationDescriptor) {
+		if(isNotificationDescriptor) {
+			notificationDescriptor.addProperty(propertyName, tempValue.toString());
+		} else if(isAuthenticationDescriptor) {
 			authenticationDescriptor.addProperty(propertyName, tempValue.toString());
 		} else if(isRefreshDesriptor) {
 			refreshDescriptor.addProperty(propertyName, tempValue.toString());
-		} else if(isNotificationDescriptor) {
-			notificationDescriptor.addProperty(propertyName, tempValue.toString());
 		} else {
 			connectDescriptor.addProperty(propertyName, tempValue.toString());
 		}
