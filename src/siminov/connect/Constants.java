@@ -26,7 +26,7 @@ public interface Constants {
 	public String REFRESH_DESCRIPTOR_SERVICES = "services";
 	public String REFRESH_DESCRIPTOR_SERVICE = "service";
 	public String REFRESH_DESCRIPTOR_NAME = "name";
-	public String REFRESH_DESCRIPTOR_INTERVAL = "interval";
+	public String REFRESH_DESCRIPTOR_REFRESH_INTERVAL = "interval";
 	
 	public String REFRESH_DESCRIPTOR_SERVICE_SEPARATOR = ".";
 

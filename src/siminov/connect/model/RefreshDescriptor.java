@@ -24,7 +24,7 @@ public class RefreshDescriptor implements IDescriptor {
 	}
 
 	public long getRefreshInterval() {
-		String refreshInterval = this.properties.get(Constants.REFRESH_DESCRIPTOR_INTERVAL);
+		String refreshInterval = this.properties.get(Constants.REFRESH_DESCRIPTOR_REFRESH_INTERVAL);
 		if(refreshInterval == null || refreshInterval.length() <= 0) {
 			return 0;
 		}
@@ -33,7 +33,7 @@ public class RefreshDescriptor implements IDescriptor {
 	}
 	
 	public void setRefreshInterval(long refreshInterval) {
-		this.properties.put(Constants.REFRESH_DESCRIPTOR_INTERVAL, Long.toString(refreshInterval));
+		this.properties.put(Constants.REFRESH_DESCRIPTOR_REFRESH_INTERVAL, Long.toString(refreshInterval));
 	}
 	
 	public Iterator<String> getProperties() {
