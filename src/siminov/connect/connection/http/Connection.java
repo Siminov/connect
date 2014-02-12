@@ -31,16 +31,17 @@ import siminov.connect.connection.ConnectionRequest;
 import siminov.connect.connection.ConnectionResponse;
 import siminov.connect.connection.ConnectionStatusCodes;
 import siminov.connect.connection.IConnection;
-import siminov.orm.exception.SiminovException;
+import siminov.connect.exception.AuthenticationException;
+import siminov.connect.exception.ConnectionException;
 import siminov.orm.log.Log;
 
 public class Connection implements IConnection{
 
-	public ConnectionResponse get(final ConnectionRequest connectionRequest) throws SiminovException {
+	public ConnectionResponse get(final ConnectionRequest connectionRequest) throws ConnectionException {
 
 		if(connectionRequest == null) {
 			Log.loge(Connection.class.getName(), "get", "Invalid Connection Request.");
-			throw new SiminovException(Connection.class.getName(), "get", "Invalid Connection Request.");
+			throw new ConnectionException(Connection.class.getName(), "get", "Invalid Connection Request.");
 		}
 		
 		
@@ -63,7 +64,7 @@ public class Connection implements IConnection{
 			httpGet = new HttpGet(url);
 		} catch(Exception exception) {
 			Log.loge(Connection.class.getName(), "get", "Exception caught while creating http get, URL: " + url + ", " + exception.getMessage());
-			throw new SiminovException(Connection.class.getName(), "get", "Exception caught while creating http get, URL: " + url + ", " + exception.getMessage());
+			throw new ConnectionException(Connection.class.getName(), "get", "Exception caught while creating http get, URL: " + url + ", " + exception.getMessage());
 		}
 
 		
@@ -109,7 +110,7 @@ public class Connection implements IConnection{
         	httpResponse = (BasicHttpResponse) httpClient.execute(httpGet);        	 
         } catch(Exception exception) {
         	Log.loge(Connection.class.getName(), "get", "Exception caught while executing request, " + exception.getMessage());
-        	throw new SiminovException(Connection.class.getName(), "get", "Exception caught while executing request, " + exception.getMessage());
+        	throw new ConnectionException(Connection.class.getName(), "get", "Exception caught while executing request, " + exception.getMessage());
         }
 
 
@@ -128,18 +129,18 @@ public class Connection implements IConnection{
         	inputStream = httpResponse.getEntity().getContent();
         } catch(Exception exception) {
         	Log.loge(Connection.class.getName(), "get", "Exception caught while getting input stream, " + exception.getMessage());
-        	throw new SiminovException(Connection.class.getName(), "get", "Exception caught while getting input stream, " + exception.getMessage());
+        	throw new ConnectionException(Connection.class.getName(), "get", "Exception caught while getting input stream, " + exception.getMessage());
         }
 
         
         return new ConnectionResponse(responseCode, inputStream);
 	}
 	
-	public ConnectionResponse head(final ConnectionRequest connectionRequest) throws SiminovException {
+	public ConnectionResponse head(final ConnectionRequest connectionRequest) throws ConnectionException {
 		
 		if(connectionRequest == null) {
 			Log.loge(Connection.class.getName(), "head", "Invalid Connection Request.");
-			throw new SiminovException(Connection.class.getName(), "head", "Invalid Connection Request.");
+			throw new ConnectionException(Connection.class.getName(), "head", "Invalid Connection Request.");
 		}
 
 
@@ -162,7 +163,7 @@ public class Connection implements IConnection{
 			httpHead = new HttpHead(url);
 		} catch(Exception exception) {
 			Log.loge(Connection.class.getName(), "head", "Exception caught while creating http head, URL: " + url + ", " + exception.getMessage());
-			throw new SiminovException(Connection.class.getName(), "head", "Exception caught while creating http head, URL: " + url + ", " + exception.getMessage());
+			throw new ConnectionException(Connection.class.getName(), "head", "Exception caught while creating http head, URL: " + url + ", " + exception.getMessage());
 		}
 
 
@@ -208,7 +209,7 @@ public class Connection implements IConnection{
         	httpResponse = (BasicHttpResponse) httpClient.execute(httpHead);        	 
         } catch(Exception exception) {
         	Log.loge(Connection.class.getName(), "head", "Exception caught while executing request, " + exception.getMessage());
-        	throw new SiminovException(Connection.class.getName(), "head", "Exception caught while executing request, " + exception.getMessage());
+        	throw new ConnectionException(Connection.class.getName(), "head", "Exception caught while executing request, " + exception.getMessage());
         }
 
 
@@ -227,18 +228,18 @@ public class Connection implements IConnection{
         	inputStream = httpResponse.getEntity().getContent();
         } catch(Exception exception) {
         	Log.loge(Connection.class.getName(), "head", "Exception caught while getting input stream, " + exception.getMessage());
-        	throw new SiminovException(Connection.class.getName(), "head", "Exception caught while getting input stream, " + exception.getMessage());
+        	throw new ConnectionException(Connection.class.getName(), "head", "Exception caught while getting input stream, " + exception.getMessage());
         }
 
         
         return new ConnectionResponse(responseCode, inputStream);
 	}
 	
-	public ConnectionResponse post(final ConnectionRequest connectionRequest) throws SiminovException {
+	public ConnectionResponse post(final ConnectionRequest connectionRequest) throws ConnectionException {
 		
 		if(connectionRequest == null) {
 			Log.loge(Connection.class.getName(), "post", "Invalid Connection Request.");
-			throw new SiminovException(Connection.class.getName(), "post", "Invalid Connection Request.");
+			throw new ConnectionException(Connection.class.getName(), "post", "Invalid Connection Request.");
 		}
 
 
@@ -263,7 +264,7 @@ public class Connection implements IConnection{
 			httpPost = new HttpPost(url);
 		} catch(Exception exception) {
 			Log.loge(Connection.class.getName(), "post", "Exception caught while creating http post, URL: " + url + ", " + exception.getMessage());
-			throw new SiminovException(Connection.class.getName(), "post", "Exception caught while creating http post, URL: " + url + ", " + exception.getMessage());
+			throw new ConnectionException(Connection.class.getName(), "post", "Exception caught while creating http post, URL: " + url + ", " + exception.getMessage());
 		}
 
 		
@@ -286,7 +287,7 @@ public class Connection implements IConnection{
 			httpPost.setEntity(new UrlEncodedFormEntity(httpQueryParams));
 		} catch(Exception e) {
 			Log.loge(Connection.class.getName(), "post", "Exception caught while setting http query parameters, " + e.getMessage());
-			throw new SiminovException(Connection.class.getName(), "post", "Exception caught while setting http query parameters, " + e.getMessage());
+			throw new ConnectionException(Connection.class.getName(), "post", "Exception caught while setting http query parameters, " + e.getMessage());
 		}
 		
 		
@@ -320,7 +321,7 @@ public class Connection implements IConnection{
         	httpResponse = (BasicHttpResponse) httpClient.execute(httpPost);        	 
         } catch(Exception exception) {
         	Log.loge(Connection.class.getName(), "post", "Exception caught while executing request, " + exception.getMessage());
-        	throw new SiminovException(Connection.class.getName(), "post", "Exception caught while executing request, " + exception.getMessage());
+        	throw new ConnectionException(Connection.class.getName(), "post", "Exception caught while executing request, " + exception.getMessage());
         }
 
 
@@ -339,18 +340,18 @@ public class Connection implements IConnection{
         	inputStream = httpResponse.getEntity().getContent();
         } catch(Exception exception) {
         	Log.loge(Connection.class.getName(), "post", "Exception caught while getting input stream, " + exception.getMessage());
-        	throw new SiminovException(Connection.class.getName(), "post", "Exception caught while getting input stream, " + exception.getMessage());
+        	throw new ConnectionException(Connection.class.getName(), "post", "Exception caught while getting input stream, " + exception.getMessage());
         }
 
         
         return new ConnectionResponse(responseCode, inputStream);
 	}
 	
-	public ConnectionResponse put(final ConnectionRequest connectionRequest) throws SiminovException {
+	public ConnectionResponse put(final ConnectionRequest connectionRequest) throws ConnectionException {
 		
 		if(connectionRequest == null) {
 			Log.loge(Connection.class.getName(), "put", "Invalid Connection Request.");
-			throw new SiminovException(Connection.class.getName(), "put", "Invalid Connection Request.");
+			throw new ConnectionException(Connection.class.getName(), "put", "Invalid Connection Request.");
 		}
 
 
@@ -376,7 +377,7 @@ public class Connection implements IConnection{
 			httpPut = new HttpPut(url);
 		} catch(Exception exception) {
 			Log.loge(Connection.class.getName(), "put", "Exception caught while creating http put, URL: " + url + ", " + exception.getMessage());
-			throw new SiminovException(Connection.class.getName(), "put", "Exception caught while creating http put, URL: " + url + ", " + exception.getMessage());
+			throw new ConnectionException(Connection.class.getName(), "put", "Exception caught while creating http put, URL: " + url + ", " + exception.getMessage());
 		}
 
 		
@@ -427,7 +428,7 @@ public class Connection implements IConnection{
         	httpResponse = (BasicHttpResponse) httpClient.execute(httpPut);        	 
         } catch(Exception exception) {
         	Log.loge(Connection.class.getName(), "put", "Exception caught while executing request, " + exception.getMessage());
-        	throw new SiminovException(Connection.class.getName(), "put", "Exception caught while executing request, " + exception.getMessage());
+        	throw new ConnectionException(Connection.class.getName(), "put", "Exception caught while executing request, " + exception.getMessage());
         }
 
 
@@ -446,18 +447,18 @@ public class Connection implements IConnection{
         	inputStream = httpResponse.getEntity().getContent();
         } catch(Exception exception) {
         	Log.loge(Connection.class.getName(), "put", "Exception caught while getting input stream, " + exception.getMessage());
-        	throw new SiminovException(Connection.class.getName(), "put", "Exception caught while getting input stream, " + exception.getMessage());
+        	throw new ConnectionException(Connection.class.getName(), "put", "Exception caught while getting input stream, " + exception.getMessage());
         }
 
         
         return new ConnectionResponse(responseCode, inputStream);
 	}
 
-	public ConnectionResponse delete(final ConnectionRequest connectionRequest) throws SiminovException {
+	public ConnectionResponse delete(final ConnectionRequest connectionRequest) throws ConnectionException {
 		
 		if(connectionRequest == null) {
 			Log.loge(Connection.class.getName(), "delete", "Invalid Connection Request.");
-			throw new SiminovException(Connection.class.getName(), "delete", "Invalid Connection Request.");
+			throw new ConnectionException(Connection.class.getName(), "delete", "Invalid Connection Request.");
 		}
 
 
@@ -482,7 +483,7 @@ public class Connection implements IConnection{
 			httpDelete = new HttpDelete(url);
 		} catch(Exception exception) {
 			Log.loge(Connection.class.getName(), "delete", "Exception caught while creating http delete, URL: " + url + ", " + exception.getMessage());
-			throw new SiminovException(Connection.class.getName(), "delete", "Exception caught while creating http delete, URL: " + url + ", " + exception.getMessage());
+			throw new ConnectionException(Connection.class.getName(), "delete", "Exception caught while creating http delete, URL: " + url + ", " + exception.getMessage());
 		}
 
 		
@@ -528,7 +529,7 @@ public class Connection implements IConnection{
         	httpResponse = (BasicHttpResponse) httpClient.execute(httpDelete);        	 
         } catch(Exception exception) {
         	Log.loge(Connection.class.getName(), "delete", "Exception caught while executing request, " + exception.getMessage());
-        	throw new SiminovException(Connection.class.getName(), "delete", "Exception caught while executing request, " + exception.getMessage());
+        	throw new ConnectionException(Connection.class.getName(), "delete", "Exception caught while executing request, " + exception.getMessage());
         }
 
 
@@ -547,18 +548,18 @@ public class Connection implements IConnection{
         	inputStream = httpResponse.getEntity().getContent();
         } catch(Exception exception) {
         	Log.loge(Connection.class.getName(), "delete", "Exception caught while getting input stream, " + exception.getMessage());
-        	throw new SiminovException(Connection.class.getName(), "delete", "Exception caught while getting input stream, " + exception.getMessage());
+        	throw new ConnectionException(Connection.class.getName(), "delete", "Exception caught while getting input stream, " + exception.getMessage());
         }
 
         
         return new ConnectionResponse(responseCode, inputStream);
 	}
 
-	public ConnectionResponse trace(final ConnectionRequest connectionRequest) throws SiminovException {
+	public ConnectionResponse trace(final ConnectionRequest connectionRequest) throws ConnectionException {
 		
 		if(connectionRequest == null) {
 			Log.loge(Connection.class.getName(), "trace", "Invalid Connection Request.");
-			throw new SiminovException(Connection.class.getName(), "trace", "Invalid Connection Request.");
+			throw new ConnectionException(Connection.class.getName(), "trace", "Invalid Connection Request.");
 		}
 
 
@@ -584,7 +585,7 @@ public class Connection implements IConnection{
 			httpTrace = new HttpTrace(url);
 		} catch(Exception exception) {
 			Log.loge(Connection.class.getName(), "trace", "Exception caught while creating http trace, URL: " + url + ", " + exception.getMessage());
-			throw new SiminovException(Connection.class.getName(), "trace", "Exception caught while creating http trace, URL: " + url + ", " + exception.getMessage());
+			throw new ConnectionException(Connection.class.getName(), "trace", "Exception caught while creating http trace, URL: " + url + ", " + exception.getMessage());
 		}
 
 		
@@ -630,7 +631,7 @@ public class Connection implements IConnection{
         	httpResponse = (BasicHttpResponse) httpClient.execute(httpTrace);        	 
         } catch(Exception exception) {
         	Log.loge(Connection.class.getName(), "trace", "Exception caught while executing request, " + exception.getMessage());
-        	throw new SiminovException(Connection.class.getName(), "trace", "Exception caught while executing request, " + exception.getMessage());
+        	throw new ConnectionException(Connection.class.getName(), "trace", "Exception caught while executing request, " + exception.getMessage());
         }
 
 
@@ -649,18 +650,18 @@ public class Connection implements IConnection{
         	inputStream = httpResponse.getEntity().getContent();
         } catch(Exception exception) {
         	Log.loge(Connection.class.getName(), "trace", "Exception caught while getting input stream, " + exception.getMessage());
-        	throw new SiminovException(Connection.class.getName(), "trace", "Exception caught while getting input stream, " + exception.getMessage());
+        	throw new ConnectionException(Connection.class.getName(), "trace", "Exception caught while getting input stream, " + exception.getMessage());
         }
 
         
         return new ConnectionResponse(responseCode, inputStream);
 	}
 
-	public ConnectionResponse options(final ConnectionRequest connectionRequest) throws SiminovException {
+	public ConnectionResponse options(final ConnectionRequest connectionRequest) throws ConnectionException {
 		
 		if(connectionRequest == null) {
 			Log.loge(Connection.class.getName(), "options", "Invalid Connection Request.");
-			throw new SiminovException(Connection.class.getName(), "options", "Invalid Connection Request.");
+			throw new ConnectionException(Connection.class.getName(), "options", "Invalid Connection Request.");
 		}
 
 
@@ -685,7 +686,7 @@ public class Connection implements IConnection{
 			httpOptions = new HttpOptions(url);
 		} catch(Exception exception) {
 			Log.loge(Connection.class.getName(), "options", "Exception caught while creating http options, URL: " + url + ", " + exception.getMessage());
-			throw new SiminovException(Connection.class.getName(), "options", "Exception caught while creating http options, URL: " + url + ", " + exception.getMessage());
+			throw new ConnectionException(Connection.class.getName(), "options", "Exception caught while creating http options, URL: " + url + ", " + exception.getMessage());
 		}
 
 		
@@ -732,7 +733,7 @@ public class Connection implements IConnection{
         	httpResponse = (BasicHttpResponse) httpClient.execute(httpOptions);        	 
         } catch(Exception exception) {
         	Log.loge(Connection.class.getName(), "options", "Exception caught while executing request, " + exception.getMessage());
-        	throw new SiminovException(Connection.class.getName(), "options", "Exception caught while executing request, " + exception.getMessage());
+        	throw new ConnectionException(Connection.class.getName(), "options", "Exception caught while executing request, " + exception.getMessage());
         }
 
 
@@ -751,36 +752,36 @@ public class Connection implements IConnection{
         	inputStream = httpResponse.getEntity().getContent();
         } catch(Exception exception) {
         	Log.loge(Connection.class.getName(), "options", "Exception caught while getting input stream, " + exception.getMessage());
-        	throw new SiminovException(Connection.class.getName(), "options", "Exception caught while getting input stream, " + exception.getMessage());
+        	throw new ConnectionException(Connection.class.getName(), "options", "Exception caught while getting input stream, " + exception.getMessage());
         }
 
         
         return new ConnectionResponse(responseCode, inputStream);
 	}
 
-	public ConnectionResponse connect(final ConnectionRequest connectionRequest) throws SiminovException {
+	public ConnectionResponse connect(final ConnectionRequest connectionRequest) throws ConnectionException {
 		
 		if(connectionRequest == null) {
 			Log.loge(Connection.class.getName(), "connect", "Invalid Connection Request.");
-			throw new SiminovException(Connection.class.getName(), "connect", "Invalid Connection Request.");
+			throw new ConnectionException(Connection.class.getName(), "connect", "Invalid Connection Request.");
 		}
 
 
 		return null;
 	}
 
-	public ConnectionResponse patch(final ConnectionRequest connectionRequest) throws SiminovException {
+	public ConnectionResponse patch(final ConnectionRequest connectionRequest) throws ConnectionException {
 		
 		if(connectionRequest == null) {
 			Log.loge(Connection.class.getName(), "patch", "Invalid Connection Request.");
-			throw new SiminovException(Connection.class.getName(), "patch", "Invalid Connection Request.");
+			throw new ConnectionException(Connection.class.getName(), "patch", "Invalid Connection Request.");
 		}
 
 		return null;
 	}
 
 	
-	private void sign(final HttpRequestBase httpRequestBase) throws SiminovException {
+	private void sign(final HttpRequestBase httpRequestBase) throws ConnectionException {
 		
 		AuthenticationFactory authenticationFactory = AuthenticationFactory.getInstance();
 		IAuthenticate authenticate = authenticationFactory.getAuthenticate();
@@ -790,6 +791,11 @@ public class Connection implements IConnection{
 		}
 		
 		
-		authenticate.doSignature(httpRequestBase);
+		try {
+			authenticate.doSignature(httpRequestBase);
+		} catch(AuthenticationException authenticationException) {
+			Log.loge(Connection.class.getName(), "sign", "Authentication Exception caught while signing http request, " + authenticationException.getMessage());
+			throw new ConnectionException(Connection.class.getName(), "sign", "Authentication Exception caught while signing http request, " + authenticationException.getMessage());
+		}
 	}
 }
