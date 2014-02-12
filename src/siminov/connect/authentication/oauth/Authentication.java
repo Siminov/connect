@@ -10,8 +10,8 @@ import org.apache.http.client.methods.HttpRequestBase;
 import siminov.connect.authentication.Credential;
 import siminov.connect.authentication.CredentialManager;
 import siminov.connect.authentication.design.IAuthenticate;
-import siminov.connect.authentication.design.IAuthenticateResources;
 import siminov.connect.authentication.design.IAuthenticationEvents;
+import siminov.connect.exception.AuthenticationException;
 import siminov.connect.model.AuthenticationDescriptor;
 import siminov.connect.model.ConnectDescriptor;
 import siminov.connect.resource.Resources;
@@ -26,13 +26,8 @@ public class Authentication implements IAuthenticate {
 
 	private Resources resources = Resources.getInstance();
 
-	private IAuthenticateResources authenticateResources = null;
 	
-	public void doInitialization(IAuthenticateResources authenticateResources) {
-		this.authenticateResources = authenticateResources;
-	}
-	
-	public void doAuthorization() throws SiminovException {
+	public void doAuthorization() throws AuthenticationException {
 		
 		IAuthenticationEvents authenticationEvents = resources.getAuthenticationEventHandler();
 		Credential credential = authenticateResources.getCredential();
