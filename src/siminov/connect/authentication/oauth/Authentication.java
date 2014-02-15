@@ -26,12 +26,15 @@ public class Authentication implements IAuthenticate {
 
 	private Resources resources = Resources.getInstance();
 
+	private Credential credential = null;
+	
+	public Authentication(Credential credential) {
+		this.credential = credential;
+	}
 	
 	public void doAuthorization() throws AuthenticationException {
 		
 		IAuthenticationEvents authenticationEvents = resources.getAuthenticationEventHandler();
-		Credential credential = authenticateResources.getCredential();
-		
 		if(authenticationEvents != null) {
 			authenticationEvents.onAuthenticationStart(credential);
 		}
@@ -55,26 +58,26 @@ public class Authentication implements IAuthenticate {
 		
 		if(consumerKey == null || consumerKey.length() <= 0) {
 			Log.loge(Authentication.class.getName(), "Constructor", "Invalid Consumer Key.");
-			throw new SiminovException(Authentication.class.getName(), "Constructor", "Invalid Consumer Key.");
+			throw new AuthenticationException(Authentication.class.getName(), "Constructor", "Invalid Consumer Key.");
 		} else if(consumerSecret == null || consumerSecret.length() <= 0) {
 			Log.loge(Authentication.class.getName(), "Constructor", "Invalid Consumer Secret.");
-			throw new SiminovException(Authentication.class.getName(), "Constructor", "Invalid Consumer Secret.");
+			throw new AuthenticationException(Authentication.class.getName(), "Constructor", "Invalid Consumer Secret.");
 		} else if(requestTokenUrl == null || requestTokenUrl.length() <= 0) {
 			Log.loge(Authentication.class.getName(), "Constructor", "Invalid Request Token Url.");
-			throw new SiminovException(Authentication.class.getName(), "Constructor", "Invalid Request Token Url.");
+			throw new AuthenticationException(Authentication.class.getName(), "Constructor", "Invalid Request Token Url.");
 		} else if(accessTokenUrl == null || accessTokenUrl.length() <= 0) {
 			Log.loge(Authentication.class.getName(), "Constructor", "Invalid Access Token Url.");
-			throw new SiminovException(Authentication.class.getName(), "Constructor", "Invalid Access Token Url.");
+			throw new AuthenticationException(Authentication.class.getName(), "Constructor", "Invalid Access Token Url.");
 		} else if(callbackUrl == null || callbackUrl.length() <= 0) {
 			Log.loge(Authentication.class.getName(), "Constructor", "Invalid Callback Url.");
-			throw new SiminovException(Authentication.class.getName(), "Constructor", "Invalid Callback Url.");
+			throw new AuthenticationException(Authentication.class.getName(), "Constructor", "Invalid Callback Url.");
 		}
 		
 		
-		Iterator<String> inlineResources = authenticateResources.getInlineResources();
+		Iterator<String> inlineResources = credential.getInlineResources();
 		while(inlineResources.hasNext()) {
 			String inlineResourceKey = inlineResources.next();
-			String inlineResourceValue = authenticateResources.getInlineResource(inlineResourceKey);
+			String inlineResourceValue = credential.getInlineResource(inlineResourceKey);
 			
 			authenticationDescriptor.addProperty(inlineResourceKey, inlineResourceValue);
 		}
@@ -107,11 +110,11 @@ public class Authentication implements IAuthenticate {
 		applicationContext.startActivity(intent);
 	}
 
-	public void doSignature(final HttpRequestBase httpRequestBase) throws SiminovException {
+	public void doSignature(final HttpRequestBase httpRequestBase) throws AuthenticationException {
 		
     	if(httpRequestBase == null) {
     		Log.loge(Authentication.class.getName(), "doSignature", "Invalid HttpRequestBase.");
-    		throw new SiminovException(Authentication.class.getName(), "doSignature", "Invalid HttpRequestBase.");
+    		throw new AuthenticationException(Authentication.class.getName(), "doSignature", "Invalid HttpRequestBase.");
     	}
     	
 		Resources connectResources = Resources.getInstance();
@@ -134,7 +137,7 @@ public class Authentication implements IAuthenticate {
     	Credential credential = credentialManager.getActiveAccount();
     	if(credential == null) {
     		Log.loge(Authentication.class.getName(), "doSignature", "Invalid Credential.");
-    		throw new SiminovException(Authentication.class.getName(), "doSignature", "Invalid Credential.");
+    		throw new AuthenticationException(Authentication.class.getName(), "doSignature", "Invalid Credential.");
     	}
     	
 		
@@ -142,10 +145,10 @@ public class Authentication implements IAuthenticate {
 		String consumerSecret = authenticationDescriptor.getProperty(OauthConstants.CONSUMER_SECRET);
     	if(consumerKey == null || consumerKey.length() <= 0) {
     		Log.loge(Authentication.class.getName(), "doSignature", "Invalid ConsumerKey.");
-    		throw new SiminovException(Authentication.class.getName(), "doSignature", "Invalid ConsumerKey.");
+    		throw new AuthenticationException(Authentication.class.getName(), "doSignature", "Invalid ConsumerKey.");
     	} else if(consumerSecret == null || consumerSecret.length() <= 0) {
     		Log.loge(Authentication.class.getName(), "doSignature", "Invalid ConsumerSecret.");
-    		throw new SiminovException(Authentication.class.getName(), "doSignature", "Invalid ConsumerSecret.");
+    		throw new AuthenticationException(Authentication.class.getName(), "doSignature", "Invalid ConsumerSecret.");
     	}
     	
     	
@@ -156,7 +159,7 @@ public class Authentication implements IAuthenticate {
     		consumer.sign(httpRequestBase);    		
     	} catch(Exception exception) {
     		Log.loge(Authentication.class.getName(), "doSignature", "Exception caught while signing request url, " + exception.getMessage());
-    		throw new SiminovException(Authentication.class.getName(), "doSignature", exception.getMessage());
+    		throw new AuthenticationException(Authentication.class.getName(), "doSignature", exception.getMessage());
     	}
 	}
 }

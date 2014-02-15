@@ -29,7 +29,7 @@ public class AuthenticationFactory {
 		return authenticationFactory;
 	}
 	
-	public IAuthenticate getAuthenticate() {
+	public IAuthenticate getAuthenticate(final Credential credential) {
 		
 		if(authenticate != null) {
 			return authenticate;

@@ -7,9 +7,10 @@ import oauth.signpost.commonshttp.CommonsHttpOAuthConsumer;
 import oauth.signpost.commonshttp.CommonsHttpOAuthProvider;
 import siminov.connect.authentication.Credential;
 import siminov.connect.authentication.design.IAuthenticationEvents;
+import siminov.connect.exception.AuthenticationException;
 import siminov.connect.resource.Resources;
+import siminov.orm.exception.DatabaseException;
 import siminov.orm.exception.SiminovCriticalException;
-import siminov.orm.exception.SiminovException;
 import siminov.orm.log.Log;
 import android.app.Activity;
 import android.content.Intent;
@@ -75,8 +76,8 @@ public class OauthAuthenticationActivity extends Activity {
         		
         		try {
             		authenticationEvents.onAuthenticationTerminate(credential);
-        		} catch(SiminovException se) {
-        			Log.loge(OauthAuthenticationActivity.class.getName(), "onNewIntent", "SiminovException caught while invoking on authentication terminate, " + se.getMessage());
+        		} catch(AuthenticationException ae) {
+        			Log.loge(OauthAuthenticationActivity.class.getName(), "onNewIntent", "AuthenticationException caught while invoking on authentication terminate, " + ae.getMessage());
         		}
         	}
         	
@@ -92,8 +93,8 @@ public class OauthAuthenticationActivity extends Activity {
         		
         		try {
             		authenticationEvents.onAuthenticationTerminate(credential);
-        		} catch(SiminovException se) {
-        			Log.loge(OauthAuthenticationActivity.class.getName(), "onNewIntent", "SiminovException caught while invoking on authentication terminate, " + se.getMessage());
+        		} catch(AuthenticationException ae) {
+        			Log.loge(OauthAuthenticationActivity.class.getName(), "onNewIntent", "AuthenticationException caught while invoking on authentication terminate, " + ae.getMessage());
         		}
         	}
 
@@ -104,15 +105,15 @@ public class OauthAuthenticationActivity extends Activity {
 
         try {
         	getAccessToken(verifier);
-        } catch(SiminovException se) {
-        	Log.loge(OauthAuthenticationActivity.class.getName(), "onNewIntent", "SiminovException caught while getting access token, " + se.getMessage());
+        } catch(AuthenticationException ae) {
+        	Log.loge(OauthAuthenticationActivity.class.getName(), "onNewIntent", "AuthenticationException caught while getting access token, " + ae.getMessage());
         	
         	if(authenticationEvents != null) {
         		
         		try {
             		authenticationEvents.onAuthenticationTerminate(credential);
-        		} catch(SiminovException e) {
-        			Log.loge(OauthAuthenticationActivity.class.getName(), "onNewIntent", "SiminovException caught while invoking on authentication terminate, " + e.getMessage());
+        		} catch(AuthenticationException e) {
+        			Log.loge(OauthAuthenticationActivity.class.getName(), "onNewIntent", "AuthenticationException caught while invoking on authentication terminate, " + e.getMessage());
         		}
         	}
 
@@ -125,8 +126,8 @@ public class OauthAuthenticationActivity extends Activity {
         	
         	try {
             	authenticationEvents.onAuthenticationFinish(credential);
-        	} catch(SiminovException se) {
-        		Log.loge(OauthAuthenticationActivity.class.getName(), "onNewIntent", "SiminovException caught while calling on authentication finish, " + se.getMessage());
+        	} catch(AuthenticationException ae) {
+        		Log.loge(OauthAuthenticationActivity.class.getName(), "onNewIntent", "AuthenticationException caught while calling on authentication finish, " + ae.getMessage());
         	}
         }
         
@@ -150,11 +151,11 @@ public class OauthAuthenticationActivity extends Activity {
         return authUrl;
 	}
 
-	private void getAccessToken(String verifier) throws SiminovException {
+	private void getAccessToken(String verifier) throws AuthenticationException {
 		
 		if(verifier == null || verifier.length() <= 0) {
 			Log.loge(OauthAuthenticationActivity.class.getName(), "getAccessToken", "Invalid Verifier Found.");
-			throw new SiminovCriticalException(OauthAuthenticationActivity.class.getName(), "getAuthenticationUrl", "Invalid Verifier Found.");
+			throw new SiminovCriticalException(OauthAuthenticationActivity.class.getName(), "getAccessToken", "Invalid Verifier Found.");
 		}
 		
 		 
@@ -162,13 +163,18 @@ public class OauthAuthenticationActivity extends Activity {
 			provider.retrieveAccessToken(consumer, verifier);
 		} catch(Exception exception) {
 			Log.loge(OauthAuthenticationActivity.class.getName(), "getAccessToken", "Exception caught while getting access token from server, " + exception.getMessage());
-			throw new SiminovException(OauthAuthenticationActivity.class.getName(), "getAuthenticationUrl", exception.getMessage());
+			throw new AuthenticationException(OauthAuthenticationActivity.class.getName(), "getAccessToken", exception.getMessage());
 		}
 
 		
         consumer.setTokenWithSecret(consumer.getToken(), consumer.getTokenSecret());
         credential.setToken(consumer.getToken() + ":" + consumer.getTokenSecret());
         
-        credential.saveOrUpdate();
+        try {
+            credential.saveOrUpdate();
+        } catch(DatabaseException de) {
+        	Log.loge(OauthAuthenticationActivity.class.getName(), "getAccessToken", "DatabaseException caught while saving credential, " + de.getMessage());
+        	throw new AuthenticationException(OauthAuthenticationActivity.class.getName(), "getAccessToken", de.getMessage());
+        }
 	} 
 }

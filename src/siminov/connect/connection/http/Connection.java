@@ -26,6 +26,8 @@ import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpParams;
 
 import siminov.connect.authentication.AuthenticationFactory;
+import siminov.connect.authentication.Credential;
+import siminov.connect.authentication.CredentialManager;
 import siminov.connect.authentication.design.IAuthenticate;
 import siminov.connect.connection.ConnectionRequest;
 import siminov.connect.connection.ConnectionResponse;
@@ -782,9 +784,12 @@ public class Connection implements IConnection{
 
 	
 	private void sign(final HttpRequestBase httpRequestBase) throws ConnectionException {
+
+		CredentialManager credentialManager = CredentialManager.getInstance();
+		Credential credential = credentialManager.getActiveAccount();
 		
 		AuthenticationFactory authenticationFactory = AuthenticationFactory.getInstance();
-		IAuthenticate authenticate = authenticationFactory.getAuthenticate();
+		IAuthenticate authenticate = authenticationFactory.getAuthenticate(credential);
 
 		if(authenticate == null) {
 			return;

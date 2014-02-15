@@ -20,11 +20,14 @@
 package siminov.connect.authentication;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
+import siminov.connect.service.design.IInlineResource;
 import siminov.orm.database.Database;
 
-//@Table(tableName=Credential.TABLE_NAME)
-public class Credential extends Database implements Serializable {
+public class Credential extends Database implements Serializable, IInlineResource {
 
 	//Table Name.
 	public static final String TABLE_NAME = "SIMINOV_CONNECT_CREDENTIAL";
@@ -40,6 +43,8 @@ public class Credential extends Database implements Serializable {
 	private String accountId = null;
 	private String token = null;
 	private boolean active;
+	
+	private Map<String, CredentialResource> credentialResources = new HashMap<String, CredentialResource>();
 	
 	public String getAccountId() {
 		return this.accountId;
@@ -63,5 +68,54 @@ public class Credential extends Database implements Serializable {
 	
 	public void setActive(boolean active) {
 		this.active = active;
+	}
+	
+	public Iterator<String> getCredentialResources() {
+		return this.credentialResources.keySet().iterator();
+	}
+	
+	public CredentialResource getCredentialResource(String credentialResourceName) {
+		return this.credentialResources.get(credentialResourceName);
+	}
+	
+	public void addCredentialResource(CredentialResource credentialResource) {
+		this.credentialResources.put(credentialResource.getName(), credentialResource);
+	}
+	
+	public void setCredentialResources(Iterator<CredentialResource> credentialResources) {
+		
+		while(credentialResources.hasNext()) {
+			CredentialResource credentialResource = credentialResources.next();
+			this.credentialResources.put(credentialResource.getName(), credentialResource);
+		}
+	}
+
+	public boolean containCredentialResource(CredentialResource credentialResource) {
+		return this.credentialResources.containsKey(credentialResource.getName());
+	}
+	
+	public void removeCredentialResource(CredentialResource credentialResource) {
+		this.credentialResources.remove(credentialResource.getName());
+	}
+
+	public Iterator<String> getInlineResources() {
+		return this.credentialResources.keySet().iterator();
+	}
+
+	public String getInlineResource(String name) {
+		return this.credentialResources.get(name).getValue();
+	}
+
+	public void addInlineResource(String name, String value) {
+		
+		CredentialResource credentialResource = new CredentialResource();
+		credentialResource.setName(name);
+		credentialResource.setValue(value);
+		
+		this.credentialResources.put(name, credentialResource);
+	}
+
+	public boolean containInlineResource(String name) {
+		return this.credentialResources.containsKey(name);
 	}
 }
