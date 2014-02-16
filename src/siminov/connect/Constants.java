@@ -22,14 +22,14 @@ public interface Constants {
 	public String CONNECT_DESCRIPTOR_AUTHENTICATION_TYPE = "type";
 	
 
-	public String REFRESH_DESCRIPTORS = "refresh-descriptors";
-	public String REFRESH_DESCRIPTOR = "refresh-descriptor";
-	public String REFRESH_DESCRIPTOR_SERVICES = "services";
-	public String REFRESH_DESCRIPTOR_SERVICE = "service";
-	public String REFRESH_DESCRIPTOR_NAME = "name";
-	public String REFRESH_DESCRIPTOR_REFRESH_INTERVAL = "interval";
+	public String SYNC_DESCRIPTORS = "sync-descriptors";
+	public String SYNC_DESCRIPTOR = "sync-descriptor";
+	public String SYNC_DESCRIPTOR_SERVICES = "services";
+	public String SYNC_DESCRIPTOR_SERVICE = "service";
+	public String SYNC_DESCRIPTOR_NAME = "name";
+	public String SYNC_DESCRIPTOR_REFRESH_INTERVAL = "interval";
 	
-	public String REFRESH_DESCRIPTOR_SERVICE_SEPARATOR = ".";
+	public String SYNC_DESCRIPTOR_SERVICE_SEPARATOR = ".";
 
 	public String NOTIFICATION_DESCRIPTOR = "notification-descriptor";
 	public String NOTIFICATION_DESCRIPTOR_PROPERTY = "property";
