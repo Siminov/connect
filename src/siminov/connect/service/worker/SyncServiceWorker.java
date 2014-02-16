@@ -5,9 +5,9 @@ import siminov.connect.connection.ConnectionManager;
 import siminov.connect.connection.ConnectionRequest;
 import siminov.connect.connection.ConnectionResponse;
 import siminov.connect.exception.ConnectionException;
+import siminov.connect.exception.ServiceException;
 import siminov.connect.service.design.IService;
 import siminov.connect.service.design.IServiceWorker;
-import siminov.orm.exception.SiminovException;
 import siminov.orm.log.Log;
 
 public class SyncServiceWorker implements IServiceWorker {
@@ -24,10 +24,10 @@ public class SyncServiceWorker implements IServiceWorker {
 		
 		try {
 			connectionResponse = ConnectionManager.getInstance().handle(connectionRequest);
-		} catch(ConnectionException se) {
-			Log.loge(SyncServiceWorker.class.getName(), "process", "SiminovException caught while invoking connection, " + se.getMessage());
+		} catch(ConnectionException ce) {
+			Log.loge(SyncServiceWorker.class.getName(), "process", "ConnectionException caught while invoking connection, " + ce.getMessage());
 			
-			service.onServiceTerminate(new SiminovException(se.getClassName(), se.getMethodName(), se.getMessage()));
+			service.onServiceTerminate(new ServiceException(ce.getClassName(), ce.getMethodName(), ce.getMessage()));
 			return;
 		}
 		

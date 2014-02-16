@@ -7,13 +7,16 @@ import siminov.connect.connection.ConnectionManager;
 import siminov.connect.connection.ConnectionRequest;
 import siminov.connect.connection.ConnectionResponse;
 import siminov.connect.exception.ConnectionException;
+import siminov.connect.exception.ServiceException;
 import siminov.connect.model.ServiceDescriptor;
 import siminov.connect.resource.Resources;
 import siminov.connect.service.design.IService;
 import siminov.connect.service.design.IServiceWorker;
 import siminov.connect.service.model.ServiceRequestResource;
-import siminov.connect.utils.ServiceResourceUtils;
+import siminov.connect.service.resource.ServiceResourceUtils;
 import siminov.connect.utils.Utils;
+import siminov.connect.worker.IWorker;
+import siminov.orm.exception.DatabaseException;
 import siminov.orm.exception.SiminovCriticalException;
 import siminov.orm.exception.SiminovException;
 import siminov.orm.log.Log;
@@ -25,7 +28,7 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-public class AsyncServiceWorker implements IServiceWorker {
+public class AsyncServiceWorker implements IWorker, IServiceWorker {
 
 	private static AsyncServiceWorker asyncServiceWorker = null;
 	
@@ -41,7 +44,7 @@ public class AsyncServiceWorker implements IServiceWorker {
 		resources = Resources.getInstance();
 		serviceUtils = new ServiceUtils();
 		
-		start();
+		startWorker();
 		
 		/*
 		 * Register Connectivity Change Receiver.
@@ -69,8 +72,8 @@ public class AsyncServiceWorker implements IServiceWorker {
 		
 		try {
 			contain = serviceUtils.containService(service);
-		} catch(SiminovException se) {
-			Log.loge(AsyncServiceWorker.class.getName(), "process", "SiminovException caught while checking exsisting service, " + se.getMessage());
+		} catch(ServiceException se) {
+			Log.loge(AsyncServiceWorker.class.getName(), "process", "ServiceException caught while checking exsisting service, " + se.getMessage());
 			iService.onServiceTerminate(se);
 			
 			return;
@@ -85,7 +88,7 @@ public class AsyncServiceWorker implements IServiceWorker {
 			service.save();
 		} catch(SiminovException se) {
 			Log.loge(AsyncServiceWorker.class.getName(), "process", "SiminovException caught while saving service, " + se.getMessage());
-			iService.onServiceTerminate(se);
+			iService.onServiceTerminate(new ServiceException(AsyncServiceWorker.class.getName(), "process", se.getMessage()));
 			
 			return;
 		}
@@ -94,10 +97,10 @@ public class AsyncServiceWorker implements IServiceWorker {
 		/*
 		 * Notify Async Service Worker Thread.
 		 */
-		start();
+		startWorker();
 	}
 
-	private void start() {
+	public void startWorker() {
 		
 		if(asyncServiceWorkerThread == null) {
 			asyncServiceWorkerThread = new AsyncServiceWorkerThread();
@@ -108,7 +111,7 @@ public class AsyncServiceWorker implements IServiceWorker {
 		}
 	}
 	
-	private void stop() {
+	public void stopWorker() {
 		
 		if(asyncServiceWorkerThread == null) {
 			return;
@@ -123,6 +126,14 @@ public class AsyncServiceWorker implements IServiceWorker {
 		}
 	}
 	
+	public boolean isWorkerRunning() {
+		
+		if(asyncServiceWorkerThread == null) {
+			return false;
+		}
+		
+		return asyncServiceWorkerThread.isAlive();
+	}
 	
 	private class AsyncServiceWorkerThread extends Thread {
 		
@@ -138,7 +149,7 @@ public class AsyncServiceWorker implements IServiceWorker {
 			
 			if(services == null || services.length <= 0) {
 				
-				AsyncServiceWorker.getInstance().stop();
+				AsyncServiceWorker.getInstance().stopWorker();
 				return;
 			}
 
@@ -148,8 +159,8 @@ public class AsyncServiceWorker implements IServiceWorker {
 				
 				try {
 					iService = serviceUtils.convert(service);
-				} catch(SiminovException se) {
-					Log.loge(AsyncServiceWorkerThread.class.getName(), "run", "SiminovException caught while converting service to iService, " + se.getMessage());
+				} catch(ServiceException se) {
+					Log.loge(AsyncServiceWorkerThread.class.getName(), "run", "ServiceException caught while converting service to iService, " + se.getMessage());
 					return;
 				}
 
@@ -170,7 +181,7 @@ public class AsyncServiceWorker implements IServiceWorker {
 				handle(iService);
 			}
 			
-			AsyncServiceWorker.getInstance().stop();
+			AsyncServiceWorker.getInstance().stopWorker();
 		}
 		
 		private void handle(final IService iService) {
@@ -188,7 +199,7 @@ public class AsyncServiceWorker implements IServiceWorker {
 			} catch(ConnectionException se) {
 				Log.loge(SyncServiceWorker.class.getName(), "process", "SiminovException caught while invoking connection, " + se.getMessage());
 				
-				iService.onServiceTerminate(new SiminovException(se.getClassName(), se.getMethodName(), se.getMessage()));
+				iService.onServiceTerminate(new ServiceException(se.getClassName(), se.getMethodName(), se.getMessage()));
 				return;
 			}
 			
@@ -230,9 +241,17 @@ public class AsyncServiceWorker implements IServiceWorker {
 	
 	private class ServiceUtils {
 		
-		public boolean containService(siminov.connect.service.model.ServiceRequest service) throws SiminovException {
+		public boolean containService(siminov.connect.service.model.ServiceRequest service) throws ServiceException {
 			
-			siminov.connect.service.model.ServiceRequest[] services = (siminov.connect.service.model.ServiceRequest[]) new siminov.connect.service.model.ServiceRequest().select().fetch();
+			siminov.connect.service.model.ServiceRequest[] services = null;
+			try {
+				services = (siminov.connect.service.model.ServiceRequest[]) new siminov.connect.service.model.ServiceRequest().select().fetch();
+			} catch(DatabaseException de) {
+				Log.loge(AsyncServiceWorker.class.getName(), "containService", "DatabaseException caught while getting services from database, " + de.getMessage());
+				throw new ServiceException(AsyncServiceWorker.class.getName(), "containService", de.getMessage());
+			}
+			
+			
 			if(services == null || services.length <= 0) {
 				return false;
 			}
@@ -277,7 +296,7 @@ public class AsyncServiceWorker implements IServiceWorker {
 			return false;
 		}
 		
-		public IService convert(siminov.connect.service.model.ServiceRequest service) throws SiminovException {
+		public IService convert(siminov.connect.service.model.ServiceRequest service) throws ServiceException {
 			
 			IService iService = (IService) ClassUtils.createClassInstance(service.getInstanceOf());
 			iService.setRequestId(service.getRequestId());
