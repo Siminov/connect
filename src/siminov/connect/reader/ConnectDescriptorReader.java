@@ -10,7 +10,7 @@ import siminov.connect.Constants;
 import siminov.connect.model.AuthenticationDescriptor;
 import siminov.connect.model.ConnectDescriptor;
 import siminov.connect.model.NotificationDescriptor;
-import siminov.connect.model.RefreshDescriptor;
+import siminov.connect.model.SyncDescriptor;
 import siminov.orm.exception.DeploymentException;
 import siminov.orm.log.Log;
 import siminov.orm.reader.SiminovSAXDefaultHandler;
@@ -23,7 +23,7 @@ public class ConnectDescriptorReader extends SiminovSAXDefaultHandler implements
 	private Resources resources = Resources.getInstance();
 	
 	private ConnectDescriptor connectDescriptor = new ConnectDescriptor();
-	private RefreshDescriptor refreshDescriptor = null;
+	private SyncDescriptor syncDescriptor = null;
 	
 	private AuthenticationDescriptor authenticationDescriptor = null;
 
@@ -31,7 +31,7 @@ public class ConnectDescriptorReader extends SiminovSAXDefaultHandler implements
 	
 	private String propertyName = null;
 	
-	private boolean isRefreshDesriptor = false;
+	private boolean isSyncDesriptor = false;
 	private boolean isAuthenticationDescriptor = false;
 	private boolean isNotificationDescriptor = false;
 	
@@ -111,10 +111,10 @@ public class ConnectDescriptorReader extends SiminovSAXDefaultHandler implements
 		} else if(localName.equalsIgnoreCase(CONNECT_DESCRIPTOR_AUTHENTICATION_DESCRIPTOR)) {
 			authenticationDescriptor = new AuthenticationDescriptor();
 			isAuthenticationDescriptor = true;
-		} else if(localName.equalsIgnoreCase(REFRESH_DESCRIPTOR)) {
+		} else if(localName.equalsIgnoreCase(SYNC_DESCRIPTOR)) {
 			
-			isRefreshDesriptor = true;
-			refreshDescriptor = new RefreshDescriptor();
+			isSyncDesriptor = true;
+			syncDescriptor = new SyncDescriptor();
 		} else if(localName.equalsIgnoreCase(NOTIFICATION_DESCRIPTOR)) {
 			
 			isNotificationDescriptor = true;
@@ -142,10 +142,10 @@ public class ConnectDescriptorReader extends SiminovSAXDefaultHandler implements
 		} else if(localName.equalsIgnoreCase(CONNECT_DESCRIPTOR_AUTHENTICATION_DESCRIPTOR)) {
 			connectDescriptor.setAuthenticationDescriptor(authenticationDescriptor);
 			isAuthenticationDescriptor = false;
-		} else if(localName.equalsIgnoreCase(REFRESH_DESCRIPTOR)) {
-			connectDescriptor.addRefreshDescriptor(refreshDescriptor);
-		} else if(localName.equalsIgnoreCase(REFRESH_DESCRIPTOR_SERVICE)) {
-			refreshDescriptor.addService(tempValue.toString());
+		} else if(localName.equalsIgnoreCase(SYNC_DESCRIPTOR)) {
+			connectDescriptor.addSyncDescriptor(syncDescriptor);
+		} else if(localName.equalsIgnoreCase(SYNC_DESCRIPTOR_SERVICE)) {
+			syncDescriptor.addService(tempValue.toString());
 		} else if(localName.equalsIgnoreCase(NOTIFICATION_DESCRIPTOR)) {
 			connectDescriptor.setNotificationDescriptor(notificationDescriptor);
 		}
@@ -161,8 +161,8 @@ public class ConnectDescriptorReader extends SiminovSAXDefaultHandler implements
 			notificationDescriptor.addProperty(propertyName, tempValue.toString());
 		} else if(isAuthenticationDescriptor) {
 			authenticationDescriptor.addProperty(propertyName, tempValue.toString());
-		} else if(isRefreshDesriptor) {
-			refreshDescriptor.addProperty(propertyName, tempValue.toString());
+		} else if(isSyncDesriptor) {
+			syncDescriptor.addProperty(propertyName, tempValue.toString());
 		} else {
 			connectDescriptor.addProperty(propertyName, tempValue.toString());
 		}
