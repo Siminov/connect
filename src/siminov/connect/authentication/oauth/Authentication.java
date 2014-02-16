@@ -12,12 +12,12 @@ import siminov.connect.authentication.CredentialManager;
 import siminov.connect.authentication.design.IAuthenticate;
 import siminov.connect.authentication.design.IAuthenticationEvents;
 import siminov.connect.exception.AuthenticationException;
+import siminov.connect.exception.ServiceException;
 import siminov.connect.model.AuthenticationDescriptor;
 import siminov.connect.model.ConnectDescriptor;
 import siminov.connect.resource.Resources;
-import siminov.connect.utils.ResourceUtils;
+import siminov.connect.service.resource.ResourceUtils;
 import siminov.orm.exception.SiminovCriticalException;
-import siminov.orm.exception.SiminovException;
 import siminov.orm.log.Log;
 import android.content.Context;
 import android.content.Intent;
@@ -90,8 +90,8 @@ public class Authentication implements IAuthenticate {
 			accessTokenUrl = ResourceUtils.resolve(accessTokenUrl, authenticationDescriptor);
 			authorizeUrl = ResourceUtils.resolve(authorizeUrl, authenticationDescriptor);
 			callbackUrl = ResourceUtils.resolve(callbackUrl, authenticationDescriptor);
-		} catch(SiminovException se) {
-			Log.loge(Authentication.class.getName(), "Constructor", "SiminovException caught while resolving inline values, " + se.getMessage());
+		} catch(ServiceException se) {
+			Log.loge(Authentication.class.getName(), "Constructor", "ServiceException caught while resolving inline values, " + se.getMessage());
 			throw new SiminovCriticalException(Authentication.class.getName(), "Constructor", se.getMessage());
 		}
 		
