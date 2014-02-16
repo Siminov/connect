@@ -787,6 +787,11 @@ public class Connection implements IConnection{
 
 		CredentialManager credentialManager = CredentialManager.getInstance();
 		Credential credential = credentialManager.getActiveAccount();
+
+		if(credential == null) {
+			Log.logd(Connection.class.getName(), "sign", "No Active User Account Found.");
+			return;
+		}
 		
 		AuthenticationFactory authenticationFactory = AuthenticationFactory.getInstance();
 		IAuthenticate authenticate = authenticationFactory.getAuthenticate(credential);

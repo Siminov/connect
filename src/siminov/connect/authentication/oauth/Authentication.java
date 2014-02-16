@@ -89,7 +89,7 @@ public class Authentication implements IAuthenticate {
 			requestTokenUrl = ResourceUtils.resolve(requestTokenUrl, authenticationDescriptor);
 			accessTokenUrl = ResourceUtils.resolve(accessTokenUrl, authenticationDescriptor);
 			authorizeUrl = ResourceUtils.resolve(authorizeUrl, authenticationDescriptor);
-			callbackUrl = ResourceUtils.resolve(requestTokenUrl, authenticationDescriptor);
+			callbackUrl = ResourceUtils.resolve(callbackUrl, authenticationDescriptor);
 		} catch(SiminovException se) {
 			Log.loge(Authentication.class.getName(), "Constructor", "SiminovException caught while resolving inline values, " + se.getMessage());
 			throw new SiminovCriticalException(Authentication.class.getName(), "Constructor", se.getMessage());

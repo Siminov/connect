@@ -48,7 +48,7 @@ public class OauthAuthenticationActivity extends Activity {
 
 		Intent intent = getIntent();
 		
-		credential = intent.getParcelableExtra(OauthConstants.CREDENTIAL);
+		credential = (Credential) intent.getSerializableExtra(OauthConstants.CREDENTIAL);
 		consumerKey = intent.getStringExtra(OauthConstants.CONSUMER_KEY);
 		consumerSecret = intent.getStringExtra(OauthConstants.CONSUMER_SECRET);
 		requestTokenUrl = intent.getStringExtra(OauthConstants.REQUEST_TOKEN_URL);
