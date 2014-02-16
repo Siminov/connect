@@ -3,19 +3,16 @@ package siminov.connect.service;
 import java.util.Iterator;
 
 import siminov.connect.Constants;
-import siminov.connect.connection.ConnectionRequest;
-import siminov.connect.connection.ConnectionResponse;
-import siminov.connect.connection.IConnection;
+import siminov.connect.exception.ServiceException;
 import siminov.connect.model.ServiceDescriptor;
 import siminov.connect.model.ServiceDescriptor.API;
 import siminov.connect.resource.Resources;
 import siminov.connect.service.design.IService;
 import siminov.connect.service.design.IServiceWorker;
+import siminov.connect.service.resource.ResourceUtils;
+import siminov.connect.service.resource.ServiceResourceUtils;
 import siminov.connect.service.worker.AsyncServiceWorker;
 import siminov.connect.service.worker.SyncServiceWorker;
-import siminov.connect.utils.ResourceUtils;
-import siminov.connect.utils.ServiceResourceUtils;
-import siminov.orm.exception.SiminovException;
 
 
 public class ServiceHandler {
@@ -44,7 +41,7 @@ public class ServiceHandler {
 		return serviceHandler;
 	}
 	
-	public void handle(final IService service) throws SiminovException {
+	public void handle(final IService service) throws ServiceException {
 
 		ServiceDescriptor serviceDescriptor = service.getServiceDescriptor();
 		if(serviceDescriptor == null) {

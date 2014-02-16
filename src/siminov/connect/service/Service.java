@@ -5,9 +5,9 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Random;
 
+import siminov.connect.exception.ServiceException;
 import siminov.connect.model.ServiceDescriptor;
 import siminov.connect.service.design.IService;
-import siminov.orm.exception.SiminovException;
 import siminov.orm.log.Log;
 
 public abstract class Service implements IService {
@@ -78,8 +78,8 @@ public abstract class Service implements IService {
 		ServiceHandler serviceHandler = ServiceHandler.getInstance();
 		try {
 			serviceHandler.handle(this);
-		} catch(SiminovException se) {
-			Log.loge(Service.class.getName(), "invoke", "SiminovException caught while invoking service, " + se.getMessage());
+		} catch(ServiceException se) {
+			Log.loge(Service.class.getName(), "invoke", "ServiceException caught while invoking service, " + se.getMessage());
 			
 			this.onServiceTerminate(se);
 		}
