@@ -2,7 +2,7 @@ package siminov.connect.service.design;
 
 import siminov.connect.connection.ConnectionRequest;
 import siminov.connect.connection.ConnectionResponse;
-import siminov.orm.exception.SiminovException;
+import siminov.connect.exception.ServiceException;
 
 public interface IServiceEvents {
 
@@ -27,6 +27,5 @@ public interface IServiceEvents {
 	public void onServiceApiFinish(final ConnectionResponse connectionResponse);
 
 	
-	public void onServiceTerminate(final SiminovException siminovException);
-	
+	public void onServiceTerminate(final ServiceException serviceException);
 }
