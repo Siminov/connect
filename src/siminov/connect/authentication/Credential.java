@@ -70,8 +70,8 @@ public class Credential extends Database implements Serializable, IInlineResourc
 		this.active = active;
 	}
 	
-	public Iterator<String> getCredentialResources() {
-		return this.credentialResources.keySet().iterator();
+	public Iterator<CredentialResource> getCredentialResources() {
+		return this.credentialResources.values().iterator();
 	}
 	
 	public CredentialResource getCredentialResource(String credentialResourceName) {
@@ -111,6 +111,8 @@ public class Credential extends Database implements Serializable, IInlineResourc
 		CredentialResource credentialResource = new CredentialResource();
 		credentialResource.setName(name);
 		credentialResource.setValue(value);
+		
+		credentialResource.setCredential(this);
 		
 		this.credentialResources.put(name, credentialResource);
 	}

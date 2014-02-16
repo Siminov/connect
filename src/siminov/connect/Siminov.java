@@ -121,13 +121,28 @@ public class Siminov extends siminov.orm.Siminov {
 						
 						Relationship relationship = relationships.next();
 						if(relationship.getReferTo().equalsIgnoreCase(Credential.class.getName())) {
-							
+
+							/*
+							 * Add Credential Descriptor
+							 */
 							databaseDescriptor.addDatabaseMappingDescriptorPath(Constants.CONNECT_CREDENTIAL_DESCRIPTOR_PATH);
 
 							DatabaseMappingDescriptorReader databaseDescriptorReader = new DatabaseMappingDescriptorReader(Constants.CONNECT_CREDENTIAL_DESCRIPTOR_PATH);	
 							DatabaseMappingDescriptor credentialDatabaseDescriptor = databaseDescriptorReader.getDatabaseMappingDescriptor();
 							
 							databaseDescriptor.addDatabaseMappingDescriptor(Constants.CONNECT_CREDENTIAL_DESCRIPTOR_PATH, credentialDatabaseDescriptor);
+
+							
+							/*
+							 * Add Credential Resource Descriptor
+							 */
+							databaseDescriptor.addDatabaseMappingDescriptorPath(Constants.CONNECT_CREDENTIAL_RESOURCE_DESCRIPTOR_PATH);
+
+							databaseDescriptorReader = new DatabaseMappingDescriptorReader(Constants.CONNECT_CREDENTIAL_RESOURCE_DESCRIPTOR_PATH);	
+							DatabaseMappingDescriptor credentialResourceDatabaseDescriptor = databaseDescriptorReader.getDatabaseMappingDescriptor();
+							
+							databaseDescriptor.addDatabaseMappingDescriptor(Constants.CONNECT_CREDENTIAL_RESOURCE_DESCRIPTOR_PATH, credentialResourceDatabaseDescriptor);
+							
 							
 							foundCredentialRelationship = true;
 							break;
@@ -177,6 +192,8 @@ public class Siminov extends siminov.orm.Siminov {
 
 							if(((String) data.get(key)).equalsIgnoreCase(Credential.TABLE_NAME)) {
 								databaseDescriptor.addDatabaseMappingDescriptorPath(Constants.CONNECT_CREDENTIAL_DESCRIPTOR_PATH);
+								databaseDescriptor.addDatabaseMappingDescriptorPath(Constants.CONNECT_CREDENTIAL_RESOURCE_DESCRIPTOR_PATH);
+								
 								foundCredentialTable = true;
 								break;
 							}

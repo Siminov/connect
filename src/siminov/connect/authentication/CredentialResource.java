@@ -1,7 +1,11 @@
 package siminov.connect.authentication;
 
+import java.io.Serializable;
 
-public class CredentialResource {
+import siminov.orm.database.Database;
+
+
+public class CredentialResource extends Database implements Serializable {
 
 	private Credential credential = null;
 	

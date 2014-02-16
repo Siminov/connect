@@ -47,10 +47,10 @@ public class AuthenticationFactory {
 		String type = authenticationDescriptor.getType();
 		String packageName = AUTHENTICATION_PACKAGE_NAME + "." + type;
 		
-		return getAuthenticate(packageName);
+		return getAuthenticate(packageName, credential);
 	}
 
-	private IAuthenticate getAuthenticate(String packageName) {
-		return (IAuthenticate) ClassUtils.createClassInstance(packageName + "." + AUTHENTICATION_CLASS_NAME);
+	private IAuthenticate getAuthenticate(final String packageName, final Credential credential) {
+		return (IAuthenticate) ClassUtils.createClassInstance(packageName + "." + AUTHENTICATION_CLASS_NAME, credential);
 	}
 }

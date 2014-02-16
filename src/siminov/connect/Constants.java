@@ -5,6 +5,7 @@ public interface Constants {
 
 	public String CONNECT_DATABASE_DESSCRIPTOR_PATH = "siminov/connect/resource/DatabaseDescriptor.si.xml";
 	public String CONNECT_CREDENTIAL_DESCRIPTOR_PATH = "siminov/connect/resource/Credential.si.xml";
+	public String CONNECT_CREDENTIAL_RESOURCE_DESCRIPTOR_PATH = "siminov/connect/resource/CredentialResource.si.xml";
 	
 	
 	//Connect Descriptor
