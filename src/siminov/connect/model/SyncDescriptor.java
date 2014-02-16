@@ -9,31 +9,31 @@ import java.util.Map;
 import siminov.connect.Constants;
 import siminov.orm.model.IDescriptor;
 
-public class RefreshDescriptor implements IDescriptor {
+public class SyncDescriptor implements IDescriptor {
 
 	private Map<String, String> properties = new HashMap<String, String> ();
 	
 	private Collection<String> services = new ArrayList<String>();
 	
 	public String getName() {
-		return this.properties.get(Constants.REFRESH_DESCRIPTOR_NAME);
+		return this.properties.get(Constants.SYNC_DESCRIPTOR_NAME);
 	}
 	
 	public void setName(String name) {
 		this.properties.get(name);
 	}
 
-	public long getRefreshInterval() {
-		String refreshInterval = this.properties.get(Constants.REFRESH_DESCRIPTOR_REFRESH_INTERVAL);
-		if(refreshInterval == null || refreshInterval.length() <= 0) {
+	public long getSyncInterval() {
+		String syncInterval = this.properties.get(Constants.SYNC_DESCRIPTOR_REFRESH_INTERVAL);
+		if(syncInterval == null || syncInterval.length() <= 0) {
 			return 0;
 		}
 		
-		return Long.valueOf(refreshInterval);
+		return Long.valueOf(syncInterval);
 	}
 	
-	public void setRefreshInterval(long refreshInterval) {
-		this.properties.put(Constants.REFRESH_DESCRIPTOR_REFRESH_INTERVAL, Long.toString(refreshInterval));
+	public void setSyncInterval(long syncInterval) {
+		this.properties.put(Constants.SYNC_DESCRIPTOR_REFRESH_INTERVAL, Long.toString(syncInterval));
 	}
 	
 	public Iterator<String> getProperties() {

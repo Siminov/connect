@@ -15,7 +15,7 @@ public class ConnectDescriptor implements IDescriptor {
 	private Collection<String> serviceDescriptorPaths = new ConcurrentLinkedQueue<String> ();
 	private Map<String, String> serviceDescriptorNamesBasedOnPath = new HashMap<String, String>();
 
-	private Map<String, RefreshDescriptor> refreshDescriptors = new HashMap<String, RefreshDescriptor>();
+	private Map<String, SyncDescriptor> syncDescriptors = new HashMap<String, SyncDescriptor>();
 	
 	private AuthenticationDescriptor authenticationDescriptor = null;
 	private NotificationDescriptor notificationDescriptor = null;
@@ -88,24 +88,24 @@ public class ConnectDescriptor implements IDescriptor {
 		this.serviceDescriptorNamesBasedOnPath.remove(serviceDescriptorPath);
 	}
 	
-	public Iterator<RefreshDescriptor> getRefreshDescriptors() {
-		return this.refreshDescriptors.values().iterator();
+	public Iterator<SyncDescriptor> getSyncDescriptors() {
+		return this.syncDescriptors.values().iterator();
 	}
 	
-	public RefreshDescriptor getRefreshDescriptor(String refreshDescriptorName) {
-		return this.refreshDescriptors.get(refreshDescriptorName);
+	public SyncDescriptor getSyncDescriptor(String syncDescriptorName) {
+		return this.syncDescriptors.get(syncDescriptorName);
 	}
 	
-	public void addRefreshDescriptor(RefreshDescriptor refreshDescriptor) {
-		this.refreshDescriptors.put(refreshDescriptor.getName(), refreshDescriptor);
+	public void addSyncDescriptor(SyncDescriptor syncDescriptor) {
+		this.syncDescriptors.put(syncDescriptor.getName(), syncDescriptor);
 	}
 	
-	public boolean containRefreshDescriptor(String refreshDescriptorName) {
-		return this.refreshDescriptors.containsKey(refreshDescriptorName);
+	public boolean containSyncDescriptor(String syncDescriptorName) {
+		return this.syncDescriptors.containsKey(syncDescriptorName);
 	}
 	
-	public void removeRefreshDescriptors(String refreshDescriptorName) {
-		this.refreshDescriptors.remove(refreshDescriptorName);
+	public void removeSyncDescriptors(String syncDescriptorName) {
+		this.syncDescriptors.remove(syncDescriptorName);
 	}
 	
 	public AuthenticationDescriptor getAuthenticationDescriptor() {
