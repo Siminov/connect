@@ -5,7 +5,7 @@ import java.util.Iterator;
 import siminov.connect.authentication.design.IAuthenticationEvents;
 import siminov.connect.events.EventHandler;
 import siminov.connect.model.ConnectDescriptor;
-import siminov.connect.model.RefreshDescriptor;
+import siminov.connect.model.SyncDescriptor;
 import siminov.connect.model.ServiceDescriptor;
 import siminov.connect.model.ServiceDescriptor.API;
 import siminov.connect.notification.design.INotificationEvents;
@@ -98,15 +98,15 @@ public class Resources {
 		return EventHandler.getInstance().getNotificationEventHandler();
 	}
 	
-	public Iterator<RefreshDescriptor> getRefreshDescriptors() {
+	public Iterator<SyncDescriptor> getSyncDescriptors() {
 		
 		ConnectDescriptor connectDescriptor = getConnectDescriptor();
-		return connectDescriptor.getRefreshDescriptors();
+		return connectDescriptor.getSyncDescriptors();
 	}
 	
-	public RefreshDescriptor getRefreshDescriptor(final String refreshDescriptorName) {
+	public SyncDescriptor getSyncDescriptor(final String syncDescriptorName) {
 		
 		ConnectDescriptor connectDescriptor = getConnectDescriptor();
-		return connectDescriptor.getRefreshDescriptor(refreshDescriptorName);
+		return connectDescriptor.getSyncDescriptor(syncDescriptorName);
 	}
 }
