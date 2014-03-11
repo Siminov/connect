@@ -1,8 +1,8 @@
 package siminov.connect.authentication;
 
 import siminov.connect.authentication.design.IAuthenticate;
+import siminov.connect.model.ApplicationDescriptor;
 import siminov.connect.model.AuthenticationDescriptor;
-import siminov.connect.model.ConnectDescriptor;
 import siminov.connect.resource.Resources;
 import siminov.orm.utils.ClassUtils;
 
@@ -36,13 +36,13 @@ public class AuthenticationFactory {
 		}
 		
 		Resources resources = Resources.getInstance();
-		ConnectDescriptor connectDescriptor = resources.getConnectDescriptor();
+		ApplicationDescriptor applicationDescriptor = resources.getApplicationDescriptor();
 		
-		if(!connectDescriptor.containAuthenticationDescriptor()) {
+		if(!applicationDescriptor.containAuthenticationDescriptor()) {
 			return null;
 		}
 		
-		AuthenticationDescriptor authenticationDescriptor = connectDescriptor.getAuthenticationDescriptor();
+		AuthenticationDescriptor authenticationDescriptor = applicationDescriptor.getAuthenticationDescriptor();
 
 		String type = authenticationDescriptor.getType();
 		String packageName = AUTHENTICATION_PACKAGE_NAME + "." + type;

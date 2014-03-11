@@ -2,6 +2,7 @@ package siminov.connect.connection;
 
 import siminov.connect.Constants;
 import siminov.connect.exception.ConnectionException;
+import siminov.connect.service.design.IService;
 
 public class ConnectionManager {
 
@@ -25,7 +26,14 @@ public class ConnectionManager {
 		return connectionManager;
 	}
 	
-	public ConnectionResponse handle(final ConnectionRequest connectionRequest) throws ConnectionException {
+	public ConnectionResponse handle(final IService service) throws ConnectionException {
+		
+		ConnectionRequest connectionRequest = ConnectionHelper.prepareConnectionRequest(service);
+		
+		/*
+		 * Service Event onServiceApiInvoke
+		 */
+		service.onServiceApiInvoke(connectionRequest);
 		
 		IConnection connection = null;
 		if(connectionRequest.getProtocol().equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_HTTP_PROTOCOL)) {

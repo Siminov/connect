@@ -1,6 +1,6 @@
 package siminov.connect.notification;
 
-import siminov.connect.model.ConnectDescriptor;
+import siminov.connect.model.ApplicationDescriptor;
 import siminov.connect.model.NotificationDescriptor;
 import siminov.connect.notification.design.IMessage;
 import siminov.connect.notification.design.INotification;
@@ -20,8 +20,8 @@ public class NotificationService extends GCMBaseIntentService {
 		
 		Resources resources = Resources.getInstance();
 		
-		ConnectDescriptor connectDescriptor = resources.getConnectDescriptor();
-		NotificationDescriptor notificationDescriptor = connectDescriptor.getNotificationDescriptor();
+		ApplicationDescriptor applicationDescriptor = resources.getApplicationDescriptor();
+		NotificationDescriptor notificationDescriptor = applicationDescriptor.getNotificationDescriptor();
 		
 		SENDER_ID = notificationDescriptor.getProperty(INotification.SENDER_ID);
 	}

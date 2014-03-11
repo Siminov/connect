@@ -4,8 +4,8 @@ import java.util.Iterator;
 import java.util.Map;
 
 import siminov.connect.authentication.Credential;
-import siminov.connect.model.ConnectDescriptor;
-import siminov.connect.reader.ConnectDescriptorReader;
+import siminov.connect.model.ApplicationDescriptor;
+import siminov.connect.reader.ApplicationDescriptorReader;
 import siminov.connect.resource.Resources;
 import siminov.orm.IInitializer;
 import siminov.orm.database.DatabaseBundle;
@@ -15,7 +15,6 @@ import siminov.orm.events.ISiminovEvents;
 import siminov.orm.exception.DatabaseException;
 import siminov.orm.exception.DeploymentException;
 import siminov.orm.log.Log;
-import siminov.orm.model.ApplicationDescriptor;
 import siminov.orm.model.DatabaseDescriptor;
 import siminov.orm.model.DatabaseMappingDescriptor;
 import siminov.orm.model.DatabaseMappingDescriptor.Relationship;
@@ -41,17 +40,14 @@ public class Siminov extends siminov.orm.Siminov {
 
 	static void start() {
 		
-		siminov.orm.Siminov.processApplicationDescriptor();
+		processApplicationDescriptor();
 		
-		processDatabaseDescriptor();
+		processDatabaseDescriptors();
 		processLibraries();
 		processDatabaseMappingDescriptors();
+		
 		processDatabase();
 		
-		
-		processKonnectDescriptor();
-		processServices();
-
 		
 		isActive = true;
 		siminov.orm.Siminov.isActive = true;
@@ -71,30 +67,32 @@ public class Siminov extends siminov.orm.Siminov {
 		siminov.orm.Siminov.shutdown();
 	}
 
-	protected static void processDatabaseDescriptor() {
+	protected static void processApplicationDescriptor() {
+		
+		ApplicationDescriptorReader applicationDescriptorParser = new ApplicationDescriptorReader();
+		
+		ApplicationDescriptor applicationDescriptor = applicationDescriptorParser.getApplicationDescriptor();
+		if(applicationDescriptor == null) {
+			Log.logd(Siminov.class.getName(), "processApplicationDescriptor", "Invalid Application Descriptor Found.");
+			throw new DeploymentException(Siminov.class.getName(), "processApplicationDescriptor", "Invalid Application Descriptor Found.");
+		}
+		
+		ormResources.setApplicationDescriptor(applicationDescriptor);		
+		connectResources.setApplicationDescriptor(applicationDescriptor);
+	}
+	
+	protected static void processDatabaseDescriptors() {
 		siminov.orm.Siminov.processDatabaseDescriptors();
 		
 		DatabaseDescriptorReader databaseDescriptorReader = new DatabaseDescriptorReader(Constants.CONNECT_DATABASE_DESSCRIPTOR_PATH);
 		DatabaseDescriptor databaseDescriptor = databaseDescriptorReader.getDatabaseDescriptor();
 		
-		ApplicationDescriptor applicationDescriptor = siminov.orm.resource.Resources.getInstance().getApplicationDescriptor();
+		ApplicationDescriptor applicationDescriptor = connectResources.getApplicationDescriptor();
 		applicationDescriptor.addDatabaseDescriptor(Constants.CONNECT_DATABASE_DESSCRIPTOR_PATH, databaseDescriptor);
 	}
 
 	protected static void processDatabaseMappingDescriptors() {
 		siminov.orm.Siminov.processDatabaseMappingDescriptors();
-	}
-	
-	protected static void processKonnectDescriptor() {
-		
-		ConnectDescriptorReader konnectDescriptorReader = new ConnectDescriptorReader();
-		ConnectDescriptor konnectDescriptor = konnectDescriptorReader.getConnectDescriptor();
-		
-		connectResources.setConnectDescriptor(konnectDescriptor);
-	}
-	
-	protected static void processServices() {
-		
 	}
 	
 	protected static void processLibraries() {
@@ -103,7 +101,7 @@ public class Siminov extends siminov.orm.Siminov {
 	
 	protected static void processDatabase() {
 
-		ApplicationDescriptor applicationDescriptor = siminov.orm.resource.Resources.getInstance().getApplicationDescriptor();
+		ApplicationDescriptor applicationDescriptor = connectResources.getApplicationDescriptor();
 		if(siminov.orm.Siminov.firstTimeProcessed) {
 			
 			Iterator<DatabaseDescriptor> databaseDescriptors = applicationDescriptor.getDatabaseDescriptors();

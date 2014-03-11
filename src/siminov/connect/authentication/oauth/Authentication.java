@@ -13,8 +13,8 @@ import siminov.connect.authentication.design.IAuthenticate;
 import siminov.connect.authentication.design.IAuthenticationEvents;
 import siminov.connect.exception.AuthenticationException;
 import siminov.connect.exception.ServiceException;
+import siminov.connect.model.ApplicationDescriptor;
 import siminov.connect.model.AuthenticationDescriptor;
-import siminov.connect.model.ConnectDescriptor;
 import siminov.connect.resource.Resources;
 import siminov.connect.service.resource.ResourceUtils;
 import siminov.orm.exception.SiminovCriticalException;
@@ -45,8 +45,8 @@ public class Authentication implements IAuthenticate {
 
 		Context applicationContext = ormResources.getApplicationContext();
 		
-		ConnectDescriptor connectDescriptor = connectResources.getConnectDescriptor();
-		AuthenticationDescriptor authenticationDescriptor = connectDescriptor.getAuthenticationDescriptor();
+		ApplicationDescriptor applicationDescriptor = connectResources.getApplicationDescriptor();
+		AuthenticationDescriptor authenticationDescriptor = applicationDescriptor.getAuthenticationDescriptor();
 
 		
 		String consumerKey = authenticationDescriptor.getProperty(OauthConstants.CONSUMER_KEY);
@@ -118,13 +118,13 @@ public class Authentication implements IAuthenticate {
     	}
     	
 		Resources connectResources = Resources.getInstance();
-		ConnectDescriptor connectDescriptor = connectResources.getConnectDescriptor();
-		if(!connectDescriptor.containAuthenticationDescriptor())	 {
+		ApplicationDescriptor applicationDescriptor = connectResources.getApplicationDescriptor();
+		if(!applicationDescriptor.containAuthenticationDescriptor())	 {
 			return;
 		}
 		
 		
-		AuthenticationDescriptor authenticationDescriptor = connectDescriptor.getAuthenticationDescriptor();
+		AuthenticationDescriptor authenticationDescriptor = applicationDescriptor.getAuthenticationDescriptor();
     	CredentialManager credentialManager = CredentialManager.getInstance();
     	
     	boolean anyActiveUser = credentialManager.isAnyActiveAccount();

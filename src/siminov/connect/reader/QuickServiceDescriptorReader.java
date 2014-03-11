@@ -8,7 +8,7 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 
 import siminov.connect.Constants;
-import siminov.connect.model.ConnectDescriptor;
+import siminov.connect.model.ApplicationDescriptor;
 import siminov.connect.model.ServiceDescriptor;
 import siminov.connect.resource.Resources;
 import siminov.orm.exception.PrematureEndOfParseException;
@@ -55,8 +55,8 @@ public class QuickServiceDescriptorReader extends SiminovSAXDefaultHandler imple
 
 
 		
-		ConnectDescriptor connectDescriptor = connectResources.getConnectDescriptor();
-		Iterator<String> serviceDescriptorPaths = connectDescriptor.getServiceDescriptorPaths();
+		ApplicationDescriptor applicationDescriptor = connectResources.getApplicationDescriptor();
+		Iterator<String> serviceDescriptorPaths = applicationDescriptor.getServiceDescriptorPaths();
 		
 		while(serviceDescriptorPaths.hasNext()) {
 			String serviceDescriptorPath = serviceDescriptorPaths.next();

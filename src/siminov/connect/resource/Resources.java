@@ -4,10 +4,10 @@ import java.util.Iterator;
 
 import siminov.connect.authentication.design.IAuthenticationEvents;
 import siminov.connect.events.EventHandler;
-import siminov.connect.model.ConnectDescriptor;
-import siminov.connect.model.SyncDescriptor;
+import siminov.connect.model.ApplicationDescriptor;
 import siminov.connect.model.ServiceDescriptor;
 import siminov.connect.model.ServiceDescriptor.API;
+import siminov.connect.model.SyncDescriptor;
 import siminov.connect.notification.design.INotificationEvents;
 import siminov.connect.reader.QuickServiceDescriptorReader;
 import siminov.connect.reader.ServiceDescriptorReader;
@@ -19,7 +19,7 @@ public class Resources {
 
 	private static Resources resources = null;
 	
-	private ConnectDescriptor connectDescriptor = null;
+	private ApplicationDescriptor applicationDescriptor = null;
 	
 	private Resources() {
 		
@@ -34,12 +34,12 @@ public class Resources {
 		return resources;
 	}
 
-	public ConnectDescriptor getConnectDescriptor() {
-		return this.connectDescriptor;
+	public ApplicationDescriptor getApplicationDescriptor() {
+		return this.applicationDescriptor;
 	}
 	
-	public void setConnectDescriptor(final ConnectDescriptor connectDescriptor) {
-		this.connectDescriptor = connectDescriptor;
+	public void setApplicationDescriptor(final ApplicationDescriptor applicationDescriptor) {
+		this.applicationDescriptor = applicationDescriptor;
 	}
 	
 	public ServiceDescriptor requiredServiceDescriptorBasedOnPath(final String serviceDescriptorPath) {
@@ -47,14 +47,14 @@ public class Resources {
 		ServiceDescriptorReader serviceDescriptorReader = new ServiceDescriptorReader(serviceDescriptorPath);
 		ServiceDescriptor serviceDescriptor = serviceDescriptorReader.getServiceDescriptor();
 		
-		connectDescriptor.addServiceDescriptorNameBasedOnPath(serviceDescriptorPath, serviceDescriptor.getName());
+		applicationDescriptor.addServiceDescriptorNameBasedOnPath(serviceDescriptorPath, serviceDescriptor.getName());
 		
 		return serviceDescriptor;
 	}
 
 	public ServiceDescriptor requiredServiceDescriptorBasedOnName(final String serviceDescriptorName) {
 		
-		if(!connectDescriptor.containServiceDescriptorPathBasedOnName(serviceDescriptorName)) {
+		if(!applicationDescriptor.containServiceDescriptorPathBasedOnName(serviceDescriptorName)) {
 
 			QuickServiceDescriptorReader quickServiceDescriptorReader;
 			try {
@@ -72,7 +72,7 @@ public class Resources {
 		}
 		
 		
-		String serviceDescriptorPath = connectDescriptor.getServiceDescriptorPathBasedOnName(serviceDescriptorName);
+		String serviceDescriptorPath = applicationDescriptor.getServiceDescriptorPathBasedOnName(serviceDescriptorName);
 		return requiredServiceDescriptorBasedOnPath(serviceDescriptorPath);
 	}
 
@@ -100,13 +100,13 @@ public class Resources {
 	
 	public Iterator<SyncDescriptor> getSyncDescriptors() {
 		
-		ConnectDescriptor connectDescriptor = getConnectDescriptor();
-		return connectDescriptor.getSyncDescriptors();
+		ApplicationDescriptor applicationDescriptor = getApplicationDescriptor();
+		return applicationDescriptor.getSyncDescriptors();
 	}
 	
 	public SyncDescriptor getSyncDescriptor(final String syncDescriptorName) {
 		
-		ConnectDescriptor connectDescriptor = getConnectDescriptor();
-		return connectDescriptor.getSyncDescriptor(syncDescriptorName);
+		ApplicationDescriptor applicationDescriptor = getApplicationDescriptor();
+		return applicationDescriptor.getSyncDescriptor(syncDescriptorName);
 	}
 }

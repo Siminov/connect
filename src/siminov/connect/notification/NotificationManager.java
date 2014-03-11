@@ -1,6 +1,6 @@
 package siminov.connect.notification;
 
-import siminov.connect.model.ConnectDescriptor;
+import siminov.connect.model.ApplicationDescriptor;
 import siminov.connect.model.NotificationDescriptor;
 import siminov.connect.notification.design.IMessage;
 import siminov.connect.notification.design.INotification;
@@ -36,8 +36,8 @@ public class NotificationManager implements INotification {
 	
 	public void doRegistration() {
 
-		ConnectDescriptor connectDescriptor = connectResources.getConnectDescriptor();
-		NotificationDescriptor notificationDescriptor = connectDescriptor.getNotificationDescriptor();
+		ApplicationDescriptor applicationDescriptor = connectResources.getApplicationDescriptor();
+		NotificationDescriptor notificationDescriptor = applicationDescriptor.getNotificationDescriptor();
 
 		Context applicationContext = ormResources.getApplicationContext();
 		

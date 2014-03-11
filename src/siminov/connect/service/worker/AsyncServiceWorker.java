@@ -186,16 +186,10 @@ public class AsyncServiceWorker implements IWorker, IServiceWorker {
 		
 		private void handle(final IService iService) {
 			
-			ConnectionRequest connectionRequest = ConnectionHelper.prepareConnectionRequest(iService);
-			
-			/*
-			 * Service Event onServiceApiInvoke
-			 */
-			iService.onServiceApiInvoke(connectionRequest);
 			ConnectionResponse connectionResponse = null;
 			
 			try {
-				connectionResponse = ConnectionManager.getInstance().handle(connectionRequest);
+				connectionResponse = ConnectionManager.getInstance().handle(iService);
 			} catch(ConnectionException se) {
 				Log.loge(SyncServiceWorker.class.getName(), "process", "SiminovException caught while invoking connection, " + se.getMessage());
 				

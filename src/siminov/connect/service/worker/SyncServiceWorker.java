@@ -1,8 +1,6 @@
 package siminov.connect.service.worker;
 
-import siminov.connect.connection.ConnectionHelper;
 import siminov.connect.connection.ConnectionManager;
-import siminov.connect.connection.ConnectionRequest;
 import siminov.connect.connection.ConnectionResponse;
 import siminov.connect.exception.ConnectionException;
 import siminov.connect.exception.ServiceException;
@@ -14,16 +12,10 @@ public class SyncServiceWorker implements IServiceWorker {
 
 	public void process(final IService service) {
 
-		ConnectionRequest connectionRequest = ConnectionHelper.prepareConnectionRequest(service);
-		
-		/*
-		 * Service Event onServiceApiInvoke
-		 */
-		service.onServiceApiInvoke(connectionRequest);
 		ConnectionResponse connectionResponse = null;
 		
 		try {
-			connectionResponse = ConnectionManager.getInstance().handle(connectionRequest);
+			connectionResponse = ConnectionManager.getInstance().handle(service);
 		} catch(ConnectionException ce) {
 			Log.loge(SyncServiceWorker.class.getName(), "process", "ConnectionException caught while invoking connection, " + ce.getMessage());
 			
