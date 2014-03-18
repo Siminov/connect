@@ -156,7 +156,7 @@ public class ServiceDescriptorReader extends SiminovSAXDefaultHandler implements
 	}
 	
 	private void initializeProperty(Attributes attributes) {
-		propertyName = attributes.getValue(CONNECT_DESCRIPTOR_PROPERTY_NAME);
+		propertyName = attributes.getValue(SERVICE_DESCRIPTOR_PROPERTY_NAME);
 	}
 	
 	private void processProperty() {

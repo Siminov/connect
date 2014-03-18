@@ -1,19 +1,3 @@
-/** 
- * [SIMINOV FRAMEWORK]
- * Copyright [2013] [Siminov Software Solution LLP|support@siminov.com]
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- **/
 
 package siminov.connect.reader;
 
@@ -27,7 +11,6 @@ import siminov.connect.Constants;
 import siminov.connect.model.ApplicationDescriptor;
 import siminov.connect.model.AuthenticationDescriptor;
 import siminov.connect.model.NotificationDescriptor;
-import siminov.connect.model.SyncDescriptor;
 import siminov.orm.exception.DeploymentException;
 import siminov.orm.log.Log;
 import siminov.orm.reader.SiminovSAXDefaultHandler;
@@ -35,41 +18,6 @@ import siminov.orm.resource.Resources;
 import android.content.Context;
 
 
-
-/**
- * Exposes methods to parse Application Descriptor information as per define in ApplicationDescriptor.si.xml file by application.
-	<p>
-		<pre>
-		
-Example:
-	{@code
-	<core>
-	
-		<property name="name">SIMINOV TEMPLATE</property>	
-		<property name="description">Siminov Template Application</property>
-		<property name="version">0.9</property>
-	
-		<property name="load_initially">true</property>
-	
-		<!-- DATABASE-DESCRIPTORS -->
-		<database-descriptors>
-			<database-descriptor>DatabaseDescriptor.si.xml</database-descriptor>
-		</database-descriptors>
-	
-		
-		<!-- SIMINOV EVENTS -->
-		<event-handlers>
-		    <event-handler>com.core.template.events.SiminovEventHandler</event-handler>
-		    <event-handler>com.core.template.events.DatabaseEventHandler</event-handler>
-		</event-handlers>
-			
-	</core>
-	}
-	
-		</pre>
-	</p>
- *
- */
 public class ApplicationDescriptorReader extends SiminovSAXDefaultHandler implements siminov.orm.Constants, Constants {
 
 	private ApplicationDescriptor applicationDescriptor = null;
@@ -79,13 +27,10 @@ public class ApplicationDescriptorReader extends SiminovSAXDefaultHandler implem
 	private StringBuilder tempValue = new StringBuilder();
 	private String propertyName = null;
 	
-	private SyncDescriptor syncDescriptor = null;
-
 	private AuthenticationDescriptor authenticationDescriptor = null;
 
 	private NotificationDescriptor notificationDescriptor = null;	
 	
-	private boolean isSyncDesriptor = false;
 	private boolean isAuthenticationDescriptor = false;
 	private boolean isNotificationDescriptor = false;	
 
@@ -127,14 +72,10 @@ public class ApplicationDescriptorReader extends SiminovSAXDefaultHandler implem
 			applicationDescriptor = new ApplicationDescriptor();
 		} else if(localName.equalsIgnoreCase(APPLICATION_DESCRIPTOR_PROPERTY)) {
 			initializeProperty(attributes);
-		} else if(localName.equalsIgnoreCase(CONNECT_DESCRIPTOR_AUTHENTICATION_DESCRIPTOR)) {
+		} else if(localName.equalsIgnoreCase(APPLICATION_DESCRIPTOR_AUTHENTICATION_DESCRIPTOR)) {
 
 			authenticationDescriptor = new AuthenticationDescriptor();
 			isAuthenticationDescriptor = true;
-		} else if(localName.equalsIgnoreCase(SYNC_DESCRIPTOR)) {
-
-			isSyncDesriptor = true;
-			syncDescriptor = new SyncDescriptor();
 		} else if(localName.equalsIgnoreCase(NOTIFICATION_DESCRIPTOR)) {
 
 			isNotificationDescriptor = true;
@@ -169,22 +110,20 @@ public class ApplicationDescriptorReader extends SiminovSAXDefaultHandler implem
 			}
 			
 			applicationDescriptor.addEvent(tempValue.toString());
-		} else if(localName.equalsIgnoreCase(APPLICATION_DESCRIPTOR_LIBRARY)) {
+		} else if(localName.equalsIgnoreCase(APPLICATION_DESCRIPTOR_LIBRARY_DESCRIPTOR)) {
 			
 			if(tempValue == null || tempValue.length() <= 0) {
 				return;
 			}
 			
 			applicationDescriptor.addLibrary(tempValue.toString());
-		} else if(localName.equalsIgnoreCase(CONNECT_DESCRIPTOR_SERVICE_DESCRIPTOR)) {
+		} else if(localName.equalsIgnoreCase(APPLICATION_DESCRIPTOR_SERVICE_DESCRIPTOR)) {
 			applicationDescriptor.addServiceDescriptorPath(tempValue.toString());
-		} else if(localName.equalsIgnoreCase(CONNECT_DESCRIPTOR_AUTHENTICATION_DESCRIPTOR)) {
+		} else if(localName.equalsIgnoreCase(APPLICATION_DESCRIPTOR_AUTHENTICATION_DESCRIPTOR)) {
 			applicationDescriptor.setAuthenticationDescriptor(authenticationDescriptor);
 			isAuthenticationDescriptor = false;
 		} else if(localName.equalsIgnoreCase(SYNC_DESCRIPTOR)) {
-			applicationDescriptor.addSyncDescriptor(syncDescriptor);
-		} else if(localName.equalsIgnoreCase(SYNC_DESCRIPTOR_SERVICE)) {
-			syncDescriptor.addService(tempValue.toString());
+			applicationDescriptor.addSyncDescriptorPath(tempValue.toString());
 		} else if(localName.equalsIgnoreCase(NOTIFICATION_DESCRIPTOR)) {
 			applicationDescriptor.setNotificationDescriptor(notificationDescriptor);
 		}
@@ -200,8 +139,6 @@ public class ApplicationDescriptorReader extends SiminovSAXDefaultHandler implem
 			notificationDescriptor.addProperty(propertyName, tempValue.toString());
 		} else if(isAuthenticationDescriptor) {
 			authenticationDescriptor.addProperty(propertyName, tempValue.toString());
-		} else if(isSyncDesriptor) {
-			syncDescriptor.addProperty(propertyName, tempValue.toString());
 		} else {
 			applicationDescriptor.addProperty(propertyName, tempValue.toString());
 		}
