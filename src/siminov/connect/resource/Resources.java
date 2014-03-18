@@ -107,6 +107,6 @@ public class Resources {
 	public SyncDescriptor getSyncDescriptor(final String syncDescriptorName) {
 		
 		ApplicationDescriptor applicationDescriptor = getApplicationDescriptor();
-		return applicationDescriptor.getSyncDescriptor(syncDescriptorName);
+		return applicationDescriptor.getSyncDescriptorBasedOnName(syncDescriptorName);
 	}
 }
