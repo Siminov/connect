@@ -53,7 +53,7 @@
     <service-descriptors>
   		
   			<!-- Service -->
-        <service-descriptor>full_path_of_service</service-descriptor>
+        <service-descriptor>full_path_of_service_descriptor</service-descriptor>
     
     </service-descriptors>
 
@@ -63,26 +63,7 @@
     	<!-- Sync Handler -->
     <sync-descriptors>
         
-        <sync-descriptor>
-            
-           		<!-- Mandatory Field -->
-     		<property name="name">name_of_sync_handler</property>
-			
-     			<!-- Optional Field -->
-     		<property name="sync_interval">sync_interval_in_millisecond</property>
-     				
-     			<!-- Optional Field -->
-     				<!-- Default: SCREEN -->
-			<property name="type">INTERVAL|SCREEN</property>
-			
-     		<!-- Services -->
-     			<!-- Service -->
-     		<services>
-     		    
-     		    <service>name_of_service.name_of_api</service>
-     		    
-     		</services>
-        </sync-descriptor>
+		<sync-descriptor>full_path_of_sync_descriptor</sync-descriptor>
         
     </sync-descriptors>
     
@@ -108,9 +89,9 @@
 	
 	<!-- Library Descriptors Used By Application (zero-to-many) -->
 		<!-- Optional Field's -->
-	<libraries>
-	 	<library>full_path_of_library_descriptor_file</library>   
-	</libraries>
+	<library-descriptors>
+	 	<library-descriptor>full_path_of_library_descriptor_file</library-descriptor>   
+	</librar-descriptors>
 	
 		
 	<!-- Event Handlers Implemented By Application (zero-to-many) -->

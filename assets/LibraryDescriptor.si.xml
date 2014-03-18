@@ -20,7 +20,7 @@
 
 <!-- DESIGN OF LibraryDescriptor.si.xml -->
 
-<library>
+<library-descriptor>
 
     <!-- General Properties Of Library -->
     
@@ -36,9 +36,9 @@
 	
 	<!-- Optional Field -->
 		<!-- Database Mappings -->
-	<database-mappings>
-		<database-mapping path="name_of_database_descriptor.full_path_of_database_mapping_descriptor_file" />
-	</database-mappings>
+	<database-mapping-descriptors>
+		<database-mapping-descriptor>name_of_database_descriptor.full_path_of_database_mapping_descriptor_file</database-mapping-descriptor>
+	</database-mapping-descriptors>
 	 
 	
 	<!-- Service Descriptors -->
@@ -46,8 +46,8 @@
 	<!-- Optional Field -->
 		<!-- Service Descriptor -->
 	<service-descriptors>
-	    <service-descriptor path="full_path_of_service-descriptor_file"></service-descriptor>
+	    <service-descriptor>full_path_of_service-descriptor_file</service-descriptor>
 	</service-descriptors>
 	
 	
-</library>
+</library-descriptor>
