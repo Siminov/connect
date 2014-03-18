@@ -9,25 +9,23 @@ public interface Constants {
 	
 	
 	//Connect Descriptor
-	public String CONNECT_DESCRIPTOR_FILE_NAME = "ConnectDescriptor.si.xml";
-	
-	public String CONNECT_DESCRIPTOR_PROPERTY_NAME = "name";
-	public String CONNECT_DESCRIPTOR_PROPERTY = "property";
-
-	public String CONNECT_DESCRIPTOR_SERVICE_DESCRIPTORS = "service-descriptors";
-	public String CONNECT_DESCRIPTOR_SERVICE_DESCRIPTOR = "service-descriptor";
-	public String CONNECT_DESCRIPTOR_AUTHENTICATION_DESCRIPTOR = "authentication-descriptor";
+	public String APPLICATION_DESCRIPTOR_SERVICE_DESCRIPTORS = "service-descriptors";
+	public String APPLICATION_DESCRIPTOR_SERVICE_DESCRIPTOR = "service-descriptor";
+	public String APPLICATION_DESCRIPTOR_AUTHENTICATION_DESCRIPTOR = "authentication-descriptor";
+	public String APPLICATION_DESCRIPTOR_SYNC_DESCRIPTORS = "sync-descriptors";
+	public String APPLICATION_DESCRIPTOR_SYNC_DESCRIPTOR = "sync-descriptor";
+	public String APPLICATION_DESCRIPTOR_NOTIFICATION_DESCRIPTOR = "notification-descriptor";
 	
 	
-	public String CONNECT_DESCRIPTOR_AUTHENTICATION_TYPE = "type";
+	public String AUTHENTICATION_DESCRIPTOR_TYPE = "type";
 	
 
-	public String SYNC_DESCRIPTORS = "sync-descriptors";
 	public String SYNC_DESCRIPTOR = "sync-descriptor";
-	public String SYNC_DESCRIPTOR_SERVICES = "services";
-	public String SYNC_DESCRIPTOR_SERVICE = "service";
+	public String SYNC_DESCRIPTOR_SERVICE_DESCRIPTORS = "service-descriptors";
+	public String SYNC_DESCRIPTOR_SERVICE_DESCRIPTOR = "service-descriptor";
 	public String SYNC_DESCRIPTOR_NAME = "name";
 	public String SYNC_DESCRIPTOR_REFRESH_INTERVAL = "interval";
+	public String SYNC_DESCRIPTOR_PROPERTY = "property";
 	
 	public String SYNC_DESCRIPTOR_SERVICE_SEPARATOR = ".";
 

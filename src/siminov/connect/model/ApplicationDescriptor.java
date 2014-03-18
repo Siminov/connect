@@ -11,8 +11,11 @@ public class ApplicationDescriptor extends siminov.orm.model.ApplicationDescript
 	private Collection<String> serviceDescriptorPaths = new ConcurrentLinkedQueue<String> ();
 	private Map<String, String> serviceDescriptorNamesBasedOnPath = new HashMap<String, String>();
 
-	private Map<String, SyncDescriptor> syncDescriptors = new HashMap<String, SyncDescriptor>();
-
+	private Collection<String> syncDescriptorPaths = new ConcurrentLinkedQueue<String>();
+	
+	private Map<String, SyncDescriptor> syncDescriptorsBasedOnName = new HashMap<String, SyncDescriptor>();
+	private Map<String, SyncDescriptor> syncDescriptorsBasedOnPath = new HashMap<String, SyncDescriptor>();
+	
 	private AuthenticationDescriptor authenticationDescriptor = null;
 	private NotificationDescriptor notificationDescriptor = null;
 
@@ -64,24 +67,46 @@ public class ApplicationDescriptor extends siminov.orm.model.ApplicationDescript
 		this.serviceDescriptorNamesBasedOnPath.remove(serviceDescriptorPath);
 	}
 
+	
+	public Iterator<String> getSyncDescriptorPaths() {
+		return this.syncDescriptorPaths.iterator();
+	}
+	
+	public void addSyncDescriptorPath(String syncDescriptorPath) {
+		this.syncDescriptorPaths.add(syncDescriptorPath);
+	}
+
+	public void removeSyncDescriptorPath(String syncDescriptorPath) {
+		this.syncDescriptorPaths.remove(syncDescriptorPath);
+	}
+
+	public boolean containSyncDescriptorPath(String syncDescriptorPath) {
+		return this.syncDescriptorPaths.contains(syncDescriptorPath);
+	}
+	
 	public Iterator<SyncDescriptor> getSyncDescriptors() {
-		return this.syncDescriptors.values().iterator();
+		return this.syncDescriptorsBasedOnName.values().iterator();
 	}
 
-	public SyncDescriptor getSyncDescriptor(String syncDescriptorName) {
-		return this.syncDescriptors.get(syncDescriptorName);
+	public SyncDescriptor getSyncDescriptorBasedOnPath(String syncDescriptorPath) {
+		return this.syncDescriptorsBasedOnPath.get(syncDescriptorPath);
+	}
+	
+	public SyncDescriptor getSyncDescriptorBasedOnName(String syncDescriptorName) {
+		return this.syncDescriptorsBasedOnName.get(syncDescriptorName);
 	}
 
-	public void addSyncDescriptor(SyncDescriptor syncDescriptor) {
-		this.syncDescriptors.put(syncDescriptor.getName(), syncDescriptor);
+	public void addSyncDescriptor(String syncDescriptorPath, SyncDescriptor syncDescriptor) {
+		this.syncDescriptorsBasedOnPath.put(syncDescriptorPath, syncDescriptor);
+		this.syncDescriptorsBasedOnName.put(syncDescriptor.getName(), syncDescriptor);
 	}
 
 	public boolean containSyncDescriptor(String syncDescriptorName) {
-		return this.syncDescriptors.containsKey(syncDescriptorName);
+		return this.syncDescriptorsBasedOnName.containsKey(syncDescriptorName);
 	}
 
 	public void removeSyncDescriptors(String syncDescriptorName) {
-		this.syncDescriptors.remove(syncDescriptorName);
+		this.syncDescriptorsBasedOnName.remove(syncDescriptorName);
 	}
 
 	public AuthenticationDescriptor getAuthenticationDescriptor() {

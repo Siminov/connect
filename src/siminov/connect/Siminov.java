@@ -6,6 +6,7 @@ import java.util.Map;
 import siminov.connect.authentication.Credential;
 import siminov.connect.model.ApplicationDescriptor;
 import siminov.connect.reader.ApplicationDescriptorReader;
+import siminov.connect.reader.SyncDescriptorReader;
 import siminov.connect.resource.Resources;
 import siminov.orm.IInitializer;
 import siminov.orm.database.DatabaseBundle;
@@ -45,6 +46,7 @@ public class Siminov extends siminov.orm.Siminov {
 		processDatabaseDescriptors();
 		processLibraries();
 		processDatabaseMappingDescriptors();
+		processSyncDescriptors();
 		
 		processDatabase();
 		
@@ -93,6 +95,19 @@ public class Siminov extends siminov.orm.Siminov {
 
 	protected static void processDatabaseMappingDescriptors() {
 		siminov.orm.Siminov.processDatabaseMappingDescriptors();
+	}
+	
+	protected static void processSyncDescriptors() {
+		
+		ApplicationDescriptor applicationDescriptor = connectResources.getApplicationDescriptor();
+		Iterator<String> syncDescriptorPaths = applicationDescriptor.getSyncDescriptorPaths();
+		
+		while(syncDescriptorPaths.hasNext()) {
+			String syncDescriptorPath = syncDescriptorPaths.next();
+			
+			SyncDescriptorReader syncDescriptorReader = new SyncDescriptorReader(syncDescriptorPath);
+			applicationDescriptor.addSyncDescriptor(syncDescriptorPath, syncDescriptorReader.getSyncDescriptor());
+		}
 	}
 	
 	protected static void processLibraries() {

@@ -13,11 +13,11 @@ public class AuthenticationDescriptor implements IDescriptor {
 	private Map<String, String> properties = new HashMap<String, String>();
 	
 	public String getType() {
-		return this.properties.get(Constants.CONNECT_DESCRIPTOR_AUTHENTICATION_TYPE);
+		return this.properties.get(Constants.AUTHENTICATION_DESCRIPTOR_TYPE);
 	}
 	
 	public void setType(String type) {
-		this.properties.put(Constants.CONNECT_DESCRIPTOR_AUTHENTICATION_TYPE, type);
+		this.properties.put(Constants.AUTHENTICATION_DESCRIPTOR_TYPE, type);
 	}
 	
 	public Iterator<String> getProperties() {
