@@ -20,7 +20,7 @@
 
  -->
 
-<database-mapping>
+<database-mapping-descriptor>
 
 	<table table_name="SERVICE_REQUEST" class_name="siminov.connect.service.model.ServiceRequest">
 
@@ -57,4 +57,4 @@
 				
 	</table>
 	
-</database-mapping>
+</database-mapping-descriptor>

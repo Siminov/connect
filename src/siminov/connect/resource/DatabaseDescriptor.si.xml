@@ -27,10 +27,10 @@
 	<property name="version">1</property>
 	<property name="transaction_safe">true</property>
 	
-	<database-mappings>
-	    <database-mapping>siminov/connect/resource/ServiceRequest.si.xml</database-mapping>
-		<database-mapping>siminov/connect/resource/ServiceRequestResource.si.xml</database-mapping>
-	</database-mappings>
+	<database-mapping-descriptors>
+	    <database-mapping-descriptor>siminov/connect/resource/ServiceRequest.si.xml</database-mapping-descriptor>
+		<database-mapping-descriptor>siminov/connect/resource/ServiceRequestResource.si.xml</database-mapping-descriptor>
+	</database-mapping-descriptors>
 
 </database-descriptor>
 
