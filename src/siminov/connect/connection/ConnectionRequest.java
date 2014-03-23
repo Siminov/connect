@@ -1,6 +1,7 @@
 package siminov.connect.connection;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 public class ConnectionRequest {
@@ -40,8 +41,8 @@ public class ConnectionRequest {
 		this.type = type;
 	}
 	
-	public Map<String, String> getQueryParameters() {
-		return this.queryParameters;
+	public Iterator<String> getQueryParameters() {
+		return this.queryParameters.keySet().iterator();
 	}
 	
 	public String getQueryParameter(String key) {
@@ -56,8 +57,8 @@ public class ConnectionRequest {
 		this.queryParameters.put(key, value);
 	}
 	
-	public Map<String, String> getHeaderParameters() {
-		return this.headerParameters;
+	public Iterator<String> getHeaderParameters() {
+		return this.headerParameters.keySet().iterator();
 	}
 	
 	public String getHeaderParameter(String key) {

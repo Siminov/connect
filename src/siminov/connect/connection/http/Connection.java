@@ -4,7 +4,6 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -52,8 +51,8 @@ public class Connection implements IConnection{
 		 */
 		String url = connectionRequest.getUrl();
 		
-		Map<String, String> queryParameters = connectionRequest.getQueryParameters();
-		Map<String, String> headerParameters = connectionRequest.getHeaderParameters();
+		Iterator<String> queryParameters = connectionRequest.getQueryParameters();
+		Iterator<String> headerParameters = connectionRequest.getHeaderParameters();
 		
 		
 		/*
@@ -75,11 +74,10 @@ public class Connection implements IConnection{
 		 */
 		HttpParams httpParams = new BasicHttpParams();
 
-		Iterator<String> parameters = queryParameters.keySet().iterator();
-		while(parameters.hasNext()) {
+		while(queryParameters.hasNext()) {
 			
-			String parameter = parameters.next();
-			String parameterValue = queryParameters.get(parameter);
+			String parameter = queryParameters.next();
+			String parameterValue = connectionRequest.getQueryParameter(parameter);
 			
 			httpParams.setParameter(parameter, parameterValue);
 		}
@@ -91,11 +89,10 @@ public class Connection implements IConnection{
 		/*
 		 * Add Header Parameters
 		 */
-		Iterator<String> headers = headerParameters.keySet().iterator();
-		while(headers.hasNext()) {
+		while(headerParameters.hasNext()) {
 			
-			String header = headers.next();
-			String headerValue = headerParameters.get(header);
+			String header = headerParameters.next();
+			String headerValue = connectionRequest.getHeaderParameter(header);
 			
 	        httpGet.setHeader(header, headerValue);
 		}
@@ -151,8 +148,8 @@ public class Connection implements IConnection{
 		 */
 		String url = connectionRequest.getUrl();
 		
-		Map<String, String> queryParameters = connectionRequest.getQueryParameters();
-		Map<String, String> headerParameters = connectionRequest.getHeaderParameters();
+		Iterator<String> queryParameters = connectionRequest.getQueryParameters();
+		Iterator<String> headerParameters = connectionRequest.getHeaderParameters();
 		
 		
 		/*
@@ -174,11 +171,10 @@ public class Connection implements IConnection{
 		 */
 		HttpParams httpParams = new BasicHttpParams();
 
-		Iterator<String> parameters = queryParameters.keySet().iterator();
-		while(parameters.hasNext()) {
+		while(queryParameters.hasNext()) {
 			
-			String parameter = parameters.next();
-			String parameterValue = queryParameters.get(parameter);
+			String parameter = queryParameters.next();
+			String parameterValue = connectionRequest.getQueryParameter(parameter);
 			
 			httpParams.setParameter(parameter, parameterValue);
 		}
@@ -190,11 +186,10 @@ public class Connection implements IConnection{
 		/*
 		 * Add Header Parameters
 		 */
-		Iterator<String> headers = headerParameters.keySet().iterator();
-		while(headers.hasNext()) {
+		while(headerParameters.hasNext()) {
 			
-			String header = headers.next();
-			String headerValue = headerParameters.get(header);
+			String header = headerParameters.next();
+			String headerValue = connectionRequest.getHeaderParameter(header);
 			
 	        httpHead.setHeader(header, headerValue);
 		}
@@ -250,8 +245,8 @@ public class Connection implements IConnection{
 		 */
 		String url = connectionRequest.getUrl();
 		
-		Map<String, String> queryParameters = connectionRequest.getQueryParameters();
-		Map<String, String> headerParameters = connectionRequest.getHeaderParameters();
+		Iterator<String> queryParameters = connectionRequest.getQueryParameters();
+		Iterator<String> headerParameters = connectionRequest.getHeaderParameters();
 		
 		byte[] dataStream = connectionRequest.getDataStream();
 		
@@ -275,11 +270,10 @@ public class Connection implements IConnection{
 		 */
 		List<NameValuePair> httpQueryParams = new ArrayList<NameValuePair>();  
 
-		Iterator<String> parameters = queryParameters.keySet().iterator();
-		while(parameters.hasNext()) {
+		while(queryParameters.hasNext()) {
 			
-			String parameter = parameters.next();
-			String parameterValue = queryParameters.get(parameter);
+			String parameter = queryParameters.next();
+			String parameterValue = connectionRequest.getQueryParameter(parameter);
 			
 			httpQueryParams.add(new BasicNameValuePair(parameter, parameterValue));
 		}
@@ -296,11 +290,10 @@ public class Connection implements IConnection{
 		/*
 		 * Add Header Parameters
 		 */
-		Iterator<String> headers = headerParameters.keySet().iterator();
-		while(headers.hasNext()) {
+		while(headerParameters.hasNext()) {
 			
-			String header = headers.next();
-			String headerValue = headerParameters.get(header);
+			String header = headerParameters.next();
+			String headerValue = connectionRequest.getHeaderParameter(header);
 			
 	        httpPost.setHeader(header, headerValue);
 		}
@@ -363,8 +356,8 @@ public class Connection implements IConnection{
 		 */
 		String url = connectionRequest.getUrl();
 		
-		Map<String, String> queryParameters = connectionRequest.getQueryParameters();
-		Map<String, String> headerParameters = connectionRequest.getHeaderParameters();
+		Iterator<String> queryParameters = connectionRequest.getQueryParameters();
+		Iterator<String> headerParameters = connectionRequest.getHeaderParameters();
 		
 		byte[] dataStream = connectionRequest.getDataStream();
 		
@@ -388,11 +381,10 @@ public class Connection implements IConnection{
 		 */
 		HttpParams httpParams = new BasicHttpParams();
 
-		Iterator<String> parameters = queryParameters.keySet().iterator();
-		while(parameters.hasNext()) {
+		while(queryParameters.hasNext()) {
 			
-			String parameter = parameters.next();
-			String parameterValue = queryParameters.get(parameter);
+			String parameter = queryParameters.next();
+			String parameterValue = connectionRequest.getQueryParameter(parameter);
 			
 			httpParams.setParameter(parameter, parameterValue);
 		}
@@ -404,11 +396,10 @@ public class Connection implements IConnection{
 		/*
 		 * Add Header Parameters
 		 */
-		Iterator<String> headers = headerParameters.keySet().iterator();
-		while(headers.hasNext()) {
+		while(headerParameters.hasNext()) {
 			
-			String header = headers.next();
-			String headerValue = headerParameters.get(header);
+			String header = headerParameters.next();
+			String headerValue = connectionRequest.getHeaderParameter(header);
 			
 	        httpPut.setHeader(header, headerValue);
 		}
@@ -471,8 +462,8 @@ public class Connection implements IConnection{
 		 */
 		String url = connectionRequest.getUrl();
 		
-		Map<String, String> queryParameters = connectionRequest.getQueryParameters();
-		Map<String, String> headerParameters = connectionRequest.getHeaderParameters();
+		Iterator<String> queryParameters = connectionRequest.getQueryParameters();
+		Iterator<String> headerParameters = connectionRequest.getHeaderParameters();
 		
 		
 		/*
@@ -494,11 +485,10 @@ public class Connection implements IConnection{
 		 */
 		HttpParams httpParams = new BasicHttpParams();
 
-		Iterator<String> parameters = queryParameters.keySet().iterator();
-		while(parameters.hasNext()) {
+		while(queryParameters.hasNext()) {
 			
-			String parameter = parameters.next();
-			String parameterValue = queryParameters.get(parameter);
+			String parameter = queryParameters.next();
+			String parameterValue = connectionRequest.getQueryParameter(parameter);
 			
 			httpParams.setParameter(parameter, parameterValue);
 		}
@@ -510,11 +500,10 @@ public class Connection implements IConnection{
 		/*
 		 * Add Header Parameters
 		 */
-		Iterator<String> headers = headerParameters.keySet().iterator();
-		while(headers.hasNext()) {
+		while(headerParameters.hasNext()) {
 			
-			String header = headers.next();
-			String headerValue = headerParameters.get(header);
+			String header = headerParameters.next();
+			String headerValue = connectionRequest.getHeaderParameter(header);
 			
 	        httpDelete.setHeader(header, headerValue);
 		}
@@ -572,8 +561,8 @@ public class Connection implements IConnection{
 		 */
 		String url = connectionRequest.getUrl();
 		
-		Map<String, String> queryParameters = connectionRequest.getQueryParameters();
-		Map<String, String> headerParameters = connectionRequest.getHeaderParameters();
+		Iterator<String> queryParameters = connectionRequest.getQueryParameters();
+		Iterator<String> headerParameters = connectionRequest.getHeaderParameters();
 		
 		
 		
@@ -596,11 +585,10 @@ public class Connection implements IConnection{
 		 */
 		HttpParams httpParams = new BasicHttpParams();
 
-		Iterator<String> parameters = queryParameters.keySet().iterator();
-		while(parameters.hasNext()) {
+		while(queryParameters.hasNext()) {
 			
-			String parameter = parameters.next();
-			String parameterValue = queryParameters.get(parameter);
+			String parameter = queryParameters.next();
+			String parameterValue = connectionRequest.getQueryParameter(parameter);
 			
 			httpParams.setParameter(parameter, parameterValue);
 		}
@@ -612,11 +600,10 @@ public class Connection implements IConnection{
 		/*
 		 * Add Header Parameters
 		 */
-		Iterator<String> headers = headerParameters.keySet().iterator();
-		while(headers.hasNext()) {
+		while(headerParameters.hasNext()) {
 			
-			String header = headers.next();
-			String headerValue = headerParameters.get(header);
+			String header = headerParameters.next();
+			String headerValue = connectionRequest.getHeaderParameter(header);
 			
 	        httpTrace.setHeader(header, headerValue);
 		}
@@ -674,8 +661,8 @@ public class Connection implements IConnection{
 		 */
 		String url = connectionRequest.getUrl();
 		
-		Map<String, String> queryParameters = connectionRequest.getQueryParameters();
-		Map<String, String> headerParameters = connectionRequest.getHeaderParameters();
+		Iterator<String> queryParameters = connectionRequest.getQueryParameters();
+		Iterator<String> headerParameters = connectionRequest.getHeaderParameters();
 		
 		
 		/*
@@ -697,11 +684,10 @@ public class Connection implements IConnection{
 		 */
 		HttpParams httpParams = new BasicHttpParams();
 
-		Iterator<String> parameters = queryParameters.keySet().iterator();
-		while(parameters.hasNext()) {
+		while(queryParameters.hasNext()) {
 			
-			String parameter = parameters.next();
-			String parameterValue = queryParameters.get(parameter);
+			String parameter = queryParameters.next();
+			String parameterValue = connectionRequest.getQueryParameter(parameter);
 			
 			httpParams.setParameter(parameter, parameterValue);
 		}
@@ -713,11 +699,10 @@ public class Connection implements IConnection{
 		/*
 		 * Add Header Parameters
 		 */
-		Iterator<String> headers = headerParameters.keySet().iterator();
-		while(headers.hasNext()) {
+		while(headerParameters.hasNext()) {
 			
-			String header = headers.next();
-			String headerValue = headerParameters.get(header);
+			String header = headerParameters.next();
+			String headerValue = connectionRequest.getHeaderParameter(header);
 			
 	        httpOptions.setHeader(header, headerValue);
 		}
