@@ -8,16 +8,24 @@ import siminov.connect.Constants;
 import siminov.orm.model.IDescriptor;
 
 
-public class AuthenticationDescriptor implements IDescriptor {
+public class AuthorizationDescriptor implements IDescriptor {
 	
 	private Map<String, String> properties = new HashMap<String, String>();
 	
 	public String getType() {
-		return this.properties.get(Constants.AUTHENTICATION_DESCRIPTOR_TYPE);
+		return this.properties.get(Constants.AUTHORIZATION_DESCRIPTOR_TYPE);
 	}
 	
 	public void setType(String type) {
-		this.properties.put(Constants.AUTHENTICATION_DESCRIPTOR_TYPE, type);
+		this.properties.put(Constants.AUTHORIZATION_DESCRIPTOR_TYPE, type);
+	}
+	
+	public String getProvider() {
+		return this.properties.get(Constants.AUTHORIZATION_DESCRIPTOR_PROVIDER);
+	}
+	
+	public void setProvider(String provider) {
+		this.properties.put(Constants.AUTHORIZATION_DESCRIPTOR_PROVIDER, provider);
 	}
 	
 	public Iterator<String> getProperties() {

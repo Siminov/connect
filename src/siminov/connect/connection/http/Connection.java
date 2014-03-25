@@ -24,15 +24,13 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpParams;
 
-import siminov.connect.authentication.AuthenticationFactory;
-import siminov.connect.authentication.Credential;
-import siminov.connect.authentication.CredentialManager;
-import siminov.connect.authentication.design.IAuthenticate;
+import siminov.connect.authorization.AuthorizationFactory;
+import siminov.connect.authorization.design.IAuthorization;
 import siminov.connect.connection.ConnectionRequest;
 import siminov.connect.connection.ConnectionResponse;
 import siminov.connect.connection.ConnectionStatusCodes;
 import siminov.connect.connection.IConnection;
-import siminov.connect.exception.AuthenticationException;
+import siminov.connect.exception.AuthorizationException;
 import siminov.connect.exception.ConnectionException;
 import siminov.orm.log.Log;
 
@@ -770,27 +768,19 @@ public class Connection implements IConnection{
 	
 	private void sign(final HttpRequestBase httpRequestBase) throws ConnectionException {
 
-		CredentialManager credentialManager = CredentialManager.getInstance();
-		Credential credential = credentialManager.getActiveAccount();
+		AuthorizationFactory authorizationFactory = AuthorizationFactory.getInstance();
+		IAuthorization authorization = authorizationFactory.getAuthorization();
 
-		if(credential == null) {
-			Log.logd(Connection.class.getName(), "sign", "No Active User Account Found.");
-			return;
-		}
-		
-		AuthenticationFactory authenticationFactory = AuthenticationFactory.getInstance();
-		IAuthenticate authenticate = authenticationFactory.getAuthenticate(credential);
-
-		if(authenticate == null) {
+		if(authorization == null) {
 			return;
 		}
 		
 		
 		try {
-			authenticate.doSignature(httpRequestBase);
-		} catch(AuthenticationException authenticationException) {
-			Log.loge(Connection.class.getName(), "sign", "Authentication Exception caught while signing http request, " + authenticationException.getMessage());
-			throw new ConnectionException(Connection.class.getName(), "sign", "Authentication Exception caught while signing http request, " + authenticationException.getMessage());
+			authorization.doSignature(httpRequestBase);
+		} catch(AuthorizationException authorizationException) {
+			Log.loge(Connection.class.getName(), "sign", "Authozation Exception caught while signing http request, " + authorizationException.getMessage());
+			throw new ConnectionException(Connection.class.getName(), "sign", "Authozation Exception caught while signing http request, " + authorizationException.getMessage());
 		}
 	}
 }

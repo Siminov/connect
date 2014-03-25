@@ -2,7 +2,6 @@ package siminov.connect.resource;
 
 import java.util.Iterator;
 
-import siminov.connect.authentication.design.IAuthenticationEvents;
 import siminov.connect.events.EventHandler;
 import siminov.connect.model.ApplicationDescriptor;
 import siminov.connect.model.ServiceDescriptor;
@@ -90,7 +89,7 @@ public class Resources {
 		return serviceDescriptor.getApi(apiName);
 	}
 	
-	public IAuthenticationEvents getAuthenticationEventHandler() {
+	public siminov.connect.authorization.design.IAuthenticationEvents getAuthenticationEventHandler() {
 		return EventHandler.getInstance().getAuthenticationEventHandler();
 	}
 	

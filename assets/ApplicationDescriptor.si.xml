@@ -69,12 +69,15 @@
     
 
     <!-- Authentication -->
-    <authentication-descriptor>
+    <authorization-descriptor>
         
         	<!-- Mandatory Field -->
-        <property name="type">type_of_authentication</property>
+        <property name="type">type_of_authorization</property>
 		
-    </authentication-descriptor>
+        	<!-- Mandatory Field -->
+        <property name="provider"></property>
+        
+    </authorization-descriptor>
 
     
     <!-- Push Notification -->

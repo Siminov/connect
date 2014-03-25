@@ -19,7 +19,7 @@ package siminov.connect.events;
 
 import java.util.Iterator;
 
-import siminov.connect.authentication.design.IAuthenticationEvents;
+import siminov.connect.authorization.design.IAuthenticationEvents;
 import siminov.connect.notification.design.INotificationEvents;
 import siminov.orm.resource.Resources;
 import siminov.orm.utils.ClassUtils;

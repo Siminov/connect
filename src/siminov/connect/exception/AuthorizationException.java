@@ -1,12 +1,12 @@
 package siminov.connect.exception;
 
-public class AuthenticationException extends Exception {
+public class AuthorizationException extends Exception {
 
 	private String className = null;
 	private String methodName = null;
 	private String message = null;
 	
-	public AuthenticationException(final String className, final String methodName, final String message) {
+	public AuthorizationException(final String className, final String methodName, final String message) {
 		this.className = className;
 		this.methodName = methodName;
 		this.message = message;

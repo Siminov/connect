@@ -16,7 +16,7 @@ public class ApplicationDescriptor extends siminov.orm.model.ApplicationDescript
 	private Map<String, SyncDescriptor> syncDescriptorsBasedOnName = new HashMap<String, SyncDescriptor>();
 	private Map<String, SyncDescriptor> syncDescriptorsBasedOnPath = new HashMap<String, SyncDescriptor>();
 	
-	private AuthenticationDescriptor authenticationDescriptor = null;
+	private AuthorizationDescriptor authorizationDescriptor = null;
 	private NotificationDescriptor notificationDescriptor = null;
 
 
@@ -109,17 +109,17 @@ public class ApplicationDescriptor extends siminov.orm.model.ApplicationDescript
 		this.syncDescriptorsBasedOnName.remove(syncDescriptorName);
 	}
 
-	public AuthenticationDescriptor getAuthenticationDescriptor() {
-		return this.authenticationDescriptor;
+	public AuthorizationDescriptor getAuthorizationDescriptor() {
+		return this.authorizationDescriptor;
 	}
 
-	public void setAuthenticationDescriptor(AuthenticationDescriptor authenticationDescriptor) {
-		this.authenticationDescriptor = authenticationDescriptor;
+	public void setAuthorizationDescriptor(AuthorizationDescriptor authorizationDescriptor) {
+		this.authorizationDescriptor = authorizationDescriptor;
 	}
 
 	public boolean containAuthenticationDescriptor() {
 
-		if(this.authenticationDescriptor != null) {
+		if(this.authorizationDescriptor != null) {
 			return true;
 		}
 
