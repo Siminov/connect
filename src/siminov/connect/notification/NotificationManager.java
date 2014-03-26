@@ -1,11 +1,11 @@
 package siminov.connect.notification;
 
+import siminov.connect.design.notification.IMessage;
+import siminov.connect.design.notification.INotification;
+import siminov.connect.design.notification.IRegistration;
+import siminov.connect.events.INotificationEvents;
 import siminov.connect.model.ApplicationDescriptor;
 import siminov.connect.model.NotificationDescriptor;
-import siminov.connect.notification.design.IMessage;
-import siminov.connect.notification.design.INotification;
-import siminov.connect.notification.design.INotificationEvents;
-import siminov.connect.notification.design.IRegistration;
 import siminov.connect.resource.Resources;
 import siminov.orm.exception.SiminovCriticalException;
 import siminov.orm.log.Log;
@@ -81,7 +81,7 @@ public class NotificationManager implements INotification {
     	}
 	}
 
-	public void doUnregisteration() {
+	public void doUnregistration() {
 		
 		Context applicationContext = ormResources.getApplicationContext();
 
@@ -125,17 +125,5 @@ public class NotificationManager implements INotification {
 				notificationEventsHandler.onNotification(message);
 			}
     	}
-	}
-
-	public void onNotificationRemoved(IMessage message) {
-		
-		/*
-		 * Invoke notification event handler if registered
-		 */
-		
-		INotificationEvents notificationEventsHandler = connectResources.getNotificationEventHandler();
-		if(notificationEventsHandler != null) {
-			notificationEventsHandler.onNotification(message);
-		}
 	}
 }

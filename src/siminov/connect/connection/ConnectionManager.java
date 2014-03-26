@@ -1,8 +1,11 @@
 package siminov.connect.connection;
 
 import siminov.connect.Constants;
+import siminov.connect.design.connection.IConnection;
+import siminov.connect.design.connection.IConnectionRequest;
+import siminov.connect.design.connection.IConnectionResponse;
+import siminov.connect.design.service.IService;
 import siminov.connect.exception.ConnectionException;
-import siminov.connect.service.design.IService;
 
 public class ConnectionManager {
 
@@ -13,8 +16,8 @@ public class ConnectionManager {
 	
 	private ConnectionManager() {
 		
-		httpConnection = new siminov.connect.connection.http.Connection();
-		httpsConnection = new siminov.connect.connection.https.Connection();
+		httpConnection = new siminov.connect.worker.connection.HttpConnectionWorker();
+		httpsConnection = new siminov.connect.worker.connection.HttpsConnectionWorker();
 	}
 	
 	public static ConnectionManager getInstance() {
@@ -26,9 +29,9 @@ public class ConnectionManager {
 		return connectionManager;
 	}
 	
-	public ConnectionResponse handle(final IService service) throws ConnectionException {
+	public IConnectionResponse handle(final IService service) throws ConnectionException {
 		
-		ConnectionRequest connectionRequest = ConnectionHelper.prepareConnectionRequest(service);
+		IConnectionRequest connectionRequest = ConnectionHelper.prepareConnectionRequest(service);
 		
 		/*
 		 * Service Event onServiceApiInvoke
@@ -43,7 +46,7 @@ public class ConnectionManager {
 		}
 
 		
-		ConnectionResponse connectionResponse = null;
+		IConnectionResponse connectionResponse = null;
 		if(connectionRequest.getType().equalsIgnoreCase(Constants.SERVICE_CONNECTION_API_GET_TYPE)) {
 			connectionResponse = connection.get(connectionRequest);
 		} else if(connectionRequest.getType().equalsIgnoreCase(Constants.SERVICE_CONNECTION_API_HEAD_TYPE)) {

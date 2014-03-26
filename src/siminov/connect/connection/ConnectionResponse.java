@@ -2,7 +2,9 @@ package siminov.connect.connection;
 
 import java.io.InputStream;
 
-public class ConnectionResponse {
+import siminov.connect.design.connection.IConnectionResponse;
+
+public class ConnectionResponse implements IConnectionResponse {
 
 	private int statusCode;
 	private String statusMessage;

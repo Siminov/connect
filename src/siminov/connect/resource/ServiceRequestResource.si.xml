@@ -22,7 +22,7 @@
 
 <database-mapping-descriptor>
 
-	<table table_name="SERVICE_REQUEST_RESOURCE" class_name="siminov.connect.service.model.ServiceRequestResource">
+	<table table_name="SERVICE_REQUEST_RESOURCE" class_name="siminov.connect.model.ServiceRequestResource">
 	
 		<column variable_name="name" column_name="NAME"> 
 			<property name="type">java.lang.String</property>
@@ -36,7 +36,7 @@
 		</column>
 		
 		<relationships>
-   			<many-to-one refer="serviceRequest" refer_to="siminov.connect.service.model.ServiceRequest" on_update="cascade" on_delete="cascade"></many-to-one>		
+   			<many-to-one refer="serviceRequest" refer_to="siminov.connect.model.ServiceRequest" on_update="cascade" on_delete="cascade"></many-to-one>		
    		</relationships>
 				
 	</table>

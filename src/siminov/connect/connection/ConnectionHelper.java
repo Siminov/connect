@@ -5,15 +5,16 @@ import java.util.Iterator;
 import java.util.Map;
 
 import siminov.connect.Constants;
+import siminov.connect.design.connection.IConnectionRequest;
+import siminov.connect.design.service.IService;
 import siminov.connect.model.ServiceDescriptor;
 import siminov.connect.model.ServiceDescriptor.API;
 import siminov.connect.model.ServiceDescriptor.API.HeaderParameter;
 import siminov.connect.model.ServiceDescriptor.API.QueryParameter;
-import siminov.connect.service.design.IService;
 
 public class ConnectionHelper {
 
-	public static ConnectionRequest prepareConnectionRequest(final IService service) {
+	public static IConnectionRequest prepareConnectionRequest(final IService service) {
 
 		/*
 		 * Resolve All Referring Resources
@@ -28,7 +29,7 @@ public class ConnectionHelper {
 		
 		byte[] dataStream = formDataStream(service);
 		
-		ConnectionRequest connectionRequest = new ConnectionRequest();
+		IConnectionRequest connectionRequest = new ConnectionRequest();
 		connectionRequest.setUrl(url);
 		connectionRequest.setProtocol(serviceDescriptor.getProtocol());
 		connectionRequest.setType(api.getType());

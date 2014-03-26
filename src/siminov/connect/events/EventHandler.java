@@ -19,8 +19,6 @@ package siminov.connect.events;
 
 import java.util.Iterator;
 
-import siminov.connect.authorization.design.IAuthenticationEvents;
-import siminov.connect.notification.design.INotificationEvents;
 import siminov.orm.resource.Resources;
 import siminov.orm.utils.ClassUtils;
 
@@ -31,6 +29,7 @@ public class EventHandler {
 	
 	private IAuthenticationEvents authenticationEventsHandler = null;
 	private INotificationEvents notificationEventsHandler = null;
+	private ISyncEvents syncEvents = null;
 	
 	private Resources resources = Resources.getInstance();
 	
@@ -45,6 +44,8 @@ public class EventHandler {
 				authenticationEventsHandler = (IAuthenticationEvents) object;
 			} else if(object instanceof INotificationEvents) {
 				notificationEventsHandler = (INotificationEvents) object;
+			} else if(object instanceof ISyncEvents) {
+				syncEvents = (ISyncEvents) object;
 			}
 		}
 	}
@@ -63,5 +64,9 @@ public class EventHandler {
 	
 	public INotificationEvents getNotificationEventHandler() {
 		return this.notificationEventsHandler;
+	}
+	
+	public ISyncEvents getSyncEventHandler() {
+		return this.syncEvents;
 	}
 }

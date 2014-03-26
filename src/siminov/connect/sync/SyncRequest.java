@@ -4,12 +4,12 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import siminov.connect.service.design.IInlineResource;
+import siminov.connect.design.sync.ISyncRequest;
 
-public class SyncRequest implements IInlineResource {
+public class SyncRequest implements ISyncRequest {
 
 	private String name;
-
+	
 	private Map<String, String> inlineResources = new HashMap<String, String>();
 	
 	public String getName() {

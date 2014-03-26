@@ -5,11 +5,13 @@ import java.util.Iterator;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 import siminov.connect.Constants;
-import siminov.connect.model.SyncDescriptor;
+import siminov.connect.design.service.IService;
+import siminov.connect.design.sync.ISyncRequest;
+import siminov.connect.events.ISyncEvents;
 import siminov.connect.model.ServiceDescriptor;
 import siminov.connect.model.ServiceDescriptor.API;
+import siminov.connect.model.SyncDescriptor;
 import siminov.connect.resource.Resources;
-import siminov.connect.service.design.IService;
 import siminov.connect.worker.IWorker;
 import siminov.orm.utils.ClassUtils;
 
@@ -18,7 +20,7 @@ public class SyncWorker implements IWorker {
 	private static SyncWorker syncWorker = null;
 	private SyncWorkerThread syncWorkerThread = null;
 	
-	private Collection<SyncRequest> syncRequests = new ConcurrentLinkedQueue<SyncRequest>();
+	private Collection<ISyncRequest> syncRequests = new ConcurrentLinkedQueue<ISyncRequest>();
 	
 	private Resources resources = Resources.getInstance();
 	
@@ -71,10 +73,23 @@ public class SyncWorker implements IWorker {
 		
 		public void run() {
 			
-			Iterator<SyncRequest> requests = syncRequests.iterator();
+			Iterator<ISyncRequest> requests = syncRequests.iterator();
 			while(requests.hasNext()) {
 				
-				SyncRequest syncRequest = requests.next();
+				ISyncRequest syncRequest = requests.next();
+
+				/*
+				 * Fire Sync Started Event
+				 */
+				ISyncEvents syncEventHandler = resources.getSyncEventHandler();
+				if(syncEventHandler != null) {
+					syncEventHandler.onSyncStarted(syncRequest);
+				}
+				
+				
+				/*
+				 * Process Request
+				 */
 				SyncDescriptor refreshDescriptor = resources.getSyncDescriptor(syncRequest.getName());
 				
 				Iterator<String> services = refreshDescriptor.getServices();
@@ -107,6 +122,14 @@ public class SyncWorker implements IWorker {
 				}
 				
 				
+				/*
+				 * Fire Sync Started Event
+				 */
+				if(syncEventHandler != null) {
+					syncEventHandler.onSyncRemoved(syncRequest);
+				}
+				
+				
 				syncRequests.remove(syncRequest);
 			}
 			
@@ -116,25 +139,34 @@ public class SyncWorker implements IWorker {
 	}
 	
 
-	public void addRequest(final SyncRequest refreshRequest) {
+	public void addRequest(final ISyncRequest syncRequest) {
 		
-		if(containRequest(refreshRequest)) {
+		if(containRequest(syncRequest)) {
 			return;
 		}
 		
 		
-		this.syncRequests.add(refreshRequest);
-	
+		this.syncRequests.add(syncRequest);
+
+		/*
+		 * Fire Sync Queued Event
+		 */
+		ISyncEvents syncEventHandler = resources.getSyncEventHandler();
+		if(syncEventHandler != null) {
+			syncEventHandler.onSyncQueued(syncRequest);
+		}
+		
+		
 		if(!isWorkerRunning()) {
 			startWorker();
 		}
 	}
 	
-	public boolean containRequest(final SyncRequest refreshRequest) {
+	public boolean containRequest(final ISyncRequest refreshRequest) {
 		return this.syncRequests.contains(refreshRequest);
 	}
 	
-	public void removeRequest(final SyncRequest refreshRequest) {
+	public void removeRequest(final ISyncRequest refreshRequest) {
 		this.syncRequests.remove(refreshRequest);
 	}
 }

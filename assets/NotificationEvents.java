@@ -1,5 +1,4 @@
 
 - onRegistration
-- onRegistered
-
+- onUnregistration
 - onNotification

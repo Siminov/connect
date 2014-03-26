@@ -22,7 +22,7 @@
 
 <database-mapping-descriptor>
 
-	<table table_name="SERVICE_REQUEST" class_name="siminov.connect.service.model.ServiceRequest">
+	<table table_name="SERVICE_REQUEST" class_name="siminov.connect.model.ServiceRequest">
 
 		<column variable_name="requestId" column_name="REQUEST_ID"> 
 			<property name="type">long</property>
@@ -50,7 +50,7 @@
 		</column>
 		
 		<relationships>
-   			<one-to-many refer="serviceRequestResources" refer_to="siminov.connect.service.model.ServiceRequestResource" on_update="cascade" on_delete="cascade">
+   			<one-to-many refer="serviceRequestResources" refer_to="siminov.connect.model.ServiceRequestResource" on_update="cascade" on_delete="cascade">
    			    <property name="load">true</property>
    			</one-to-many>		
    		</relationships>

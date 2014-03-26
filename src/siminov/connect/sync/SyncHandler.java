@@ -4,6 +4,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
+import siminov.connect.design.sync.ISyncRequest;
 import siminov.connect.model.SyncDescriptor;
 import siminov.connect.resource.Resources;
 
@@ -12,7 +13,7 @@ public class SyncHandler {
 	private Resources resources = Resources.getInstance();
 	
 	private SyncWorker syncWorker = SyncWorker.getInstance();
-	private Map<SyncRequest, Long> requestTimestamps = new HashMap<SyncRequest, Long>();
+	private Map<ISyncRequest, Long> requestTimestamps = new HashMap<ISyncRequest, Long>();
 
 	private static SyncHandler syncHandler = null;
 	
@@ -29,7 +30,7 @@ public class SyncHandler {
 		return syncHandler;
 	}
 	
-	public void handle(SyncRequest syncRequest) {
+	public void handle(ISyncRequest syncRequest) {
 
 		SyncDescriptor syncDescriptor = resources.getSyncDescriptor(syncRequest.getName());
 		

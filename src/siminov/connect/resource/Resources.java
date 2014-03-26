@@ -3,11 +3,13 @@ package siminov.connect.resource;
 import java.util.Iterator;
 
 import siminov.connect.events.EventHandler;
+import siminov.connect.events.IAuthenticationEvents;
+import siminov.connect.events.INotificationEvents;
+import siminov.connect.events.ISyncEvents;
 import siminov.connect.model.ApplicationDescriptor;
 import siminov.connect.model.ServiceDescriptor;
 import siminov.connect.model.ServiceDescriptor.API;
 import siminov.connect.model.SyncDescriptor;
-import siminov.connect.notification.design.INotificationEvents;
 import siminov.connect.reader.QuickServiceDescriptorReader;
 import siminov.connect.reader.ServiceDescriptorReader;
 import siminov.orm.exception.SiminovCriticalException;
@@ -89,12 +91,16 @@ public class Resources {
 		return serviceDescriptor.getApi(apiName);
 	}
 	
-	public siminov.connect.authorization.design.IAuthenticationEvents getAuthenticationEventHandler() {
+	public IAuthenticationEvents getAuthenticationEventHandler() {
 		return EventHandler.getInstance().getAuthenticationEventHandler();
 	}
 	
 	public INotificationEvents getNotificationEventHandler() {
 		return EventHandler.getInstance().getNotificationEventHandler();
+	}
+	
+	public ISyncEvents getSyncEventHandler() {
+		return EventHandler.getInstance().getSyncEventHandler();
 	}
 	
 	public Iterator<SyncDescriptor> getSyncDescriptors() {

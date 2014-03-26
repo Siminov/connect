@@ -1,4 +1,0 @@
-
-- onRequestStarted
-- onRequestQueued
-- onRequestStopped

@@ -5,9 +5,9 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Random;
 
+import siminov.connect.design.service.IService;
 import siminov.connect.exception.ServiceException;
 import siminov.connect.model.ServiceDescriptor;
-import siminov.connect.service.design.IService;
 import siminov.orm.log.Log;
 
 public abstract class Service implements IService {

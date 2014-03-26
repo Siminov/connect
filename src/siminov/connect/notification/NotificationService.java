@@ -1,10 +1,10 @@
 package siminov.connect.notification;
 
+import siminov.connect.design.notification.IMessage;
+import siminov.connect.design.notification.INotification;
+import siminov.connect.design.notification.IRegistration;
 import siminov.connect.model.ApplicationDescriptor;
 import siminov.connect.model.NotificationDescriptor;
-import siminov.connect.notification.design.IMessage;
-import siminov.connect.notification.design.INotification;
-import siminov.connect.notification.design.IRegistration;
 import siminov.connect.resource.Resources;
 import siminov.orm.log.Log;
 import android.content.Context;

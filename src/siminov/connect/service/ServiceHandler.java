@@ -3,16 +3,16 @@ package siminov.connect.service;
 import java.util.Iterator;
 
 import siminov.connect.Constants;
+import siminov.connect.design.service.IService;
+import siminov.connect.design.service.IServiceWorker;
 import siminov.connect.exception.ServiceException;
 import siminov.connect.model.ServiceDescriptor;
 import siminov.connect.model.ServiceDescriptor.API;
+import siminov.connect.resource.ResourceUtils;
 import siminov.connect.resource.Resources;
-import siminov.connect.service.design.IService;
-import siminov.connect.service.design.IServiceWorker;
-import siminov.connect.service.resource.ResourceUtils;
-import siminov.connect.service.resource.ServiceResourceUtils;
-import siminov.connect.service.worker.AsyncServiceWorker;
-import siminov.connect.service.worker.SyncServiceWorker;
+import siminov.connect.resource.ServiceResourceUtils;
+import siminov.connect.worker.service.AsyncServiceWorker;
+import siminov.connect.worker.service.SyncServiceWorker;
 
 
 public class ServiceHandler {

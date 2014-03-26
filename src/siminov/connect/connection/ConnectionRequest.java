@@ -4,7 +4,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class ConnectionRequest {
+import siminov.connect.design.connection.IConnectionRequest;
+
+public class ConnectionRequest implements IConnectionRequest {
 
 	private String url;
 
