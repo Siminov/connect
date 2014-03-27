@@ -2,3 +2,4 @@
 - onRegistration
 - onUnregistration
 - onNotification
+- onError
