@@ -3,6 +3,7 @@ package siminov.connect.notification;
 import siminov.connect.design.notification.IMessage;
 import siminov.connect.design.notification.INotification;
 import siminov.connect.design.notification.IRegistration;
+import siminov.connect.exception.NotificationException;
 import siminov.connect.model.ApplicationDescriptor;
 import siminov.connect.model.NotificationDescriptor;
 import siminov.connect.resource.Resources;
@@ -34,6 +35,11 @@ public class NotificationService extends GCMBaseIntentService {
 	
 	protected void onError(Context context, String errorId) {
 		Log.logd(NotificationService.class.getName(), "onError", "Error caught, " + errorId);
+
+		NotificationException notificationException = new NotificationException(NotificationException.class.getName(), "onError", "Error caught: " + errorId);
+		
+		NotificationManager notificationManager = NotificationManager.getInstance();
+		notificationManager.onError(notificationException);
 	}
 
 	protected void onMessage(Context context, Intent intent) {

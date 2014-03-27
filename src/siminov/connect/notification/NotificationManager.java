@@ -4,6 +4,7 @@ import siminov.connect.design.notification.IMessage;
 import siminov.connect.design.notification.INotification;
 import siminov.connect.design.notification.IRegistration;
 import siminov.connect.events.INotificationEvents;
+import siminov.connect.exception.NotificationException;
 import siminov.connect.model.ApplicationDescriptor;
 import siminov.connect.model.NotificationDescriptor;
 import siminov.connect.resource.Resources;
@@ -125,5 +126,13 @@ public class NotificationManager implements INotification {
 				notificationEventsHandler.onNotification(message);
 			}
     	}
+	}
+	
+	public void onError(NotificationException notificationException) {
+		
+		INotificationEvents notificationEventsHandler = connectResources.getNotificationEventHandler();
+		if(notificationEventsHandler != null) {
+			notificationEventsHandler.onError(notificationException);
+		}
 	}
 }
