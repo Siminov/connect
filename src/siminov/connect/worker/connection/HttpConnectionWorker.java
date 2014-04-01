@@ -17,6 +17,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.client.methods.HttpTrace;
+import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicHttpResponse;
@@ -24,6 +25,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpParams;
 
+import siminov.connect.Constants;
 import siminov.connect.authorization.AuthorizationFactory;
 import siminov.connect.connection.ConnectionResponse;
 import siminov.connect.connection.ConnectionStatusCodes;
@@ -59,6 +61,26 @@ public class HttpConnectionWorker implements IConnection {
 		 */
 		DefaultHttpClient httpClient = new DefaultHttpClient();
 		HttpGet httpGet = null;
+
+		/*
+		 * Add Query Parameters
+		 */
+		List<NameValuePair> httpParams = new ArrayList<NameValuePair>();
+		while(queryParameters.hasNext()) {
+			
+			String parameter = queryParameters.next();
+			String parameterValue = connectionRequest.getQueryParameter(parameter);
+			
+			httpParams.add(new BasicNameValuePair(parameter, parameterValue));
+		}
+		
+		String queryParameter = URLEncodedUtils.format(httpParams, "utf-8");
+		if(!url.endsWith(Constants.CONNECTION_QUERY_PARAMETER_KEYWORD)) {
+	        url += Constants.CONNECTION_QUERY_PARAMETER_KEYWORD;
+		}
+
+		url += queryParameter;
+
 		
 		try {
 			httpGet = new HttpGet(url);
@@ -67,22 +89,6 @@ public class HttpConnectionWorker implements IConnection {
 			throw new ConnectionException(HttpConnectionWorker.class.getName(), "get", "Exception caught while creating http get, URL: " + url + ", " + exception.getMessage());
 		}
 
-		
-		/*
-		 * Add Query Parameters
-		 */
-		HttpParams httpParams = new BasicHttpParams();
-
-		while(queryParameters.hasNext()) {
-			
-			String parameter = queryParameters.next();
-			String parameterValue = connectionRequest.getQueryParameter(parameter);
-			
-			httpParams.setParameter(parameter, parameterValue);
-		}
-		
-		
-		httpGet.setParams(httpParams);
 		
 		
 		/*

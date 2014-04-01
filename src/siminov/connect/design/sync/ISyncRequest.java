@@ -1,8 +1,8 @@
 package siminov.connect.design.sync;
 
-import siminov.connect.design.service.IInlineResource;
+import siminov.connect.design.service.IResource;
 
-public interface ISyncRequest extends IInlineResource {
+public interface ISyncRequest extends IResource {
 
 	public String getName();
 	

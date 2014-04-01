@@ -10,7 +10,7 @@ public class SyncRequest implements ISyncRequest {
 
 	private String name;
 	
-	private Map<String, String> inlineResources = new HashMap<String, String>();
+	private Map<String, Object> resources = new HashMap<String, Object>();
 	
 	public String getName() {
 		return this.name;
@@ -20,19 +20,19 @@ public class SyncRequest implements ISyncRequest {
 		this.name = name;
 	}
 	
-	public Iterator<String> getInlineResources() {
-		return this.inlineResources.keySet().iterator();
+	public Iterator<String> getResources() {
+		return this.resources.keySet().iterator();
 	}
 
-	public String getInlineResource(String name) {
-		return this.inlineResources.get(name);
+	public Object getResource(String name) {
+		return this.resources.get(name);
 	}
 
-	public void addInlineResource(String name, String value) {
-		this.inlineResources.put(name, value);
+	public void addResource(String name, Object value) {
+		this.resources.put(name, value);
 	}
 
-	public boolean containInlineResource(String name) {
-		return this.inlineResources.containsKey(name);
+	public boolean containResource(String name) {
+		return this.resources.containsKey(name);
 	}
 }

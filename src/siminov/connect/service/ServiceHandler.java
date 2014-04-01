@@ -50,10 +50,13 @@ public class ServiceHandler {
 		}
 
 
-		Iterator<String> inlineResources = service.getInlineResources();
+		Iterator<String> inlineResources = service.getResources();
 		while(inlineResources.hasNext()) {
 			String inlineResource = inlineResources.next();
-			serviceDescriptor.addProperty(inlineResource, service.getInlineResource(inlineResource));
+			
+			if(service.getResource(inlineResource) instanceof String) {
+				serviceDescriptor.addProperty(inlineResource, (String) service.getResource(inlineResource));
+			}
 		}
 
 		

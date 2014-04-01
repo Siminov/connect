@@ -2,7 +2,7 @@ package siminov.connect.design.service;
 
 import siminov.connect.model.ServiceDescriptor;
 
-public interface IService extends IServiceEvents, IInlineResource {
+public interface IService extends IServiceEvents, IResource {
 
 	public long getRequestId();
 

@@ -95,6 +95,8 @@ public interface Constants {
 	public String CONNECTION_HTTP = "http";
 	public String CONNECTION_HTTPS = "https";
 
+	public String CONNECTION_QUERY_PARAMETER_KEYWORD = "?";
+	
 	
 	/**
 		1** Informational

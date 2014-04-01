@@ -109,12 +109,12 @@ public class SyncWorker implements IWorker {
 					IService serviceHandler = (IService) ClassUtils.createClassInstance(apiHandler);
 					serviceHandler.setServiceDescriptor(serviceDescriptor);
 
-					Iterator<String> inlineResources = syncRequest.getInlineResources();
+					Iterator<String> inlineResources = syncRequest.getResources();
 					while(inlineResources.hasNext()) {
 						String inlineResource = inlineResources.next();
-						String inlineResourceValue = syncRequest.getInlineResource(inlineResource);
+						Object inlineResourceValue = syncRequest.getResource(inlineResource);
 						
-						serviceHandler.addInlineResource(inlineResource, inlineResourceValue);
+						serviceHandler.addResource(inlineResource, inlineResourceValue);
 					}
 					
 					
