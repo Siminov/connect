@@ -82,12 +82,14 @@ public class Authorization implements IAuthorization {
 		}
 		
 		
-		Iterator<String> inlineResources = credential.getInlineResources();
+		Iterator<String> inlineResources = credential.getResources();
 		while(inlineResources.hasNext()) {
 			String inlineResourceKey = inlineResources.next();
-			String inlineResourceValue = credential.getInlineResource(inlineResourceKey);
+			Object inlineResourceValue = credential.getResource(inlineResourceKey);
 			
-			authorizationDescriptor.addProperty(inlineResourceKey, inlineResourceValue);
+			if(inlineResourceValue instanceof Object) {
+				authorizationDescriptor.addProperty(inlineResourceKey, (String) inlineResourceValue);
+			}
 		}
 		
 		
