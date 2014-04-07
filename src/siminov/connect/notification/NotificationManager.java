@@ -67,65 +67,31 @@ public class NotificationManager implements INotification {
 
 	public void onRegistration(IRegistration registration) {
 
-		Context applicationContext = ormResources.getApplicationContext();
-		
-    	if(!GCMRegistrar.isRegisteredOnServer(applicationContext)) {
-    		
-			/*
-			 * Invoke registration event handler if registered
-			 */
-			
-			INotificationEvents notificationEventsHandler = connectResources.getNotificationEventHandler();
-			if(notificationEventsHandler != null) {
-				notificationEventsHandler.onRegistration(registration);
-			}
-    	}
+		INotificationEvents notificationEventsHandler = connectResources.getNotificationEventHandler();
+		if(notificationEventsHandler != null) {
+			notificationEventsHandler.onRegistration(registration);
+		}
 	}
 
 	public void doUnregistration() {
-		
-		Context applicationContext = ormResources.getApplicationContext();
-
-		if(!GCMRegistrar.isRegisteredOnServer(applicationContext)) {
-			return;
-        }
-		
 		onUnregistration(new Registration());
 	}
 
 
 	public void onUnregistration(IRegistration registration) {
 		
-		Context applicationContext = ormResources.getApplicationContext();
-		
-    	if(GCMRegistrar.isRegisteredOnServer(applicationContext)) {
-    		
-			/*
-			 * Invoke registration event handler if registered
-			 */
-			
-			INotificationEvents notificationEventsHandler = connectResources.getNotificationEventHandler();
-			if(notificationEventsHandler != null) {
-				notificationEventsHandler.onUnregistration(registration);
-			}
-    	}
+		INotificationEvents notificationEventsHandler = connectResources.getNotificationEventHandler();
+		if(notificationEventsHandler != null) {
+			notificationEventsHandler.onUnregistration(registration);
+		}
 	}
 
 	public void onNotification(IMessage message) {
 		
-		Context applicationContext = ormResources.getApplicationContext();
-		
-    	if(!GCMRegistrar.isRegisteredOnServer(applicationContext)) {
-    		
-			/*
-			 * Invoke notification event handler if registered
-			 */
-			
-			INotificationEvents notificationEventsHandler = connectResources.getNotificationEventHandler();
-			if(notificationEventsHandler != null) {
-				notificationEventsHandler.onNotification(message);
-			}
-    	}
+		INotificationEvents notificationEventsHandler = connectResources.getNotificationEventHandler();
+		if(notificationEventsHandler != null) {
+			notificationEventsHandler.onNotification(message);
+		}
 	}
 	
 	public void onError(NotificationException notificationException) {

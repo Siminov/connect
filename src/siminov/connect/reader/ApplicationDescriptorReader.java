@@ -126,6 +126,7 @@ public class ApplicationDescriptorReader extends SiminovSAXDefaultHandler implem
 			applicationDescriptor.addSyncDescriptorPath(tempValue.toString());
 		} else if(localName.equalsIgnoreCase(NOTIFICATION_DESCRIPTOR)) {
 			applicationDescriptor.setNotificationDescriptor(notificationDescriptor);
+			isNotificationDescriptor = false;
 		}
 	}
 	
