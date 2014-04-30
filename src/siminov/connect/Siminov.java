@@ -6,6 +6,8 @@ import siminov.connect.model.ApplicationDescriptor;
 import siminov.connect.reader.ApplicationDescriptorReader;
 import siminov.connect.reader.SyncDescriptorReader;
 import siminov.connect.resource.Resources;
+import siminov.connect.worker.IWorker;
+import siminov.connect.worker.service.AsyncServiceWorker;
 import siminov.orm.IInitializer;
 import siminov.orm.events.ISiminovEvents;
 import siminov.orm.exception.DeploymentException;
@@ -41,6 +43,8 @@ public class Siminov extends siminov.orm.Siminov {
 		
 		processDatabase();
 		
+		processServices();
+
 		
 		isActive = true;
 		siminov.orm.Siminov.isActive = true;
@@ -107,5 +111,11 @@ public class Siminov extends siminov.orm.Siminov {
 	
 	protected static void processDatabase() {
 		siminov.orm.Siminov.processDatabase();
+	}
+	
+	protected static void processServices() {
+		
+		IWorker asyncServiceWorker = AsyncServiceWorker.getInstance();
+		asyncServiceWorker.startWorker();
 	}
 }
