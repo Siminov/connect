@@ -9,7 +9,6 @@ import siminov.connect.design.authorization.ICredential;
 import siminov.connect.events.IAuthenticationEvents;
 import siminov.connect.exception.AuthorizationException;
 import siminov.connect.resource.Resources;
-import siminov.orm.exception.DatabaseException;
 import siminov.orm.exception.SiminovCriticalException;
 import siminov.orm.log.Log;
 import android.app.Activity;
@@ -169,12 +168,5 @@ public class OauthAuthorizationActivity extends Activity {
 		
         consumer.setTokenWithSecret(consumer.getToken(), consumer.getTokenSecret());
         credential.setToken(consumer.getToken() + ":" + consumer.getTokenSecret());
-        
-        try {
-            credential.saveOrUpdate();
-        } catch(DatabaseException de) {
-        	Log.loge(OauthAuthorizationActivity.class.getName(), "getAccessToken", "DatabaseException caught while saving credential, " + de.getMessage());
-        	throw new AuthorizationException(OauthAuthorizationActivity.class.getName(), "getAccessToken", de.getMessage());
-        }
 	} 
 }
