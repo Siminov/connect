@@ -7,6 +7,7 @@ import siminov.connect.events.IAuthenticationEvents;
 import siminov.connect.events.INotificationEvents;
 import siminov.connect.events.ISyncEvents;
 import siminov.connect.model.ApplicationDescriptor;
+import siminov.connect.model.AuthorizationDescriptor;
 import siminov.connect.model.ServiceDescriptor;
 import siminov.connect.model.ServiceDescriptor.API;
 import siminov.connect.model.SyncDescriptor;
@@ -113,5 +114,9 @@ public class Resources {
 		
 		ApplicationDescriptor applicationDescriptor = getApplicationDescriptor();
 		return applicationDescriptor.getSyncDescriptorBasedOnName(syncDescriptorName);
+	}
+	
+	public AuthorizationDescriptor getAuthenticatorDescription() {
+		return this.applicationDescriptor.getAuthorizationDescriptor();
 	}
 }

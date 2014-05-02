@@ -1,10 +1,13 @@
 package siminov.connect.authorization;
 
+import java.util.Iterator;
+
 import siminov.connect.design.authorization.IAuthorization;
-import siminov.connect.design.authorization.ICredentialManager;
+import siminov.connect.design.authorization.ICredential;
 import siminov.connect.model.ApplicationDescriptor;
 import siminov.connect.model.AuthorizationDescriptor;
 import siminov.connect.resource.Resources;
+import siminov.orm.model.DatabaseMappingDescriptor;
 import siminov.orm.utils.ClassUtils;
 
 public class AuthorizationFactory {
@@ -50,26 +53,6 @@ public class AuthorizationFactory {
 		return getAuthenticate(packageName);
 	}
 
-	
-	public ICredentialManager getAuthorizationProvider() {
-		
-		Resources resources = Resources.getInstance();
-		ApplicationDescriptor applicationDescriptor = resources.getApplicationDescriptor();
-		
-		if(!applicationDescriptor.containAuthenticationDescriptor()) {
-			return null;
-		}
-		
-		AuthorizationDescriptor authorizationDescriptor = applicationDescriptor.getAuthorizationDescriptor();
-		String provider = authorizationDescriptor.getProvider();
-		
-		if(provider == null || provider.length() <= 0) {
-			return null;
-		}
-		
-		return (ICredentialManager) ClassUtils.createClassInstance(provider);
-	}
-	
 	private IAuthorization getAuthenticate(final String packageName) {
 		return (IAuthorization) ClassUtils.createClassInstance(packageName + "." + AUTHORIZATION_CLASS_NAME);
 	}

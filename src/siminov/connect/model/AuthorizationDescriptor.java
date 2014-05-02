@@ -20,12 +20,12 @@ public class AuthorizationDescriptor implements IDescriptor {
 		this.properties.put(Constants.AUTHORIZATION_DESCRIPTOR_TYPE, type);
 	}
 	
-	public String getProvider() {
-		return this.properties.get(Constants.AUTHORIZATION_DESCRIPTOR_PROVIDER);
+	public String getCredential() {
+		return this.properties.get(Constants.AUTHORIZATION_DESCRIPTOR_CREDENTIAL);
 	}
 	
-	public void setProvider(String provider) {
-		this.properties.put(Constants.AUTHORIZATION_DESCRIPTOR_PROVIDER, provider);
+	public void setCredential(String credential) {
+		this.properties.put(Constants.AUTHORIZATION_DESCRIPTOR_CREDENTIAL, credential);
 	}
 	
 	public Iterator<String> getProperties() {

@@ -18,7 +18,7 @@ public interface Constants {
 	
 	
 	public String AUTHORIZATION_DESCRIPTOR_TYPE = "type";
-	public String AUTHORIZATION_DESCRIPTOR_PROVIDER = "provider";
+	public String AUTHORIZATION_DESCRIPTOR_CREDENTIAL = "credential";
 	
 
 	public String SYNC_DESCRIPTOR = "sync-descriptor";
