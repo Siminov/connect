@@ -8,6 +8,8 @@ import oauth.signpost.commonshttp.CommonsHttpOAuthConsumer;
 import org.apache.http.client.methods.HttpRequestBase;
 
 import siminov.connect.authorization.AuthorizationFactory;
+import siminov.connect.authorization.Credential;
+import siminov.connect.authorization.CredentialManager;
 import siminov.connect.design.authorization.IAuthorization;
 import siminov.connect.design.authorization.ICredential;
 import siminov.connect.design.authorization.ICredentialManager;
@@ -27,20 +29,7 @@ public class Authorization implements IAuthorization {
 
 	private Resources resources = Resources.getInstance();
 
-	private ICredential credential = null;
-	
-	public Authorization() {
-		
-		AuthorizationFactory authorizationFactory = AuthorizationFactory.getInstance();
-		ICredentialManager credentialManager = authorizationFactory.getAuthorizationProvider();
-		if(credentialManager == null) {
-			return;
-		}
-		
-		credential = credentialManager.getActiveCredential();
-	}
-	
-	public void doAuthentication() throws AuthorizationException {
+	public void doAuthentication(ICredential credential) throws AuthorizationException {
 		
 		IAuthenticationEvents authenticationEvents = resources.getAuthenticationEventHandler();
 		if(authenticationEvents != null) {
@@ -79,17 +68,6 @@ public class Authorization implements IAuthorization {
 		} else if(callbackUrl == null || callbackUrl.length() <= 0) {
 			Log.loge(Authorization.class.getName(), "Constructor", "Invalid Callback Url.");
 			throw new AuthorizationException(Authorization.class.getName(), "Constructor", "Invalid Callback Url.");
-		}
-		
-		
-		Iterator<String> inlineResources = credential.getResources();
-		while(inlineResources.hasNext()) {
-			String inlineResourceKey = inlineResources.next();
-			Object inlineResourceValue = credential.getResource(inlineResourceKey);
-			
-			if(inlineResourceValue instanceof Object) {
-				authorizationDescriptor.addProperty(inlineResourceKey, (String) inlineResourceValue);
-			}
 		}
 		
 		
@@ -135,14 +113,8 @@ public class Authorization implements IAuthorization {
 		
 		
 		AuthorizationDescriptor authorizationDescriptor = applicationDescriptor.getAuthorizationDescriptor();
-    	AuthorizationFactory authorizationFactory = AuthorizationFactory.getInstance();
+    	ICredentialManager credentialManager = CredentialManager.getInstance();
     	
-		ICredentialManager credentialManager = authorizationFactory.getAuthorizationProvider();
-		if(credentialManager == null) {
-			Log.loge(Authorization.class.getName(), "doSignature", "No Credential Manager Found.");
-			return;
-		}
-		
     	boolean anyActiveUser = credentialManager.isAnyActiveCredential();
     	if(!anyActiveUser) {
     		Log.loge(Authorization.class.getName(), "doSignature", "No Active User Found.");
