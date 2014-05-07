@@ -4,8 +4,8 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.StringTokenizer;
 
+import siminov.connect.Constants;
 import siminov.connect.exception.ServiceException;
-import siminov.orm.Constants;
 import siminov.orm.exception.SiminovException;
 import siminov.orm.log.Log;
 import siminov.orm.model.IDescriptor;
@@ -111,9 +111,9 @@ public class ResourceUtils {
 			}
 			
 			return resolve(value, descriptors);
-		} else if(resourceValue.contains(Constants.RESOURCE_OPEN_CURLY_BRACKET + Constants.RESOURCE_INLINE_REFERENCE)) {
+		} else if(resourceValue.contains(Constants.RESOURCE_OPEN_CURLY_BRACKET + Constants.RESOURCE_REFERENCE)) {
 			
-			String key = resourceValue.substring(resourceValue.indexOf(Constants.RESOURCE_OPEN_CURLY_BRACKET + Constants.RESOURCE_INLINE_REFERENCE) + (Constants.RESOURCE_OPEN_CURLY_BRACKET + Constants.RESOURCE_INLINE_REFERENCE).length() + 1, resourceValue.indexOf(Constants.RESOURCE_CLOSE_CURLY_BRACKET));
+			String key = resourceValue.substring(resourceValue.indexOf(Constants.RESOURCE_OPEN_CURLY_BRACKET + Constants.RESOURCE_REFERENCE) + (Constants.RESOURCE_OPEN_CURLY_BRACKET + Constants.RESOURCE_REFERENCE).length() + 1, resourceValue.indexOf(Constants.RESOURCE_CLOSE_CURLY_BRACKET));
 			String value = null;
 			
 			for(IDescriptor descriptor: descriptors) {
@@ -125,7 +125,7 @@ public class ResourceUtils {
 			}
 
 			
-			String resolvedValue = resourceValue.replace(Constants.RESOURCE_OPEN_CURLY_BRACKET + Constants.RESOURCE_INLINE_REFERENCE + " " + key + Constants.RESOURCE_CLOSE_CURLY_BRACKET, value);
+			String resolvedValue = resourceValue.replace(Constants.RESOURCE_OPEN_CURLY_BRACKET + Constants.RESOURCE_REFERENCE + " " + key + Constants.RESOURCE_CLOSE_CURLY_BRACKET, value);
 			return resolve(resolvedValue, descriptors);
 		} 
 		

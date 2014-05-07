@@ -18,12 +18,12 @@ public class ServiceResourceUtils {
 		 */
 		ServiceDescriptor serviceDescriptor = service.getServiceDescriptor();
 		
-		Iterator<String> inlineResources = service.getResources();
-		while(inlineResources.hasNext()) {
-			String inlineResource = inlineResources.next();
+		Iterator<String> resources = service.getResources();
+		while(resources.hasNext()) {
+			String resource = resources.next();
 			
-			if(service.getResource(inlineResource) instanceof String) {
-				serviceDescriptor.addProperty(inlineResource, (String) service.getResource(inlineResource));
+			if(service.getResource(resource) instanceof String) {
+				serviceDescriptor.addProperty(resource, (String) service.getResource(resource));
 			}
 		}
 		

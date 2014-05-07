@@ -96,6 +96,20 @@ public interface Constants {
 	public String CONNECTION_HTTPS = "https";
 
 	public String CONNECTION_QUERY_PARAMETER_KEYWORD = "?";
+
+	
+	/**
+	 * Resource Constants
+	 */
+	public String RESOURCE_OPEN_CURLY_BRACKET = "{";
+	public String RESOURCE_CLOSE_CURLY_BRACKET = "}";
+	public String RESOURCE_SLASH = "-";
+	public String RESOURCE_COMMA = ",";
+	public String RESOURCE_SPACE = " ";
+	public String RESOURCE_REFERENCE = "@resource";
+	public String RESOURCE_SELF_REFERENCE = "@self";
+	public String RESOURCE_REFER_REFERENCE = "@refer";
+	public String RESOURCE_DOT = ".";
 	
 	
 	/**
