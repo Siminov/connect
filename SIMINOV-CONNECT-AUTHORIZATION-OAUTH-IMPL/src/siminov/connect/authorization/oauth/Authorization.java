@@ -79,7 +79,7 @@ public class Authorization implements IAuthorization {
 			authorizeUrl = ResourceUtils.resolve(authorizeUrl, authorizationDescriptor);
 			callbackUrl = ResourceUtils.resolve(callbackUrl, authorizationDescriptor);
 		} catch(ServiceException se) {
-			Log.loge(Authorization.class.getName(), "Constructor", "ServiceException caught while resolving inline values, " + se.getMessage());
+			Log.loge(Authorization.class.getName(), "Constructor", "ServiceException caught while resolving resource values, " + se.getMessage());
 			throw new SiminovCriticalException(Authorization.class.getName(), "Constructor", se.getMessage());
 		}
 		
