@@ -76,11 +76,11 @@
 
 
 * Referring Resources
-	- Inline Resource: {@inline KEY_OF_INLINE_RESOURCE}, Pass resource as a parameter to request itself.
+	- Resource: {@resource KEY_OF_RESOURCE}, Pass resource as a parameter to request itself.
 		Example:
-			<proprty name="name_of_proprty">{@inline KEY_OF_INLINE_RESOURCE}</proprty>
+			<proprty name="name_of_proprty">{@resource KEY_OF_RESOURCE}</proprty>
 			
-			request.addResource(KEY_OF_INLINE_RESOURCE, VALUE_OF_INLINE_RESOURCE);
+			request.addResource(KEY_OF_RESOURCE, VALUE_OF_RESOURCE);
 			
 			
 	- Reference Resource: {@refer REFERENCE_RESOURCE_FULL_PATH-PARAMETERS_TO_REFERENCE_RESOURCE}, Call refered resource location to get value for property. 
