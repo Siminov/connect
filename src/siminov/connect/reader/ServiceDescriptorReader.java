@@ -41,7 +41,7 @@ public class ServiceDescriptorReader extends SiminovSAXDefaultHandler implements
 		
 		Context context = resources.getApplicationContext();
 		if(context == null) {
-			Log.loge(getClass().getName(), "Constructor", "Invalid context found.");
+			Log.error(getClass().getName(), "Constructor", "Invalid context found.");
 			throw new DeploymentException(getClass().getName(), "Constructor", "Invalid context found.");
 		}
 
@@ -53,14 +53,14 @@ public class ServiceDescriptorReader extends SiminovSAXDefaultHandler implements
 		try {
 			adapterStream = getClass().getClassLoader().getResourceAsStream(libraryPackageName.replace(".", "/") + "/" + serviceDescriptorPath);
 		} catch(Exception exception) {
-			Log.logd(getClass().getName(), "Constructor", "IOException caught while getting input stream of konnect descriptor, " + exception.getMessage());
+			Log.debug(getClass().getName(), "Constructor", "IOException caught while getting input stream of konnect descriptor, " + exception.getMessage());
 			throw new DeploymentException(getClass().getName(), "Constructor", "IOException caught while getting input stream of konnect descriptor, " + exception.getMessage());
 		}
 		
 		try {
 			parseMessage(adapterStream);
 		} catch(Exception exception) {
-			Log.loge(getClass().getName(), "Constructor", "Exception caught while parsing KONNECT-DESCRIPTOR, " + exception.getMessage());
+			Log.error(getClass().getName(), "Constructor", "Exception caught while parsing KONNECT-DESCRIPTOR, " + exception.getMessage());
 			throw new DeploymentException(getClass().getName(), "Constructor", "Exception caught while parsing KONNECT-DESCRIPTOR, " + exception.getMessage());
 		}
 	}
@@ -69,7 +69,7 @@ public class ServiceDescriptorReader extends SiminovSAXDefaultHandler implements
 
 		Context context = resources.getApplicationContext();
 		if(context == null) {
-			Log.loge(getClass().getName(), "Constructor", "Invalid context found.");
+			Log.error(getClass().getName(), "Constructor", "Invalid context found.");
 			throw new DeploymentException(getClass().getName(), "Constructor", "Invalid context found.");
 		}
 
@@ -81,14 +81,14 @@ public class ServiceDescriptorReader extends SiminovSAXDefaultHandler implements
 		try {
 			applicationDescriptorStream = context.getAssets().open(fileName);
 		} catch(IOException ioException) {
-			Log.logd(getClass().getName(), "Constructor", "IOException caught while getting input stream of service descriptor, " + ioException.getMessage());
+			Log.debug(getClass().getName(), "Constructor", "IOException caught while getting input stream of service descriptor, " + ioException.getMessage());
 			throw new DeploymentException(getClass().getName(), "Constructor", "IOException caught while getting input stream of service descriptor, " + ioException.getMessage());
 		}
 		
 		try {
 			parseMessage(applicationDescriptorStream);
 		} catch(Exception exception) {
-			Log.loge(getClass().getName(), "Constructor", "Exception caught while parsing APPLICATION-DESCRIPTOR, " + exception.getMessage());
+			Log.error(getClass().getName(), "Constructor", "Exception caught while parsing APPLICATION-DESCRIPTOR, " + exception.getMessage());
 			throw new DeploymentException(getClass().getName(), "Constructor", "Exception caught while parsing APPLICATION-DESCRIPTOR, " + exception.getMessage());
 		}
 	}

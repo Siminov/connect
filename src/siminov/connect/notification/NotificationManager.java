@@ -50,7 +50,7 @@ public class NotificationManager implements INotification {
         	
         	String senderId = notificationDescriptor.getProperty(SENDER_ID);
         	if(senderId == null || senderId.length() <= 0) {
-        		Log.loge(NotificationManager.class.getName(), "doRegistration", "INVALID SENDER ID.");
+        		Log.error(NotificationManager.class.getName(), "doRegistration", "INVALID SENDER ID.");
         		throw new SiminovCriticalException(NotificationManager.class.getName(), "doRegistration", "INVALID SENDER ID.");
         	}
         	

@@ -72,7 +72,7 @@ public class AsyncServiceWorker implements IWorker, IServiceWorker {
 		try {
 			contain = serviceUtils.containService(service);
 		} catch(ServiceException se) {
-			Log.loge(AsyncServiceWorker.class.getName(), "process", "ServiceException caught while checking exsisting service, " + se.getMessage());
+			Log.error(AsyncServiceWorker.class.getName(), "process", "ServiceException caught while checking exsisting service, " + se.getMessage());
 			iService.onServiceTerminate(se);
 			
 			return;
@@ -86,7 +86,7 @@ public class AsyncServiceWorker implements IWorker, IServiceWorker {
 		try {
 			service.save();
 		} catch(SiminovException se) {
-			Log.loge(AsyncServiceWorker.class.getName(), "process", "SiminovException caught while saving service, " + se.getMessage());
+			Log.error(AsyncServiceWorker.class.getName(), "process", "SiminovException caught while saving service, " + se.getMessage());
 			iService.onServiceTerminate(new ServiceException(AsyncServiceWorker.class.getName(), "process", se.getMessage()));
 			
 			return;
@@ -120,7 +120,7 @@ public class AsyncServiceWorker implements IWorker, IServiceWorker {
 			asyncServiceWorkerThread.interrupt();
 			asyncServiceWorkerThread = null;
 		} catch(Exception e) {
-			Log.loge(AsyncServiceWorkerThread.class.getName(), "stop", "Exception caught while stopping async service worder thread, " + e.getMessage());
+			Log.error(AsyncServiceWorkerThread.class.getName(), "stop", "Exception caught while stopping async service worder thread, " + e.getMessage());
 			return;
 		}
 	}
@@ -142,7 +142,7 @@ public class AsyncServiceWorker implements IWorker, IServiceWorker {
 			try {
 				services = new siminov.connect.model.ServiceRequest().select().execute();
 			} catch(SiminovException se) {
-				Log.loge(AsyncServiceWorkerThread.class.getName(), "run", "SiminovException caught while getting queue services, " + se.getMessage());
+				Log.error(AsyncServiceWorkerThread.class.getName(), "run", "SiminovException caught while getting queue services, " + se.getMessage());
 				throw new SiminovCriticalException(AsyncServiceWorkerThread.class.getName(), "run", "SiminovException caught while getting queue services, " + se.getMessage());
 			}
 			
@@ -159,7 +159,7 @@ public class AsyncServiceWorker implements IWorker, IServiceWorker {
 				try {
 					iService = serviceUtils.convert(service);
 				} catch(ServiceException se) {
-					Log.loge(AsyncServiceWorkerThread.class.getName(), "run", "ServiceException caught while converting service to iService, " + se.getMessage());
+					Log.error(AsyncServiceWorkerThread.class.getName(), "run", "ServiceException caught while converting service to iService, " + se.getMessage());
 					return;
 				}
 
@@ -172,7 +172,7 @@ public class AsyncServiceWorker implements IWorker, IServiceWorker {
 					try {
 						this.wait();
 					} catch(Exception e) {
-						Log.loge(AsyncServiceWorkerThread.class.getName(), "run", "Exception caught while putting async service worker thread into wait state, " + e.getMessage());
+						Log.error(AsyncServiceWorkerThread.class.getName(), "run", "Exception caught while putting async service worker thread into wait state, " + e.getMessage());
 						return;
 					}
 				}
@@ -190,7 +190,7 @@ public class AsyncServiceWorker implements IWorker, IServiceWorker {
 			try {
 				connectionResponse = ConnectionManager.getInstance().handle(iService);
 			} catch(ConnectionException se) {
-				Log.loge(AsyncServiceWorker.class.getName(), "handle", "SiminovException caught while invoking connection, " + se.getMessage());
+				Log.error(AsyncServiceWorker.class.getName(), "handle", "SiminovException caught while invoking connection, " + se.getMessage());
 				
 				iService.onServiceTerminate(new ServiceException(se.getClassName(), se.getMethodName(), se.getMessage()));
 				return;
@@ -203,7 +203,7 @@ public class AsyncServiceWorker implements IWorker, IServiceWorker {
 			try {
 				serviceRequest.delete().execute();
 			} catch(DatabaseException de) {
-				Log.loge(AsyncServiceWorker.class.getName(), "handle", "Database Exception caught while deleting service request from database, " + de.getMessage());
+				Log.error(AsyncServiceWorker.class.getName(), "handle", "Database Exception caught while deleting service request from database, " + de.getMessage());
 				throw new SiminovCriticalException(AsyncServiceWorker.class.getName(), "handle", "Database Exception caught while deleting service request from database, " + de.getMessage());
 			}
 		}
@@ -231,7 +231,7 @@ public class AsyncServiceWorker implements IWorker, IServiceWorker {
 					try {
 						asyncServiceWorkerThread.wait();
 					} catch(Exception e) {
-						Log.loge(AsyncServiceWorkerThread.class.getName(), "onReceive", "Exception caught while putting async service worker thread into wait state because of no connectivity, " + e.getMessage());	
+						Log.error(AsyncServiceWorkerThread.class.getName(), "onReceive", "Exception caught while putting async service worker thread into wait state because of no connectivity, " + e.getMessage());	
 						return;	
 					}
 				}
@@ -249,7 +249,7 @@ public class AsyncServiceWorker implements IWorker, IServiceWorker {
 			try {
 				services = new siminov.connect.model.ServiceRequest().select().execute();
 			} catch(DatabaseException de) {
-				Log.loge(AsyncServiceWorker.class.getName(), "containService", "DatabaseException caught while getting services from database, " + de.getMessage());
+				Log.error(AsyncServiceWorker.class.getName(), "containService", "DatabaseException caught while getting services from database, " + de.getMessage());
 				throw new ServiceException(AsyncServiceWorker.class.getName(), "containService", de.getMessage());
 			}
 			

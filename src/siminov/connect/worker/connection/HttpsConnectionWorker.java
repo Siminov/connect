@@ -46,7 +46,7 @@ public class HttpsConnectionWorker implements IConnection {
 	public IConnectionResponse get(final IConnectionRequest connectionRequest) throws ConnectionException {
 
 		if(connectionRequest == null) {
-			Log.loge(HttpsConnectionWorker.class.getName(), "get", "Invalid Connection Request.");
+			Log.error(HttpsConnectionWorker.class.getName(), "get", "Invalid Connection Request.");
 			throw new ConnectionException(HttpsConnectionWorker.class.getName(), "get", "Invalid Connection Request.");
 		}
 		
@@ -71,7 +71,7 @@ public class HttpsConnectionWorker implements IConnection {
 		try {
 			httpGet = new HttpGet(url);
 		} catch(Exception exception) {
-			Log.loge(HttpsConnectionWorker.class.getName(), "get", "Exception caught while creating http get, URL: " + url + ", " + exception.getMessage());
+			Log.error(HttpsConnectionWorker.class.getName(), "get", "Exception caught while creating http get, URL: " + url + ", " + exception.getMessage());
 			throw new ConnectionException(HttpsConnectionWorker.class.getName(), "get", "Exception caught while creating http get, URL: " + url + ", " + exception.getMessage());
 		}
 
@@ -115,7 +115,7 @@ public class HttpsConnectionWorker implements IConnection {
         try {
         	httpResponse = (BasicHttpResponse) httpClient.execute(httpGet);        	 
         } catch(Exception exception) {
-        	Log.loge(HttpsConnectionWorker.class.getName(), "get", "Exception caught while executing request, " + exception.getMessage());
+        	Log.error(HttpsConnectionWorker.class.getName(), "get", "Exception caught while executing request, " + exception.getMessage());
         	throw new ConnectionException(HttpsConnectionWorker.class.getName(), "get", "Exception caught while executing request, " + exception.getMessage());
         }
 
@@ -134,7 +134,7 @@ public class HttpsConnectionWorker implements IConnection {
         try {
         	inputStream = httpResponse.getEntity().getContent();
         } catch(Exception exception) {
-        	Log.loge(HttpsConnectionWorker.class.getName(), "get", "Exception caught while getting input stream, " + exception.getMessage());
+        	Log.error(HttpsConnectionWorker.class.getName(), "get", "Exception caught while getting input stream, " + exception.getMessage());
         	throw new ConnectionException(HttpsConnectionWorker.class.getName(), "get", "Exception caught while getting input stream, " + exception.getMessage());
         }
 
@@ -145,7 +145,7 @@ public class HttpsConnectionWorker implements IConnection {
 	public IConnectionResponse head(final IConnectionRequest connectionRequest) throws ConnectionException {
 		
 		if(connectionRequest == null) {
-			Log.loge(HttpsConnectionWorker.class.getName(), "head", "Invalid Connection Request.");
+			Log.error(HttpsConnectionWorker.class.getName(), "head", "Invalid Connection Request.");
 			throw new ConnectionException(HttpsConnectionWorker.class.getName(), "head", "Invalid Connection Request.");
 		}
 
@@ -170,7 +170,7 @@ public class HttpsConnectionWorker implements IConnection {
 		try {
 			httpHead = new HttpHead(url);
 		} catch(Exception exception) {
-			Log.loge(HttpsConnectionWorker.class.getName(), "head", "Exception caught while creating http head, URL: " + url + ", " + exception.getMessage());
+			Log.error(HttpsConnectionWorker.class.getName(), "head", "Exception caught while creating http head, URL: " + url + ", " + exception.getMessage());
 			throw new ConnectionException(HttpsConnectionWorker.class.getName(), "head", "Exception caught while creating http head, URL: " + url + ", " + exception.getMessage());
 		}
 
@@ -214,7 +214,7 @@ public class HttpsConnectionWorker implements IConnection {
         try {
         	httpResponse = (BasicHttpResponse) httpClient.execute(httpHead);        	 
         } catch(Exception exception) {
-        	Log.loge(HttpsConnectionWorker.class.getName(), "head", "Exception caught while executing request, " + exception.getMessage());
+        	Log.error(HttpsConnectionWorker.class.getName(), "head", "Exception caught while executing request, " + exception.getMessage());
         	throw new ConnectionException(HttpsConnectionWorker.class.getName(), "head", "Exception caught while executing request, " + exception.getMessage());
         }
 
@@ -233,7 +233,7 @@ public class HttpsConnectionWorker implements IConnection {
         try {
         	inputStream = httpResponse.getEntity().getContent();
         } catch(Exception exception) {
-        	Log.loge(HttpsConnectionWorker.class.getName(), "head", "Exception caught while getting input stream, " + exception.getMessage());
+        	Log.error(HttpsConnectionWorker.class.getName(), "head", "Exception caught while getting input stream, " + exception.getMessage());
         	throw new ConnectionException(HttpsConnectionWorker.class.getName(), "head", "Exception caught while getting input stream, " + exception.getMessage());
         }
 
@@ -244,7 +244,7 @@ public class HttpsConnectionWorker implements IConnection {
 	public IConnectionResponse post(final IConnectionRequest connectionRequest) throws ConnectionException {
 		
 		if(connectionRequest == null) {
-			Log.loge(HttpsConnectionWorker.class.getName(), "post", "Invalid Connection Request.");
+			Log.error(HttpsConnectionWorker.class.getName(), "post", "Invalid Connection Request.");
 			throw new ConnectionException(HttpsConnectionWorker.class.getName(), "post", "Invalid Connection Request.");
 		}
 
@@ -271,7 +271,7 @@ public class HttpsConnectionWorker implements IConnection {
 		try {
 			httpPost = new HttpPost(url);
 		} catch(Exception exception) {
-			Log.loge(HttpsConnectionWorker.class.getName(), "post", "Exception caught while creating http post, URL: " + url + ", " + exception.getMessage());
+			Log.error(HttpsConnectionWorker.class.getName(), "post", "Exception caught while creating http post, URL: " + url + ", " + exception.getMessage());
 			throw new ConnectionException(HttpsConnectionWorker.class.getName(), "post", "Exception caught while creating http post, URL: " + url + ", " + exception.getMessage());
 		}
 
@@ -293,7 +293,7 @@ public class HttpsConnectionWorker implements IConnection {
 		try {
 			httpPost.setEntity(new UrlEncodedFormEntity(httpQueryParams));
 		} catch(Exception e) {
-			Log.loge(HttpsConnectionWorker.class.getName(), "post", "Exception caught while setting http query parameters, " + e.getMessage());
+			Log.error(HttpsConnectionWorker.class.getName(), "post", "Exception caught while setting http query parameters, " + e.getMessage());
 			throw new ConnectionException(HttpsConnectionWorker.class.getName(), "post", "Exception caught while setting http query parameters, " + e.getMessage());
 		}
 		
@@ -326,7 +326,7 @@ public class HttpsConnectionWorker implements IConnection {
         try {
         	httpResponse = (BasicHttpResponse) httpClient.execute(httpPost);        	 
         } catch(Exception exception) {
-        	Log.loge(HttpsConnectionWorker.class.getName(), "post", "Exception caught while executing request, " + exception.getMessage());
+        	Log.error(HttpsConnectionWorker.class.getName(), "post", "Exception caught while executing request, " + exception.getMessage());
         	throw new ConnectionException(HttpsConnectionWorker.class.getName(), "post", "Exception caught while executing request, " + exception.getMessage());
         }
 
@@ -345,7 +345,7 @@ public class HttpsConnectionWorker implements IConnection {
         try {
         	inputStream = httpResponse.getEntity().getContent();
         } catch(Exception exception) {
-        	Log.loge(HttpsConnectionWorker.class.getName(), "post", "Exception caught while getting input stream, " + exception.getMessage());
+        	Log.error(HttpsConnectionWorker.class.getName(), "post", "Exception caught while getting input stream, " + exception.getMessage());
         	throw new ConnectionException(HttpsConnectionWorker.class.getName(), "post", "Exception caught while getting input stream, " + exception.getMessage());
         }
 
@@ -356,7 +356,7 @@ public class HttpsConnectionWorker implements IConnection {
 	public IConnectionResponse put(final IConnectionRequest connectionRequest) throws ConnectionException {
 		
 		if(connectionRequest == null) {
-			Log.loge(HttpsConnectionWorker.class.getName(), "put", "Invalid Connection Request.");
+			Log.error(HttpsConnectionWorker.class.getName(), "put", "Invalid Connection Request.");
 			throw new ConnectionException(HttpsConnectionWorker.class.getName(), "put", "Invalid Connection Request.");
 		}
 
@@ -384,7 +384,7 @@ public class HttpsConnectionWorker implements IConnection {
 		try {
 			httpPut = new HttpPut(url);
 		} catch(Exception exception) {
-			Log.loge(HttpsConnectionWorker.class.getName(), "put", "Exception caught while creating http put, URL: " + url + ", " + exception.getMessage());
+			Log.error(HttpsConnectionWorker.class.getName(), "put", "Exception caught while creating http put, URL: " + url + ", " + exception.getMessage());
 			throw new ConnectionException(HttpsConnectionWorker.class.getName(), "put", "Exception caught while creating http put, URL: " + url + ", " + exception.getMessage());
 		}
 
@@ -433,7 +433,7 @@ public class HttpsConnectionWorker implements IConnection {
         try {
         	httpResponse = (BasicHttpResponse) httpClient.execute(httpPut);        	 
         } catch(Exception exception) {
-        	Log.loge(HttpsConnectionWorker.class.getName(), "put", "Exception caught while executing request, " + exception.getMessage());
+        	Log.error(HttpsConnectionWorker.class.getName(), "put", "Exception caught while executing request, " + exception.getMessage());
         	throw new ConnectionException(HttpsConnectionWorker.class.getName(), "put", "Exception caught while executing request, " + exception.getMessage());
         }
 
@@ -452,7 +452,7 @@ public class HttpsConnectionWorker implements IConnection {
         try {
         	inputStream = httpResponse.getEntity().getContent();
         } catch(Exception exception) {
-        	Log.loge(HttpsConnectionWorker.class.getName(), "put", "Exception caught while getting input stream, " + exception.getMessage());
+        	Log.error(HttpsConnectionWorker.class.getName(), "put", "Exception caught while getting input stream, " + exception.getMessage());
         	throw new ConnectionException(HttpsConnectionWorker.class.getName(), "put", "Exception caught while getting input stream, " + exception.getMessage());
         }
 
@@ -463,7 +463,7 @@ public class HttpsConnectionWorker implements IConnection {
 	public IConnectionResponse delete(final IConnectionRequest connectionRequest) throws ConnectionException {
 		
 		if(connectionRequest == null) {
-			Log.loge(HttpsConnectionWorker.class.getName(), "delete", "Invalid Connection Request.");
+			Log.error(HttpsConnectionWorker.class.getName(), "delete", "Invalid Connection Request.");
 			throw new ConnectionException(HttpsConnectionWorker.class.getName(), "delete", "Invalid Connection Request.");
 		}
 
@@ -490,7 +490,7 @@ public class HttpsConnectionWorker implements IConnection {
 		try {
 			httpDelete = new HttpDelete(url);
 		} catch(Exception exception) {
-			Log.loge(HttpsConnectionWorker.class.getName(), "delete", "Exception caught while creating http delete, URL: " + url + ", " + exception.getMessage());
+			Log.error(HttpsConnectionWorker.class.getName(), "delete", "Exception caught while creating http delete, URL: " + url + ", " + exception.getMessage());
 			throw new ConnectionException(HttpsConnectionWorker.class.getName(), "delete", "Exception caught while creating http delete, URL: " + url + ", " + exception.getMessage());
 		}
 
@@ -534,7 +534,7 @@ public class HttpsConnectionWorker implements IConnection {
         try {
         	httpResponse = (BasicHttpResponse) httpClient.execute(httpDelete);        	 
         } catch(Exception exception) {
-        	Log.loge(HttpsConnectionWorker.class.getName(), "delete", "Exception caught while executing request, " + exception.getMessage());
+        	Log.error(HttpsConnectionWorker.class.getName(), "delete", "Exception caught while executing request, " + exception.getMessage());
         	throw new ConnectionException(HttpsConnectionWorker.class.getName(), "delete", "Exception caught while executing request, " + exception.getMessage());
         }
 
@@ -553,7 +553,7 @@ public class HttpsConnectionWorker implements IConnection {
         try {
         	inputStream = httpResponse.getEntity().getContent();
         } catch(Exception exception) {
-        	Log.loge(HttpsConnectionWorker.class.getName(), "delete", "Exception caught while getting input stream, " + exception.getMessage());
+        	Log.error(HttpsConnectionWorker.class.getName(), "delete", "Exception caught while getting input stream, " + exception.getMessage());
         	throw new ConnectionException(HttpsConnectionWorker.class.getName(), "delete", "Exception caught while getting input stream, " + exception.getMessage());
         }
 
@@ -564,7 +564,7 @@ public class HttpsConnectionWorker implements IConnection {
 	public IConnectionResponse trace(final IConnectionRequest connectionRequest) throws ConnectionException {
 		
 		if(connectionRequest == null) {
-			Log.loge(HttpsConnectionWorker.class.getName(), "trace", "Invalid Connection Request.");
+			Log.error(HttpsConnectionWorker.class.getName(), "trace", "Invalid Connection Request.");
 			throw new ConnectionException(HttpsConnectionWorker.class.getName(), "trace", "Invalid Connection Request.");
 		}
 
@@ -592,7 +592,7 @@ public class HttpsConnectionWorker implements IConnection {
 		try {
 			httpTrace = new HttpTrace(url);
 		} catch(Exception exception) {
-			Log.loge(HttpsConnectionWorker.class.getName(), "trace", "Exception caught while creating http trace, URL: " + url + ", " + exception.getMessage());
+			Log.error(HttpsConnectionWorker.class.getName(), "trace", "Exception caught while creating http trace, URL: " + url + ", " + exception.getMessage());
 			throw new ConnectionException(HttpsConnectionWorker.class.getName(), "trace", "Exception caught while creating http trace, URL: " + url + ", " + exception.getMessage());
 		}
 
@@ -636,7 +636,7 @@ public class HttpsConnectionWorker implements IConnection {
         try {
         	httpResponse = (BasicHttpResponse) httpClient.execute(httpTrace);        	 
         } catch(Exception exception) {
-        	Log.loge(HttpsConnectionWorker.class.getName(), "trace", "Exception caught while executing request, " + exception.getMessage());
+        	Log.error(HttpsConnectionWorker.class.getName(), "trace", "Exception caught while executing request, " + exception.getMessage());
         	throw new ConnectionException(HttpsConnectionWorker.class.getName(), "trace", "Exception caught while executing request, " + exception.getMessage());
         }
 
@@ -655,7 +655,7 @@ public class HttpsConnectionWorker implements IConnection {
         try {
         	inputStream = httpResponse.getEntity().getContent();
         } catch(Exception exception) {
-        	Log.loge(HttpsConnectionWorker.class.getName(), "trace", "Exception caught while getting input stream, " + exception.getMessage());
+        	Log.error(HttpsConnectionWorker.class.getName(), "trace", "Exception caught while getting input stream, " + exception.getMessage());
         	throw new ConnectionException(HttpsConnectionWorker.class.getName(), "trace", "Exception caught while getting input stream, " + exception.getMessage());
         }
 
@@ -666,7 +666,7 @@ public class HttpsConnectionWorker implements IConnection {
 	public IConnectionResponse options(final IConnectionRequest connectionRequest) throws ConnectionException {
 		
 		if(connectionRequest == null) {
-			Log.loge(HttpsConnectionWorker.class.getName(), "options", "Invalid Connection Request.");
+			Log.error(HttpsConnectionWorker.class.getName(), "options", "Invalid Connection Request.");
 			throw new ConnectionException(HttpsConnectionWorker.class.getName(), "options", "Invalid Connection Request.");
 		}
 
@@ -693,7 +693,7 @@ public class HttpsConnectionWorker implements IConnection {
 		try {
 			httpOptions = new HttpOptions(url);
 		} catch(Exception exception) {
-			Log.loge(HttpsConnectionWorker.class.getName(), "options", "Exception caught while creating http options, URL: " + url + ", " + exception.getMessage());
+			Log.error(HttpsConnectionWorker.class.getName(), "options", "Exception caught while creating http options, URL: " + url + ", " + exception.getMessage());
 			throw new ConnectionException(HttpsConnectionWorker.class.getName(), "options", "Exception caught while creating http options, URL: " + url + ", " + exception.getMessage());
 		}
 
@@ -738,7 +738,7 @@ public class HttpsConnectionWorker implements IConnection {
         try {
         	httpResponse = (BasicHttpResponse) httpClient.execute(httpOptions);        	 
         } catch(Exception exception) {
-        	Log.loge(HttpsConnectionWorker.class.getName(), "options", "Exception caught while executing request, " + exception.getMessage());
+        	Log.error(HttpsConnectionWorker.class.getName(), "options", "Exception caught while executing request, " + exception.getMessage());
         	throw new ConnectionException(HttpsConnectionWorker.class.getName(), "options", "Exception caught while executing request, " + exception.getMessage());
         }
 
@@ -757,7 +757,7 @@ public class HttpsConnectionWorker implements IConnection {
         try {
         	inputStream = httpResponse.getEntity().getContent();
         } catch(Exception exception) {
-        	Log.loge(HttpsConnectionWorker.class.getName(), "options", "Exception caught while getting input stream, " + exception.getMessage());
+        	Log.error(HttpsConnectionWorker.class.getName(), "options", "Exception caught while getting input stream, " + exception.getMessage());
         	throw new ConnectionException(HttpsConnectionWorker.class.getName(), "options", "Exception caught while getting input stream, " + exception.getMessage());
         }
 
@@ -768,7 +768,7 @@ public class HttpsConnectionWorker implements IConnection {
 	public IConnectionResponse connect(final IConnectionRequest connectionRequest) throws ConnectionException {
 		
 		if(connectionRequest == null) {
-			Log.loge(HttpsConnectionWorker.class.getName(), "connect", "Invalid Connection Request.");
+			Log.error(HttpsConnectionWorker.class.getName(), "connect", "Invalid Connection Request.");
 			throw new ConnectionException(HttpsConnectionWorker.class.getName(), "connect", "Invalid Connection Request.");
 		}
 
@@ -779,7 +779,7 @@ public class HttpsConnectionWorker implements IConnection {
 	public IConnectionResponse patch(final IConnectionRequest connectionRequest) throws ConnectionException {
 		
 		if(connectionRequest == null) {
-			Log.loge(HttpsConnectionWorker.class.getName(), "patch", "Invalid Connection Request.");
+			Log.error(HttpsConnectionWorker.class.getName(), "patch", "Invalid Connection Request.");
 			throw new ConnectionException(HttpsConnectionWorker.class.getName(), "patch", "Invalid Connection Request.");
 		}
 
@@ -819,7 +819,7 @@ public class HttpsConnectionWorker implements IConnection {
 		try {
 			authorization.doSignature(httpRequestBase);
 		} catch(AuthorizationException authorizationException) {
-			Log.loge(HttpsConnectionWorker.class.getName(), "sign", "Authozation Exception caught while signing http request, " + authorizationException.getMessage());
+			Log.error(HttpsConnectionWorker.class.getName(), "sign", "Authozation Exception caught while signing http request, " + authorizationException.getMessage());
 			throw new ConnectionException(HttpsConnectionWorker.class.getName(), "sign", "Authozation Exception caught while signing http request, " + authorizationException.getMessage());
 		}
 	}

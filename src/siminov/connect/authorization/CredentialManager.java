@@ -40,7 +40,7 @@ public class CredentialManager implements ICredentialManager {
 		AuthorizationDescriptor authorizationDescriptor = resources.getAuthenticatorDescription();
 		ICredential credential = (ICredential) ClassUtils.createClassInstance(authorizationDescriptor.getCredential());
 		if(credential == null) {
-			Log.loge(CredentialManager.class.getName(), "isAnyActiveCredential", "NO USER DEFINED CREDENTIAL.");
+			Log.error(CredentialManager.class.getName(), "isAnyActiveCredential", "NO USER DEFINED CREDENTIAL.");
 			throw new SiminovCriticalException(CredentialManager.class.getName(), "isAnyActiveCredential", "NO USER DEFINED CREDENTIAL.");
 		}
 		
@@ -50,7 +50,7 @@ public class CredentialManager implements ICredentialManager {
 		try {
 			activeAccountCount = (Integer) credential.count().where(Credential.ACTIVE).equalTo(true).execute();
 		} catch(SiminovException se) {
-			Log.loge(CredentialManager.class.getName(), "isAnyActiveCredential", "SiminovException caught while getting active account count, " + se.getMessage());
+			Log.error(CredentialManager.class.getName(), "isAnyActiveCredential", "SiminovException caught while getting active account count, " + se.getMessage());
 			throw new SiminovCriticalException(CredentialManager.class.getName(), "isAnyActiveCredential", "SiminovException caught while getting active account count, " + se.getMessage());
 		}
 
@@ -67,7 +67,7 @@ public class CredentialManager implements ICredentialManager {
 		AuthorizationDescriptor authorizationDescriptor = resources.getAuthenticatorDescription();
 		ICredential credential = (ICredential) ClassUtils.createClassInstance(authorizationDescriptor.getCredential());
 		if(credential == null) {
-			Log.loge(CredentialManager.class.getName(), "isAnyActiveCredential", "NO USER DEFINED CREDENTIAL.");
+			Log.error(CredentialManager.class.getName(), "isAnyActiveCredential", "NO USER DEFINED CREDENTIAL.");
 			throw new SiminovCriticalException(CredentialManager.class.getName(), "isAnyActiveCredential", "NO USER DEFINED CREDENTIAL.");
 		}
 
@@ -83,18 +83,18 @@ public class CredentialManager implements ICredentialManager {
 					where(Credential.ACTIVE).equalTo(true).
 					execute();
 		} catch(SiminovException se) {
-			Log.loge(CredentialManager.class.getName(), "getActiveCredential", "SiminovException caught while getting active account, " + se.getMessage());
+			Log.error(CredentialManager.class.getName(), "getActiveCredential", "SiminovException caught while getting active account, " + se.getMessage());
 			throw new SiminovCriticalException(CredentialManager.class.getName(), "getActiveCredential", "SiminovException caught while getting active account, " + se.getMessage());
 		}
 
 		if(credentials == null || credentials.length <= 0) {
-			Log.loge(CredentialManager.class.getName(), "getActiveCredential", "No Account Found.");
+			Log.error(CredentialManager.class.getName(), "getActiveCredential", "No Account Found.");
 			return null;
 		}
 
 
 		if(credentials.length > 1) {
-			Log.loge(CredentialManager.class.getName(), "getActiveCredential", "More Then One Active Account Found.");
+			Log.error(CredentialManager.class.getName(), "getActiveCredential", "More Then One Active Account Found.");
 			throw new SiminovCriticalException(CredentialManager.class.getName(), "getActiveCredential", "More Then One Active Account Found.");
 		}
 
@@ -108,7 +108,7 @@ public class CredentialManager implements ICredentialManager {
 		AuthorizationDescriptor authorizationDescriptor = resources.getAuthenticatorDescription();
 		ICredential credential = (ICredential) ClassUtils.createClassInstance(authorizationDescriptor.getCredential());
 		if(credential == null) {
-			Log.loge(CredentialManager.class.getName(), "isAnyActiveCredential", "NO USER DEFINED CREDENTIAL.");
+			Log.error(CredentialManager.class.getName(), "isAnyActiveCredential", "NO USER DEFINED CREDENTIAL.");
 			throw new SiminovCriticalException(CredentialManager.class.getName(), "isAnyActiveCredential", "NO USER DEFINED CREDENTIAL.");
 		}
 
@@ -119,12 +119,12 @@ public class CredentialManager implements ICredentialManager {
 					where(Credential.ACTIVE).equalTo(true).
 					execute();
 		} catch(SiminovException se) {
-			Log.loge(CredentialManager.class.getName(), "getCredentials", "SiminovException caught while getting active account, " + se.getMessage());
+			Log.error(CredentialManager.class.getName(), "getCredentials", "SiminovException caught while getting active account, " + se.getMessage());
 			throw new SiminovCriticalException(CredentialManager.class.getName(), "getCredentials", "SiminovException caught while getting active account, " + se.getMessage());
 		}
 
 		if(credentials == null || credentials.length <= 0) {
-			Log.logd(CredentialManager.class.getName(), "getCredentials", "No Account Found.");
+			Log.debug(CredentialManager.class.getName(), "getCredentials", "No Account Found.");
 			return new EmptyIterator<ICredential>();
 		}
 

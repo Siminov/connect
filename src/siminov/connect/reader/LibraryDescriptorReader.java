@@ -40,13 +40,13 @@ public class LibraryDescriptorReader extends SiminovSAXDefaultHandler implements
 	
 	public LibraryDescriptorReader(final String libraryName) throws SiminovException {
 		if(libraryName == null || libraryName.length() <= 0) {
-			Log.loge(getClass().getName(), "Constructor", "Invalid Library Name Found.");
+			Log.error(getClass().getName(), "Constructor", "Invalid Library Name Found.");
 			throw new SiminovException(getClass().getName(), "Constructor", "Invalid Library Name Found.");
 		}
 		
 		Context context = Resources.getInstance().getApplicationContext();
 		if(context == null) {
-			Log.loge(getClass().getName(), "Constructor", "Invalid Application Context Found.");
+			Log.error(getClass().getName(), "Constructor", "Invalid Application Context Found.");
 			throw new SiminovException(getClass().getName(), "Constructor", "Invalid Application Context Found.");
 		}
 
@@ -54,14 +54,14 @@ public class LibraryDescriptorReader extends SiminovSAXDefaultHandler implements
 		libraryDescriptorStream = getClass().getClassLoader().getResourceAsStream(libraryName.replace(".", "/") + "/" + CONNECT_LIBRARY_DESCRIPTOR_FILE_NAME);
 
 		if(libraryDescriptorStream == null) {
-			Log.loge(getClass().getName(), "Constructor", "Invalid Library Descriptor Stream Found, LIBRARY-NAME: " + libraryName + ", PATH: " + libraryName.replace(".", "/") + "/" + CONNECT_LIBRARY_DESCRIPTOR_FILE_NAME);
+			Log.error(getClass().getName(), "Constructor", "Invalid Library Descriptor Stream Found, LIBRARY-NAME: " + libraryName + ", PATH: " + libraryName.replace(".", "/") + "/" + CONNECT_LIBRARY_DESCRIPTOR_FILE_NAME);
 			throw new SiminovException(getClass().getName(), "Constructor", "Invalid Library Descriptor Stream Found, LIBRARY-NAME: " + libraryName + ", PATH: " + libraryName.replace(".", "/") + "/" + CONNECT_LIBRARY_DESCRIPTOR_FILE_NAME);
 		}
 		
 		try {
 			parseMessage(libraryDescriptorStream);
 		} catch(Exception exception) {
-			Log.loge(getClass().getName(), "Constructor", "Exception caught while parsing LIBRARY-DESCRIPTOR: " + libraryName + ", " + exception.getMessage());
+			Log.error(getClass().getName(), "Constructor", "Exception caught while parsing LIBRARY-DESCRIPTOR: " + libraryName + ", " + exception.getMessage());
 			throw new SiminovException(getClass().getName(), "Constructor", "Exception caught while parsing LIBRARY-DESCRIPTOR: " + libraryName + ", " + exception.getMessage());
 		}
 	}

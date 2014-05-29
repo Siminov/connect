@@ -17,7 +17,7 @@ public class SyncServiceWorker implements IServiceWorker {
 		try {
 			connectionResponse = ConnectionManager.getInstance().handle(service);
 		} catch(ConnectionException ce) {
-			Log.loge(SyncServiceWorker.class.getName(), "process", "ConnectionException caught while invoking connection, " + ce.getMessage());
+			Log.error(SyncServiceWorker.class.getName(), "process", "ConnectionException caught while invoking connection, " + ce.getMessage());
 			
 			service.onServiceTerminate(new ServiceException(ce.getClassName(), ce.getMethodName(), ce.getMessage()));
 			return;

@@ -39,7 +39,7 @@ public class QuickServiceDescriptorReader extends SiminovSAXDefaultHandler imple
 	public QuickServiceDescriptorReader(final String findServiceDescriptorName) throws SiminovException {
 		
 		if(findServiceDescriptorName == null || findServiceDescriptorName.length() <= 0) {
-			Log.loge(getClass().getName(), "Constructor", "Invalid Service Descriptor Name Which Needs To Be Searched.");
+			Log.error(getClass().getName(), "Constructor", "Invalid Service Descriptor Name Which Needs To Be Searched.");
 			throw new SiminovException(getClass().getName(), "Constructor", "Invalid Service Descriptor Name Which Needs To Be Searched.");
 		}
 		
@@ -49,7 +49,7 @@ public class QuickServiceDescriptorReader extends SiminovSAXDefaultHandler imple
 	public void process() throws SiminovException {
 		context = ormResources.getApplicationContext();
 		if(context == null) {
-			Log.loge(getClass().getName(), "process", "Invalid Application Context found.");
+			Log.error(getClass().getName(), "process", "Invalid Application Context found.");
 			throw new SiminovException(getClass().getName(), "process", "Invalid Application Context found.");
 		}
 
@@ -65,14 +65,14 @@ public class QuickServiceDescriptorReader extends SiminovSAXDefaultHandler imple
 			try {
 				databaseMappingDescriptorStream = context.getAssets().open(serviceDescriptorPath);
 			} catch(IOException ioException) {
-				Log.loge(getClass().getName(), "process", "IOException caught while getting input stream of Service Descriptor: " + serviceDescriptorPath + ", " + ioException.getMessage());
+				Log.error(getClass().getName(), "process", "IOException caught while getting input stream of Service Descriptor: " + serviceDescriptorPath + ", " + ioException.getMessage());
 				throw new SiminovException(getClass().getName(), "process", "IOException caught while getting input stream of Service Descriptor: " + serviceDescriptorPath + ", " + ioException.getMessage());
 			}
 			
 			try {
 				parseMessage(databaseMappingDescriptorStream);
 			} catch(Exception exception) {
-				Log.loge(getClass().getName(), "process", "Exception caught while parsing Service Descriptor: " + serviceDescriptorPath + ", " + exception.getMessage());
+				Log.error(getClass().getName(), "process", "Exception caught while parsing Service Descriptor: " + serviceDescriptorPath + ", " + exception.getMessage());
 				throw new SiminovException(getClass().getName(), "process", "Exception caught while parsing Service Descriptor: " + serviceDescriptorPath + ", " + exception.getMessage());
 			}
 			

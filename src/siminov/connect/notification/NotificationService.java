@@ -34,7 +34,7 @@ public class NotificationService extends GCMBaseIntentService {
 	
 	
 	protected void onError(Context context, String errorId) {
-		Log.logd(NotificationService.class.getName(), "onError", "Error caught, " + errorId);
+		Log.debug(NotificationService.class.getName(), "onError", "Error caught, " + errorId);
 
 		NotificationException notificationException = new NotificationException(NotificationException.class.getName(), "onError", "Error caught: " + errorId);
 		

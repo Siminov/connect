@@ -70,7 +70,7 @@ public class Siminov extends siminov.orm.Siminov {
 		
 		ApplicationDescriptor applicationDescriptor = applicationDescriptorParser.getApplicationDescriptor();
 		if(applicationDescriptor == null) {
-			Log.logd(Siminov.class.getName(), "processApplicationDescriptor", "Invalid Application Descriptor Found.");
+			Log.debug(Siminov.class.getName(), "processApplicationDescriptor", "Invalid Application Descriptor Found.");
 			throw new DeploymentException(Siminov.class.getName(), "processApplicationDescriptor", "Invalid Application Descriptor Found.");
 		}
 		

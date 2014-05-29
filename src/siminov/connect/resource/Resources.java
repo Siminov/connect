@@ -63,7 +63,7 @@ public class Resources {
 				quickServiceDescriptorReader = new QuickServiceDescriptorReader(serviceDescriptorName);
 				quickServiceDescriptorReader.process();
 			} catch(SiminovException siminovException) {
-				Log.loge(Resources.class.getName(), "requiredServiceDescriptorBasedOnName", "Siminov Exception caught while getting quick service descriptor based on name, " + serviceDescriptorName);
+				Log.error(Resources.class.getName(), "requiredServiceDescriptorBasedOnName", "Siminov Exception caught while getting quick service descriptor based on name, " + serviceDescriptorName);
 				throw new SiminovCriticalException(Resources.class.getName(), "requiredServiceDescriptorBasedOnName", siminovException.getMessage());
 			}
 			

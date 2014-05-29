@@ -79,7 +79,7 @@ public abstract class Service implements IService {
 		try {
 			serviceHandler.handle(this);
 		} catch(ServiceException se) {
-			Log.loge(Service.class.getName(), "invoke", "ServiceException caught while invoking service, " + se.getMessage());
+			Log.error(Service.class.getName(), "invoke", "ServiceException caught while invoking service, " + se.getMessage());
 			
 			this.onServiceTerminate(se);
 		}

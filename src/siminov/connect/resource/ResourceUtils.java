@@ -68,7 +68,7 @@ public class ResourceUtils {
 				try {
 					resolvedValue = (String) ClassUtils.invokeMethod(classObject, resourceAPI, apiParameterTypes, resourceAPIParameters.toArray());
 				} catch(SiminovException se) {
-					Log.loge(ResourceUtils.class.getName(), "resolve", "SiminovException caught while invoking method, RESOURCE-API: " + resourceAPI + ", " + se.getMessage());
+					Log.error(ResourceUtils.class.getName(), "resolve", "SiminovException caught while invoking method, RESOURCE-API: " + resourceAPI + ", " + se.getMessage());
 					throw new ServiceException(ResourceUtils.class.getName(), "resolve", se.getMessage());
 				}
 
@@ -88,7 +88,7 @@ public class ResourceUtils {
 				try {
 					value = (String) ClassUtils.getValue(classObject, resourceAPI);
 				} catch(SiminovException se) {
-					Log.loge(ResourceUtils.class.getName(), "resolve", "SiminovException caught while getting values, RESOURCE-API: " + resourceAPI + ", " + se.getMessage());
+					Log.error(ResourceUtils.class.getName(), "resolve", "SiminovException caught while getting values, RESOURCE-API: " + resourceAPI + ", " + se.getMessage());
 					throw new ServiceException(ResourceUtils.class.getName(), "resolve", se.getMessage());
 				}
 
