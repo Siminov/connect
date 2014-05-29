@@ -1,14 +1,10 @@
 package siminov.connect.authorization.oauth;
 
-import java.util.Iterator;
-
 import oauth.signpost.OAuthConsumer;
 import oauth.signpost.commonshttp.CommonsHttpOAuthConsumer;
 
 import org.apache.http.client.methods.HttpRequestBase;
 
-import siminov.connect.authorization.AuthorizationFactory;
-import siminov.connect.authorization.Credential;
 import siminov.connect.authorization.CredentialManager;
 import siminov.connect.design.authorization.IAuthorization;
 import siminov.connect.design.authorization.ICredential;
@@ -54,19 +50,19 @@ public class Authorization implements IAuthorization {
 		String callbackUrl = authorizationDescriptor.getProperty(OauthConstants.CALLBACK_URL);
 		
 		if(consumerKey == null || consumerKey.length() <= 0) {
-			Log.loge(Authorization.class.getName(), "Constructor", "Invalid Consumer Key.");
+			Log.error(Authorization.class.getName(), "Constructor", "Invalid Consumer Key.");
 			throw new AuthorizationException(Authorization.class.getName(), "Constructor", "Invalid Consumer Key.");
 		} else if(consumerSecret == null || consumerSecret.length() <= 0) {
-			Log.loge(Authorization.class.getName(), "Constructor", "Invalid Consumer Secret.");
+			Log.error(Authorization.class.getName(), "Constructor", "Invalid Consumer Secret.");
 			throw new AuthorizationException(Authorization.class.getName(), "Constructor", "Invalid Consumer Secret.");
 		} else if(requestTokenUrl == null || requestTokenUrl.length() <= 0) {
-			Log.loge(Authorization.class.getName(), "Constructor", "Invalid Request Token Url.");
+			Log.error(Authorization.class.getName(), "Constructor", "Invalid Request Token Url.");
 			throw new AuthorizationException(Authorization.class.getName(), "Constructor", "Invalid Request Token Url.");
 		} else if(accessTokenUrl == null || accessTokenUrl.length() <= 0) {
-			Log.loge(Authorization.class.getName(), "Constructor", "Invalid Access Token Url.");
+			Log.error(Authorization.class.getName(), "Constructor", "Invalid Access Token Url.");
 			throw new AuthorizationException(Authorization.class.getName(), "Constructor", "Invalid Access Token Url.");
 		} else if(callbackUrl == null || callbackUrl.length() <= 0) {
-			Log.loge(Authorization.class.getName(), "Constructor", "Invalid Callback Url.");
+			Log.error(Authorization.class.getName(), "Constructor", "Invalid Callback Url.");
 			throw new AuthorizationException(Authorization.class.getName(), "Constructor", "Invalid Callback Url.");
 		}
 		
@@ -79,7 +75,7 @@ public class Authorization implements IAuthorization {
 			authorizeUrl = ResourceUtils.resolve(authorizeUrl, authorizationDescriptor);
 			callbackUrl = ResourceUtils.resolve(callbackUrl, authorizationDescriptor);
 		} catch(ServiceException se) {
-			Log.loge(Authorization.class.getName(), "Constructor", "ServiceException caught while resolving resource values, " + se.getMessage());
+			Log.error(Authorization.class.getName(), "Constructor", "ServiceException caught while resolving resource values, " + se.getMessage());
 			throw new SiminovCriticalException(Authorization.class.getName(), "Constructor", se.getMessage());
 		}
 		
@@ -101,7 +97,7 @@ public class Authorization implements IAuthorization {
 	public void doSignature(final HttpRequestBase httpRequestBase) throws AuthorizationException {
 		
     	if(httpRequestBase == null) {
-    		Log.loge(Authorization.class.getName(), "doSignature", "Invalid HttpRequestBase.");
+    		Log.error(Authorization.class.getName(), "doSignature", "Invalid HttpRequestBase.");
     		throw new AuthorizationException(Authorization.class.getName(), "doSignature", "Invalid HttpRequestBase.");
     	}
     	
@@ -117,14 +113,14 @@ public class Authorization implements IAuthorization {
     	
     	boolean anyActiveUser = credentialManager.isAnyActiveCredential();
     	if(!anyActiveUser) {
-    		Log.loge(Authorization.class.getName(), "doSignature", "No Active User Found.");
+    		Log.error(Authorization.class.getName(), "doSignature", "No Active User Found.");
     		return;
     	}
     	
     	
     	ICredential credential = credentialManager.getActiveCredential();
     	if(credential == null) {
-    		Log.loge(Authorization.class.getName(), "doSignature", "Invalid Credential.");
+    		Log.error(Authorization.class.getName(), "doSignature", "Invalid Credential.");
     		throw new AuthorizationException(Authorization.class.getName(), "doSignature", "Invalid Credential.");
     	}
     	
@@ -132,10 +128,10 @@ public class Authorization implements IAuthorization {
 		String consumerKey = authorizationDescriptor.getProperty(OauthConstants.CONSUMER_KEY);
 		String consumerSecret = authorizationDescriptor.getProperty(OauthConstants.CONSUMER_SECRET);
     	if(consumerKey == null || consumerKey.length() <= 0) {
-    		Log.loge(Authorization.class.getName(), "doSignature", "Invalid ConsumerKey.");
+    		Log.error(Authorization.class.getName(), "doSignature", "Invalid ConsumerKey.");
     		throw new AuthorizationException(Authorization.class.getName(), "doSignature", "Invalid ConsumerKey.");
     	} else if(consumerSecret == null || consumerSecret.length() <= 0) {
-    		Log.loge(Authorization.class.getName(), "doSignature", "Invalid ConsumerSecret.");
+    		Log.error(Authorization.class.getName(), "doSignature", "Invalid ConsumerSecret.");
     		throw new AuthorizationException(Authorization.class.getName(), "doSignature", "Invalid ConsumerSecret.");
     	}
     	
@@ -146,7 +142,7 @@ public class Authorization implements IAuthorization {
     	try {
     		consumer.sign(httpRequestBase);    		
     	} catch(Exception exception) {
-    		Log.loge(Authorization.class.getName(), "doSignature", "Exception caught while signing request url, " + exception.getMessage());
+    		Log.error(Authorization.class.getName(), "doSignature", "Exception caught while signing request url, " + exception.getMessage());
     		throw new AuthorizationException(Authorization.class.getName(), "doSignature", exception.getMessage());
     	}
 	}

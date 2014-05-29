@@ -69,14 +69,14 @@ public class OauthAuthorizationActivity extends Activity {
 
         Uri uri = intent.getData();
         if(uri == null) {
-        	Log.loge(this.getClass().getName(), "onNewIntent", "Invalid URI Found.");
+        	Log.error(this.getClass().getName(), "onNewIntent", "Invalid URI Found.");
         
         	if(authenticationEvents != null) {
         		
         		try {
             		authenticationEvents.onAuthenticationTerminate(credential);
         		} catch(AuthorizationException ae) {
-        			Log.loge(OauthAuthorizationActivity.class.getName(), "onNewIntent", "AuthenticationException caught while invoking on authentication terminate, " + ae.getMessage());
+        			Log.error(OauthAuthorizationActivity.class.getName(), "onNewIntent", "AuthenticationException caught while invoking on authentication terminate, " + ae.getMessage());
         		}
         	}
         	
@@ -86,14 +86,14 @@ public class OauthAuthorizationActivity extends Activity {
         
         String verifier = uri.getQueryParameter(OAuth.OAUTH_VERIFIER);
         if(verifier == null || verifier.length() <= 0) {
-        	Log.loge(this.getClass().getName(), "onNewIntent", "Invalid Token Found.");
+        	Log.error(this.getClass().getName(), "onNewIntent", "Invalid Token Found.");
         	
         	if(authenticationEvents != null) {
         		
         		try {
             		authenticationEvents.onAuthenticationTerminate(credential);
         		} catch(AuthorizationException ae) {
-        			Log.loge(OauthAuthorizationActivity.class.getName(), "onNewIntent", "AuthenticationException caught while invoking on authentication terminate, " + ae.getMessage());
+        			Log.error(OauthAuthorizationActivity.class.getName(), "onNewIntent", "AuthenticationException caught while invoking on authentication terminate, " + ae.getMessage());
         		}
         	}
 
@@ -105,14 +105,14 @@ public class OauthAuthorizationActivity extends Activity {
         try {
         	getAccessToken(verifier);
         } catch(AuthorizationException ae) {
-        	Log.loge(OauthAuthorizationActivity.class.getName(), "onNewIntent", "AuthenticationException caught while getting access token, " + ae.getMessage());
+        	Log.error(OauthAuthorizationActivity.class.getName(), "onNewIntent", "AuthenticationException caught while getting access token, " + ae.getMessage());
         	
         	if(authenticationEvents != null) {
         		
         		try {
             		authenticationEvents.onAuthenticationTerminate(credential);
         		} catch(AuthorizationException e) {
-        			Log.loge(OauthAuthorizationActivity.class.getName(), "onNewIntent", "AuthenticationException caught while invoking on authentication terminate, " + e.getMessage());
+        			Log.error(OauthAuthorizationActivity.class.getName(), "onNewIntent", "AuthenticationException caught while invoking on authentication terminate, " + e.getMessage());
         		}
         	}
 
@@ -126,7 +126,7 @@ public class OauthAuthorizationActivity extends Activity {
         	try {
             	authenticationEvents.onAuthenticationFinish(credential);
         	} catch(AuthorizationException ae) {
-        		Log.loge(OauthAuthorizationActivity.class.getName(), "onNewIntent", "AuthenticationException caught while calling on authentication finish, " + ae.getMessage());
+        		Log.error(OauthAuthorizationActivity.class.getName(), "onNewIntent", "AuthenticationException caught while calling on authentication finish, " + ae.getMessage());
         	}
         }
         
@@ -143,7 +143,7 @@ public class OauthAuthorizationActivity extends Activity {
         try {
         	authUrl = provider.retrieveRequestToken(consumer, callbackUrl);       
         } catch(Exception exception) {
-        	Log.loge(Authorization.class.getName(), "getAuthenticationUrl", "Exception caught while getting request token from goplan, " + exception.getMessage());
+        	Log.error(Authorization.class.getName(), "getAuthenticationUrl", "Exception caught while getting request token from goplan, " + exception.getMessage());
         	throw new SiminovCriticalException(Authorization.class.getName(), "getAuthenticationUrl", exception.getMessage());
         }
         
@@ -153,7 +153,7 @@ public class OauthAuthorizationActivity extends Activity {
 	private void getAccessToken(String verifier) throws AuthorizationException {
 		
 		if(verifier == null || verifier.length() <= 0) {
-			Log.loge(OauthAuthorizationActivity.class.getName(), "getAccessToken", "Invalid Verifier Found.");
+			Log.error(OauthAuthorizationActivity.class.getName(), "getAccessToken", "Invalid Verifier Found.");
 			throw new SiminovCriticalException(OauthAuthorizationActivity.class.getName(), "getAccessToken", "Invalid Verifier Found.");
 		}
 		
@@ -161,7 +161,7 @@ public class OauthAuthorizationActivity extends Activity {
 		try {
 			provider.retrieveAccessToken(consumer, verifier);
 		} catch(Exception exception) {
-			Log.loge(OauthAuthorizationActivity.class.getName(), "getAccessToken", "Exception caught while getting access token from server, " + exception.getMessage());
+			Log.error(OauthAuthorizationActivity.class.getName(), "getAccessToken", "Exception caught while getting access token from server, " + exception.getMessage());
 			throw new AuthorizationException(OauthAuthorizationActivity.class.getName(), "getAccessToken", exception.getMessage());
 		}
 
