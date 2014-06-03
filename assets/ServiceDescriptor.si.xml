@@ -49,9 +49,16 @@
       			<!-- Query Parameter -->
       		<query-parameters>
           
-          		<!-- Name and Value is Mandatory Field -->
-          		<query-parameter name="name_of_query_parameter">value_of_query_parameter</query-parameter>
-          
+      			<query-parameter>
+      			    
+      			    <!-- Mandatory Field -->
+      			    <property name="name">name_of_query_parameter</property>
+      			    
+      			    <!-- Mandatory Field -->
+      			    <property name="value">value_of_query_parameter</property>
+      			    
+      			</query-parameter>
+      		
       		</query-parameters>
       
       
@@ -59,9 +66,16 @@
       			<!-- Header Parameter -->
       		<header-parameters>
           
-          		<!-- Name and Value is Mandatory Field -->
-          		<header-parameter name="name_of_header_parameter">value_of_header_parameter</header-parameter>
-
+      			<header-parameter>
+      			    
+      			    <!-- Mandatory Field -->
+      			    <property name="name">name_of_header_parameter</property>
+      			    
+      			    <!-- Mandatory Field -->
+      			    <property name="value">value_of_header_parameter</property>
+      			    
+      			</header-parameter>
+      		
         	</header-parameters>
 
       		

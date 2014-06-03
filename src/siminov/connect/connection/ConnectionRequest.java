@@ -5,6 +5,8 @@ import java.util.Iterator;
 import java.util.Map;
 
 import siminov.connect.design.connection.IConnectionRequest;
+import siminov.connect.model.ServiceDescriptor.API.HeaderParameter;
+import siminov.connect.model.ServiceDescriptor.API.QueryParameter;
 
 public class ConnectionRequest implements IConnectionRequest {
 
@@ -13,8 +15,8 @@ public class ConnectionRequest implements IConnectionRequest {
 	private String protocol;
 	private String type;
 	
-	private Map<String, String> queryParameters = new HashMap<String, String>();
-	private Map<String, String> headerParameters = new HashMap<String, String>();
+	private Map<String, QueryParameter> queryParameters = new HashMap<String, QueryParameter>();
+	private Map<String, HeaderParameter> headerParameters = new HashMap<String, HeaderParameter>();
 	
 	private byte[] dataStream = null;
 	
@@ -47,32 +49,24 @@ public class ConnectionRequest implements IConnectionRequest {
 		return this.queryParameters.keySet().iterator();
 	}
 	
-	public String getQueryParameter(String key) {
+	public QueryParameter getQueryParameter(String key) {
 		return this.queryParameters.get(key);
 	}
 	
-	public void setQueryParameters(Map<String, String> queryParameters) {
-		this.queryParameters = queryParameters;
-	}
-	
-	public void addQueryParameter(String key, String value) {
-		this.queryParameters.put(key, value);
+	public void addQueryParameter(QueryParameter queryParameter) {
+		this.queryParameters.put(queryParameter.getName(), queryParameter);
 	}
 	
 	public Iterator<String> getHeaderParameters() {
 		return this.headerParameters.keySet().iterator();
 	}
 	
-	public String getHeaderParameter(String key) {
+	public HeaderParameter getHeaderParameter(String key) {
 		return this.headerParameters.get(key);
 	}
 
-	public void setHeaderParameters(Map<String, String> headerParameters) {
-		this.headerParameters = headerParameters;
-	}
-	
-	public void addHeaderParameter(String key, String value) {
-		this.headerParameters.put(key, value);
+	public void addHeaderParameter(HeaderParameter headerParameter) {
+		this.headerParameters.put(headerParameter.getName(), headerParameter);
 	}
 
 	public byte[] getDataStream() {

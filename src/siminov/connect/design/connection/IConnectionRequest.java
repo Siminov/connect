@@ -1,7 +1,9 @@
 package siminov.connect.design.connection;
 
 import java.util.Iterator;
-import java.util.Map;
+
+import siminov.connect.model.ServiceDescriptor.API.HeaderParameter;
+import siminov.connect.model.ServiceDescriptor.API.QueryParameter;
 
 public interface IConnectionRequest {
 
@@ -19,19 +21,15 @@ public interface IConnectionRequest {
 	
 	public Iterator<String> getQueryParameters();
 	
-	public String getQueryParameter(String key);
+	public QueryParameter getQueryParameter(String key);
 	
-	public void setQueryParameters(Map<String, String> queryParameters);
-	
-	public void addQueryParameter(String key, String value);
+	public void addQueryParameter(QueryParameter queryParameter);
 	
 	public Iterator<String> getHeaderParameters();
 	
-	public String getHeaderParameter(String key);
+	public HeaderParameter getHeaderParameter(String key);
 
-	public void setHeaderParameters(Map<String, String> headerParameters);
-	
-	public void addHeaderParameter(String key, String value);
+	public void addHeaderParameter(HeaderParameter headerParameter);
 
 	public byte[] getDataStream();
 	

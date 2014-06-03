@@ -1,8 +1,6 @@
 package siminov.connect.connection;
 
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 
 import siminov.connect.Constants;
 import siminov.connect.design.connection.IConnectionRequest;
@@ -24,8 +22,8 @@ public class ConnectionHelper {
 		
 		String url = formUrl(service);
 		
-		Map<String, String> queryParameters = formQueryParameters(service);
-		Map<String, String> headerParameters = formHeaderParameters(service);
+		Iterator<QueryParameter> queryParameters = formQueryParameters(service);
+		Iterator<HeaderParameter> headerParameters = formHeaderParameters(service);
 		
 		byte[] dataStream = formDataStream(service);
 		
@@ -33,10 +31,17 @@ public class ConnectionHelper {
 		connectionRequest.setUrl(url);
 		connectionRequest.setProtocol(serviceDescriptor.getProtocol());
 		connectionRequest.setType(api.getType());
-		connectionRequest.setQueryParameters(queryParameters);
-		connectionRequest.setHeaderParameters(headerParameters);
-		connectionRequest.setDataStream(dataStream);
 		
+		while(queryParameters.hasNext()) {
+			connectionRequest.addQueryParameter(queryParameters.next());
+		}
+		
+		while(headerParameters.hasNext()) {
+			connectionRequest.addHeaderParameter(headerParameters.next());
+		}
+
+		connectionRequest.setDataStream(dataStream);
+
 		return connectionRequest;
 	}
 
@@ -86,46 +91,24 @@ public class ConnectionHelper {
 		return url.toString();
 	}
 	
-	private static Map<String, String> formQueryParameters(final IService service) {
+	private static Iterator<QueryParameter> formQueryParameters(final IService service) {
 		
 		ServiceDescriptor serviceDescriptor = service.getServiceDescriptor();
 		
 		String apiName = service.getApi();
 		API api = serviceDescriptor.getApi(apiName);
 		
-		Map<String, String> parameters = new HashMap<String, String>();
-		
-		Iterator<QueryParameter> queryParameters = api.getQueryParameters();
-		while(queryParameters.hasNext()) {
-			
-			QueryParameter queryParameter = queryParameters.next();
-			String value = queryParameter.getValue();
-			
-			parameters.put(queryParameter.getName(), value);
-		}
-		
-		return parameters;
+		return api.getQueryParameters();
 	}
 	
-	private static Map<String, String> formHeaderParameters(final IService service) {
+	private static Iterator<HeaderParameter> formHeaderParameters(final IService service) {
 
 		ServiceDescriptor serviceDescriptor = service.getServiceDescriptor();
 		
 		String apiName = service.getApi();
 		API api = serviceDescriptor.getApi(apiName);
 		
-		Map<String, String> parameters = new HashMap<String, String>();
-		
-		Iterator<HeaderParameter> headerParameters = api.getHeaderParameters();
-		while(headerParameters.hasNext()) {
-			
-			HeaderParameter headerParameter = headerParameters.next();
-			String value = headerParameter.getValue();
-			
-			parameters.put(headerParameter.getName(), value);
-		}
-		
-		return parameters;
+		return api.getHeaderParameters();
 	}
 	
 	private static byte[] formDataStream(final IService service) {

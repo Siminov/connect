@@ -9,7 +9,6 @@ import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
 
 import org.apache.http.NameValuePair;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpHead;
@@ -18,6 +17,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.client.methods.HttpTrace;
+import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.conn.scheme.Scheme;
 import org.apache.http.conn.scheme.SchemeRegistry;
 import org.apache.http.conn.ssl.SSLSocketFactory;
@@ -27,9 +27,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.conn.SingleClientConnManager;
 import org.apache.http.message.BasicHttpResponse;
 import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.HttpParams;
 
+import siminov.connect.Constants;
 import siminov.connect.authorization.AuthorizationFactory;
 import siminov.connect.connection.ConnectionResponse;
 import siminov.connect.connection.ConnectionStatusCodes;
@@ -39,6 +38,8 @@ import siminov.connect.design.connection.IConnectionRequest;
 import siminov.connect.design.connection.IConnectionResponse;
 import siminov.connect.exception.AuthorizationException;
 import siminov.connect.exception.ConnectionException;
+import siminov.connect.model.ServiceDescriptor.API.HeaderParameter;
+import siminov.connect.model.ServiceDescriptor.API.QueryParameter;
 import siminov.orm.log.Log;
 
 public class HttpsConnectionWorker implements IConnection {
@@ -54,11 +55,31 @@ public class HttpsConnectionWorker implements IConnection {
 		/*
 		 * Request Parameters
 		 */
-		String url = connectionRequest.getUrl();
+		StringBuilder url = new StringBuilder(connectionRequest.getUrl());
 		
 		Iterator<String> queryParameters = connectionRequest.getQueryParameters();
 		Iterator<String> headerParameters = connectionRequest.getHeaderParameters();
 		
+		
+		/*
+		 * Add Query Parameters
+		 */
+		List<NameValuePair> httpParams = new ArrayList<NameValuePair>();
+		while(queryParameters.hasNext()) {
+			
+			String parameter = queryParameters.next();
+			QueryParameter queryParameter = connectionRequest.getQueryParameter(parameter);
+			
+			httpParams.add(new BasicNameValuePair(parameter, queryParameter.getValue()));
+		}
+		
+		String queryParameter = URLEncodedUtils.format(httpParams, "utf-8");
+		if(!url.toString().endsWith(Constants.CONNECTION_QUERY_PARAMETER_KEYWORD)) {
+	        url.append(Constants.CONNECTION_QUERY_PARAMETER_KEYWORD);
+		}
+
+		url.append(queryParameter);
+
 		
 		/*
 		 * Make Request
@@ -69,7 +90,7 @@ public class HttpsConnectionWorker implements IConnection {
 		HttpGet httpGet = null;
 		
 		try {
-			httpGet = new HttpGet(url);
+			httpGet = new HttpGet(url.toString());
 		} catch(Exception exception) {
 			Log.error(HttpsConnectionWorker.class.getName(), "get", "Exception caught while creating http get, URL: " + url + ", " + exception.getMessage());
 			throw new ConnectionException(HttpsConnectionWorker.class.getName(), "get", "Exception caught while creating http get, URL: " + url + ", " + exception.getMessage());
@@ -77,31 +98,14 @@ public class HttpsConnectionWorker implements IConnection {
 
 		
 		/*
-		 * Add Query Parameters
-		 */
-		HttpParams httpParams = new BasicHttpParams();
-
-		while(queryParameters.hasNext()) {
-			
-			String parameter = queryParameters.next();
-			String parameterValue = connectionRequest.getQueryParameter(parameter);
-			
-			httpParams.setParameter(parameter, parameterValue);
-		}
-		
-		
-		httpGet.setParams(httpParams);
-		
-		
-		/*
 		 * Add Header Parameters
 		 */
 		while(headerParameters.hasNext()) {
 			
 			String header = headerParameters.next();
-			String headerValue = connectionRequest.getHeaderParameter(header);
+			HeaderParameter headerParameter = connectionRequest.getHeaderParameter(header);
 			
-	        httpGet.setHeader(header, headerValue);
+	        httpGet.setHeader(header, headerParameter.getValue());
 		}
 		
 
@@ -153,11 +157,30 @@ public class HttpsConnectionWorker implements IConnection {
 		/*
 		 * Request Parameters
 		 */
-		String url = connectionRequest.getUrl();
+		StringBuilder url = new StringBuilder(connectionRequest.getUrl());
 		
 		Iterator<String> queryParameters = connectionRequest.getQueryParameters();
 		Iterator<String> headerParameters = connectionRequest.getHeaderParameters();
 		
+		
+		/*
+		 * Add Query Parameters
+		 */
+		List<NameValuePair> httpParams = new ArrayList<NameValuePair>();
+		while(queryParameters.hasNext()) {
+			
+			String parameter = queryParameters.next();
+			QueryParameter queryParameter = connectionRequest.getQueryParameter(parameter);
+			
+			httpParams.add(new BasicNameValuePair(parameter, queryParameter.getValue()));
+		}
+		
+		String queryParameter = URLEncodedUtils.format(httpParams, "utf-8");
+		if(!url.toString().endsWith(Constants.CONNECTION_QUERY_PARAMETER_KEYWORD)) {
+	        url.append(Constants.CONNECTION_QUERY_PARAMETER_KEYWORD);
+		}
+
+		url.append(queryParameter);
 		
 		/*
 		 * Make Request
@@ -168,7 +191,7 @@ public class HttpsConnectionWorker implements IConnection {
 		HttpHead httpHead = null;
 		
 		try {
-			httpHead = new HttpHead(url);
+			httpHead = new HttpHead(url.toString());
 		} catch(Exception exception) {
 			Log.error(HttpsConnectionWorker.class.getName(), "head", "Exception caught while creating http head, URL: " + url + ", " + exception.getMessage());
 			throw new ConnectionException(HttpsConnectionWorker.class.getName(), "head", "Exception caught while creating http head, URL: " + url + ", " + exception.getMessage());
@@ -176,31 +199,14 @@ public class HttpsConnectionWorker implements IConnection {
 
 
 		/*
-		 * Add Query Parameters
-		 */
-		HttpParams httpParams = new BasicHttpParams();
-
-		while(queryParameters.hasNext()) {
-			
-			String parameter = queryParameters.next();
-			String parameterValue = connectionRequest.getQueryParameter(parameter);
-			
-			httpParams.setParameter(parameter, parameterValue);
-		}
-		
-		
-		httpHead.setParams(httpParams);
-		
-		
-		/*
 		 * Add Header Parameters
 		 */
 		while(headerParameters.hasNext()) {
 			
 			String header = headerParameters.next();
-			String headerValue = connectionRequest.getHeaderParameter(header);
+			HeaderParameter headerParameter = connectionRequest.getHeaderParameter(header);
 			
-	        httpHead.setHeader(header, headerValue);
+	        httpHead.setHeader(header, headerParameter.getValue());
 		}
 		
 
@@ -252,13 +258,33 @@ public class HttpsConnectionWorker implements IConnection {
 		/*
 		 * Request Parameters
 		 */
-		String url = connectionRequest.getUrl();
+		StringBuilder url = new StringBuilder(connectionRequest.getUrl());
 		
 		Iterator<String> queryParameters = connectionRequest.getQueryParameters();
 		Iterator<String> headerParameters = connectionRequest.getHeaderParameters();
 		
 		byte[] dataStream = connectionRequest.getDataStream();
 		
+		
+		/*
+		 * Add Query Parameters
+		 */
+		List<NameValuePair> httpParams = new ArrayList<NameValuePair>();
+		while(queryParameters.hasNext()) {
+			
+			String parameter = queryParameters.next();
+			QueryParameter queryParameter = connectionRequest.getQueryParameter(parameter);
+			
+			httpParams.add(new BasicNameValuePair(parameter, queryParameter.getValue()));
+		}
+		
+		String queryParameter = URLEncodedUtils.format(httpParams, "utf-8");
+		if(!url.toString().endsWith(Constants.CONNECTION_QUERY_PARAMETER_KEYWORD)) {
+	        url.append(Constants.CONNECTION_QUERY_PARAMETER_KEYWORD);
+		}
+
+		url.append(queryParameter);
+
 		
 		/*
 		 * Make Request
@@ -269,7 +295,7 @@ public class HttpsConnectionWorker implements IConnection {
 		HttpPost httpPost = null;
 		
 		try {
-			httpPost = new HttpPost(url);
+			httpPost = new HttpPost(url.toString());
 		} catch(Exception exception) {
 			Log.error(HttpsConnectionWorker.class.getName(), "post", "Exception caught while creating http post, URL: " + url + ", " + exception.getMessage());
 			throw new ConnectionException(HttpsConnectionWorker.class.getName(), "post", "Exception caught while creating http post, URL: " + url + ", " + exception.getMessage());
@@ -277,36 +303,14 @@ public class HttpsConnectionWorker implements IConnection {
 
 		
 		/*
-		 * Add Query Parameters
-		 */
-		List<NameValuePair> httpQueryParams = new ArrayList<NameValuePair>();  
-
-		while(queryParameters.hasNext()) {
-			
-			String parameter = queryParameters.next();
-			String parameterValue = connectionRequest.getQueryParameter(parameter);
-			
-			httpQueryParams.add(new BasicNameValuePair(parameter, parameterValue));
-		}
-		
-		
-		try {
-			httpPost.setEntity(new UrlEncodedFormEntity(httpQueryParams));
-		} catch(Exception e) {
-			Log.error(HttpsConnectionWorker.class.getName(), "post", "Exception caught while setting http query parameters, " + e.getMessage());
-			throw new ConnectionException(HttpsConnectionWorker.class.getName(), "post", "Exception caught while setting http query parameters, " + e.getMessage());
-		}
-		
-		
-		/*
 		 * Add Header Parameters
 		 */
 		while(headerParameters.hasNext()) {
 			
 			String header = headerParameters.next();
-			String headerValue = connectionRequest.getHeaderParameter(header);
+			HeaderParameter headerParameter = connectionRequest.getHeaderParameter(header);
 			
-	        httpPost.setHeader(header, headerValue);
+	        httpPost.setHeader(header, headerParameter.getName());
 		}
 		
 
@@ -365,13 +369,33 @@ public class HttpsConnectionWorker implements IConnection {
 		/*
 		 * Request Parameters
 		 */
-		String url = connectionRequest.getUrl();
+		StringBuilder url = new StringBuilder(connectionRequest.getUrl());
 		
 		Iterator<String> queryParameters = connectionRequest.getQueryParameters();
 		Iterator<String> headerParameters = connectionRequest.getHeaderParameters();
 		
 		byte[] dataStream = connectionRequest.getDataStream();
 		
+		
+		/*
+		 * Add Query Parameters
+		 */
+		List<NameValuePair> httpParams = new ArrayList<NameValuePair>();
+		while(queryParameters.hasNext()) {
+			
+			String parameter = queryParameters.next();
+			QueryParameter queryParameter = connectionRequest.getQueryParameter(parameter);
+			
+			httpParams.add(new BasicNameValuePair(parameter, queryParameter.getValue()));
+		}
+		
+		String queryParameter = URLEncodedUtils.format(httpParams, "utf-8");
+		if(!url.toString().endsWith(Constants.CONNECTION_QUERY_PARAMETER_KEYWORD)) {
+	        url.append(Constants.CONNECTION_QUERY_PARAMETER_KEYWORD);
+		}
+
+		url.append(queryParameter);
+
 		
 		/*
 		 * Make Request
@@ -382,7 +406,7 @@ public class HttpsConnectionWorker implements IConnection {
 		HttpPut httpPut = null;
 		
 		try {
-			httpPut = new HttpPut(url);
+			httpPut = new HttpPut(url.toString());
 		} catch(Exception exception) {
 			Log.error(HttpsConnectionWorker.class.getName(), "put", "Exception caught while creating http put, URL: " + url + ", " + exception.getMessage());
 			throw new ConnectionException(HttpsConnectionWorker.class.getName(), "put", "Exception caught while creating http put, URL: " + url + ", " + exception.getMessage());
@@ -390,31 +414,14 @@ public class HttpsConnectionWorker implements IConnection {
 
 		
 		/*
-		 * Add Query Parameters
-		 */
-		HttpParams httpParams = new BasicHttpParams();
-
-		while(queryParameters.hasNext()) {
-			
-			String parameter = queryParameters.next();
-			String parameterValue = connectionRequest.getQueryParameter(parameter);
-			
-			httpParams.setParameter(parameter, parameterValue);
-		}
-		
-		
-		httpPut.setParams(httpParams);
-		
-		
-		/*
 		 * Add Header Parameters
 		 */
 		while(headerParameters.hasNext()) {
 			
 			String header = headerParameters.next();
-			String headerValue = connectionRequest.getHeaderParameter(header);
+			HeaderParameter headerParameter = connectionRequest.getHeaderParameter(header);
 			
-	        httpPut.setHeader(header, headerValue);
+	        httpPut.setHeader(header, headerParameter.getValue());
 		}
 		
 
@@ -473,11 +480,31 @@ public class HttpsConnectionWorker implements IConnection {
 		/*
 		 * Request Parameters
 		 */
-		String url = connectionRequest.getUrl();
+		StringBuilder url = new StringBuilder(connectionRequest.getUrl());
 		
 		Iterator<String> queryParameters = connectionRequest.getQueryParameters();
 		Iterator<String> headerParameters = connectionRequest.getHeaderParameters();
 		
+		
+		/*
+		 * Add Query Parameters
+		 */
+		List<NameValuePair> httpParams = new ArrayList<NameValuePair>();
+		while(queryParameters.hasNext()) {
+			
+			String parameter = queryParameters.next();
+			QueryParameter queryParameter = connectionRequest.getQueryParameter(parameter);
+			
+			httpParams.add(new BasicNameValuePair(parameter, queryParameter.getValue()));
+		}
+		
+		String queryParameter = URLEncodedUtils.format(httpParams, "utf-8");
+		if(!url.toString().endsWith(Constants.CONNECTION_QUERY_PARAMETER_KEYWORD)) {
+	        url.append(Constants.CONNECTION_QUERY_PARAMETER_KEYWORD);
+		}
+
+		url.append(queryParameter);
+
 		
 		/*
 		 * Make Request
@@ -488,7 +515,7 @@ public class HttpsConnectionWorker implements IConnection {
 		HttpDelete httpDelete = null;
 		
 		try {
-			httpDelete = new HttpDelete(url);
+			httpDelete = new HttpDelete(url.toString());
 		} catch(Exception exception) {
 			Log.error(HttpsConnectionWorker.class.getName(), "delete", "Exception caught while creating http delete, URL: " + url + ", " + exception.getMessage());
 			throw new ConnectionException(HttpsConnectionWorker.class.getName(), "delete", "Exception caught while creating http delete, URL: " + url + ", " + exception.getMessage());
@@ -496,31 +523,14 @@ public class HttpsConnectionWorker implements IConnection {
 
 		
 		/*
-		 * Add Query Parameters
-		 */
-		HttpParams httpParams = new BasicHttpParams();
-
-		while(queryParameters.hasNext()) {
-			
-			String parameter = queryParameters.next();
-			String parameterValue = connectionRequest.getQueryParameter(parameter);
-			
-			httpParams.setParameter(parameter, parameterValue);
-		}
-		
-		
-		httpDelete.setParams(httpParams);
-		
-		
-		/*
 		 * Add Header Parameters
 		 */
 		while(headerParameters.hasNext()) {
 			
 			String header = headerParameters.next();
-			String headerValue = connectionRequest.getHeaderParameter(header);
+			HeaderParameter headerParameter = connectionRequest.getHeaderParameter(header);
 			
-	        httpDelete.setHeader(header, headerValue);
+	        httpDelete.setHeader(header, headerParameter.getValue());
 		}
 		
 
@@ -574,12 +584,31 @@ public class HttpsConnectionWorker implements IConnection {
 		/*
 		 * Request Parameters
 		 */
-		String url = connectionRequest.getUrl();
+		StringBuilder url = new StringBuilder(connectionRequest.getUrl());
 		
 		Iterator<String> queryParameters = connectionRequest.getQueryParameters();
 		Iterator<String> headerParameters = connectionRequest.getHeaderParameters();
 		
 		
+		/*
+		 * Add Query Parameters
+		 */
+		List<NameValuePair> httpParams = new ArrayList<NameValuePair>();
+		while(queryParameters.hasNext()) {
+			
+			String parameter = queryParameters.next();
+			QueryParameter queryParameter = connectionRequest.getQueryParameter(parameter);
+			
+			httpParams.add(new BasicNameValuePair(parameter, queryParameter.getValue()));
+		}
+		
+		String queryParameter = URLEncodedUtils.format(httpParams, "utf-8");
+		if(!url.toString().endsWith(Constants.CONNECTION_QUERY_PARAMETER_KEYWORD)) {
+	        url.append(Constants.CONNECTION_QUERY_PARAMETER_KEYWORD);
+		}
+
+		url.append(queryParameter);
+
 		
 		/*
 		 * Make Request
@@ -590,7 +619,7 @@ public class HttpsConnectionWorker implements IConnection {
 		HttpTrace httpTrace = null;
 		
 		try {
-			httpTrace = new HttpTrace(url);
+			httpTrace = new HttpTrace(url.toString());
 		} catch(Exception exception) {
 			Log.error(HttpsConnectionWorker.class.getName(), "trace", "Exception caught while creating http trace, URL: " + url + ", " + exception.getMessage());
 			throw new ConnectionException(HttpsConnectionWorker.class.getName(), "trace", "Exception caught while creating http trace, URL: " + url + ", " + exception.getMessage());
@@ -598,31 +627,14 @@ public class HttpsConnectionWorker implements IConnection {
 
 		
 		/*
-		 * Add Query Parameters
-		 */
-		HttpParams httpParams = new BasicHttpParams();
-
-		while(headerParameters.hasNext()) {
-			
-			String parameter = headerParameters.next();
-			String parameterValue = connectionRequest.getHeaderParameter(parameter);
-			
-			httpParams.setParameter(parameter, parameterValue);
-		}
-		
-		
-		httpTrace.setParams(httpParams);
-		
-		
-		/*
 		 * Add Header Parameters
 		 */
 		while(headerParameters.hasNext()) {
 			
 			String header = headerParameters.next();
-			String headerValue = connectionRequest.getHeaderParameter(header);
+			HeaderParameter headerParameter = connectionRequest.getHeaderParameter(header);
 			
-	        httpTrace.setHeader(header, headerValue);
+	        httpTrace.setHeader(header, headerParameter.getValue());
 		}
 		
 
@@ -676,11 +688,30 @@ public class HttpsConnectionWorker implements IConnection {
 		/*
 		 * Request Parameters
 		 */
-		String url = connectionRequest.getUrl();
+		StringBuilder url = new StringBuilder(connectionRequest.getUrl());
 		
 		Iterator<String> queryParameters = connectionRequest.getQueryParameters();
 		Iterator<String> headerParameters = connectionRequest.getHeaderParameters();
 		
+		
+		/*
+		 * Add Query Parameters
+		 */
+		List<NameValuePair> httpParams = new ArrayList<NameValuePair>();
+		while(queryParameters.hasNext()) {
+			
+			String parameter = queryParameters.next();
+			QueryParameter queryParameter = connectionRequest.getQueryParameter(parameter);
+			
+			httpParams.add(new BasicNameValuePair(parameter, queryParameter.getValue()));
+		}
+		
+		String queryParameter = URLEncodedUtils.format(httpParams, "utf-8");
+		if(!url.toString().endsWith(Constants.CONNECTION_QUERY_PARAMETER_KEYWORD)) {
+	        url.append(Constants.CONNECTION_QUERY_PARAMETER_KEYWORD);
+		}
+
+		url.append(queryParameter);
 		
 		/*
 		 * Make Request
@@ -691,7 +722,7 @@ public class HttpsConnectionWorker implements IConnection {
 		HttpOptions httpOptions = null;
 		
 		try {
-			httpOptions = new HttpOptions(url);
+			httpOptions = new HttpOptions(url.toString());
 		} catch(Exception exception) {
 			Log.error(HttpsConnectionWorker.class.getName(), "options", "Exception caught while creating http options, URL: " + url + ", " + exception.getMessage());
 			throw new ConnectionException(HttpsConnectionWorker.class.getName(), "options", "Exception caught while creating http options, URL: " + url + ", " + exception.getMessage());
@@ -699,31 +730,14 @@ public class HttpsConnectionWorker implements IConnection {
 
 		
 		/*
-		 * Add Query Parameters
-		 */
-		HttpParams httpParams = new BasicHttpParams();
-
-		while(queryParameters.hasNext()) {
-			
-			String parameter = queryParameters.next();
-			String parameterValue = connectionRequest.getQueryParameter(parameter);
-			
-			httpParams.setParameter(parameter, parameterValue);
-		}
-		
-		
-		httpOptions.setParams(httpParams);
-		
-		
-		/*
 		 * Add Header Parameters
 		 */
 		while(headerParameters.hasNext()) {
 			
 			String header = headerParameters.next();
-			String headerValue = connectionRequest.getHeaderParameter(header);
+			HeaderParameter headerParameter = connectionRequest.getHeaderParameter(header);
 			
-	        httpOptions.setHeader(header, headerValue);
+	        httpOptions.setHeader(header, headerParameter.getValue());
 		}
 		
 
