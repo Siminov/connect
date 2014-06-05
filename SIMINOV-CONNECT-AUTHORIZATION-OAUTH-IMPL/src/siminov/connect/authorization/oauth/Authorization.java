@@ -6,9 +6,9 @@ import oauth.signpost.commonshttp.CommonsHttpOAuthConsumer;
 import org.apache.http.client.methods.HttpRequestBase;
 
 import siminov.connect.authorization.CredentialManager;
-import siminov.connect.design.authorization.IAuthorization;
-import siminov.connect.design.authorization.ICredential;
-import siminov.connect.design.authorization.ICredentialManager;
+import siminov.connect.authorization.design.IAuthorization;
+import siminov.connect.authorization.design.ICredential;
+import siminov.connect.authorization.design.ICredentialManager;
 import siminov.connect.events.IAuthenticationEvents;
 import siminov.connect.exception.AuthorizationException;
 import siminov.connect.exception.ServiceException;

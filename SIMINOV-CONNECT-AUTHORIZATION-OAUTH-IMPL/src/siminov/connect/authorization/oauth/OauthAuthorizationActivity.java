@@ -5,7 +5,7 @@ import oauth.signpost.OAuthConsumer;
 import oauth.signpost.OAuthProvider;
 import oauth.signpost.commonshttp.CommonsHttpOAuthConsumer;
 import oauth.signpost.commonshttp.CommonsHttpOAuthProvider;
-import siminov.connect.design.authorization.ICredential;
+import siminov.connect.authorization.design.ICredential;
 import siminov.connect.events.IAuthenticationEvents;
 import siminov.connect.exception.AuthorizationException;
 import siminov.connect.resource.Resources;
