@@ -1,6 +1,6 @@
 package siminov.connect.notification;
 
-import siminov.connect.design.notification.IMessage;
+import siminov.connect.notification.design.IMessage;
 
 public class Message implements IMessage {
 

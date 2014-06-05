@@ -1,6 +1,6 @@
-package siminov.connect.design.sync;
+package siminov.connect.sync.design;
 
-import siminov.connect.design.service.IResource;
+import siminov.connect.service.design.IResource;
 
 public interface ISyncRequest extends IResource {
 

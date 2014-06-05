@@ -1,7 +1,7 @@
-package siminov.connect.design.service;
+package siminov.connect.service.design;
 
-import siminov.connect.design.connection.IConnectionRequest;
-import siminov.connect.design.connection.IConnectionResponse;
+import siminov.connect.connection.design.IConnectionRequest;
+import siminov.connect.connection.design.IConnectionResponse;
 import siminov.connect.exception.ServiceException;
 
 public interface IServiceEvents {

@@ -1,6 +1,6 @@
 package siminov.connect.events;
 
-import siminov.connect.design.authorization.ICredential;
+import siminov.connect.authorization.design.ICredential;
 import siminov.connect.exception.AuthorizationException;
 
 public interface IAuthenticationEvents {

@@ -3,12 +3,12 @@ package siminov.connect.connection;
 import java.util.Iterator;
 
 import siminov.connect.Constants;
-import siminov.connect.design.connection.IConnectionRequest;
-import siminov.connect.design.service.IService;
+import siminov.connect.connection.design.IConnectionRequest;
 import siminov.connect.model.ServiceDescriptor;
 import siminov.connect.model.ServiceDescriptor.API;
 import siminov.connect.model.ServiceDescriptor.API.HeaderParameter;
 import siminov.connect.model.ServiceDescriptor.API.QueryParameter;
+import siminov.connect.service.design.IService;
 
 public class ConnectionHelper {
 

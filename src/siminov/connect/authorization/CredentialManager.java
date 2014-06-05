@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
-import siminov.connect.design.authorization.ICredential;
-import siminov.connect.design.authorization.ICredentialManager;
+import siminov.connect.authorization.design.ICredential;
+import siminov.connect.authorization.design.ICredentialManager;
 import siminov.connect.model.AuthorizationDescriptor;
 import siminov.connect.resource.Resources;
 import siminov.orm.exception.SiminovCriticalException;

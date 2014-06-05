@@ -5,14 +5,15 @@ import java.util.Iterator;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 import siminov.connect.Constants;
-import siminov.connect.design.service.IService;
-import siminov.connect.design.sync.ISyncRequest;
+import siminov.connect.IWorker;
 import siminov.connect.events.ISyncEvents;
 import siminov.connect.model.ServiceDescriptor;
 import siminov.connect.model.ServiceDescriptor.API;
 import siminov.connect.model.SyncDescriptor;
 import siminov.connect.resource.Resources;
-import siminov.connect.worker.IWorker;
+import siminov.connect.service.NameValuePair;
+import siminov.connect.service.design.IService;
+import siminov.connect.sync.design.ISyncRequest;
 import siminov.orm.utils.ClassUtils;
 
 public class SyncWorker implements IWorker {
@@ -109,12 +110,9 @@ public class SyncWorker implements IWorker {
 					IService serviceHandler = (IService) ClassUtils.createClassInstance(apiHandler);
 					serviceHandler.setServiceDescriptor(serviceDescriptor);
 
-					Iterator<String> resources = syncRequest.getResources();
+					Iterator<NameValuePair> resources = syncRequest.getResources();
 					while(resources.hasNext()) {
-						String resource = resources.next();
-						Object resourceValue = syncRequest.getResource(resource);
-						
-						serviceHandler.addResource(resource, resourceValue);
+						serviceHandler.addResource(resources.next());
 					}
 					
 					

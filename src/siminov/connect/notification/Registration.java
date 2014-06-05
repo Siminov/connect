@@ -1,6 +1,6 @@
 package siminov.connect.notification;
 
-import siminov.connect.design.notification.IRegistration;
+import siminov.connect.notification.design.IRegistration;
 
 public class Registration implements IRegistration {
 

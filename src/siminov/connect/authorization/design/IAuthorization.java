@@ -1,4 +1,4 @@
-package siminov.connect.design.authorization;
+package siminov.connect.authorization.design;
 
 import org.apache.http.client.methods.HttpRequestBase;
 

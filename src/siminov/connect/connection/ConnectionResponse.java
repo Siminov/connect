@@ -2,7 +2,7 @@ package siminov.connect.connection;
 
 import java.io.InputStream;
 
-import siminov.connect.design.connection.IConnectionResponse;
+import siminov.connect.connection.design.IConnectionResponse;
 
 public class ConnectionResponse implements IConnectionResponse {
 

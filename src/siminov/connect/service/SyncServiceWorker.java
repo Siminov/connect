@@ -1,11 +1,11 @@
-package siminov.connect.worker.service;
+package siminov.connect.service;
 
 import siminov.connect.connection.ConnectionManager;
-import siminov.connect.design.connection.IConnectionResponse;
-import siminov.connect.design.service.IService;
-import siminov.connect.design.service.IServiceWorker;
+import siminov.connect.connection.design.IConnectionResponse;
 import siminov.connect.exception.ConnectionException;
 import siminov.connect.exception.ServiceException;
+import siminov.connect.service.design.IService;
+import siminov.connect.service.design.IServiceWorker;
 import siminov.orm.log.Log;
 
 public class SyncServiceWorker implements IServiceWorker {

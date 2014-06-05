@@ -1,11 +1,11 @@
 package siminov.connect.connection;
 
 import siminov.connect.Constants;
-import siminov.connect.design.connection.IConnection;
-import siminov.connect.design.connection.IConnectionRequest;
-import siminov.connect.design.connection.IConnectionResponse;
-import siminov.connect.design.service.IService;
+import siminov.connect.connection.design.IConnection;
+import siminov.connect.connection.design.IConnectionRequest;
+import siminov.connect.connection.design.IConnectionResponse;
 import siminov.connect.exception.ConnectionException;
+import siminov.connect.service.design.IService;
 
 public class ConnectionManager {
 
@@ -16,8 +16,8 @@ public class ConnectionManager {
 	
 	private ConnectionManager() {
 		
-		httpConnection = new siminov.connect.worker.connection.HttpConnectionWorker();
-		httpsConnection = new siminov.connect.worker.connection.HttpsConnectionWorker();
+		httpConnection = new siminov.connect.connection.HttpConnectionWorker();
+		httpsConnection = new siminov.connect.connection.HttpsConnectionWorker();
 	}
 	
 	public static ConnectionManager getInstance() {

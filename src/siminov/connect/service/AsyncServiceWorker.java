@@ -1,19 +1,19 @@
-package siminov.connect.worker.service;
+package siminov.connect.service;
 
 import java.util.Iterator;
 
+import siminov.connect.IWorker;
 import siminov.connect.connection.ConnectionManager;
-import siminov.connect.design.connection.IConnectionResponse;
-import siminov.connect.design.service.IService;
-import siminov.connect.design.service.IServiceWorker;
+import siminov.connect.connection.design.IConnectionResponse;
 import siminov.connect.exception.ConnectionException;
 import siminov.connect.exception.ServiceException;
 import siminov.connect.model.ServiceDescriptor;
 import siminov.connect.model.ServiceRequestResource;
 import siminov.connect.resource.Resources;
 import siminov.connect.resource.ServiceResourceUtils;
+import siminov.connect.service.design.IService;
+import siminov.connect.service.design.IServiceWorker;
 import siminov.connect.utils.Utils;
-import siminov.connect.worker.IWorker;
 import siminov.orm.database.design.IDatabase;
 import siminov.orm.exception.DatabaseException;
 import siminov.orm.exception.SiminovCriticalException;
@@ -308,7 +308,7 @@ public class AsyncServiceWorker implements IWorker, IServiceWorker {
 			Iterator<ServiceRequestResource> serviceRequestResources = service.getServiceRequestResources();
 			while(serviceRequestResources.hasNext()) {
 				ServiceRequestResource serviceResource = serviceRequestResources.next();
-				iService.addResource(serviceResource.getName(), serviceResource.getValue());
+				iService.addResource(new NameValuePair(serviceResource.getName(), serviceResource.getValue()));
 			}
 
 			ServiceDescriptor serviceDescriptor = resources.requiredServiceDescriptorBasedOnName(service.getService());
@@ -327,18 +327,19 @@ public class AsyncServiceWorker implements IWorker, IServiceWorker {
 			serviceRequest.setApi(iService.getApi());
 			serviceRequest.setInstanceOf(iService.getClass().getName());
 			
-			Iterator<String> resources = iService.getResources();
+			Iterator<NameValuePair> resources = iService.getResources();
 			while(resources.hasNext()) {
-				String resource = resources.next();
+				NameValuePair resource = resources.next();
+				Object resourceValue = resource.getValue();
 				
-				if(!(iService.getResource(resource) instanceof String)) {
+				if(!(resourceValue instanceof String)) {
 					continue;
 				}
 				
 				ServiceRequestResource serviceRequestResource = new ServiceRequestResource();
 				serviceRequestResource.setServiceRequest(serviceRequest);
-				serviceRequestResource.setName(resource);
-				serviceRequestResource.setValue((String) iService.getResource(resource));
+				serviceRequestResource.setName(resource.getName());
+				serviceRequestResource.setValue((String) resourceValue);
 				
 				serviceRequest.addServiceRequestResource(serviceRequestResource);
 			}

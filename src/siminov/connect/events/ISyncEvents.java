@@ -1,6 +1,6 @@
 package siminov.connect.events;
 
-import siminov.connect.design.sync.ISyncRequest;
+import siminov.connect.sync.design.ISyncRequest;
 
 public interface ISyncEvents {
 

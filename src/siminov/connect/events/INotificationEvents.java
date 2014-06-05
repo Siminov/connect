@@ -1,8 +1,8 @@
 package siminov.connect.events;
 
-import siminov.connect.design.notification.IMessage;
-import siminov.connect.design.notification.IRegistration;
 import siminov.connect.exception.NotificationException;
+import siminov.connect.notification.design.IMessage;
+import siminov.connect.notification.design.IRegistration;
 
 
 public interface INotificationEvents {

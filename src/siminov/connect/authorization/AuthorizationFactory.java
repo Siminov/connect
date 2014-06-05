@@ -1,6 +1,6 @@
 package siminov.connect.authorization;
 
-import siminov.connect.design.authorization.IAuthorization;
+import siminov.connect.authorization.design.IAuthorization;
 import siminov.connect.model.ApplicationDescriptor;
 import siminov.connect.model.AuthorizationDescriptor;
 import siminov.connect.resource.Resources;

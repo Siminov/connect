@@ -1,4 +1,4 @@
-package siminov.connect.design.notification;
+package siminov.connect.notification.design;
 
 public interface IRegistration {
 	

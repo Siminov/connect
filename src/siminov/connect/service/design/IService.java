@@ -1,4 +1,4 @@
-package siminov.connect.design.service;
+package siminov.connect.service.design;
 
 import siminov.connect.model.ServiceDescriptor;
 

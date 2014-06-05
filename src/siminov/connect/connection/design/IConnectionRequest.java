@@ -1,4 +1,4 @@
-package siminov.connect.design.connection;
+package siminov.connect.connection.design;
 
 import java.util.Iterator;
 

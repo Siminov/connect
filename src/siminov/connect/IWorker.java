@@ -1,4 +1,4 @@
-package siminov.connect.worker;
+package siminov.connect;
 
 public interface IWorker {
 

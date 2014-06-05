@@ -2,12 +2,13 @@ package siminov.connect.resource;
 
 import java.util.Iterator;
 
-import siminov.connect.design.service.IService;
 import siminov.connect.exception.ServiceException;
 import siminov.connect.model.ServiceDescriptor;
 import siminov.connect.model.ServiceDescriptor.API;
 import siminov.connect.model.ServiceDescriptor.API.HeaderParameter;
 import siminov.connect.model.ServiceDescriptor.API.QueryParameter;
+import siminov.connect.service.NameValuePair;
+import siminov.connect.service.design.IService;
 
 public class ServiceResourceUtils {
 
@@ -18,12 +19,13 @@ public class ServiceResourceUtils {
 		 */
 		ServiceDescriptor serviceDescriptor = service.getServiceDescriptor();
 		
-		Iterator<String> resources = service.getResources();
+		Iterator<NameValuePair> resources = service.getResources();
 		while(resources.hasNext()) {
-			String resource = resources.next();
+			NameValuePair resource = resources.next();
+			Object resourceValue = resource.getValue();
 			
-			if(service.getResource(resource) instanceof String) {
-				serviceDescriptor.addProperty(resource, (String) service.getResource(resource));
+			if(resourceValue instanceof String) {
+				serviceDescriptor.addProperty(resource.getName(), (String) resourceValue);
 			}
 		}
 		

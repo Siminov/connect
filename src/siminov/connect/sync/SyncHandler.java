@@ -4,9 +4,9 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-import siminov.connect.design.sync.ISyncRequest;
 import siminov.connect.model.SyncDescriptor;
 import siminov.connect.resource.Resources;
+import siminov.connect.sync.design.ISyncRequest;
 
 public class SyncHandler {
 
@@ -37,7 +37,7 @@ public class SyncHandler {
 		Long requestTimestamp = requestTimestamps.get(syncRequest);
 		if(requestTimestamp == null || requestTimestamp <= 0) {
 			syncWorker.addRequest(syncRequest);
-			requestTimestamps.put(syncRequest, new Long(Calendar.getInstance().get(Calendar.MILLISECOND)));
+			requestTimestamps.put(syncRequest, Long.valueOf(Calendar.getInstance().get(Calendar.MILLISECOND)));
 
 			return;
 		}
@@ -45,13 +45,13 @@ public class SyncHandler {
 		
 		long syncInterval = syncDescriptor.getSyncInterval();
 		long lastRefreshTimestamp = requestTimestamps.get(syncRequest.getName());
-		long currentTimestamp = new Long(Calendar.getInstance().get(Calendar.MILLISECOND));
+		long currentTimestamp = Long.valueOf(Calendar.getInstance().get(Calendar.MILLISECOND));
 		
 		long timeDifference = lastRefreshTimestamp + syncInterval;
 		
 		if(timeDifference < currentTimestamp) {
 			syncWorker.addRequest(syncRequest);
-			requestTimestamps.put(syncRequest, new Long(Calendar.getInstance().get(Calendar.MILLISECOND)));
+			requestTimestamps.put(syncRequest, Long.valueOf(Calendar.getInstance().get(Calendar.MILLISECOND)));
 		}
 	}
 }
