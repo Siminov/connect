@@ -74,6 +74,8 @@ public abstract class Service implements IService {
 	}
 	
 	public void invoke() {
+
+		this.onServiceStart();
 		
 		ServiceHandler serviceHandler = ServiceHandler.getInstance();
 		try {

@@ -94,6 +94,16 @@ public class AsyncServiceWorker implements IWorker, IServiceWorker {
 		
 		
 		/*
+		 * Service Queued
+		 */
+		iService.onServiceQueue();
+		/*
+		 * Service Paused
+		 */
+		iService.onServicePause();
+		
+		
+		/*
 		 * Notify Async Service Worker Thread.
 		 */
 		startWorker();
@@ -177,6 +187,11 @@ public class AsyncServiceWorker implements IWorker, IServiceWorker {
 					}
 				}
 				
+				
+				/*
+				 * Service Resumed
+				 */
+				iService.onServiceResume();
 				handle(iService);
 			}
 			
