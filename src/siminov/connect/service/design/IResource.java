@@ -9,7 +9,7 @@ public interface IResource {
 	public Iterator<NameValuePair> getResources();
 	
 
-	public NameValuePair getResource(final String name);
+	public Object getResource(final String name);
 
 	
 	public void addResource(final NameValuePair nameValuePair);

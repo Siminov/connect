@@ -53,8 +53,8 @@ public abstract class Service implements IService {
 		return this.resources.values().iterator();
 	}
 	
-	public NameValuePair getResource(final String name) {
-		return this.resources.get(name);
+	public Object getResource(final String name) {
+		return this.resources.get(name).getValue();
 	}
 
 	public void addResource(final NameValuePair nameValuePair) {

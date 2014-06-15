@@ -25,8 +25,8 @@ public class SyncRequest implements ISyncRequest {
 		return this.resources.values().iterator();
 	}
 
-	public NameValuePair getResource(String name) {
-		return this.resources.get(name);
+	public Object getResource(String name) {
+		return this.resources.get(name).getValue();
 	}
 
 	public void addResource(final NameValuePair nameValuePair) {
