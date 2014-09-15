@@ -6,26 +6,29 @@ import siminov.connect.exception.ServiceException;
 
 public interface IServiceEvents {
 
-	public void onServiceStart();
+	public void onStart();
 	
 	
-	public void onServiceQueue();
+	public void onQueue();
 	
 	
-	public void onServicePause();
+	public void onPause();
 	
 	
-	public void onServiceResume();
+	public void onResume();
 	
 	
-	public void onServiceFinish();
+	public void onFinish();
 	
 	
-	public void onServiceApiInvoke(final IConnectionRequest connectionRequest);
+	public void onApiInvoke(final IConnectionRequest connectionRequest);
 	
 	
-	public void onServiceApiFinish(final IConnectionResponse connectionResponse);
+	public void onApiFinish(final IConnectionResponse connectionResponse);
 
 	
-	public void onServiceTerminate(final ServiceException serviceException);
+	public void onTerminate(final ServiceException serviceException);
+	
+	
+	public void onRestart();
 }

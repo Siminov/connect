@@ -29,4 +29,7 @@ public interface IService extends IServiceEvents, IResource {
 
 	
 	public void invoke();
+	
+	
+	public void terminate();
 }
