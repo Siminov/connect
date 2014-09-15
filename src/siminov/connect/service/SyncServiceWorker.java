@@ -19,10 +19,10 @@ public class SyncServiceWorker implements IServiceWorker {
 		} catch(ConnectionException ce) {
 			Log.error(SyncServiceWorker.class.getName(), "process", "ConnectionException caught while invoking connection, " + ce.getMessage());
 			
-			service.onServiceTerminate(new ServiceException(ce.getClassName(), ce.getMethodName(), ce.getMessage()));
+			service.onTerminate(new ServiceException(ce.getClassName(), ce.getMethodName(), ce.getMessage()));
 			return;
 		}
 		
-		service.onServiceApiFinish(connectionResponse);
+		service.onApiFinish(connectionResponse);
 	}
 }

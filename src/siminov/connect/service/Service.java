@@ -75,7 +75,7 @@ public abstract class Service implements IService {
 	
 	public void invoke() {
 
-		this.onServiceStart();
+		this.onStart();
 		
 		ServiceHandler serviceHandler = ServiceHandler.getInstance();
 		try {
@@ -83,7 +83,7 @@ public abstract class Service implements IService {
 		} catch(ServiceException se) {
 			Log.error(Service.class.getName(), "invoke", "ServiceException caught while invoking service, " + se.getMessage());
 			
-			this.onServiceTerminate(se);
+			this.onTerminate(se);
 		}
 	}
 }

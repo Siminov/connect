@@ -73,7 +73,7 @@ public class AsyncServiceWorker implements IWorker, IServiceWorker {
 			contain = serviceUtils.containService(service);
 		} catch(ServiceException se) {
 			Log.error(AsyncServiceWorker.class.getName(), "process", "ServiceException caught while checking exsisting service, " + se.getMessage());
-			iService.onServiceTerminate(se);
+			iService.onTerminate(se);
 			
 			return;
 		}
@@ -87,7 +87,7 @@ public class AsyncServiceWorker implements IWorker, IServiceWorker {
 			service.save();
 		} catch(SiminovException se) {
 			Log.error(AsyncServiceWorker.class.getName(), "process", "SiminovException caught while saving service, " + se.getMessage());
-			iService.onServiceTerminate(new ServiceException(AsyncServiceWorker.class.getName(), "process", se.getMessage()));
+			iService.onTerminate(new ServiceException(AsyncServiceWorker.class.getName(), "process", se.getMessage()));
 			
 			return;
 		}
@@ -96,11 +96,11 @@ public class AsyncServiceWorker implements IWorker, IServiceWorker {
 		/*
 		 * Service Queued
 		 */
-		iService.onServiceQueue();
+		iService.onQueue();
 		/*
 		 * Service Paused
 		 */
-		iService.onServicePause();
+		iService.onPause();
 		
 		
 		/*
@@ -191,7 +191,7 @@ public class AsyncServiceWorker implements IWorker, IServiceWorker {
 				/*
 				 * Service Resumed
 				 */
-				iService.onServiceResume();
+				iService.onResume();
 				handle(iService);
 			}
 			
@@ -207,11 +207,11 @@ public class AsyncServiceWorker implements IWorker, IServiceWorker {
 			} catch(ConnectionException se) {
 				Log.error(AsyncServiceWorker.class.getName(), "handle", "SiminovException caught while invoking connection, " + se.getMessage());
 				
-				iService.onServiceTerminate(new ServiceException(se.getClassName(), se.getMethodName(), se.getMessage()));
+				iService.onTerminate(new ServiceException(se.getClassName(), se.getMethodName(), se.getMessage()));
 				return;
 			}
 			
-			iService.onServiceApiFinish(connectionResponse);
+			iService.onApiFinish(connectionResponse);
 			
 			IDatabase serviceRequest = serviceUtils.convert(iService);
 			
