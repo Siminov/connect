@@ -35,13 +35,6 @@
 
 
 	
-	<!-- Siminov Framework Performance Properties -->
-	
-		<!-- Optional Field (Default is true)-->
-	<property name="load_initially">true/false</property>
-
-
-	
 	<!-- Database Descriptors Used By Application (zero-to-many) -->	
 		<!-- Optional Field's -->
 	<database-descriptors>
@@ -49,18 +42,18 @@
 	</database-descriptors>
 		
 
-   	<!-- Services -->
+   	<!-- Service Descriptors -->
     <service-descriptors>
   		
-  			<!-- Service -->
+  			<!-- Service Descriptor -->
         <service-descriptor>full_path_of_service_descriptor</service-descriptor>
     
     </service-descriptors>
 
     
 	
-    <!-- Sync Handlers -->
-    	<!-- Sync Handler -->
+    <!-- Sync Descriptors -->
+    	<!-- Sync Descriptor -->
     <sync-descriptors>
         
 		<sync-descriptor>full_path_of_sync_descriptor</sync-descriptor>
@@ -68,19 +61,16 @@
     </sync-descriptors>
     
 
-    <!-- Authentication -->
+    <!-- Authentication Descriptor -->
     <authorization-descriptor>
         
         	<!-- Mandatory Field -->
         <property name="type">type_of_authorization</property>
 		
-        	<!-- Mandatory Field -->
-        <property name="provider"></property>
-        
     </authorization-descriptor>
 
     
-    <!-- Push Notification -->
+    <!-- Notification Descriptor -->
     <notification-descriptor>
         
         	<!-- Optional Field -->
@@ -124,30 +114,64 @@ Application Descriptor Elements:
 		-> version: Version of application. It is mandatory field. Default is 0.0.
 		
 
-		
-	ii. Framework Performance Properties.
-	
-		-> load_initially: true/false: ORM(Object Relational Mapping) to be done at start of application or at the time of need. 
-							It is optional field. By default its false, means mapping is done when its required. 
-							
-		
-		
-	iii. Database Descriptor Paths Used In Application 
+				
+	ii. Database Descriptor Paths Used In Application 
 			- Path of all database descriptor's used in application.
-			- Every database descriptor have its own database object.
+			- Every database descriptor has its own database object.
 
 
+	iii. Service Descriptor Paths Used In Application
+		- Path of all service descriptor's used in application.
+
+
+	iv. Sync Descriptor Paths Used In Application
+		- Path of all sync descriptor's used in application.
+
+
+	iv. Authorization Descriptor Properties: Authorization is any process by which someone is allowed to be where they want to go, or to have information that they want to have.
+			It provide an easy way to protect and autenticate any user.
+			
+			Note*: Siminov provide implementation for popular Authorization techniques such as (HTTP Basic, HTTP Digest, OpenID, OAuth, etc.)
+		
+			PROPERTIES: 	
+				-> type* : Type of the authorization. It is mandatory field. 
+			
+		
+	v. Notification Descriptor Properties: Push notifications let your application notify a user of new messages or events even when the user is not actively using your application.
+			When the user taps the notification, they are sent to your application.
+		
+			PROPERTIES: 
+		
+
+	iii. Library Descriptors Used In Application
+			- Full path of library descriptor used in the application.
+			- Every library descriptor has its own library path.
+	
 	
 	iv. Event Handlers Implemented By Application.
-		- SIMINOV FRAMEWORK provides two type of event handlers
+		- SIMINOV FRAMEWORK provides below type of event handlers
 	
-			-> ISiminovEvents: It contains events associated with life cycle of SIMINOV.
-				such as (coreInitialized, firstTimeSiminovInitialized, coreStoped).
+			-> ISiminovEvents: It contain events associated with life cycle of SIMINOV.
+				such as (OnSiminovInitialized, OnFirstTimeSiminovInitialized, OnSiminovStoped).
 	
 		
-			-> IDatabaseEvents: It contains events associated with database operations.
-				such as (databaseCreated, databaseDroped, tableCreated, tableDroped, indexCreated).
+			-> IDatabaseEvents: It contain events associated with database operations.
+				such as (OnDatabaseCreated, OnDatabaseDroped, OnTableCreated, OnTableDroped, OnIndexCreated).
 
-		- Application can have implementation of this two event listeners.
+		
+			-> IServiceEvents: It contain events associated with service operations.
+				such as (OnStart, OnQueue, OnPause, OnResume, OnFinish, OnApiInvoke, OnApiFinish, OnTerminate)
+
+	
+			-> ISyncEvents: It contain events associated with sync operations.
+				such as (OnStart, OnQueue, OnFinish, OnTerminate)
+			
+			-> INotificationEvents: It contain events associated with notification.
+				such as (OnRegistration, OnUnregistration, OnNotification, OnError)
+				
+			-> IAuthorizationEvents: It contain events associated with authorization.
+				such as (OnAuthenticationStart, OnAuthenticationFinish, OnAuthenticationTerminate)	
+
+		- Application can have implementation of this event listeners.
 
 -->

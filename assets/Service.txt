@@ -1,0 +1,199 @@
+
+
+SERVICE
+	Service is a client-side communication component that process and handles any web service request. It performs long running operations in the background.
+	A Service is a group of APIs which deals on one particular web service.
+	
+	An application usually consists of multiple services that are loosely bound to each other. Typically, a service in an application is specified to perform a given task for a specific web service. 
+	Each service can start another service in order to perform different action. 
+	
+	There are several callback methods that an service might receive, due to a change in its state-whether the framework is creating it, stopping it, resuming it, or
+	destroying it-and each callback provides you the opportunity to perform specific work that's appropriate to that state change. For instance, when stopped, your activity should release any large objects, such as network or database connections. 
+	
+	When the service resumes, you can re-acquire the necessary resources and resume services that were interrupted. These state transitions are all part of the service lifecycle.
+	
+	Lets discuss the basics of how to build and use a service, including a complete discussion of how the service lifecycle works, so you can properly manage the 
+	transition between various service states.
+	
+		
+CREATING A SERVICE
+	To create a service, you must create a subclass of Service (or an existing subclass of it). In your subclass, you need to implement callback methods that the 
+	framework calls when the service transitions between various states of its lifecycle, such as when the service is being started, stopped, resumed, or destroyed. 
+	The two most important callback methods are:
+	
+	1. onStart: This is the first method to be called when a service is created. 
+			OnStart is always overridden to perform any startup initializations that may be required by a Service such as:
+
+			- Initializing variables
+			- Binding static data to service
+			- Binding related screen to service
+	
+			Once OnStart has finished, Connect will call OnServiceQueue if Service is in ASYNC mode else OnServiceApiInvoke.	
+
+	2. onApiFinish(ConnectionResponse): This method is called after Web Service API is executed.
+
+	There are several other lifecycle callback methods that you should use in order to handle service transition change. All of the lifecycle callback methods are discussed later, in the section about Managing the Service Lifecycle.
+
+
+	DECLARING THE SERVICE IN DESCRIPTOR
+		You must declare your service in the descriptor file in order for it to be accessible to the system. To declare your service, create a service descriptor file in 
+		your application assets folder and add the same in your application descriptor too.
+		
+		<!-- Service Descriptors -->
+	    <service-descriptors>
+	  		
+	  			<!-- Service Descriptor -->
+	        <service-descriptor>full_path_of_service_descriptor</service-descriptor>
+	    
+	    </service-descriptors>
+	
+
+		See the service descriptor element reference for more information about declaring your service.
+
+
+CREATING A SERVICE DESCRIPTOR
+
+
+STARTING A SERVICE
+	You can start your service by creating its instance, and calling invoke() API. You can pass additional resources to your 
+	service by using below Resource APIS:
+	
+		- addResource() - NameValuePair: Using this API you can add additional resources to your service.
+		
+		- containResource() - NameValuePair: Using this API you can check whether resource exists with service or not.
+	
+
+	EXAMPLE:
+		LiquorBrand liquorBrand = new LiquorBrand();
+		liquorBrand.addResource(new NameValuePair(key_of_your_resource, your_resource));
+		liquorBrand.invoke();
+		
+
+SHUTTING DOWN A SERVICE
+	You can shut down a service by calling its terminate() method. 
+	
+	NOTE*: In most cases, you should not explicitly finish a service using these methods. 
+		As discussed in the following section about the service lifecycle, the framework manages the life of a service for you, 
+		so you do not need to terminate your own service. Calling these methods could adversely affect the expected 
+		user experience and should only be used when you absolutely do not want the user to return to this instance of 
+		the service.
+
+
+TYPES OF SERVICE EXECUTION
+	Any service execute in two ways, in service descriptor you can define the mode of service execution:
+	
+		<service-descriptor>
+			<apis>
+				<api>
+					<property name="mode">SYNC|ASYNC</property>
+				</api>
+			</apis>
+		</service-descriptor>
+	
+	1. Foreground Service: A foreground service is a service that's considered to be something the user is actively aware of and thus not a candidate for the system to kill when low on memory. 
+			A foreground service must provide a notification for the status bar, which is placed under the "Ongoing" heading, which means that the notification cannot be 
+			dismissed unless the service is either stopped or removed from the foreground.
+	
+			EXAMPLE:
+				For example, a music player that plays music from a service should be set to run in the foreground, because the user is explicitly aware of its operation. 
+				The notification in the status bar might indicate the current song and allow the user to launch an activity to interact with the music player.
+	
+			To request that your service run in the foreground, you have to configure your service descriptor mode property to SYNC, default this property value is SYNC only.
+	
+	2. Background Service: A background service is one which runs without user interaction, it provide a straightforward structure for running an operation on a single 
+			background thread. This allows to handle long-running operations without affecting your user interface's responsiveness. Also it is not affected by most 
+			user interface lifecycle events, so it continues to run in circumstances that would shut down an ASYNC Service.
+			
+			To request that your service run in the background, you have to configure your service descriptor mode property to ASYNC.
+
+MANAGING THE SERVICE LIFECYCLE
+
+
+SERVICE API
+	Basically a service is a group of APIs, each API represent a HTTP method or a action to be performed on the identified resource. 
+	
+	HTTP METHOD:
+		HTTP defines methods to indicate the desired action to be performed on the identified resource. Below are the methods defined in HTTP/1.1 specification:
+		
+		GET: It is used for retrieving data. 
+			<service-descriptor>
+			    <apis>
+			    	<api>
+			         	<property name="type">GET</property>
+			    	</api>
+				</apis>
+			</service-descriptor>
+			
+		HEAD: It is used to retrieve meta-information written in response headers, without having to transport the entire content.
+			<service-descriptor>
+			    <apis>
+			    	<api>
+			         	<property name="type">HEAD</property>
+			    	</api>
+				</apis>
+			</service-descriptor>
+		
+		POST: It is used to request the server accept the entity enclosed in the request as a new subordinate of the web resource identified by the URI.
+			<service-descriptor>
+			    <apis>
+			    	<api>
+			         	<property name="type">POST</property>
+			    	</api>
+				</apis>
+			</service-descriptor>
+		
+		PUT: It is used to request the enclosed entity be stored under the supplied URI.
+			<service-descriptor>
+			    <apis>
+			    	<api>
+			         	<property name="type">PUT</property>
+			    	</api>
+				</apis>
+			</service-descriptor>
+		
+		DELETE: Delete the specified resource.
+			<service-descriptor>
+			    <apis>
+			    	<api>
+			         	<property name="type">DELETE</property>
+			    	</api>
+				</apis>
+			</service-descriptor>
+		
+		TRACE: Echoes back the received request so that a client can see what (if any) changes or additions have been made by intermediate servers.
+			<service-descriptor>
+			    <apis>
+			    	<api>
+			         	<property name="type">TRACE</property>
+			    	</api>
+				</apis>
+			</service-descriptor>
+		
+		OPTIONS: Returns the HTTP methods that the server supports for the specified URL.
+			<service-descriptor>
+			    <apis>
+			    	<api>
+			         	<property name="type">OPTIONS</property>
+			    	</api>
+				</apis>
+			</service-descriptor>
+		
+		CONNECT: Converts the request connection to a transparent TCP/IP tunnel, usually to facilitate SSL-encrypted communication (HTTPS) through an unencrypted HTTP proxy.
+			<service-descriptor>
+			    <apis>
+			    	<api>
+			         	<property name="type">CONNECT</property>
+			    	</api>
+				</apis>
+			</service-descriptor>
+		
+		PATCH: Is used to apply partial modifications to a resource.
+			<service-descriptor>
+			    <apis>
+			    	<api>
+			         	<property name="type">PATCH</property>
+			    	</api>
+				</apis>
+			</service-descriptor>
+
+

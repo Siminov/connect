@@ -1,0 +1,56 @@
+
+
+AUTHENTICATION:
+
+	Authentication is the process of determining whether someone or something is, in fact, who or what it is declared to be.
+	
+	
+	There are various Authentication methods available:
+		
+		1. HTTP Basic
+				- It is the simplest technique for enforcing access controls to web resources because it doesn't require cookies, session identifier and login pages.
+				- It uses static, standard HTTP headers which means that no handshakes have to be done in anticipation.
+				
+				- It provides no confidentiality protection for the transmitted credentials. They are merely encoded with Base64 in transit, but not encrypted or hashed in any way.
+			
+			EXAMPLE:
+				Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==
+				
+				
+		2. HTTP Digest
+				- It is one method that a client and server can use to exchange credentials over HTTP.
+				- This method uses a combination of the password and other bits of information to create an MD5 hash which is then sent to the server to authenticate.
+				- Sending a hash avoids the problems with sending a password in clear text, a shortfall of Basic Access Authentication.
+				
+				
+		3. HTTPS Client Authentication
+				- HTTPS is achieved when standard HTTP is combined with a Secure Socket Layer (SSL).
+
+		
+				
+		4. Session/Cookies
+				- It is basically just a item in a dictionary.
+				- Each time you make a request to a website, your browser will include the cookies in the request, and the host server will check the cookies. 
+					So authentication can be done automatically like that.
+		
+				- To set a cookie, you just have to add it to the response the server sends back after requests. The browser will then add the cookie upon receiving the response.
+				
+				
+		5. OpenID
+		
+		6. OAuth
+				- OAuth provides client applications a 'secure delegated access' to server resources on behalf of a resource owner.
+				- It specifies a process for resource owners to authorize third-party access to their server resources without sharing their credentials.
+				- OAuth essentially allows access tokens to be issued to third-party clients by an authorization server, with the approval of the resource owner, or end-user. 
+				- The client then uses the access token to access the protected resources hosted by the resource server.
+				
+		
+		7. 2-legged and Client Credentials
+			
+		
+		8. Resource Password owner
+				
+		
+		8. Secure Remote Password
+				
+		

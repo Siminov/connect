@@ -50,4 +50,49 @@
 	</service-descriptors>
 	
 	
+	<!-- Sync Descriptors -->
+	
+	<!-- Optional Field -->
+		<!-- Sync Descriptor -->
+	<sync-descriptors>
+	    <sync-descriptor>full_path_of_sync_descriptor_file</sync-descriptor>
+	</sync-descriptors>
+	
+	
 </library-descriptor>
+
+
+
+
+<!-- 
+
+LibraryDescriptor.si.xml is the one who shows library properties.
+	
+Type Of Properties: 
+	
+	i. General Properties Of Library.
+	
+		-> name*: Name of library. It is mandatory field.
+		
+		-> description: Description of library. It is optional field.
+
+
+
+	ii. Database Mapping Paths Needed Under This Database Descriptor.	 
+		
+		- Name of database descriptor associated to.
+		
+		- Provide full database mapping descriptor file.
+
+		- Put (dot). between database descriptor name and database descriptor file path.
+		
+		
+	iii. Service Descriptor Paths Needed Under The Library.
+	
+		- Provide full service descriptor file path.	
+
+	iv. Sync Descriptor Paths Needed Under The Library.
+		
+		- Provide full sync descriptor file path.
+
+ -->
