@@ -36,7 +36,7 @@ public class ConnectionManager {
 		/*
 		 * Service Event onServiceApiInvoke
 		 */
-		service.onServiceApiInvoke(connectionRequest);
+		service.onApiInvoke(connectionRequest);
 		
 		IConnection connection = null;
 		if(connectionRequest.getProtocol().equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_HTTP_PROTOCOL)) {
