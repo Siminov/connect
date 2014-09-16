@@ -86,4 +86,8 @@ public abstract class Service implements IService {
 			this.onTerminate(se);
 		}
 	}
+	
+	public void terminate() {
+		
+	}
 }
