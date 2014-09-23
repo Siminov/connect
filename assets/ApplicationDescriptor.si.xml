@@ -146,9 +146,6 @@ Application Descriptor Elements:
 			-> INotificationEvents: It contain events associated with notification.
 				such as (OnRegistration, OnUnregistration, OnNotification, OnError)
 				
-			-> IAuthorizationEvents: It contain events associated with authorization.
-				such as (OnAuthenticationStart, OnAuthenticationFinish, OnAuthenticationTerminate)	
-
 		- Application can have implementation of this event listeners.
 
 -->
