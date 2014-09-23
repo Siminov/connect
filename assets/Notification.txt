@@ -5,7 +5,7 @@ NOTIFICATION
 	when a device receives a push notification, your application's icon and a message appear in the status bar.When the user taps the notification, they are sent to your application.
 	
 	Today push notification is provide by all the platforms but in different forms and implementation. Connect provides a unique and generic implementation on all platforms
-	with same APIs bundle.
+	with same APIs bundle and architecture.
 	
 	On Android Connect provides push notification by using Google Cloud Messaging (GCM). 
 	

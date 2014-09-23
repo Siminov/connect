@@ -53,7 +53,7 @@ Within the lifecycle callback methods, you can declare how your service behaves 
 				2. Paused - When the device goes to sleep, or there is no network communication, the service is considered paused. 
 						Paused services are still alive, that is, they maintain all state and member information, and remain attached to the application. 
 				
-				3. Stopped/Background - 
+				3. Stopped - Service are considered stopped when they finish there process or are terminated.
 				
 				4. Resume - It is possible for a service that is anywhere from paused to stopped in the lifecycle to be removed from memory by application. 
 			
@@ -68,7 +68,7 @@ Within the lifecycle callback methods, you can declare how your service behaves 
 				such as hiding the current screen, displaying a new screen, etc. As such, code in these methods should be as brief as possible to make an application feel well performing. 
 				Any long-running tasks should be executed in ASYNC Service mode.
 																
-				1. onStart: This is the first method to be called when a service is created. 
+				1. onStart(): This is the first method to be called when a service is created. 
 						OnStart is always overridden to perform any startup initializations that may be required by a Service such as:
 
 						- Initializing variables
@@ -78,23 +78,23 @@ Within the lifecycle callback methods, you can declare how your service behaves 
 						Once OnStart has finished, Connect will call OnServiceQueue if Service is in ASYNC mode else OnServiceApiInvoke.	
 						
 					
-				2. onQueue: 
+				2. onQueue(): This method is called when the service is put in the queue for the execution. 
 								
 				
-				3. onPause: This method is called when there is no network. Services should override this method if they need to:
+				3. onPause(): This method is called when there is no network. Services should override this method if they need to:
 						
 						- Commit unsaved changes to persistent data
 						- Destroy or clean up other objects consuming resources
 						- Display any relevant alerts or dialogs
 					
-				4. onResume: The Connect calls this method when the Service is ready to start executing. 
+				4. onResume(): The Connect calls this method when the Service is ready to start executing. 
 						Services should override this method to perform tasks such as:		
 							
 						- Display any relevant alerts or dialogs
 						- Wire up external event handlers
 						- Listening for GPS updates
 				
-				5. onFinish: This is the final method that is called on a Service instance before it’s destroyed and completely removed from memory.
+				5. onFinish(): This is the final method that is called on a Service instance before it’s destroyed and completely removed from memory.
 						There will be no lifecycle methods called after the Activity has been destroyed.
 				
 				
@@ -111,5 +111,5 @@ Within the lifecycle callback methods, you can declare how your service behaves 
 				9. invoke(): 
 					
 					
-				10. finish();	
+				10. finish():	
 						

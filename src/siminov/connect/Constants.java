@@ -11,16 +11,11 @@ public interface Constants {
 	//Connect Descriptor
 	public String APPLICATION_DESCRIPTOR_SERVICE_DESCRIPTORS = "service-descriptors";
 	public String APPLICATION_DESCRIPTOR_SERVICE_DESCRIPTOR = "service-descriptor";
-	public String APPLICATION_DESCRIPTOR_AUTHORIZATION_DESCRIPTOR = "authorization-descriptor";
 	public String APPLICATION_DESCRIPTOR_SYNC_DESCRIPTORS = "sync-descriptors";
 	public String APPLICATION_DESCRIPTOR_SYNC_DESCRIPTOR = "sync-descriptor";
 	public String APPLICATION_DESCRIPTOR_NOTIFICATION_DESCRIPTOR = "notification-descriptor";
 	
 	
-	public String AUTHORIZATION_DESCRIPTOR_TYPE = "type";
-	public String AUTHORIZATION_DESCRIPTOR_CREDENTIAL = "credential";
-	
-
 	public String SYNC_DESCRIPTOR = "sync-descriptor";
 	public String SYNC_DESCRIPTOR_SERVICE_DESCRIPTORS = "service-descriptors";
 	public String SYNC_DESCRIPTOR_SERVICE_DESCRIPTOR = "service-descriptor";

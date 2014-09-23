@@ -15,7 +15,6 @@ import org.apache.http.client.methods.HttpHead;
 import org.apache.http.client.methods.HttpOptions;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
-import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.client.methods.HttpTrace;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.conn.scheme.Scheme;
@@ -29,12 +28,9 @@ import org.apache.http.message.BasicHttpResponse;
 import org.apache.http.message.BasicNameValuePair;
 
 import siminov.connect.Constants;
-import siminov.connect.authorization.AuthorizationFactory;
-import siminov.connect.authorization.design.IAuthorization;
 import siminov.connect.connection.design.IConnection;
 import siminov.connect.connection.design.IConnectionRequest;
 import siminov.connect.connection.design.IConnectionResponse;
-import siminov.connect.exception.AuthorizationException;
 import siminov.connect.exception.ConnectionException;
 import siminov.connect.model.ServiceDescriptor.API.HeaderParameter;
 import siminov.connect.model.ServiceDescriptor.API.QueryParameter;
@@ -107,10 +103,6 @@ public class HttpsConnectionWorker implements IConnection {
 		}
 		
 
-		/* Authenticate */
-		sign(httpGet);
-		
-		
         /* execute */
         BasicHttpResponse httpResponse = null;
         
@@ -208,10 +200,6 @@ public class HttpsConnectionWorker implements IConnection {
 		}
 		
 
-		/* Authenticate */
-		sign(httpHead);
-
-		
         /* execute */
         BasicHttpResponse httpResponse = null;
         
@@ -317,10 +305,6 @@ public class HttpsConnectionWorker implements IConnection {
 			httpPost.setEntity(new ByteArrayEntity(dataStream));	
 		}
 		
-		
-		/* Authenticate */
-		sign(httpPost);
-
 		
 		/* execute */
         BasicHttpResponse httpResponse = null;
@@ -428,9 +412,6 @@ public class HttpsConnectionWorker implements IConnection {
 			httpPut.setEntity(new ByteArrayEntity(dataStream));	
 		}
 		
-		/* Authenticate */
-		sign(httpPut);
-
 		
         /* execute */
         BasicHttpResponse httpResponse = null;
@@ -532,10 +513,6 @@ public class HttpsConnectionWorker implements IConnection {
 		}
 		
 
-		/* Authenticate */
-		sign(httpDelete);
-
-		
         /* execute */
         BasicHttpResponse httpResponse = null;
         
@@ -636,10 +613,6 @@ public class HttpsConnectionWorker implements IConnection {
 		}
 		
 
-		/* Authenticate */
-		sign(httpTrace);
-		
-		
         /* execute */
         BasicHttpResponse httpResponse = null;
         
@@ -740,10 +713,6 @@ public class HttpsConnectionWorker implements IConnection {
 		
 
 		
-		/* Authenticate */
-		sign(httpOptions);
-
-		
         /* execute */
         BasicHttpResponse httpResponse = null;
         
@@ -816,23 +785,5 @@ public class HttpsConnectionWorker implements IConnection {
 		HttpsURLConnection.setDefaultHostnameVerifier(hostnameVerifier);
 		
 		defaultHttpClient = httpClient;
-	}
-	
-	private void sign(final HttpRequestBase httpRequestBase) throws ConnectionException {
-
-		AuthorizationFactory authorizationFactory = AuthorizationFactory.getInstance();
-		IAuthorization authorization = authorizationFactory.getAuthorization();
-
-		if(authorization == null) {
-			return;
-		}
-		
-		
-		try {
-			authorization.doSignature(httpRequestBase);
-		} catch(AuthorizationException authorizationException) {
-			Log.error(HttpsConnectionWorker.class.getName(), "sign", "Authozation Exception caught while signing http request, " + authorizationException.getMessage());
-			throw new ConnectionException(HttpsConnectionWorker.class.getName(), "sign", "Authozation Exception caught while signing http request, " + authorizationException.getMessage());
-		}
 	}
 }

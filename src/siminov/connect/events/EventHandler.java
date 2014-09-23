@@ -27,7 +27,6 @@ public class EventHandler {
 
 	private static EventHandler eventHandler = null;
 	
-	private IAuthenticationEvents authenticationEventsHandler = null;
 	private INotificationEvents notificationEventsHandler = null;
 	private ISyncEvents syncEvents = null;
 	
@@ -40,9 +39,7 @@ public class EventHandler {
 			String event = events.next();
 			
 			Object object = ClassUtils.createClassInstance(event);
-			if(object instanceof IAuthenticationEvents) {
-				authenticationEventsHandler = (IAuthenticationEvents) object;
-			} else if(object instanceof INotificationEvents) {
+			if(object instanceof INotificationEvents) {
 				notificationEventsHandler = (INotificationEvents) object;
 			} else if(object instanceof ISyncEvents) {
 				syncEvents = (ISyncEvents) object;
@@ -58,10 +55,6 @@ public class EventHandler {
 		return eventHandler;
 	}
 
-	public IAuthenticationEvents getAuthenticationEventHandler() {
-		return this.authenticationEventsHandler;
-	}
-	
 	public INotificationEvents getNotificationEventHandler() {
 		return this.notificationEventsHandler;
 	}

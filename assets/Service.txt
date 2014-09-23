@@ -197,3 +197,11 @@ SERVICE API
 			</service-descriptor>
 
 
+
+REFERRING RESOURCES
+	When you are creating Service Descriptor, there will be scenarios where you want to refer resources at a run time. By below ways you can refer resources from descriptor 
+	at run time.
+	
+	REFER SERVICE DESCRIPTOR SI XML FILE
+	
+

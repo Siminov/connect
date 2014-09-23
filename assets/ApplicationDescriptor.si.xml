@@ -61,15 +61,6 @@
     </sync-descriptors>
     
 
-    <!-- Authentication Descriptor -->
-    <authorization-descriptor>
-        
-        	<!-- Mandatory Field -->
-        <property name="type">type_of_authorization</property>
-		
-    </authorization-descriptor>
-
-    
     <!-- Notification Descriptor -->
     <notification-descriptor>
         
@@ -128,15 +119,6 @@ Application Descriptor Elements:
 		- Path of all sync descriptor's used in application.
 
 
-	iv. Authorization Descriptor Properties: Authorization is any process by which someone is allowed to be where they want to go, or to have information that they want to have.
-			It provide an easy way to protect and autenticate any user.
-			
-			Note*: Siminov provide implementation for popular Authorization techniques such as (HTTP Basic, HTTP Digest, OpenID, OAuth, etc.)
-		
-			PROPERTIES: 	
-				-> type* : Type of the authorization. It is mandatory field. 
-			
-		
 	v. Notification Descriptor Properties: Push notifications let your application notify a user of new messages or events even when the user is not actively using your application.
 			When the user taps the notification, they are sent to your application.
 		
@@ -158,11 +140,6 @@ Application Descriptor Elements:
 			-> IDatabaseEvents: It contain events associated with database operations.
 				such as (OnDatabaseCreated, OnDatabaseDroped, OnTableCreated, OnTableDroped, OnIndexCreated).
 
-		
-			-> IServiceEvents: It contain events associated with service operations.
-				such as (OnStart, OnQueue, OnPause, OnResume, OnFinish, OnApiInvoke, OnApiFinish, OnTerminate)
-
-	
 			-> ISyncEvents: It contain events associated with sync operations.
 				such as (OnStart, OnQueue, OnFinish, OnTerminate)
 			

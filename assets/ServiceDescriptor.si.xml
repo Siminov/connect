@@ -112,7 +112,7 @@
 
 
 * Referring Resources
-	- Resource: {@resource KEY_OF_RESOURCE}, Pass resource as a parameter to request itself.
+	- Resource: {@resource KEY_OF_RESOURCE}, Passing resource as a parameter to request itself.
 		Example:
 			<proprty name="name_of_proprty">{@resource KEY_OF_RESOURCE}</proprty>
 			

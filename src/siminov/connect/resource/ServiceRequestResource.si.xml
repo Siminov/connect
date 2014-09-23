@@ -22,23 +22,23 @@
 
 <database-mapping-descriptor>
 
-	<table table_name="SERVICE_REQUEST_RESOURCE" class_name="siminov.connect.model.ServiceRequestResource">
+	<entity table_name="SERVICE_REQUEST_RESOURCE" class_name="siminov.connect.model.ServiceRequestResource">
 	
-		<column variable_name="name" column_name="NAME"> 
+		<attribute variable_name="name" column_name="NAME"> 
 			<property name="type">java.lang.String</property>
 			<property name="primary_key">true</property>
 			<property name="not_null">true</property>
 			<property name="unique">true</property>
-		</column>
+		</attribute>
 
-		<column variable_name="value" column_name="VALUE"> 
+		<attribute variable_name="value" column_name="VALUE"> 
 			<property name="type">java.lang.String</property>
-		</column>
+		</attribute>
 		
 		<relationships>
    			<many-to-one refer="serviceRequest" refer_to="siminov.connect.model.ServiceRequest" on_update="cascade" on_delete="cascade"></many-to-one>		
    		</relationships>
 				
-	</table>
+	</entity>
 	
 </database-mapping-descriptor>

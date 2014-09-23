@@ -22,32 +22,32 @@
 
 <database-mapping-descriptor>
 
-	<table table_name="SERVICE_REQUEST" class_name="siminov.connect.model.ServiceRequest">
+	<entity table_name="SERVICE_REQUEST" class_name="siminov.connect.model.ServiceRequest">
 
-		<column variable_name="requestId" column_name="REQUEST_ID"> 
+		<attribute variable_name="requestId" column_name="REQUEST_ID"> 
 			<property name="type">long</property>
 			<property name="primary_key">true</property>
 			<property name="not_null">true</property>
 			<property name="unique">true</property>
-		</column>
+		</attribute>
 
-		<column variable_name="service" column_name="SERVICE"> 
+		<attribute variable_name="service" column_name="SERVICE"> 
 			<property name="type">java.lang.String</property>
 			<property name="primary_key">true</property>
 			<property name="not_null">true</property>
 			<property name="unique">true</property>
-		</column>
+		</attribute>
 
-		<column variable_name="api" column_name="API"> 
+		<attribute variable_name="api" column_name="API"> 
 			<property name="type">java.lang.String</property>
 			<property name="primary_key">true</property>
 			<property name="not_null">true</property>
 			<property name="unique">true</property>
-		</column>
+		</attribute>
 
-		<column variable_name="instanceOf" column_name="INSTANCE_OF"> 
+		<attribute variable_name="instanceOf" column_name="INSTANCE_OF"> 
 			<property name="type">java.lang.String</property>
-		</column>
+		</attribute>
 		
 		<relationships>
    			<one-to-many refer="serviceRequestResources" refer_to="siminov.connect.model.ServiceRequestResource" on_update="cascade" on_delete="cascade">
@@ -55,6 +55,6 @@
    			</one-to-many>		
    		</relationships>
 				
-	</table>
+	</entity>
 	
 </database-mapping-descriptor>
