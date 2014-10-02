@@ -42,25 +42,25 @@
     	<!-- Optional Field -->
     <property name="context">context_of_service</property>
          
-	<!-- APIS -->
-		<!-- API -->
-    <apis>
+	<!-- Requests -->
+		<!-- Request -->
+    <request>
             
-		<api>
+		<request>
 
 			<!-- General Request Properties -->
          
 	        	<!-- Mandatory Field -->
-	       	<property name="name">name_of_api</property>
+	       	<property name="name">name_of_request</property>
          
          		<!-- Mandatory Field -->
          	<property name="type">GET|HEAD|POST|PUT|DELETE|TRACE|OPTIONS|CONNECT|PATCH</property>
 
          		<!-- Mandatory Field -->
-         	<property name="api">full_api_path</property>
+         	<property name="api">full_request_path</property>
 
          		<!-- Mandatory Field -->
-         	<property name="handler">handler_of_api</property>
+         	<property name="handler">handler_of_request</property>
          	
       			<!-- Optional Field (DEFAULT: SYNC)-->
       		<property name="mode">SYNC|ASYNC</property>
@@ -105,8 +105,8 @@
       			<!-- It is Optional Property -->
       		<data-stream>stream_of_data</data-stream>	
      	
-     	</api>
-    </apis>
+     	</request>
+    </requests>
     
 </service-descriptor>
 
@@ -152,7 +152,7 @@ Service Descriptor Elements:
 		-> context: Context used by the service. It is optional property.
 		
 		
-	ii.	API: It defines the structure Web Service API	
+	ii.	Request: It defines the structure Web Service request	
 		
 			i. Properties: Properties about the API
 		
