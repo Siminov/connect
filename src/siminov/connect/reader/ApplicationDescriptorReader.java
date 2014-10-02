@@ -30,7 +30,7 @@ import siminov.connect.model.NotificationDescriptor;
 import siminov.orm.exception.DeploymentException;
 import siminov.orm.log.Log;
 import siminov.orm.reader.SiminovSAXDefaultHandler;
-import siminov.orm.resource.Resources;
+import siminov.orm.resource.ResourceManager;
 import android.content.Context;
 
 
@@ -38,7 +38,7 @@ public class ApplicationDescriptorReader extends SiminovSAXDefaultHandler implem
 
 	private ApplicationDescriptor applicationDescriptor = null;
 	
-	private Resources resources = Resources.getInstance();
+	private ResourceManager resourceManager = ResourceManager.getInstance();
 
 	private StringBuilder tempValue = new StringBuilder();
 	private String propertyName = null;
@@ -49,7 +49,7 @@ public class ApplicationDescriptorReader extends SiminovSAXDefaultHandler implem
 
 	public ApplicationDescriptorReader() {
 		
-		Context context = resources.getApplicationContext();
+		Context context = resourceManager.getApplicationContext();
 		if(context == null) {
 			Log.error(getClass().getName(), "Constructor", "Invalid Application Context found.");
 			throw new DeploymentException(getClass().getName(), "Constructor", "Invalid Application Context found.");

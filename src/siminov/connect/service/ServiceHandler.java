@@ -23,8 +23,8 @@ import siminov.connect.Constants;
 import siminov.connect.exception.ServiceException;
 import siminov.connect.model.ServiceDescriptor;
 import siminov.connect.model.ServiceDescriptor.API;
+import siminov.connect.resource.ResourceManager;
 import siminov.connect.resource.ResourceUtils;
-import siminov.connect.resource.Resources;
 import siminov.connect.resource.ServiceResourceUtils;
 import siminov.connect.service.design.IService;
 import siminov.connect.service.design.IServiceWorker;
@@ -37,14 +37,14 @@ public class ServiceHandler {
 	private IServiceWorker syncServiceWorker = null;
 	private IServiceWorker asyncServiceWorker = null;
 	
-	private Resources resources = null;
+	private ResourceManager resourceManager = null;
 	
 	private ServiceHandler() {
 		
 		syncServiceWorker =  new SyncServiceWorker();
 		asyncServiceWorker = AsyncServiceWorker.getInstance();
 		
-		resources = Resources.getInstance();
+		resourceManager = ResourceManager.getInstance();
 	}
 	
 	public static ServiceHandler getInstance() {
@@ -60,7 +60,7 @@ public class ServiceHandler {
 
 		ServiceDescriptor serviceDescriptor = service.getServiceDescriptor();
 		if(serviceDescriptor == null) {
-			serviceDescriptor = resources.requiredServiceDescriptorBasedOnName(service.getService());
+			serviceDescriptor = resourceManager.requiredServiceDescriptorBasedOnName(service.getService());
 			service.setServiceDescriptor(serviceDescriptor);
 		}
 

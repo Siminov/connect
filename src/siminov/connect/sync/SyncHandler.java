@@ -22,12 +22,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 import siminov.connect.model.SyncDescriptor;
-import siminov.connect.resource.Resources;
+import siminov.connect.resource.ResourceManager;
 import siminov.connect.sync.design.ISyncRequest;
 
 public class SyncHandler {
 
-	private Resources resources = Resources.getInstance();
+	private ResourceManager resourceManager = ResourceManager.getInstance();
 	
 	private SyncWorker syncWorker = SyncWorker.getInstance();
 	private Map<ISyncRequest, Long> requestTimestamps = new HashMap<ISyncRequest, Long>();
@@ -49,7 +49,7 @@ public class SyncHandler {
 	
 	public void handle(ISyncRequest syncRequest) {
 
-		SyncDescriptor syncDescriptor = resources.getSyncDescriptor(syncRequest.getName());
+		SyncDescriptor syncDescriptor = resourceManager.getSyncDescriptor(syncRequest.getName());
 		
 		Long requestTimestamp = requestTimestamps.get(syncRequest);
 		if(requestTimestamp == null || requestTimestamp <= 0) {

@@ -32,20 +32,20 @@ import siminov.orm.exception.SiminovCriticalException;
 import siminov.orm.exception.SiminovException;
 import siminov.orm.log.Log;
 
-public class Resources {
+public class ResourceManager {
 
-	private static Resources resources = null;
+	private static ResourceManager resources = null;
 	
 	private ApplicationDescriptor applicationDescriptor = null;
 	
-	private Resources() {
+	private ResourceManager() {
 		
 	}
 	
-	public static Resources getInstance() {
+	public static ResourceManager getInstance() {
 		
 		if(resources == null) {
-			resources = new Resources();
+			resources = new ResourceManager();
 		}
 		
 		return resources;
@@ -78,8 +78,8 @@ public class Resources {
 				quickServiceDescriptorReader = new QuickServiceDescriptorReader(serviceDescriptorName);
 				quickServiceDescriptorReader.process();
 			} catch(SiminovException siminovException) {
-				Log.error(Resources.class.getName(), "requiredServiceDescriptorBasedOnName", "Siminov Exception caught while getting quick service descriptor based on name, " + serviceDescriptorName);
-				throw new SiminovCriticalException(Resources.class.getName(), "requiredServiceDescriptorBasedOnName", siminovException.getMessage());
+				Log.error(ResourceManager.class.getName(), "requiredServiceDescriptorBasedOnName", "Siminov Exception caught while getting quick service descriptor based on name, " + serviceDescriptorName);
+				throw new SiminovCriticalException(ResourceManager.class.getName(), "requiredServiceDescriptorBasedOnName", siminovException.getMessage());
 			}
 			
 			

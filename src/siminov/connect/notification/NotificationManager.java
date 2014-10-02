@@ -24,7 +24,7 @@ import siminov.connect.model.NotificationDescriptor;
 import siminov.connect.notification.design.IMessage;
 import siminov.connect.notification.design.INotification;
 import siminov.connect.notification.design.IRegistration;
-import siminov.connect.resource.Resources;
+import siminov.connect.resource.ResourceManager;
 import siminov.orm.exception.SiminovCriticalException;
 import siminov.orm.log.Log;
 import android.content.Context;
@@ -35,8 +35,8 @@ public class NotificationManager implements INotification {
 
 	private static NotificationManager notificationManager = null;
 
-	private siminov.orm.resource.Resources ormResources = siminov.orm.resource.Resources.getInstance();
-	private Resources connectResources = Resources.getInstance();
+	private siminov.orm.resource.ResourceManager ormResourceManager = siminov.orm.resource.ResourceManager.getInstance();
+	private ResourceManager connectResourceManager = ResourceManager.getInstance();
 	
 	
 	private NotificationManager() {
@@ -54,10 +54,10 @@ public class NotificationManager implements INotification {
 	
 	public void doRegistration() {
 
-		ApplicationDescriptor applicationDescriptor = connectResources.getApplicationDescriptor();
+		ApplicationDescriptor applicationDescriptor = connectResourceManager.getApplicationDescriptor();
 		NotificationDescriptor notificationDescriptor = applicationDescriptor.getNotificationDescriptor();
 
-		Context applicationContext = ormResources.getApplicationContext();
+		Context applicationContext = ormResourceManager.getApplicationContext();
 		
         GCMRegistrar.checkDevice(applicationContext);
         GCMRegistrar.checkManifest(applicationContext);
@@ -84,7 +84,7 @@ public class NotificationManager implements INotification {
 
 	public void onRegistration(IRegistration registration) {
 
-		INotificationEvents notificationEventsHandler = connectResources.getNotificationEventHandler();
+		INotificationEvents notificationEventsHandler = connectResourceManager.getNotificationEventHandler();
 		if(notificationEventsHandler != null) {
 			notificationEventsHandler.onRegistration(registration);
 		}
@@ -97,7 +97,7 @@ public class NotificationManager implements INotification {
 
 	public void onUnregistration(IRegistration registration) {
 		
-		INotificationEvents notificationEventsHandler = connectResources.getNotificationEventHandler();
+		INotificationEvents notificationEventsHandler = connectResourceManager.getNotificationEventHandler();
 		if(notificationEventsHandler != null) {
 			notificationEventsHandler.onUnregistration(registration);
 		}
@@ -105,7 +105,7 @@ public class NotificationManager implements INotification {
 
 	public void onNotification(IMessage message) {
 		
-		INotificationEvents notificationEventsHandler = connectResources.getNotificationEventHandler();
+		INotificationEvents notificationEventsHandler = connectResourceManager.getNotificationEventHandler();
 		if(notificationEventsHandler != null) {
 			notificationEventsHandler.onNotification(message);
 		}
@@ -113,7 +113,7 @@ public class NotificationManager implements INotification {
 	
 	public void onError(NotificationException notificationException) {
 		
-		INotificationEvents notificationEventsHandler = connectResources.getNotificationEventHandler();
+		INotificationEvents notificationEventsHandler = connectResourceManager.getNotificationEventHandler();
 		if(notificationEventsHandler != null) {
 			notificationEventsHandler.onError(notificationException);
 		}

@@ -23,19 +23,30 @@ import java.util.Iterator;
 import java.util.List;
 
 import siminov.orm.IInitializer;
-import siminov.orm.resource.Resources;
+import siminov.orm.resource.ResourceManager;
 import android.content.Context;
 
+/**
+ * It implements IInitializer Interface.
+ * It handle initialization of framework.
+ *
+ */
 public class Initializer implements IInitializer {
 
-	private Resources ormResources = Resources.getInstance();
+	private ResourceManager ormResourceManager = ResourceManager.getInstance();
 	
 	private List<Object> parameters = new ArrayList<Object> ();
 	
+	/**
+	 * Add Initialization Parameter.
+	 */
 	public void addParameter(Object object) {
 		parameters.add(object);
 	}
 	
+	/**
+	 * It is used to initialize and start the framework
+	 */
 	public void initialize() {
 		
 		Context context = null;
@@ -50,10 +61,9 @@ public class Initializer implements IInitializer {
 			
 		}
 		
-		ormResources.setApplicationContext(context);
+		ormResourceManager.setApplicationContext(context);
 		
 		Siminov.start();
 		
 	}
-
 }

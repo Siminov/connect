@@ -26,7 +26,7 @@ import siminov.connect.exception.ConnectionException;
 import siminov.connect.exception.ServiceException;
 import siminov.connect.model.ServiceDescriptor;
 import siminov.connect.model.ServiceRequestResource;
-import siminov.connect.resource.Resources;
+import siminov.connect.resource.ResourceManager;
 import siminov.connect.resource.ServiceResourceUtils;
 import siminov.connect.service.design.IService;
 import siminov.connect.service.design.IServiceWorker;
@@ -49,7 +49,7 @@ public class AsyncServiceWorker implements IWorker, IServiceWorker {
 	private static AsyncServiceWorker asyncServiceWorker = null;
 	
 	private AsyncServiceWorkerThread asyncServiceWorkerThread = null;
-	private Resources resources = null;
+	private ResourceManager resourceManager = null;
 	
 	private ServiceUtils serviceUtils = null;
 	
@@ -57,7 +57,7 @@ public class AsyncServiceWorker implements IWorker, IServiceWorker {
 	
 	private AsyncServiceWorker() {
 		
-		resources = Resources.getInstance();
+		resourceManager = ResourceManager.getInstance();
 		serviceUtils = new ServiceUtils();
 		
 		startWorker();
@@ -65,8 +65,8 @@ public class AsyncServiceWorker implements IWorker, IServiceWorker {
 		/*
 		 * Register Connectivity Change Receiver.
 		 */
-		siminov.orm.resource.Resources ormResource = siminov.orm.resource.Resources.getInstance();
-		Context applicationContext = ormResource.getApplicationContext();
+		siminov.orm.resource.ResourceManager ormResourceManager = siminov.orm.resource.ResourceManager.getInstance();
+		Context applicationContext = ormResourceManager.getApplicationContext();
 		
 		applicationContext.registerReceiver(connectivityChangeReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
 	}
@@ -343,7 +343,7 @@ public class AsyncServiceWorker implements IWorker, IServiceWorker {
 				iService.addResource(new NameValuePair(serviceResource.getName(), serviceResource.getValue()));
 			}
 
-			ServiceDescriptor serviceDescriptor = resources.requiredServiceDescriptorBasedOnName(service.getService());
+			ServiceDescriptor serviceDescriptor = resourceManager.requiredServiceDescriptorBasedOnName(service.getService());
 			iService.setServiceDescriptor(serviceDescriptor);
 			
 			ServiceResourceUtils.resolve(iService);

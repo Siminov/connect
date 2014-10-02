@@ -28,7 +28,7 @@ import siminov.connect.model.LibraryDescriptor;
 import siminov.orm.exception.SiminovException;
 import siminov.orm.log.Log;
 import siminov.orm.reader.SiminovSAXDefaultHandler;
-import siminov.orm.resource.Resources;
+import siminov.orm.resource.ResourceManager;
 import android.content.Context;
 
 public class LibraryDescriptorReader extends SiminovSAXDefaultHandler implements Constants {
@@ -44,18 +44,18 @@ public class LibraryDescriptorReader extends SiminovSAXDefaultHandler implements
 			throw new SiminovException(getClass().getName(), "Constructor", "Invalid Library Name Found.");
 		}
 		
-		Context context = Resources.getInstance().getApplicationContext();
+		Context context = ResourceManager.getInstance().getApplicationContext();
 		if(context == null) {
 			Log.error(getClass().getName(), "Constructor", "Invalid Application Context Found.");
 			throw new SiminovException(getClass().getName(), "Constructor", "Invalid Application Context Found.");
 		}
 
 		InputStream libraryDescriptorStream = null;
-		libraryDescriptorStream = getClass().getClassLoader().getResourceAsStream(libraryName.replace(".", "/") + "/" + CONNECT_LIBRARY_DESCRIPTOR_FILE_NAME);
+		libraryDescriptorStream = getClass().getClassLoader().getResourceAsStream(libraryName.replace(".", "/") + "/" + LIBRARY_DESCRIPTOR_FILE_NAME);
 
 		if(libraryDescriptorStream == null) {
-			Log.error(getClass().getName(), "Constructor", "Invalid Library Descriptor Stream Found, LIBRARY-NAME: " + libraryName + ", PATH: " + libraryName.replace(".", "/") + "/" + CONNECT_LIBRARY_DESCRIPTOR_FILE_NAME);
-			throw new SiminovException(getClass().getName(), "Constructor", "Invalid Library Descriptor Stream Found, LIBRARY-NAME: " + libraryName + ", PATH: " + libraryName.replace(".", "/") + "/" + CONNECT_LIBRARY_DESCRIPTOR_FILE_NAME);
+			Log.error(getClass().getName(), "Constructor", "Invalid Library Descriptor Stream Found, LIBRARY-NAME: " + libraryName + ", PATH: " + libraryName.replace(".", "/") + "/" + LIBRARY_DESCRIPTOR_FILE_NAME);
+			throw new SiminovException(getClass().getName(), "Constructor", "Invalid Library Descriptor Stream Found, LIBRARY-NAME: " + libraryName + ", PATH: " + libraryName.replace(".", "/") + "/" + LIBRARY_DESCRIPTOR_FILE_NAME);
 		}
 		
 		try {
@@ -70,7 +70,7 @@ public class LibraryDescriptorReader extends SiminovSAXDefaultHandler implements
 		
 		tempValue = new StringBuilder();
 		
-		if(localName.equalsIgnoreCase(CONNECT_LIBRARY_DESCRIPTOR_PROPERTY)) {
+		if(localName.equalsIgnoreCase(LIBRARY_DESCRIPTOR_PROPERTY)) {
 			initializeProperty(attributes);
 		} 
 
@@ -90,9 +90,9 @@ public class LibraryDescriptorReader extends SiminovSAXDefaultHandler implements
 
 	public void endElement(String uri, String localName, String qName) throws SAXException {
 		
-		if(localName.equalsIgnoreCase(CONNECT_LIBRARY_DESCRIPTOR_PROPERTY)) {
+		if(localName.equalsIgnoreCase(LIBRARY_DESCRIPTOR_PROPERTY)) {
 			libraryDescriptor.addProperty(propertyName, tempValue.toString());
-		} else if(localName.equalsIgnoreCase(CONNECT_LIBRARY_DESCRIPTOR_SERVICE_DESCRIPTOR)) {
+		} else if(localName.equalsIgnoreCase(LIBRARY_DESCRIPTOR_SERVICE_DESCRIPTOR)) {
 			libraryDescriptor.addServiceDescriptorPath(tempValue.toString());
 		}
 		
@@ -100,7 +100,7 @@ public class LibraryDescriptorReader extends SiminovSAXDefaultHandler implements
 	}
 	
 	private void initializeProperty(final Attributes attributes) {
-		propertyName = attributes.getValue(CONNECT_LIBRARY_DESCRIPTOR_PROPERTY_NAME);
+		propertyName = attributes.getValue(LIBRARY_DESCRIPTOR_PROPERTY_NAME);
 	}
 	
 	public LibraryDescriptor getLibraryDescriptor() {

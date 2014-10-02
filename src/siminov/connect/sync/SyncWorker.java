@@ -27,7 +27,7 @@ import siminov.connect.events.ISyncEvents;
 import siminov.connect.model.ServiceDescriptor;
 import siminov.connect.model.ServiceDescriptor.API;
 import siminov.connect.model.SyncDescriptor;
-import siminov.connect.resource.Resources;
+import siminov.connect.resource.ResourceManager;
 import siminov.connect.service.NameValuePair;
 import siminov.connect.service.design.IService;
 import siminov.connect.sync.design.ISyncRequest;
@@ -40,7 +40,7 @@ public class SyncWorker implements IWorker {
 	
 	private Collection<ISyncRequest> syncRequests = new ConcurrentLinkedQueue<ISyncRequest>();
 	
-	private Resources resources = Resources.getInstance();
+	private ResourceManager resourceManager = ResourceManager.getInstance();
 	
 	private SyncWorker() {
 		
@@ -99,7 +99,7 @@ public class SyncWorker implements IWorker {
 				/*
 				 * Fire Sync Started Event
 				 */
-				ISyncEvents syncEventHandler = resources.getSyncEventHandler();
+				ISyncEvents syncEventHandler = resourceManager.getSyncEventHandler();
 				if(syncEventHandler != null) {
 					syncEventHandler.onStart(syncRequest);
 				}
@@ -108,7 +108,7 @@ public class SyncWorker implements IWorker {
 				/*
 				 * Process Request
 				 */
-				SyncDescriptor refreshDescriptor = resources.getSyncDescriptor(syncRequest.getName());
+				SyncDescriptor refreshDescriptor = resourceManager.getSyncDescriptor(syncRequest.getName());
 				
 				Iterator<String> services = refreshDescriptor.getServices();
 				while(services.hasNext()) {
@@ -119,7 +119,7 @@ public class SyncWorker implements IWorker {
 					String apiName = service.substring(service.indexOf(Constants.SYNC_DESCRIPTOR_SERVICE_SEPARATOR) + 1, service.length());
 
 					
-					ServiceDescriptor serviceDescriptor = resources.requiredServiceDescriptorBasedOnName(serviceName);
+					ServiceDescriptor serviceDescriptor = resourceManager.requiredServiceDescriptorBasedOnName(serviceName);
 					API api = serviceDescriptor.getApi(apiName);
 					
 					String apiHandler = api.getHandler();
@@ -166,7 +166,7 @@ public class SyncWorker implements IWorker {
 		/*
 		 * Fire Sync Queued Event
 		 */
-		ISyncEvents syncEventHandler = resources.getSyncEventHandler();
+		ISyncEvents syncEventHandler = resourceManager.getSyncEventHandler();
 		if(syncEventHandler != null) {
 			syncEventHandler.onQueue(syncRequest);
 		}

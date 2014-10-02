@@ -28,12 +28,12 @@ import siminov.connect.model.SyncDescriptor;
 import siminov.orm.exception.DeploymentException;
 import siminov.orm.log.Log;
 import siminov.orm.reader.SiminovSAXDefaultHandler;
-import siminov.orm.resource.Resources;
+import siminov.orm.resource.ResourceManager;
 import android.content.Context;
 
 public class SyncDescriptorReader extends SiminovSAXDefaultHandler implements siminov.orm.Constants, Constants {
 
-	private Resources resources = Resources.getInstance();
+	private ResourceManager resourceManager = ResourceManager.getInstance();
 
 	private StringBuilder tempValue = new StringBuilder();
 	private String propertyName = null;
@@ -46,7 +46,7 @@ public class SyncDescriptorReader extends SiminovSAXDefaultHandler implements si
 
 	private void parse(String syncDescriptorPath) {
 		
-		Context context = resources.getApplicationContext();
+		Context context = resourceManager.getApplicationContext();
 		if(context == null) {
 			Log.error(getClass().getName(), "Constructor", "Invalid context found.");
 			throw new DeploymentException(getClass().getName(), "Constructor", "Invalid context found.");

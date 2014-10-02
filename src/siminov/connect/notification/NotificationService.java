@@ -23,7 +23,7 @@ import siminov.connect.model.NotificationDescriptor;
 import siminov.connect.notification.design.IMessage;
 import siminov.connect.notification.design.INotification;
 import siminov.connect.notification.design.IRegistration;
-import siminov.connect.resource.Resources;
+import siminov.connect.resource.ResourceManager;
 import siminov.orm.log.Log;
 import android.content.Context;
 import android.content.Intent;
@@ -36,9 +36,9 @@ public class NotificationService extends GCMBaseIntentService {
 	
 	static {
 		
-		Resources resources = Resources.getInstance();
+		ResourceManager resourceManager = ResourceManager.getInstance();
 		
-		ApplicationDescriptor applicationDescriptor = resources.getApplicationDescriptor();
+		ApplicationDescriptor applicationDescriptor = resourceManager.getApplicationDescriptor();
 		NotificationDescriptor notificationDescriptor = applicationDescriptor.getNotificationDescriptor();
 		
 		SENDER_ID = notificationDescriptor.getProperty(INotification.SENDER_ID);

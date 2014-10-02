@@ -17,7 +17,7 @@
 
 package siminov.connect.utils;
 
-import siminov.orm.resource.Resources;
+import siminov.orm.resource.ResourceManager;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -29,7 +29,7 @@ public class Utils {
 	 * @return TRUE: If network coverage if there, FALSE: If network coverage is not there.
 	 */
 	public static boolean hasCoverage() {
-		Context context = Resources.getInstance().getApplicationContext();
+		Context context = ResourceManager.getInstance().getApplicationContext();
 		
 		final ConnectivityManager conMgr =  (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 		final NetworkInfo activeNetwork = conMgr.getActiveNetworkInfo();

@@ -31,13 +31,13 @@ import siminov.connect.model.ServiceDescriptor.API.QueryParameter;
 import siminov.orm.exception.DeploymentException;
 import siminov.orm.log.Log;
 import siminov.orm.reader.SiminovSAXDefaultHandler;
-import siminov.orm.resource.Resources;
+import siminov.orm.resource.ResourceManager;
 import android.content.Context;
 
 public class ServiceDescriptorReader extends SiminovSAXDefaultHandler implements Constants {
 
 	private StringBuilder tempValue = new StringBuilder();
-	private Resources resources = Resources.getInstance();
+	private ResourceManager resourceManager = ResourceManager.getInstance();
 	
 	private ServiceDescriptor serviceDescriptor = new ServiceDescriptor();
 	
@@ -56,7 +56,7 @@ public class ServiceDescriptorReader extends SiminovSAXDefaultHandler implements
 	
 	public ServiceDescriptorReader(String libraryPackageName, String serviceDescriptorPath) {
 		
-		Context context = resources.getApplicationContext();
+		Context context = resourceManager.getApplicationContext();
 		if(context == null) {
 			Log.error(getClass().getName(), "Constructor", "Invalid context found.");
 			throw new DeploymentException(getClass().getName(), "Constructor", "Invalid context found.");
@@ -84,7 +84,7 @@ public class ServiceDescriptorReader extends SiminovSAXDefaultHandler implements
 	
 	private void parse(String fileName) {
 
-		Context context = resources.getApplicationContext();
+		Context context = resourceManager.getApplicationContext();
 		if(context == null) {
 			Log.error(getClass().getName(), "Constructor", "Invalid context found.");
 			throw new DeploymentException(getClass().getName(), "Constructor", "Invalid context found.");

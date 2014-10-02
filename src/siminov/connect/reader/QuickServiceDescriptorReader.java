@@ -27,7 +27,7 @@ import org.xml.sax.SAXException;
 import siminov.connect.Constants;
 import siminov.connect.model.ApplicationDescriptor;
 import siminov.connect.model.ServiceDescriptor;
-import siminov.connect.resource.Resources;
+import siminov.connect.resource.ResourceManager;
 import siminov.orm.exception.PrematureEndOfParseException;
 import siminov.orm.exception.SiminovException;
 import siminov.orm.log.Log;
@@ -50,8 +50,8 @@ public class QuickServiceDescriptorReader extends SiminovSAXDefaultHandler imple
 	private boolean doesMatch = false;
 	private boolean isNameProperty = false;
 	
-	private siminov.orm.resource.Resources ormResources = siminov.orm.resource.Resources.getInstance();
-	private Resources connectResources = Resources.getInstance();
+	private siminov.orm.resource.ResourceManager ormResourceManager = siminov.orm.resource.ResourceManager.getInstance();
+	private ResourceManager connectResourceManager = ResourceManager.getInstance();
 	
 	public QuickServiceDescriptorReader(final String findServiceDescriptorName) throws SiminovException {
 		
@@ -64,7 +64,7 @@ public class QuickServiceDescriptorReader extends SiminovSAXDefaultHandler imple
 	}
 	
 	public void process() throws SiminovException {
-		context = ormResources.getApplicationContext();
+		context = ormResourceManager.getApplicationContext();
 		if(context == null) {
 			Log.error(getClass().getName(), "process", "Invalid Application Context found.");
 			throw new SiminovException(getClass().getName(), "process", "Invalid Application Context found.");
@@ -72,7 +72,7 @@ public class QuickServiceDescriptorReader extends SiminovSAXDefaultHandler imple
 
 
 		
-		ApplicationDescriptor applicationDescriptor = connectResources.getApplicationDescriptor();
+		ApplicationDescriptor applicationDescriptor = connectResourceManager.getApplicationDescriptor();
 		Iterator<String> serviceDescriptorPaths = applicationDescriptor.getServiceDescriptorPaths();
 		
 		while(serviceDescriptorPaths.hasNext()) {

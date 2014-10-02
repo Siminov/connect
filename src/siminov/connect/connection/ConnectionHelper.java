@@ -27,8 +27,17 @@ import siminov.connect.model.ServiceDescriptor.API.HeaderParameter;
 import siminov.connect.model.ServiceDescriptor.API.QueryParameter;
 import siminov.connect.service.design.IService;
 
+
+/**
+ * It provides Utility APIs for the communication
+ */
 public class ConnectionHelper {
 
+	/**
+	 * It build connection request instance based on the service descriptor object
+	 * @param service Instance of IService
+	 * @return IConnectionRequest instance
+	 */
 	public static IConnectionRequest prepareConnectionRequest(final IService service) {
 
 		/*

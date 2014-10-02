@@ -20,7 +20,7 @@ package siminov.connect.events;
 
 import java.util.Iterator;
 
-import siminov.orm.resource.Resources;
+import siminov.orm.resource.ResourceManager;
 import siminov.orm.utils.ClassUtils;
 
 
@@ -31,11 +31,11 @@ public class EventHandler {
 	private INotificationEvents notificationEventsHandler = null;
 	private ISyncEvents syncEvents = null;
 	
-	private Resources resources = Resources.getInstance();
+	private ResourceManager ormResourceManager = ResourceManager.getInstance();
 	
 	private EventHandler() {
 		
-		Iterator<String> events = resources.getApplicationDescriptor().getEvents();
+		Iterator<String> events = ormResourceManager.getApplicationDescriptor().getEvents();
 		while(events.hasNext()) {
 			String event = events.next();
 			
