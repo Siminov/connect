@@ -24,6 +24,9 @@ import siminov.orm.resource.ResourceManager;
 import siminov.orm.utils.ClassUtils;
 
 
+/**
+ * It provides the event handler instances.
+ */
 public class EventHandler {
 
 	private static EventHandler eventHandler = null;
@@ -33,6 +36,9 @@ public class EventHandler {
 	
 	private ResourceManager ormResourceManager = ResourceManager.getInstance();
 	
+	/**
+	 * Private EventHandler Constructor
+	 */
 	private EventHandler() {
 		
 		Iterator<String> events = ormResourceManager.getApplicationDescriptor().getEvents();
@@ -48,6 +54,10 @@ public class EventHandler {
 		}
 	}
 	
+	/**
+	 * It provides EventHandler singleton instance
+	 * @return EventHandler singleton instance
+	 */
 	public static EventHandler getInstance() {
 		if(eventHandler == null) {
 			eventHandler = new EventHandler();
@@ -56,10 +66,18 @@ public class EventHandler {
 		return eventHandler;
 	}
 
+	/**
+	 * Get notification event handler
+	 * @return NotificationEventHandler instance
+	 */
 	public INotificationEvents getNotificationEventHandler() {
 		return this.notificationEventsHandler;
 	}
 	
+	/**
+	 * Get sync event handler instance
+	 * @return SyncEventHandler instance
+	 */
 	public ISyncEvents getSyncEventHandler() {
 		return this.syncEvents;
 	}

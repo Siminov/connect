@@ -26,6 +26,60 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 
+/**
+ * Exposes methods to GET and SET Library Descriptor information as per define in LibraryDescriptor.si.xml file by application.
+	<p>
+		<pre>
+		
+Example:
+	{@code
+
+	<library-descriptor>
+	
+	    <!-- General Properties Of Library -->
+	    
+	    <!-- Mandatory Field -->
+		<property name="name">name_of_library</property>
+		
+		<!-- Optional Field -->
+		<property name="description">description_of_library</property>
+	
+		
+		
+		<!-- Database Mappings Needed Under This Library Descriptor -->
+		
+		<!-- Optional Field -->
+			<!-- Database Mappings -->
+		<database-mapping-descriptors>
+			<database-mapping-descriptor>name_of_database_descriptor.full_path_of_database_mapping_descriptor_file</database-mapping-descriptor>
+		</database-mapping-descriptors>
+		 
+		
+		<!-- Service Descriptors -->
+			
+		<!-- Optional Field -->
+			<!-- Service Descriptor -->
+		<service-descriptors>
+		    <service-descriptor>full_path_of_service-descriptor_file</service-descriptor>
+		</service-descriptors>
+		
+		
+		<!-- Sync Descriptors -->
+		
+		<!-- Optional Field -->
+			<!-- Sync Descriptor -->
+		<sync-descriptors>
+		    <sync-descriptor>full_path_of_sync_descriptor_file</sync-descriptor>
+		</sync-descriptors>
+		
+		
+	</library-descriptor>
+	}
+	
+		</pre>
+	</p>
+ *
+ */
 public class LibraryDescriptor extends siminov.orm.model.LibraryDescriptor {
 
 	private Collection<String> serviceDescriptorPaths = new ConcurrentLinkedQueue<String> ();

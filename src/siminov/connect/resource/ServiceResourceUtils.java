@@ -21,9 +21,9 @@ import java.util.Iterator;
 
 import siminov.connect.exception.ServiceException;
 import siminov.connect.model.ServiceDescriptor;
-import siminov.connect.model.ServiceDescriptor.API;
-import siminov.connect.model.ServiceDescriptor.API.HeaderParameter;
-import siminov.connect.model.ServiceDescriptor.API.QueryParameter;
+import siminov.connect.model.ServiceDescriptor.Request;
+import siminov.connect.model.ServiceDescriptor.Request.HeaderParameter;
+import siminov.connect.model.ServiceDescriptor.Request.QueryParameter;
 import siminov.connect.service.NameValuePair;
 import siminov.connect.service.design.IService;
 
@@ -61,28 +61,28 @@ public class ServiceResourceUtils {
 		/*
 		 * Resolve API Properties
 		 */
-		API api = serviceDescriptor.getApi(service.getApi());
-		Iterator<String> apiProperties = api.getProperties();
+		Request request = serviceDescriptor.getRequest(service.getRequest());
+		Iterator<String> apiProperties = request.getProperties();
 		while(apiProperties.hasNext()) {
 			
 			String apiProperty = apiProperties.next();
-			String apiValue = api.getProperty(apiProperty);
-			apiValue = ResourceUtils.resolve(apiValue, serviceDescriptor, api);
+			String apiValue = request.getProperty(apiProperty);
+			apiValue = ResourceUtils.resolve(apiValue, serviceDescriptor, request);
 			
-			api.addProperty(apiProperty, apiValue);
+			request.addProperty(apiProperty, apiValue);
 		}
 
 		
 		/*
 		 * Resolve API Query Parameters
 		 */
-		Iterator<QueryParameter> queryParameters = api.getQueryParameters();
+		Iterator<QueryParameter> queryParameters = request.getQueryParameters();
 		while(queryParameters.hasNext()) {
 			
 			QueryParameter queryParameter = queryParameters.next();
 			
 			String queryValue = queryParameter.getValue();
-			queryValue = ResourceUtils.resolve(queryValue, serviceDescriptor, api, queryParameter);
+			queryValue = ResourceUtils.resolve(queryValue, serviceDescriptor, request, queryParameter);
 			
 			queryParameter.setValue(queryValue);
 		}
@@ -91,13 +91,13 @@ public class ServiceResourceUtils {
 		/*
 		 * Resolve API Query Parameters
 		 */
-		Iterator<HeaderParameter> headerParameters = api.getHeaderParameters();
+		Iterator<HeaderParameter> headerParameters = request.getHeaderParameters();
 		while(headerParameters.hasNext()) {
 			
 			HeaderParameter headerParameter = headerParameters.next();
 			
 			String headerValue = headerParameter.getValue();
-			headerValue = ResourceUtils.resolve(headerValue, serviceDescriptor, api, headerParameter);
+			headerValue = ResourceUtils.resolve(headerValue, serviceDescriptor, request, headerParameter);
 			
 			headerParameter.setValue(headerValue);
 		}

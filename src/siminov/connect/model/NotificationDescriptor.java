@@ -23,6 +23,33 @@ import java.util.Map;
 
 import siminov.orm.model.IDescriptor;
 
+
+/**
+ * Exposes methods to GET and SET Notification Descriptor information as per define in ApplicationDescriptor.si.xml file by application.
+ *
+ *	<p>
+		<pre>
+		
+Example:
+	{@code
+
+	<siminov>
+	    
+	    <!-- Notification Descriptor -->
+	    <notification-descriptor>
+	        
+	        	<!-- Optional Field -->
+	        <property name="name_of_property">value_of_property</property>
+	
+	    </notification-descriptor>
+	    
+	</siminov>
+	
+	}
+	
+		</pre>
+	</p>
+ */
 public class NotificationDescriptor implements IDescriptor {
 
 	private Map<String, String> properties = new HashMap<String, String> ();

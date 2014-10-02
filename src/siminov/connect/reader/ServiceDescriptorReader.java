@@ -25,9 +25,9 @@ import org.xml.sax.SAXException;
 
 import siminov.connect.Constants;
 import siminov.connect.model.ServiceDescriptor;
-import siminov.connect.model.ServiceDescriptor.API;
-import siminov.connect.model.ServiceDescriptor.API.HeaderParameter;
-import siminov.connect.model.ServiceDescriptor.API.QueryParameter;
+import siminov.connect.model.ServiceDescriptor.Request;
+import siminov.connect.model.ServiceDescriptor.Request.HeaderParameter;
+import siminov.connect.model.ServiceDescriptor.Request.QueryParameter;
 import siminov.orm.exception.DeploymentException;
 import siminov.orm.log.Log;
 import siminov.orm.reader.SiminovSAXDefaultHandler;
@@ -41,12 +41,12 @@ public class ServiceDescriptorReader extends SiminovSAXDefaultHandler implements
 	
 	private ServiceDescriptor serviceDescriptor = new ServiceDescriptor();
 	
-	private API api = null;
+	private Request request = null;
 	
 	private QueryParameter queryParameter = null;
 	private HeaderParameter headerParameter = null;
 	
-	private boolean isApi = false;
+	private boolean isRequest = false;
 
 	private String propertyName = null;
 
@@ -116,24 +116,24 @@ public class ServiceDescriptorReader extends SiminovSAXDefaultHandler implements
 
 		if(localName.equalsIgnoreCase(SERVICE_DESCRIPTOR_PROPERTY)) {
 			initializeProperty(attributes);
-		} else if(localName.equalsIgnoreCase(SERVICE_DESCRIPTOR_API)) {
+		} else if(localName.equalsIgnoreCase(SERVICE_DESCRIPTOR_REQUEST)) {
 			
-			api = new ServiceDescriptor.API();
-			isApi = true;
-		} else if(localName.equalsIgnoreCase(SERVICE_DESCRIPTOR_API_QUERY_PARAMETER)) {
+			request = new ServiceDescriptor.Request();
+			isRequest = true;
+		} else if(localName.equalsIgnoreCase(SERVICE_DESCRIPTOR_REQUEST_QUERY_PARAMETER)) {
 		
 			queryParameter = new QueryParameter();
-			queryParameter.setName(attributes.getValue(SERVICE_DESCRIPTOR_API_QUERY_PARAMETER_NAME_ATTRIBUTE));
+			queryParameter.setName(attributes.getValue(SERVICE_DESCRIPTOR_REQUEST_QUERY_PARAMETER_NAME_ATTRIBUTE));
 			queryParameter.setValue(tempValue.toString());
 			
-			api.addQueryParameter(queryParameter);
-		} else if(localName.equalsIgnoreCase(SERVICE_DESCRIPTOR_API_HEADER_PARAMETER)) {
+			request.addQueryParameter(queryParameter);
+		} else if(localName.equalsIgnoreCase(SERVICE_DESCRIPTOR_REQUEST_HEADER_PARAMETER)) {
 			
 			headerParameter = new HeaderParameter();
-			headerParameter.setName(attributes.getValue(SERVICE_DESCRIPTOR_API_HEADER_PARAMETER_NAME_ATTRIBUTE));
+			headerParameter.setName(attributes.getValue(SERVICE_DESCRIPTOR_REQUEST_HEADER_PARAMETER_NAME_ATTRIBUTE));
 			headerParameter.setValue(tempValue.toString());
 			
-			api.addHeaderParameter(headerParameter);
+			request.addHeaderParameter(headerParameter);
 		}
 	}
 	
@@ -152,23 +152,23 @@ public class ServiceDescriptorReader extends SiminovSAXDefaultHandler implements
 		
 		if(localName.equalsIgnoreCase(SERVICE_DESCRIPTOR_PROPERTY)) {
 			processProperty();
-		} else if(localName.equalsIgnoreCase(SERVICE_DESCRIPTOR_API)) {
+		} else if(localName.equalsIgnoreCase(SERVICE_DESCRIPTOR_REQUEST)) {
 			
-			serviceDescriptor.addApi(api);
+			serviceDescriptor.addRequest(request);
 			
-			api = null;
-			isApi = false;
-		} else if(localName.equalsIgnoreCase(SERVICE_DESCRIPTOR_API_QUERY_PARAMETER)) {
+			request = null;
+			isRequest = false;
+		} else if(localName.equalsIgnoreCase(SERVICE_DESCRIPTOR_REQUEST_QUERY_PARAMETER)) {
 			
 			queryParameter.setValue(tempValue.toString());
-			api.addQueryParameter(queryParameter);
-		} else if(localName.equalsIgnoreCase(SERVICE_DESCRIPTOR_API_HEADER_PARAMETER)) {
+			request.addQueryParameter(queryParameter);
+		} else if(localName.equalsIgnoreCase(SERVICE_DESCRIPTOR_REQUEST_HEADER_PARAMETER)) {
 			
 			headerParameter.setValue(tempValue.toString());
-			api.addHeaderParameter(headerParameter);
-		} else if(localName.equalsIgnoreCase(SERVICE_DESCRIPTOR_API_DATA_STREAM)) {
+			request.addHeaderParameter(headerParameter);
+		} else if(localName.equalsIgnoreCase(SERVICE_DESCRIPTOR_REQUEST_DATA_STREAM)) {
 			
-			api.setDataStream(tempValue.toString());
+			request.setDataStream(tempValue.toString());
 		}
 	}
 	
@@ -178,8 +178,8 @@ public class ServiceDescriptorReader extends SiminovSAXDefaultHandler implements
 	
 	private void processProperty() {
 		
-		if(isApi) {
-			api.addProperty(propertyName, tempValue.toString());
+		if(isRequest) {
+			request.addProperty(propertyName, tempValue.toString());
 		} else {
 			serviceDescriptor.addProperty(propertyName, tempValue.toString());
 		}

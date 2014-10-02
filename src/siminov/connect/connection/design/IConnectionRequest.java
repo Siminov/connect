@@ -19,36 +19,99 @@ package siminov.connect.connection.design;
 
 import java.util.Iterator;
 
-import siminov.connect.model.ServiceDescriptor.API.HeaderParameter;
-import siminov.connect.model.ServiceDescriptor.API.QueryParameter;
+import siminov.connect.model.ServiceDescriptor.Request.HeaderParameter;
+import siminov.connect.model.ServiceDescriptor.Request.QueryParameter;
 
+
+/**
+ * It contain the blue print for the connection request object
+ */
 public interface IConnectionRequest {
 
+	/**
+	 * Get request URL
+	 * @return URL
+	 */
 	public String getUrl();
 	
+	/**
+	 * Set request URL
+	 * @param url URL
+	 */
 	public void setUrl(String url);
 
+	/**
+	 * Get request protocol
+	 * @return Protocol (HTTP/HTTPS)
+	 */
 	public String getProtocol();
 	
+	/**
+	 * Set request protocol
+	 * @param protocol Protocol
+	 */
 	public void setProtocol(final String protocol);
 	
+	
+	/**
+	 * Get request type 
+	 * @return Type
+	 */
 	public String getType();
 	
+	/**
+	 * Set request type
+	 * @param type Request Type
+	 */
 	public void setType(final String type);
 	
+	/**
+	 * Get all query parameters
+	 * @return Query Parameters
+	 */
 	public Iterator<String> getQueryParameters();
 	
+	/**
+	 * Get query parameter
+	 * @param key Name of query parameter
+	 * @return Query Parameter
+	 */
 	public QueryParameter getQueryParameter(String key);
 	
+	/**
+	 * Add query parameter
+	 * @param queryParameter Query Parameter
+	 */
 	public void addQueryParameter(QueryParameter queryParameter);
 	
+	/**
+	 * Get all header parameters
+	 * @return Header Parameter
+	 */
 	public Iterator<String> getHeaderParameters();
 	
+	/**
+	 * Get header parameter
+	 * @param key Name of header parameter
+	 * @return Header Parameter
+	 */
 	public HeaderParameter getHeaderParameter(String key);
 
+	/**
+	 * Add header parameter
+	 * @param headerParameter Header Parameter
+	 */
 	public void addHeaderParameter(HeaderParameter headerParameter);
 
+	/**
+	 * Get data stream
+ 	 * @return Data Stream
+	 */
 	public byte[] getDataStream();
 	
+	/**
+	 * Set data stream
+	 * @param dataStream Data Stream
+	 */
 	public void setDataStream(byte[] dataStream);
 }

@@ -17,64 +17,17 @@
 
 package siminov.connect.exception;
 
-public class SyncException extends Exception {
+import siminov.orm.exception.SiminovException;
 
-	private String className = null;
-	private String methodName = null;
-	private String message = null;
-	
+public class SyncException extends SiminovException {
+
+	/**
+	 * SyncException Constructor
+	 * @param className Name of class
+	 * @param methodName Name of method
+	 * @param message Exception message
+	 */
 	public SyncException(final String className, final String methodName, final String message) {
-		this.className = className;
-		this.methodName = methodName;
-		this.message = message;
+		super(className, methodName, message);
 	}
-	
-	/**
-	 * Get POJO class name.
-	 * @return POJO Class Name.
-	 */
-	public String getClassName() {
-		return this.className;
-	}
-	
-	/**
-	 * Set POJO class name.
-	 * @param className POJO Class Name.
-	 */
-	public void setClassName(final String className) {
-		this.className = className;
-	}
-	
-	/**
-	 * Get method Name.
-	 * @return Name Of Method.
-	 */
-	public String getMethodName() {
-		return this.methodName;
-	}
-	
-	/**
-	 * Set method Name.
-	 * @param methodName Name Of Method.
-	 */
-	public void setMethodName(final String methodName) {
-		this.methodName = methodName;
-	}
-
-	/**
-	 * Get message.
-	 * @return Message.
-	 */
-	public String getMessage() {
-		return this.message;
-	}
-	
-	/**
-	 * Set message.
-	 * @param message Message.
-	 */
-	public void setMessage(final String message) {
-		this.message = message;
-	}
-	
 }

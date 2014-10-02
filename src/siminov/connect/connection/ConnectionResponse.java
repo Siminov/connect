@@ -28,16 +28,25 @@ public class ConnectionResponse implements IConnectionResponse {
 
 	private InputStream response;
 	
+	/**
+	 * ConnectionResponse Constructor
+	 * @param statusCode Status Code
+	 * @param statusMessage Status Message
+	 */
 	public ConnectionResponse(int statusCode, String statusMessage) {
 		this.statusCode = statusCode;
 		this.statusMessage = statusMessage;
 	}
 
+	/**
+	 * ConnectionResponse Constructor
+	 * @param statusCode Status Code
+	 * @param response InputStream
+	 */
 	public ConnectionResponse(int statusCode, InputStream response) {
 		this.statusCode = statusCode;
 		this.response = response;
 	}
-	
 	
 	public int getStatusCode() {
 		return this.statusCode;

@@ -19,17 +19,45 @@ package siminov.connect.connection.design;
 
 import java.io.InputStream;
 
+/**
+ * It is a blue print for connection response
+ * It exposes API to get connection response information
+ */
 public interface IConnectionResponse {
 
+	/**
+	 * Get connection status code
+	 * @return Status Code
+	 */
 	public int getStatusCode();
 	
+	/**
+	 * Set status code
+	 * @param statusCode Status Code
+	 */
 	public void setStatusCode(int statusCode);
 	
+	/**
+	 * Get status message
+	 * @return Status Message
+	 */
 	public String getStatusMessage();
 	
+	/**
+	 * Set status message
+	 * @param statusMessage Status Message
+	 */
 	public void setStatusMessage(String statusMessage);
 	
+	/**
+	 * Get Response
+	 * @return Response
+	 */
 	public InputStream getResponse();
 	
+	/**
+	 * Set Response
+	 * @param response Response
+	 */
 	public void setResponse(InputStream response);
 }

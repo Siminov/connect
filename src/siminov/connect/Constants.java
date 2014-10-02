@@ -83,14 +83,14 @@ public interface Constants {
 	//Service Descriptor Constants
 	
 	/**
-	 * Service Descriptor APIS
+	 * Service Descriptor Request
 	 */
-	public String SERVICE_DESCRIPTOR_APIS = "apis";
+	public String SERVICE_DESCRIPTOR_REQUESTS = "requests";
 	
 	/**
-	 * Service Descriptor API
+	 * Service Descriptor Request
 	 */
-	public String SERVICE_DESCRIPTOR_API = "api";
+	public String SERVICE_DESCRIPTOR_REQUEST = "request";
 	
 	/**
 	 * Service Descriptor Property
@@ -103,24 +103,24 @@ public interface Constants {
 	public String SERVICE_DESCRIPTOR_PROPERTY_NAME = "name";
 
 	/**
-	 * Service Descriptor API Query Parameter
+	 * Service Descriptor Request Query Parameter
 	 */
-	public String SERVICE_DESCRIPTOR_API_QUERY_PARAMETER = "query-parameter";
+	public String SERVICE_DESCRIPTOR_REQUEST_QUERY_PARAMETER = "query-parameter";
 	
 	/**
-	 * Service Descriptor API Query Parameter Name Attribute
+	 * Service Descriptor Request Query Parameter Name Attribute
 	 */
-	public String SERVICE_DESCRIPTOR_API_QUERY_PARAMETER_NAME_ATTRIBUTE = "name";
+	public String SERVICE_DESCRIPTOR_REQUEST_QUERY_PARAMETER_NAME_ATTRIBUTE = "name";
 
 	/**
-	 * Service Descriptor API Header Parameter
+	 * Service Descriptor Request Header Parameter
 	 */
-	public String SERVICE_DESCRIPTOR_API_HEADER_PARAMETER = "header-parameter";
+	public String SERVICE_DESCRIPTOR_REQUEST_HEADER_PARAMETER = "header-parameter";
 	
 	/**
-	 * Service Descriptor API Header Parameter Name Attribute
+	 * Service Descriptor Request Header Parameter Name Attribute
 	 */
-	public String SERVICE_DESCRIPTOR_API_HEADER_PARAMETER_NAME_ATTRIBUTE = "name";
+	public String SERVICE_DESCRIPTOR_REQUEST_HEADER_PARAMETER_NAME_ATTRIBUTE = "name";
 
 	/**
 	 * Service Descriptor Name
@@ -164,75 +164,75 @@ public interface Constants {
 	
 
 	/**
-	 * Service Descriptor API GET Type
+	 * Service Descriptor Request GET Type
 	 */
-	public String SERVICE_DESCRIPTOR_API_GET_TYPE = "GET";
+	public String SERVICE_DESCRIPTOR_REQUEST_GET_TYPE = "GET";
 	
 	/**
-	 * Service Descriptor API HEAD Type
+	 * Service Descriptor Request HEAD Type
 	 */
-	public String SERVICE_DESCRIPTOR_API_HEAD_TYPE = "HEAD";
+	public String SERVICE_DESCRIPTOR_REQUEST_HEAD_TYPE = "HEAD";
 	
 	/**
-	 * Service Descriptor API POST Type
+	 * Service Descriptor Request POST Type
 	 */
-	public String SERVICE_DESCRIPTOR_API_POST_TYPE = "POST";
+	public String SERVICE_DESCRIPTOR_REQUEST_POST_TYPE = "POST";
 	
 	/**
-	 * Service Descriptor API PUT Type
+	 * Service Descriptor Request PUT Type
 	 */
-	public String SERVICE_DESCRIPTOR_API_PUT_TYPE = "PUT";
+	public String SERVICE_DESCRIPTOR_REQUEST_PUT_TYPE = "PUT";
 	
 	/**
-	 * Service Descriptor API DELETE Type
+	 * Service Descriptor Request DELETE Type
 	 */
-	public String SERVICE_DESCRIPTOR_API_DELETE_TYPE = "DELETE";
+	public String SERVICE_DESCRIPTOR_REQUEST_DELETE_TYPE = "DELETE";
 	
 	/**
-	 * Service Descriptor API TRACE Type
+	 * Service Descriptor Request TRACE Type
 	 */
-	public String SERVICE_DESCRIPTOR_API_TRACE_TYPE = "TRACE";
+	public String SERVICE_DESCRIPTOR_REQUEST_TRACE_TYPE = "TRACE";
 	
 	/**
-	 * Service Descriptor API OPTIONS Type
+	 * Service Descriptor Request OPTIONS Type
 	 */
-	public String SERVICE_DESCRIPTOR_API_OPTIONS_TYPE = "OPTIONS";
+	public String SERVICE_DESCRIPTOR_REQUEST_OPTIONS_TYPE = "OPTIONS";
 	
 	/**
-	 * Service Descriptor API CONNECT
+	 * Service Descriptor Request CONNECT
 	 */
-	public String SERVICE_DESCRIPTOR_API_CONNECT_TYPE = "CONNECT";
+	public String SERVICE_DESCRIPTOR_REQUEST_CONNECT_TYPE = "CONNECT";
 	
 	/**
-	 * Service Descriptor API PATCH Type
+	 * Service Descriptor Request PATCH Type
 	 */
-	public String SERVICE_DESCRIPTOR_API_PATCH_TYPE = "PATCH";
+	public String SERVICE_DESCRIPTOR_REQUEST_PATCH_TYPE = "PATCH";
 	
 
 	/**
-	 * Service Descriptor API Name
+	 * Service Descriptor Request Name
 	 */
-	public String SERVICE_DESCRIPTOR_API_NAME = "name";
+	public String SERVICE_DESCRIPTOR_REQUEST_NAME = "name";
 	
 	/**
-	 * Service Descriptor API Type
+	 * Service Descriptor Request Type
 	 */
-	public String SERVICE_DESCRIPTOR_API_TYPE = "type";
+	public String SERVICE_DESCRIPTOR_REQUEST_TYPE = "type";
 	
 	/**
-	 * Service Descriptor API API
+	 * Service Descriptor Request API
 	 */
-	public String SERVICE_DESCRIPTOR_API_API = "api";
+	public String SERVICE_DESCRIPTOR_REQUEST_API = "api";
 	
 	/**
-	 * Service Descriptor API Mode
+	 * Service Descriptor Request Mode
 	 */
-	public String SERVICE_DESCRIPTOR_API_MODE = "mode";
+	public String SERVICE_DESCRIPTOR_REQUEST_MODE = "mode";
 	
 	/**
-	 * Service Descriptor API Data Stream
+	 * Service Descriptor Request Data Stream
 	 */
-	public String SERVICE_DESCRIPTOR_API_DATA_STREAM = "data-stream";
+	public String SERVICE_DESCRIPTOR_REQUEST_DATA_STREAM = "data-stream";
 	
 	
 	
@@ -257,19 +257,19 @@ public interface Constants {
 	public String LIBRARY_DESCRIPTOR_PROPERTY_NAME = "name";
 
 	/**
-	 * Service Descriptor API Handler
+	 * Service Descriptor Request Handler
 	 */
-	public String SERVICE_DESCRIPTOR_API_HANDLER = "handler";
+	public String SERVICE_DESCRIPTOR_REQUEST_HANDLER = "handler";
 
 	/**
-	 * Service Descriptor API Sync Request Mode
+	 * Service Descriptor Request Sync Request Mode
 	 */
-	public String SERVICE_DESCRIPTOR_API_SYNC_REQUEST_MODE = "SYNC";
+	public String SERVICE_DESCRIPTOR_REQUEST_SYNC_REQUEST_MODE = "SYNC";
 	
 	/**
-	 * Service Descriptor API ASYNC Request Mode
+	 * Service Descriptor Request ASYNC Request Mode
 	 */
-	public String SERVICE_DESCRIPTOR_API_ASYNC_REQUEST_MODE = "ASYNC";
+	public String SERVICE_DESCRIPTOR_REQUEST_ASYNC_REQUEST_MODE = "ASYNC";
 	
 
 	/**

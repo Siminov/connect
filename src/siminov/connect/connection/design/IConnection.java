@@ -19,32 +19,89 @@ package siminov.connect.connection.design;
 
 import siminov.connect.exception.ConnectionException;
 
-
+/**
+ * It is a blue print for connection provider classes
+ * It exposes API to interact with server
+ */
 public interface IConnection {
 
+	/**
+	 * It is to handle HTTP GET Method
+	 * @param connectionRequest Connection Request Instance
+	 * @return IConnectionResponse instance
+	 * @throws ConnectionException If any exception occur while making GET request
+	 */
 	public IConnectionResponse get(final IConnectionRequest connectionRequest) throws ConnectionException;
 
 	
+	/**
+	 * It is to handle HTTP HEAD Method
+	 * @param connectionRequest Connection Request Instance
+	 * @return IConnectionResponse instance
+	 * @throws ConnectionException If any exception occur while making HEAD request
+	 */
 	public IConnectionResponse head(final IConnectionRequest connectionRequest) throws ConnectionException;
 	
 	
+	/**
+	 * It is to handle HTTP POST Method
+	 * @param connectionRequest Connection Request Instance
+	 * @return IConnectionResponse instance
+	 * @throws ConnectionException If any exception occur while making POST request
+	 */
 	public IConnectionResponse post(final IConnectionRequest connectionRequest) throws ConnectionException;
 	
 	
+	/**
+	 * It is to handle HTTP PUT Method
+	 * @param connectionRequest Connection Request Instance
+	 * @return IConnectionResponse instance
+	 * @throws ConnectionException If any exception occur while making PUT request
+	 */
 	public IConnectionResponse put(final IConnectionRequest connectionRequest) throws ConnectionException;
 
 	
+	/**
+	 * It is to handle HTTP DELETE Method
+	 * @param connectionRequest Connection Request Instance
+	 * @return IConnectionResponse instance
+	 * @throws ConnectionException If any exception occur while making DELETE request
+	 */
 	public IConnectionResponse delete(final IConnectionRequest connectionRequest) throws ConnectionException;
 
 	
+	/**
+	 * It is to handle HTTP TRACE Method
+	 * @param connectionRequest Connection Request Instance
+	 * @return IConnectionResponse instance
+	 * @throws ConnectionException If any exception occur while making TRACE request
+	 */
 	public IConnectionResponse trace(final IConnectionRequest connectionRequest) throws ConnectionException;
 
 	
+	/**
+	 * It is to handle HTTP OPTIONS Method
+	 * @param connectionRequest Connection Request Instance
+	 * @return IConnectionResponse instance
+	 * @throws ConnectionException If any exception occur while making OPTIONS request
+	 */
 	public IConnectionResponse options(final IConnectionRequest connectionRequest) throws ConnectionException;
 
 	
+	/**
+	 * It is to handle HTTP CONNECT Method
+	 * @param connectionRequest Connection Request Instance
+	 * @return IConnectionResponse instance
+	 * @throws ConnectionException If any exception occur while making CONNECT request
+	 */
 	public IConnectionResponse connect(final IConnectionRequest connectionRequest) throws ConnectionException;
 
 	
+	/**
+	 * It is to handle HTTP PATCH Method
+	 * @param connectionRequest Connection Request Instance
+	 * @return IConnectionResponse instance
+	 * @throws ConnectionException If any exception occur while making PATCH request
+	 */
 	public IConnectionResponse patch(final IConnectionRequest connectionRequest) throws ConnectionException;
 }

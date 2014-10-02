@@ -21,14 +21,35 @@ import siminov.connect.exception.NotificationException;
 import siminov.connect.notification.design.IMessage;
 import siminov.connect.notification.design.IRegistration;
 
-
+/**
+ * It is a blue print for class which handles notification events
+ */
 public interface INotificationEvents {
 
+	/**
+	 * This is the first method to be called when application is successfully registered with push notification platform service
+	 * @param registration IRegistration instance
+	 */
 	public void onRegistration(IRegistration registration);
 
+	
+	/**
+	 * This method is called when application get unregistered on the push notification platform
+	 * @param registration IRegistration instance
+	 */
 	public void onUnregistration(IRegistration registration);
 
+	
+	/**
+	 * This method is called when application gets any message/notification from server
+	 * @param message IMessage instance
+	 */
 	public void onNotification(IMessage message);
 	
+	
+	/**
+	 * This method is called if there is any error in process of registration/notification
+	 * @param notificationException If any exception occur during any notification process
+	 */
 	public void onError(NotificationException notificationException);
 }

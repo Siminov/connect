@@ -40,6 +40,6 @@ public class SyncServiceWorker implements IServiceWorker {
 			return;
 		}
 		
-		service.onApiFinish(connectionResponse);
+		service.onRequestFinish(connectionResponse);
 	}
 }

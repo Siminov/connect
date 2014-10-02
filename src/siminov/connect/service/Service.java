@@ -32,7 +32,7 @@ public abstract class Service implements IService {
 	private long requestId;
 	
 	private String service = null;
-	private String api = null;
+	private String request = null;
 
 	private Map<String, NameValuePair> resources = new HashMap<String, NameValuePair>();
 	
@@ -58,12 +58,12 @@ public abstract class Service implements IService {
 		this.service = service;
 	}
 	
-	public String getApi() {
-		return this.api;
+	public String getRequest() {
+		return this.request;
 	}
 	
-	public void setApi(final String api) {
-		this.api = api;
+	public void setRequest(final String request) {
+		this.request = request;
 	}
 	
 	public Iterator<NameValuePair> getResources() {

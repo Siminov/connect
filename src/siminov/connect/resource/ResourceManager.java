@@ -24,7 +24,7 @@ import siminov.connect.events.INotificationEvents;
 import siminov.connect.events.ISyncEvents;
 import siminov.connect.model.ApplicationDescriptor;
 import siminov.connect.model.ServiceDescriptor;
-import siminov.connect.model.ServiceDescriptor.API;
+import siminov.connect.model.ServiceDescriptor.Request;
 import siminov.connect.model.SyncDescriptor;
 import siminov.connect.reader.QuickServiceDescriptorReader;
 import siminov.connect.reader.ServiceDescriptorReader;
@@ -95,16 +95,16 @@ public class ResourceManager {
 
 		
 	
-	public API requiredAPIBasedOnServiceDescriptorPath(final String serviceDescriptorPath, final String apiName) {
+	public Request requiredRequestBasedOnServiceDescriptorPath(final String serviceDescriptorPath, final String requestName) {
 		
 		ServiceDescriptor serviceDescriptor = this.requiredServiceDescriptorBasedOnPath(serviceDescriptorPath);
-		return serviceDescriptor.getApi(apiName);
+		return serviceDescriptor.getRequest(requestName);
 	}
 	
-	public API requireAPIBasedOnServiceDescriptorName(final String serviceDescriptorName, final String apiName) {
+	public Request requireAPIBasedOnServiceDescriptorName(final String serviceDescriptorName, final String requestName) {
 		
 		ServiceDescriptor serviceDescriptor = this.requiredServiceDescriptorBasedOnName(serviceDescriptorName);
-		return serviceDescriptor.getApi(apiName);
+		return serviceDescriptor.getRequest(requestName);
 	}
 	
 	public INotificationEvents getNotificationEventHandler() {

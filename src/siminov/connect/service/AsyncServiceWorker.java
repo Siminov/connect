@@ -228,7 +228,7 @@ public class AsyncServiceWorker implements IWorker, IServiceWorker {
 				return;
 			}
 			
-			iService.onApiFinish(connectionResponse);
+			iService.onRequestFinish(connectionResponse);
 			
 			IDatabase serviceRequest = serviceUtils.convert(iService);
 			
@@ -335,7 +335,7 @@ public class AsyncServiceWorker implements IWorker, IServiceWorker {
 			IService iService = (IService) ClassUtils.createClassInstance(service.getInstanceOf());
 			iService.setRequestId(service.getRequestId());
 			iService.setService(service.getService());
-			iService.setApi(service.getApi());
+			iService.setRequest(service.getApi());
 			
 			Iterator<ServiceRequestResource> serviceRequestResources = service.getServiceRequestResources();
 			while(serviceRequestResources.hasNext()) {
@@ -356,7 +356,7 @@ public class AsyncServiceWorker implements IWorker, IServiceWorker {
 			siminov.connect.model.ServiceRequest serviceRequest = new siminov.connect.model.ServiceRequest();
 			serviceRequest.setRequestId(iService.getRequestId());
 			serviceRequest.setService(iService.getService());
-			serviceRequest.setApi(iService.getApi());
+			serviceRequest.setApi(iService.getRequest());
 			serviceRequest.setInstanceOf(iService.getClass().getName());
 			
 			Iterator<NameValuePair> resources = iService.getResources();

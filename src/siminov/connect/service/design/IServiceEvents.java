@@ -38,10 +38,10 @@ public interface IServiceEvents {
 	public void onFinish();
 	
 	
-	public void onApiInvoke(final IConnectionRequest connectionRequest);
+	public void onRequestInvoke(final IConnectionRequest connectionRequest);
 	
 	
-	public void onApiFinish(final IConnectionResponse connectionResponse);
+	public void onRequestFinish(final IConnectionResponse connectionResponse);
 
 	
 	public void onTerminate(final ServiceException serviceException);

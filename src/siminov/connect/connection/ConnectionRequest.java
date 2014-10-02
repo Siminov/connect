@@ -22,9 +22,13 @@ import java.util.Iterator;
 import java.util.Map;
 
 import siminov.connect.connection.design.IConnectionRequest;
-import siminov.connect.model.ServiceDescriptor.API.HeaderParameter;
-import siminov.connect.model.ServiceDescriptor.API.QueryParameter;
+import siminov.connect.model.ServiceDescriptor.Request.HeaderParameter;
+import siminov.connect.model.ServiceDescriptor.Request.QueryParameter;
 
+
+/**
+ * It is a POJO class, which contains information for the service request
+ */
 public class ConnectionRequest implements IConnectionRequest {
 
 	private String url;
@@ -36,7 +40,7 @@ public class ConnectionRequest implements IConnectionRequest {
 	private Map<String, HeaderParameter> headerParameters = new HashMap<String, HeaderParameter>();
 	
 	private byte[] dataStream = null;
-	
+
 	
 	public String getUrl() {
 		return this.url;

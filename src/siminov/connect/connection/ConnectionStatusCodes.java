@@ -19,184 +19,749 @@ package siminov.connect.connection;
 
 import siminov.connect.Constants;
 
-public class ConnectionStatusCodes {
+public class ConnectionStatusCodes implements Constants {
 
 
 	
 	/**
 		1** Informational
 	*/
-	public int STATUS_CODE_100 = Constants.CONNECTION_STATUS_CODE_100;
-	public int STATUS_CODE_101 = Constants.CONNECTION_STATUS_CODE_101;
-	public int STATUS_CODE_102 = Constants.CONNECTION_STATUS_CODE_102;
-	public int STATUS_CODE_103 = Constants.CONNECTION_STATUS_CODE_103;
-	public int STATUS_CODE_122 = Constants.CONNECTION_STATUS_CODE_122;
 	
-	public String STATUS_MESSAGE_100 = Constants.CONNECTION_STATUS_MESSAGE_100;
-	public String STATUS_MESSAGE_101 = Constants.CONNECTION_STATUS_MESSAGE_101;
-	public String STATUS_MESSAGE_102 = Constants.CONNECTION_STATUS_MESSAGE_102;
-	public String STATUS_MESSAGE_103 = Constants.CONNECTION_STATUS_MESSAGE_103;
-	public String STATUS_MESSAGE_122 = Constants.CONNECTION_STATUS_MESSAGE_122;
+	/**
+	 * Status Code 100
+	 */
+	public int STATUS_CODE_100 = CONNECTION_STATUS_CODE_100;
+	
+	/**
+	 * Status Code 101
+	 */
+	public int STATUS_CODE_101 = CONNECTION_STATUS_CODE_101;
+	
+	/**
+	 * Status Code 102
+	 */
+	public int STATUS_CODE_102 = CONNECTION_STATUS_CODE_102;
+	
+	/**
+	 * Status Code 103
+	 */
+	public int STATUS_CODE_103 = CONNECTION_STATUS_CODE_103;
+	
+	/**
+	 * Status Code 122
+	 */
+	public int STATUS_CODE_122 = CONNECTION_STATUS_CODE_122;
+	
+	
+	/**
+	 * Status Message 100
+	 */
+	public String STATUS_MESSAGE_100 = CONNECTION_STATUS_MESSAGE_100;
+	
+	/**
+	 * Status Message 101
+	 */
+	public String STATUS_MESSAGE_101 = CONNECTION_STATUS_MESSAGE_101;
+	
+	/**
+	 * Status Message 102
+	 */
+	public String STATUS_MESSAGE_102 = CONNECTION_STATUS_MESSAGE_102;
+	
+	/**
+	 * Status Message 103
+	 */
+	public String STATUS_MESSAGE_103 = CONNECTION_STATUS_MESSAGE_103;
+	
+	/**
+	 * Status Message 122
+	 */
+	public String STATUS_MESSAGE_122 = CONNECTION_STATUS_MESSAGE_122;
 	
 	
 	
 	/**
 		2** Success
 	*/
-	public int STATUS_CODE_200 = Constants.CONNECTION_STATUS_CODE_200;
-	public int STATUS_CODE_201 = Constants.CONNECTION_STATUS_CODE_201;
-	public int STATUS_CODE_202 = Constants.CONNECTION_STATUS_CODE_202;
-	public int STATUS_CODE_203 = Constants.CONNECTION_STATUS_CODE_203;
-	public int STATUS_CODE_204 = Constants.CONNECTION_STATUS_CODE_204;
-	public int STATUS_CODE_205 = Constants.CONNECTION_STATUS_CODE_205;
-	public int STATUS_CODE_206 = Constants.CONNECTION_STATUS_CODE_206;
-	public int STATUS_CODE_207 = Constants.CONNECTION_STATUS_CODE_207;
-	public int STATUS_CODE_208 = Constants.CONNECTION_STATUS_CODE_208;
-	public int STATUS_CODE_226 = Constants.CONNECTION_STATUS_CODE_226;
+
+	/**
+	 * Status Code 200
+	 */
+	public int STATUS_CODE_200 = CONNECTION_STATUS_CODE_200;
+
+	/**
+	 * Status Code 201
+	 */
+	public int STATUS_CODE_201 = CONNECTION_STATUS_CODE_201;
+
+	/**
+	 * Status Code 202
+	 */
+	public int STATUS_CODE_202 = CONNECTION_STATUS_CODE_202;
+
+	/**
+	 * Status Code 203
+	 */
+	public int STATUS_CODE_203 = CONNECTION_STATUS_CODE_203;
+
+	/**
+	 * Status Code 204
+	 */
+	public int STATUS_CODE_204 = CONNECTION_STATUS_CODE_204;
+
+	/**
+	 * Status Code 205
+	 */
+	public int STATUS_CODE_205 = CONNECTION_STATUS_CODE_205;
+
+	/**
+	 * Status Code 206
+	 */
+	public int STATUS_CODE_206 = CONNECTION_STATUS_CODE_206;
+
+	/**
+	 * Status Code 207
+	 */
+	public int STATUS_CODE_207 = CONNECTION_STATUS_CODE_207;
+
+	/**
+	 * Status Code 208
+	 */
+	public int STATUS_CODE_208 = CONNECTION_STATUS_CODE_208;
+
+	/**
+	 * Status Code 226
+	 */
+	public int STATUS_CODE_226 = CONNECTION_STATUS_CODE_226;
 	
-	public String STATUS_MESSAGE_200 = Constants.CONNECTION_STATUS_MESSAGE_200;
-	public String STATUS_MESSAGE_201 = Constants.CONNECTION_STATUS_MESSAGE_201;
-	public String STATUS_MESSAGE_202 = Constants.CONNECTION_STATUS_MESSAGE_202;
-	public String STATUS_MESSAGE_203 = Constants.CONNECTION_STATUS_MESSAGE_203;
-	public String STATUS_MESSAGE_204 = Constants.CONNECTION_STATUS_MESSAGE_204;
-	public String STATUS_MESSAGE_205 = Constants.CONNECTION_STATUS_MESSAGE_205;
-	public String STATUS_MESSAGE_206 = Constants.CONNECTION_STATUS_MESSAGE_206;
-	public String STATUS_MESSAGE_207 = Constants.CONNECTION_STATUS_MESSAGE_207;
-	public String STATUS_MESSAGE_208 = Constants.CONNECTION_STATUS_MESSAGE_208;
-	public String STATUS_MESSAGE_226 = Constants.CONNECTION_STATUS_MESSAGE_226;
+	
+	/**
+	 * Status Message 200
+	 */
+	public String STATUS_MESSAGE_200 = CONNECTION_STATUS_MESSAGE_200;
+	
+	/**
+	 * Status Message 201
+	 */
+	public String STATUS_MESSAGE_201 = CONNECTION_STATUS_MESSAGE_201;
+	
+	/**
+	 * Status Message 202
+	 */
+	public String STATUS_MESSAGE_202 = CONNECTION_STATUS_MESSAGE_202;
+	
+	/**
+	 * Status Message 203
+	 */
+	public String STATUS_MESSAGE_203 = CONNECTION_STATUS_MESSAGE_203;
+	
+	/**
+	 * Status Message 204
+	 */
+	public String STATUS_MESSAGE_204 = CONNECTION_STATUS_MESSAGE_204;
+	
+	/**
+	 * Status Message 205
+	 */
+	public String STATUS_MESSAGE_205 = CONNECTION_STATUS_MESSAGE_205;
+	
+	/**
+	 * Status Message 206
+	 */
+	public String STATUS_MESSAGE_206 = CONNECTION_STATUS_MESSAGE_206;
+	
+	/**
+	 * Status Message 207
+	 */
+	public String STATUS_MESSAGE_207 = CONNECTION_STATUS_MESSAGE_207;
+	
+	/**
+	 * Status Message 208
+	 */
+	public String STATUS_MESSAGE_208 = CONNECTION_STATUS_MESSAGE_208;
+	
+	/**
+	 * Status Message 226
+	 */
+	public String STATUS_MESSAGE_226 = CONNECTION_STATUS_MESSAGE_226;
 	
 	
 	
 	/**
 		3** Redirect
 	*/
-	public int STATUS_CODE_300 = Constants.CONNECTION_STATUS_CODE_300;
-	public int STATUS_CODE_301 = Constants.CONNECTION_STATUS_CODE_301;
-	public int STATUS_CODE_302 = Constants.CONNECTION_STATUS_CODE_302;
-	public int STATUS_CODE_303 = Constants.CONNECTION_STATUS_CODE_303;
-	public int STATUS_CODE_304 = Constants.CONNECTION_STATUS_CODE_304;
-	public int STATUS_CODE_305 = Constants.CONNECTION_STATUS_CODE_305;
-	public int STATUS_CODE_306 = Constants.CONNECTION_STATUS_CODE_306;
-	public int STATUS_CODE_307 = Constants.CONNECTION_STATUS_CODE_307;
-	public int STATUS_CODE_308 = Constants.CONNECTION_STATUS_CODE_308;
 	
-	public String STATUS_MESSAGE_300 = Constants.CONNECTION_STATUS_MESSAGE_300;
-	public String STATUS_MESSAGE_301 = Constants.CONNECTION_STATUS_MESSAGE_301;
-	public String STATUS_MESSAGE_302 = Constants.CONNECTION_STATUS_MESSAGE_302;
-	public String STATUS_MESSAGE_303 = Constants.CONNECTION_STATUS_MESSAGE_303;
-	public String STATUS_MESSAGE_304 = Constants.CONNECTION_STATUS_MESSAGE_304;
-	public String STATUS_MESSAGE_305 = Constants.CONNECTION_STATUS_MESSAGE_305;
-	public String STATUS_MESSAGE_306 = Constants.CONNECTION_STATUS_MESSAGE_306;
-	public String STATUS_MESSAGE_307 = Constants.CONNECTION_STATUS_MESSAGE_307;
-	public String STATUS_MESSAGE_308 = Constants.CONNECTION_STATUS_MESSAGE_308;
+	/**
+	 * Status Code 300
+	 */
+	public int STATUS_CODE_300 = CONNECTION_STATUS_CODE_300;
+	
+	/**
+	 * Status Code 301
+	 */
+	public int STATUS_CODE_301 = CONNECTION_STATUS_CODE_301;
+	
+	/**
+	 * Status Code 302
+	 */
+	public int STATUS_CODE_302 = CONNECTION_STATUS_CODE_302;
+	
+	/**
+	 * Status Code 303
+	 */
+	public int STATUS_CODE_303 = CONNECTION_STATUS_CODE_303;
+	
+	/**
+	 * Status Code 304
+	 */
+	public int STATUS_CODE_304 = CONNECTION_STATUS_CODE_304;
+	
+	/**
+	 * Status Code 305
+	 */
+	public int STATUS_CODE_305 = CONNECTION_STATUS_CODE_305;
+	
+	/**
+	 * Status Code 306
+	 */
+	public int STATUS_CODE_306 = CONNECTION_STATUS_CODE_306;
+	
+	/**
+	 * Status Code 307
+	 */
+	public int STATUS_CODE_307 = CONNECTION_STATUS_CODE_307;
+	
+	/**
+	 * Status Code 308
+	 */
+	public int STATUS_CODE_308 = CONNECTION_STATUS_CODE_308;
+	
+	
+	/**
+	 * Status Message 300
+	 */
+	public String STATUS_MESSAGE_300 = CONNECTION_STATUS_MESSAGE_300;
+	
+	/**
+	 * Status Message 301
+	 */
+	public String STATUS_MESSAGE_301 = CONNECTION_STATUS_MESSAGE_301;
+	
+	/**
+	 * Status Message 302
+	 */
+	public String STATUS_MESSAGE_302 = CONNECTION_STATUS_MESSAGE_302;
+	
+	/**
+	 * Status Message 303
+	 */
+	public String STATUS_MESSAGE_303 = CONNECTION_STATUS_MESSAGE_303;
+	
+	/**
+	 * Status Message 304
+	 */
+	public String STATUS_MESSAGE_304 = CONNECTION_STATUS_MESSAGE_304;
+	
+	/**
+	 * Status Message 305
+	 */
+	public String STATUS_MESSAGE_305 = CONNECTION_STATUS_MESSAGE_305;
+	
+	/**
+	 * Status Message 306
+	 */
+	public String STATUS_MESSAGE_306 = CONNECTION_STATUS_MESSAGE_306;
+	
+	/**
+	 * Status Message 307
+	 */
+	public String STATUS_MESSAGE_307 = CONNECTION_STATUS_MESSAGE_307;
+	
+	/**
+	 * Status Message 308
+	 */
+	public String STATUS_MESSAGE_308 = CONNECTION_STATUS_MESSAGE_308;
 	
 	
 	
 	/**
 		4** Client Error
 	*/
-	public int STATUS_CODE_400 = Constants.CONNECTION_STATUS_CODE_400;
-	public int STATUS_CODE_401 = Constants.CONNECTION_STATUS_CODE_401;
-	public int STATUS_CODE_402 = Constants.CONNECTION_STATUS_CODE_402;
-	public int STATUS_CODE_403 = Constants.CONNECTION_STATUS_CODE_403;
-	public int STATUS_CODE_404 = Constants.CONNECTION_STATUS_CODE_404;
-	public int STATUS_CODE_405 = Constants.CONNECTION_STATUS_CODE_405;
-	public int STATUS_CODE_406 = Constants.CONNECTION_STATUS_CODE_406;
-	public int STATUS_CODE_407 = Constants.CONNECTION_STATUS_CODE_407;
-	public int STATUS_CODE_408 = Constants.CONNECTION_STATUS_CODE_408;
-	public int STATUS_CODE_409 = Constants.CONNECTION_STATUS_CODE_409;
-	public int STATUS_CODE_410 = Constants.CONNECTION_STATUS_CODE_410;
-	public int STATUS_CODE_411 = Constants.CONNECTION_STATUS_CODE_411;
-	public int STATUS_CODE_412 = Constants.CONNECTION_STATUS_CODE_412;
-	public int STATUS_CODE_413 = Constants.CONNECTION_STATUS_CODE_413;
-	public int STATUS_CODE_414 = Constants.CONNECTION_STATUS_CODE_414;
-	public int STATUS_CODE_415 = Constants.CONNECTION_STATUS_CODE_415;
-	public int STATUS_CODE_416 = Constants.CONNECTION_STATUS_CODE_416;
-	public int STATUS_CODE_417 = Constants.CONNECTION_STATUS_CODE_417;
-	public int STATUS_CODE_418 = Constants.CONNECTION_STATUS_CODE_418;
-	public int STATUS_CODE_420 = Constants.CONNECTION_STATUS_CODE_420;
-	public int STATUS_CODE_422 = Constants.CONNECTION_STATUS_CODE_422;
-	public int STATUS_CODE_423 = Constants.CONNECTION_STATUS_CODE_423;
-	public int STATUS_CODE_424 = Constants.CONNECTION_STATUS_CODE_424;
-	public int STATUS_CODE_426 = Constants.CONNECTION_STATUS_CODE_426;
-	public int STATUS_CODE_428 = Constants.CONNECTION_STATUS_CODE_428;
-	public int STATUS_CODE_429 = Constants.CONNECTION_STATUS_CODE_429;
-	public int STATUS_CODE_431 = Constants.CONNECTION_STATUS_CODE_431;
-	public int STATUS_CODE_444 = Constants.CONNECTION_STATUS_CODE_444;
-	public int STATUS_CODE_449 = Constants.CONNECTION_STATUS_CODE_449;
-	public int STATUS_CODE_450 = Constants.CONNECTION_STATUS_CODE_450;
-	public int STATUS_CODE_451 = Constants.CONNECTION_STATUS_CODE_451;
-	public int STATUS_CODE_499 = Constants.CONNECTION_STATUS_CODE_499;
 	
-	public String STATUS_MESSAGE_400 = Constants.CONNECTION_STATUS_MESSAGE_400;
-	public String STATUS_MESSAGE_401 = Constants.CONNECTION_STATUS_MESSAGE_401;
-	public String STATUS_MESSAGE_402 = Constants.CONNECTION_STATUS_MESSAGE_402;
-	public String STATUS_MESSAGE_403 = Constants.CONNECTION_STATUS_MESSAGE_403;
-	public String STATUS_MESSAGE_404 = Constants.CONNECTION_STATUS_MESSAGE_404;
-	public String STATUS_MESSAGE_405 = Constants.CONNECTION_STATUS_MESSAGE_405;
-	public String STATUS_MESSAGE_406 = Constants.CONNECTION_STATUS_MESSAGE_406;
-	public String STATUS_MESSAGE_407 = Constants.CONNECTION_STATUS_MESSAGE_407;
-	public String STATUS_MESSAGE_408 = Constants.CONNECTION_STATUS_MESSAGE_408;
-	public String STATUS_MESSAGE_409 = Constants.CONNECTION_STATUS_MESSAGE_409;
-	public String STATUS_MESSAGE_410 = Constants.CONNECTION_STATUS_MESSAGE_410;
-	public String STATUS_MESSAGE_411 = Constants.CONNECTION_STATUS_MESSAGE_411;
-	public String STATUS_MESSAGE_412 = Constants.CONNECTION_STATUS_MESSAGE_412;
-	public String STATUS_MESSAGE_413 = Constants.CONNECTION_STATUS_MESSAGE_413;
-	public String STATUS_MESSAGE_414 = Constants.CONNECTION_STATUS_MESSAGE_414;
-	public String STATUS_MESSAGE_415 = Constants.CONNECTION_STATUS_MESSAGE_415;
-	public String STATUS_MESSAGE_416 = Constants.CONNECTION_STATUS_MESSAGE_416;
-	public String STATUS_MESSAGE_417 = Constants.CONNECTION_STATUS_MESSAGE_417;
-	public String STATUS_MESSAGE_418 = Constants.CONNECTION_STATUS_MESSAGE_418;
-	public String STATUS_MESSAGE_420 = Constants.CONNECTION_STATUS_MESSAGE_420;
-	public String STATUS_MESSAGE_422 = Constants.CONNECTION_STATUS_MESSAGE_422;
-	public String STATUS_MESSAGE_423 = Constants.CONNECTION_STATUS_MESSAGE_423;
-	public String STATUS_MESSAGE_424 = Constants.CONNECTION_STATUS_MESSAGE_424;
-	public String STATUS_MESSAGE_426 = Constants.CONNECTION_STATUS_MESSAGE_426;
-	public String STATUS_MESSAGE_428 = Constants.CONNECTION_STATUS_MESSAGE_428;
-	public String STATUS_MESSAGE_429 = Constants.CONNECTION_STATUS_MESSAGE_429;
-	public String STATUS_MESSAGE_431 = Constants.CONNECTION_STATUS_MESSAGE_431;
-	public String STATUS_MESSAGE_444 = Constants.CONNECTION_STATUS_MESSAGE_444;
-	public String STATUS_MESSAGE_449 = Constants.CONNECTION_STATUS_MESSAGE_449;
-	public String STATUS_MESSAGE_450 = Constants.CONNECTION_STATUS_MESSAGE_450;
-	public String STATUS_MESSAGE_451 = Constants.CONNECTION_STATUS_MESSAGE_451;
-	public String STATUS_MESSAGE_499 = Constants.CONNECTION_STATUS_MESSAGE_499;
+	/**
+	 * Status Code 400
+	 */
+	public int STATUS_CODE_400 = CONNECTION_STATUS_CODE_400;
+	
+	/**
+	 * Status Code 401
+	 */
+	public int STATUS_CODE_401 = CONNECTION_STATUS_CODE_401;
+	
+	/**
+	 * Status Code 402
+	 */
+	public int STATUS_CODE_402 = CONNECTION_STATUS_CODE_402;
+	
+	/**
+	 * Status Code 403
+	 */
+	public int STATUS_CODE_403 = CONNECTION_STATUS_CODE_403;
+	
+	/**
+	 * Status Code 404
+	 */
+	public int STATUS_CODE_404 = CONNECTION_STATUS_CODE_404;
+	
+	/**
+	 * Status Code 405
+	 */
+	public int STATUS_CODE_405 = CONNECTION_STATUS_CODE_405;
+	
+	/**
+	 * Status Code 406
+	 */
+	public int STATUS_CODE_406 = CONNECTION_STATUS_CODE_406;
+	
+	/**
+	 * Status Code 407
+	 */
+	public int STATUS_CODE_407 = CONNECTION_STATUS_CODE_407;
+	
+	/**
+	 * Status Code 408
+	 */
+	public int STATUS_CODE_408 = CONNECTION_STATUS_CODE_408;
+	
+	/**
+	 * Status Code 409
+	 */
+	public int STATUS_CODE_409 = CONNECTION_STATUS_CODE_409;
+	
+	/**
+	 * Status Code 410
+	 */
+	public int STATUS_CODE_410 = CONNECTION_STATUS_CODE_410;
+	
+	/**
+	 * Status Code 411
+	 */
+	public int STATUS_CODE_411 = CONNECTION_STATUS_CODE_411;
+	
+	/**
+	 * Status Code 412
+	 */
+	public int STATUS_CODE_412 = CONNECTION_STATUS_CODE_412;
+	
+	/**
+	 * Status Code 413
+	 */
+	public int STATUS_CODE_413 = CONNECTION_STATUS_CODE_413;
+	
+	/**
+	 * Status Code 414
+	 */
+	public int STATUS_CODE_414 = CONNECTION_STATUS_CODE_414;
+	
+	/**
+	 * Status Code 415
+	 */
+	public int STATUS_CODE_415 = CONNECTION_STATUS_CODE_415;
+	
+	/**
+	 * Status Code 416
+	 */
+	public int STATUS_CODE_416 = CONNECTION_STATUS_CODE_416;
+	
+	/**
+	 * Status Code 417
+	 */
+	public int STATUS_CODE_417 = CONNECTION_STATUS_CODE_417;
+	
+	/**
+	 * Status Code 418
+	 */
+	public int STATUS_CODE_418 = CONNECTION_STATUS_CODE_418;
+	
+	/**
+	 * Status Code 420
+	 */
+	public int STATUS_CODE_420 = CONNECTION_STATUS_CODE_420;
+	
+	/**
+	 * Status Code 422
+	 */
+	public int STATUS_CODE_422 = CONNECTION_STATUS_CODE_422;
+	
+	/**
+	 * Status Code 423
+	 */
+	public int STATUS_CODE_423 = CONNECTION_STATUS_CODE_423;
+	
+	/**
+	 * Status Code 424
+	 */
+	public int STATUS_CODE_424 = CONNECTION_STATUS_CODE_424;
+	
+	/**
+	 * Status Code 426
+	 */
+	public int STATUS_CODE_426 = CONNECTION_STATUS_CODE_426;
+	
+	/**
+	 * Status Code 428
+	 */
+	public int STATUS_CODE_428 = CONNECTION_STATUS_CODE_428;
+	
+	/**
+	 * Status Code 429
+	 */
+	public int STATUS_CODE_429 = CONNECTION_STATUS_CODE_429;
+	
+	/**
+	 * Status Code 431
+	 */
+	public int STATUS_CODE_431 = CONNECTION_STATUS_CODE_431;
+	
+	/**
+	 * Status Code 444
+	 */
+	public int STATUS_CODE_444 = CONNECTION_STATUS_CODE_444;
+	
+	/**
+	 * Status Code 449
+	 */
+	public int STATUS_CODE_449 = CONNECTION_STATUS_CODE_449;
+	
+	/**
+	 * Status Code 450
+	 */
+	public int STATUS_CODE_450 = CONNECTION_STATUS_CODE_450;
+	
+	/**
+	 * Status Code 451
+	 */
+	public int STATUS_CODE_451 = CONNECTION_STATUS_CODE_451;
+	
+	/**
+	 * Status Code 499
+	 */
+	public int STATUS_CODE_499 = CONNECTION_STATUS_CODE_499;
+	
+	
+	/**
+	 * Status Message 400
+	 */
+	public String STATUS_MESSAGE_400 = CONNECTION_STATUS_MESSAGE_400;
+	
+	/**
+	 * Status Message 401
+	 */
+	public String STATUS_MESSAGE_401 = CONNECTION_STATUS_MESSAGE_401;
+	
+	/**
+	 * Status Message 402
+	 */
+	public String STATUS_MESSAGE_402 = CONNECTION_STATUS_MESSAGE_402;
+	
+	/**
+	 * Status Message 403
+	 */
+	public String STATUS_MESSAGE_403 = CONNECTION_STATUS_MESSAGE_403;
+	
+	/**
+	 * Status Message 404
+	 */
+	public String STATUS_MESSAGE_404 = CONNECTION_STATUS_MESSAGE_404;
+	
+	/**
+	 * Status Message 405
+	 */
+	public String STATUS_MESSAGE_405 = CONNECTION_STATUS_MESSAGE_405;
+	
+	/**
+	 * Status Message 406
+	 */
+	public String STATUS_MESSAGE_406 = CONNECTION_STATUS_MESSAGE_406;
+	
+	/**
+	 * Status Message 407
+	 */
+	public String STATUS_MESSAGE_407 = CONNECTION_STATUS_MESSAGE_407;
+	
+	/**
+	 * Status Message 408
+	 */
+	public String STATUS_MESSAGE_408 = CONNECTION_STATUS_MESSAGE_408;
+	
+	/**
+	 * Status Message 409
+	 */
+	public String STATUS_MESSAGE_409 = CONNECTION_STATUS_MESSAGE_409;
+	
+	/**
+	 * Status Message 410
+	 */
+	public String STATUS_MESSAGE_410 = CONNECTION_STATUS_MESSAGE_410;
+	
+	/**
+	 * Status Message 411
+	 */
+	public String STATUS_MESSAGE_411 = CONNECTION_STATUS_MESSAGE_411;
+	
+	/**
+	 * Status Message 412
+	 */
+	public String STATUS_MESSAGE_412 = CONNECTION_STATUS_MESSAGE_412;
+	
+	/**
+	 * Status Message 413
+	 */
+	public String STATUS_MESSAGE_413 = CONNECTION_STATUS_MESSAGE_413;
+	
+	/**
+	 * Status Message 414
+	 */
+	public String STATUS_MESSAGE_414 = CONNECTION_STATUS_MESSAGE_414;
+	
+	/**
+	 * Status Message 415
+	 */
+	public String STATUS_MESSAGE_415 = CONNECTION_STATUS_MESSAGE_415;
+	
+	/**
+	 * Status Message 416
+	 */
+	public String STATUS_MESSAGE_416 = CONNECTION_STATUS_MESSAGE_416;
+	
+	/**
+	 * Status Message 417
+	 */
+	public String STATUS_MESSAGE_417 = CONNECTION_STATUS_MESSAGE_417;
+	
+	/**
+	 * Status Message 418
+	 */
+	public String STATUS_MESSAGE_418 = CONNECTION_STATUS_MESSAGE_418;
+	
+	/**
+	 * Status Message 420
+	 */
+	public String STATUS_MESSAGE_420 = CONNECTION_STATUS_MESSAGE_420;
+	
+	/**
+	 * Status Message 422
+	 */
+	public String STATUS_MESSAGE_422 = CONNECTION_STATUS_MESSAGE_422;
+	
+	/**
+	 * Status Message 423
+	 */
+	public String STATUS_MESSAGE_423 = CONNECTION_STATUS_MESSAGE_423;
+	
+	/**
+	 * Status Message 424
+	 */
+	public String STATUS_MESSAGE_424 = CONNECTION_STATUS_MESSAGE_424;
+	
+	/**
+	 * Status Message 426
+	 */
+	public String STATUS_MESSAGE_426 = CONNECTION_STATUS_MESSAGE_426;
+	
+	/**
+	 * Status Message 428
+	 */
+	public String STATUS_MESSAGE_428 = CONNECTION_STATUS_MESSAGE_428;
+	
+	/**
+	 * Status Message 429
+	 */
+	public String STATUS_MESSAGE_429 = CONNECTION_STATUS_MESSAGE_429;
+	
+	/**
+	 * Status Message 431
+	 */
+	public String STATUS_MESSAGE_431 = CONNECTION_STATUS_MESSAGE_431;
+	
+	/**
+	 * Status Message 444
+	 */
+	public String STATUS_MESSAGE_444 = CONNECTION_STATUS_MESSAGE_444;
+	
+	/**
+	 * Status Message 449
+	 */
+	public String STATUS_MESSAGE_449 = CONNECTION_STATUS_MESSAGE_449;
+	
+	/**
+	 * Status Message 450
+	 */
+	public String STATUS_MESSAGE_450 = CONNECTION_STATUS_MESSAGE_450;
+	
+	/**
+	 * Status Message 451
+	 */
+	public String STATUS_MESSAGE_451 = CONNECTION_STATUS_MESSAGE_451;
+	
+	/**
+	 * Status Message 499
+	 */
+	public String STATUS_MESSAGE_499 = CONNECTION_STATUS_MESSAGE_499;
 	
 	
 	
 	/**
 		5** Server Error
 	*/	
-	public int STATUS_CODE_500 = Constants.CONNECTION_STATUS_CODE_500;
-	public int STATUS_CODE_501 = Constants.CONNECTION_STATUS_CODE_501;
-	public int STATUS_CODE_502 = Constants.CONNECTION_STATUS_CODE_502;
-	public int STATUS_CODE_503 = Constants.CONNECTION_STATUS_CODE_503;
-	public int STATUS_CODE_504 = Constants.CONNECTION_STATUS_CODE_504;
-	public int STATUS_CODE_505 = Constants.CONNECTION_STATUS_CODE_505;
-	public int STATUS_CODE_506 = Constants.CONNECTION_STATUS_CODE_506;
-	public int STATUS_CODE_507 = Constants.CONNECTION_STATUS_CODE_507;
-	public int STATUS_CODE_508 = Constants.CONNECTION_STATUS_CODE_508;
-	public int STATUS_CODE_509 = Constants.CONNECTION_STATUS_CODE_509;
-	public int STATUS_CODE_510 = Constants.CONNECTION_STATUS_CODE_510;
-	public int STATUS_CODE_511 = Constants.CONNECTION_STATUS_CODE_511;
-	public int STATUS_CODE_598 = Constants.CONNECTION_STATUS_CODE_598;
-	public int STATUS_CODE_599 = Constants.CONNECTION_STATUS_CODE_599;
 	
-	public String STATUS_MESSAGE_500 = Constants.CONNECTION_STATUS_MESSAGE_500;
-	public String STATUS_MESSAGE_501 = Constants.CONNECTION_STATUS_MESSAGE_501;
-	public String STATUS_MESSAGE_502 = Constants.CONNECTION_STATUS_MESSAGE_502;
-	public String STATUS_MESSAGE_503 = Constants.CONNECTION_STATUS_MESSAGE_503;
-	public String STATUS_MESSAGE_504 = Constants.CONNECTION_STATUS_MESSAGE_504;
-	public String STATUS_MESSAGE_505 = Constants.CONNECTION_STATUS_MESSAGE_505;
-	public String STATUS_MESSAGE_506 = Constants.CONNECTION_STATUS_MESSAGE_506;
-	public String STATUS_MESSAGE_507 = Constants.CONNECTION_STATUS_MESSAGE_507;
-	public String STATUS_MESSAGE_508 = Constants.CONNECTION_STATUS_MESSAGE_508;
-	public String STATUS_MESSAGE_509 = Constants.CONNECTION_STATUS_MESSAGE_509;
-	public String STATUS_MESSAGE_510 = Constants.CONNECTION_STATUS_MESSAGE_510;
-	public String STATUS_MESSAGE_511 = Constants.CONNECTION_STATUS_MESSAGE_511;
-	public String STATUS_MESSAGE_598 = Constants.CONNECTION_STATUS_MESSAGE_598;
-	public String STATUS_MESSAGE_599 = Constants.CONNECTION_STATUS_MESSAGE_599;
+	/**
+	 * Status Code 500
+	 */
+	public int STATUS_CODE_500 = CONNECTION_STATUS_CODE_500;
+	
+	/**
+	 * Status Code 501
+	 */
+	public int STATUS_CODE_501 = CONNECTION_STATUS_CODE_501;
+	
+	/**
+	 * Status Code 502
+	 */
+	public int STATUS_CODE_502 = CONNECTION_STATUS_CODE_502;
+	
+	/**
+	 * Status Code 503
+	 */
+	public int STATUS_CODE_503 = CONNECTION_STATUS_CODE_503;
+	
+	/**
+	 * Status Code 504
+	 */
+	public int STATUS_CODE_504 = CONNECTION_STATUS_CODE_504;
+	
+	/**
+	 * Status Code 505
+	 */
+	public int STATUS_CODE_505 = CONNECTION_STATUS_CODE_505;
+	
+	/**
+	 * Status Code 506
+	 */
+	public int STATUS_CODE_506 = CONNECTION_STATUS_CODE_506;
+	
+	/**
+	 * Status Code 507
+	 */
+	public int STATUS_CODE_507 = CONNECTION_STATUS_CODE_507;
+	
+	/**
+	 * Status Code 508
+	 */
+	public int STATUS_CODE_508 = CONNECTION_STATUS_CODE_508;
+	
+	/**
+	 * Status Code 509
+	 */
+	public int STATUS_CODE_509 = CONNECTION_STATUS_CODE_509;
+	
+	/**
+	 * Status Code 510
+	 */
+	public int STATUS_CODE_510 = CONNECTION_STATUS_CODE_510;
+	
+	/**
+	 * Status Code 511
+	 */
+	public int STATUS_CODE_511 = CONNECTION_STATUS_CODE_511;
+	
+	/**
+	 * Status Code 598
+	 */
+	public int STATUS_CODE_598 = CONNECTION_STATUS_CODE_598;
+	
+	/**
+	 * Status Code 599
+	 */
+	public int STATUS_CODE_599 = CONNECTION_STATUS_CODE_599;
 
-	
+
+	/**
+	 * Status Message 500
+	 */
+	public String STATUS_MESSAGE_500 = CONNECTION_STATUS_MESSAGE_500;
+
+	/**
+	 * Status Message 501
+	 */
+	public String STATUS_MESSAGE_501 = CONNECTION_STATUS_MESSAGE_501;
+
+	/**
+	 * Status Message 502
+	 */
+	public String STATUS_MESSAGE_502 = CONNECTION_STATUS_MESSAGE_502;
+
+	/**
+	 * Status Message 503
+	 */
+	public String STATUS_MESSAGE_503 = CONNECTION_STATUS_MESSAGE_503;
+
+	/**
+	 * Status Message 504
+	 */
+	public String STATUS_MESSAGE_504 = CONNECTION_STATUS_MESSAGE_504;
+
+	/**
+	 * Status Message 505
+	 */
+	public String STATUS_MESSAGE_505 = CONNECTION_STATUS_MESSAGE_505;
+
+	/**
+	 * Status Message 506
+	 */
+	public String STATUS_MESSAGE_506 = CONNECTION_STATUS_MESSAGE_506;
+
+	/**
+	 * Status Message 507
+	 */
+	public String STATUS_MESSAGE_507 = CONNECTION_STATUS_MESSAGE_507;
+
+	/**
+	 * Status Message 508
+	 */
+	public String STATUS_MESSAGE_508 = CONNECTION_STATUS_MESSAGE_508;
+
+	/**
+	 * Status Message 509
+	 */
+	public String STATUS_MESSAGE_509 = CONNECTION_STATUS_MESSAGE_509;
+
+	/**
+	 * Status Message 510
+	 */
+	public String STATUS_MESSAGE_510 = CONNECTION_STATUS_MESSAGE_510;
+
+	/**
+	 * Status Message 511
+	 */
+	public String STATUS_MESSAGE_511 = CONNECTION_STATUS_MESSAGE_511;
+
+	/**
+	 * Status Message 598
+	 */
+	public String STATUS_MESSAGE_598 = CONNECTION_STATUS_MESSAGE_598;
+
+	/**
+	 * Status Message 599
+	 */
+	public String STATUS_MESSAGE_599 = CONNECTION_STATUS_MESSAGE_599;
+
+
+	/**
+	 * Get status message based on status code
+	 * @param statusCode Status Code
+	 * @return Status Message
+	 */
 	public String getStatusMessage(final int statusCode) {
 		
 		/*

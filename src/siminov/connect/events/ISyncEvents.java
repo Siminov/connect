@@ -19,16 +19,37 @@ package siminov.connect.events;
 
 import siminov.connect.sync.design.ISyncRequest;
 
+/**
+ * It is a blue print for class which handles sync events
+ */
 public interface ISyncEvents {
 
+	/**
+	 * This method is called then a Sync is started.
+	 * <p> In this you can initialize resources related to Sync.
+	 * <p> Once OnStart has finished, Connect will call OnQueue.
+	 * @param syncRequest ISyncRequest instance
+	 */
 	public void onStart(ISyncRequest syncRequest);
 
 	
+	/**
+	 * This method is called then the Sync request is added to the Queue.
+	 * @param syncRequest ISyncRequest instance
+	 */
 	public void onQueue(ISyncRequest syncRequest);
 
 	
+	/**
+	 * This method is called then Sync request completes its all synchronization data with web service.
+	 * @param syncRequest ISyncRequest instance
+	 */
 	public void onFinish(ISyncRequest syncRequest);
 
 	
+	/**
+	 * This method is called if there is any error/exception while synchronizing data with web service
+	 * @param syncRequest ISyncRequest instance
+	 */
 	public void onTerminate(ISyncRequest syncRequest);
 }

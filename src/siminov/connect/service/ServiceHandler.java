@@ -22,7 +22,7 @@ import java.util.Iterator;
 import siminov.connect.Constants;
 import siminov.connect.exception.ServiceException;
 import siminov.connect.model.ServiceDescriptor;
-import siminov.connect.model.ServiceDescriptor.API;
+import siminov.connect.model.ServiceDescriptor.Request;
 import siminov.connect.resource.ResourceManager;
 import siminov.connect.resource.ResourceUtils;
 import siminov.connect.resource.ServiceResourceUtils;
@@ -76,14 +76,14 @@ public class ServiceHandler {
 		}
 
 		
-		API api = serviceDescriptor.getApi(service.getApi());
-		String mode = ResourceUtils.resolve(api.getMode(), serviceDescriptor);
+		Request request = serviceDescriptor.getRequest(service.getRequest());
+		String mode = ResourceUtils.resolve(request.getMode(), serviceDescriptor);
 		
-		if(mode.equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_API_SYNC_REQUEST_MODE)) {
+		if(mode.equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_REQUEST_SYNC_REQUEST_MODE)) {
 
 			ServiceResourceUtils.resolve(service);
 			syncServiceWorker.process(service);
-		} else if(mode.equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_API_ASYNC_REQUEST_MODE)) {
+		} else if(mode.equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_REQUEST_ASYNC_REQUEST_MODE)) {
 			asyncServiceWorker.process(service);
 		}
 	}

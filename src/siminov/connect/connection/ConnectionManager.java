@@ -26,7 +26,7 @@ import siminov.connect.service.design.IService;
 
 
 /**
- * 
+ * It exposes API to manager connection 
  *
  */
 public class ConnectionManager {
@@ -36,12 +36,19 @@ public class ConnectionManager {
 	private IConnection httpConnection = null;
 	private IConnection httpsConnection = null;
 	
+	/**
+	 * ConnectionManager Construction
+	 */
 	private ConnectionManager() {
 		
 		httpConnection = new siminov.connect.connection.HttpConnectionWorker();
 		httpsConnection = new siminov.connect.connection.HttpsConnectionWorker();
 	}
 	
+	/**
+	 * It provides an singleton instance of ConnectionManager class.
+	 * @return ConnectionManager Instance
+	 */
 	public static ConnectionManager getInstance() {
 		
 		if(connectionManager == null) {
@@ -51,6 +58,13 @@ public class ConnectionManager {
 		return connectionManager;
 	}
 	
+	
+	/**
+	 * It handles the service request
+	 * @param service Service instance
+	 * @return IConnectionResponse instance
+	 * @throws ConnectionException If any exception occur while executing service request
+	 */
 	public IConnectionResponse handle(final IService service) throws ConnectionException {
 		
 		IConnectionRequest connectionRequest = ConnectionHelper.prepareConnectionRequest(service);
@@ -58,7 +72,7 @@ public class ConnectionManager {
 		/*
 		 * Service Event onServiceApiInvoke
 		 */
-		service.onApiInvoke(connectionRequest);
+		service.onRequestInvoke(connectionRequest);
 		
 		IConnection connection = null;
 		if(connectionRequest.getProtocol().equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_HTTP_PROTOCOL)) {
@@ -69,23 +83,23 @@ public class ConnectionManager {
 
 		
 		IConnectionResponse connectionResponse = null;
-		if(connectionRequest.getType().equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_API_GET_TYPE)) {
+		if(connectionRequest.getType().equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_REQUEST_GET_TYPE)) {
 			connectionResponse = connection.get(connectionRequest);
-		} else if(connectionRequest.getType().equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_API_HEAD_TYPE)) {
+		} else if(connectionRequest.getType().equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_REQUEST_HEAD_TYPE)) {
 			connectionResponse = connection.head(connectionRequest);
-		} else if(connectionRequest.getType().equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_API_POST_TYPE)) {
+		} else if(connectionRequest.getType().equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_REQUEST_POST_TYPE)) {
 			connectionResponse = connection.post(connectionRequest);
-		} else if(connectionRequest.getType().equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_API_PUT_TYPE)) {
+		} else if(connectionRequest.getType().equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_REQUEST_PUT_TYPE)) {
 			connectionResponse = connection.put(connectionRequest);
-		} else if(connectionRequest.getType().equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_API_DELETE_TYPE)) {
+		} else if(connectionRequest.getType().equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_REQUEST_DELETE_TYPE)) {
 			connectionResponse = connection.delete(connectionRequest);
-		} else if(connectionRequest.getType().equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_API_TRACE_TYPE)) {
+		} else if(connectionRequest.getType().equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_REQUEST_TRACE_TYPE)) {
 			connectionResponse = connection.trace(connectionRequest);
-		} else if(connectionRequest.getType().equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_API_OPTIONS_TYPE)) {
+		} else if(connectionRequest.getType().equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_REQUEST_OPTIONS_TYPE)) {
 			connectionResponse = connection.options(connectionRequest);
-		} else if(connectionRequest.getType().equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_API_CONNECT_TYPE)) {
+		} else if(connectionRequest.getType().equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_REQUEST_CONNECT_TYPE)) {
 			connectionResponse = connection.connect(connectionRequest);
-		} else if(connectionRequest.getType().equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_API_PATCH_TYPE)) {
+		} else if(connectionRequest.getType().equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_REQUEST_PATCH_TYPE)) {
 			connectionResponse = connection.patch(connectionRequest);
 		}
 

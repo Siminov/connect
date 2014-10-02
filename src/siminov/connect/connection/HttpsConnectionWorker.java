@@ -49,10 +49,14 @@ import siminov.connect.connection.design.IConnection;
 import siminov.connect.connection.design.IConnectionRequest;
 import siminov.connect.connection.design.IConnectionResponse;
 import siminov.connect.exception.ConnectionException;
-import siminov.connect.model.ServiceDescriptor.API.HeaderParameter;
-import siminov.connect.model.ServiceDescriptor.API.QueryParameter;
+import siminov.connect.model.ServiceDescriptor.Request.HeaderParameter;
+import siminov.connect.model.ServiceDescriptor.Request.QueryParameter;
 import siminov.orm.log.Log;
 
+
+/**
+ * It implements IConnection to handle HTTPS requests
+ */
 public class HttpsConnectionWorker implements IConnection {
 
 	public IConnectionResponse get(final IConnectionRequest connectionRequest) throws ConnectionException {

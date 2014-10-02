@@ -22,9 +22,9 @@ import java.util.Iterator;
 import siminov.connect.Constants;
 import siminov.connect.connection.design.IConnectionRequest;
 import siminov.connect.model.ServiceDescriptor;
-import siminov.connect.model.ServiceDescriptor.API;
-import siminov.connect.model.ServiceDescriptor.API.HeaderParameter;
-import siminov.connect.model.ServiceDescriptor.API.QueryParameter;
+import siminov.connect.model.ServiceDescriptor.Request;
+import siminov.connect.model.ServiceDescriptor.Request.HeaderParameter;
+import siminov.connect.model.ServiceDescriptor.Request.QueryParameter;
 import siminov.connect.service.design.IService;
 
 
@@ -44,7 +44,7 @@ public class ConnectionHelper {
 		 * Resolve All Referring Resources
 		 */
 		ServiceDescriptor serviceDescriptor = service.getServiceDescriptor();
-		API api = serviceDescriptor.getApi(service.getApi());
+		Request request = serviceDescriptor.getRequest(service.getRequest());
 		
 		String url = formUrl(service);
 		
@@ -56,7 +56,7 @@ public class ConnectionHelper {
 		IConnectionRequest connectionRequest = new ConnectionRequest();
 		connectionRequest.setUrl(url);
 		connectionRequest.setProtocol(serviceDescriptor.getProtocol());
-		connectionRequest.setType(api.getType());
+		connectionRequest.setType(request.getType());
 		
 		while(queryParameters.hasNext()) {
 			connectionRequest.addQueryParameter(queryParameters.next());
@@ -76,8 +76,8 @@ public class ConnectionHelper {
 		
 		ServiceDescriptor serviceDescriptor = service.getServiceDescriptor();
 		
-		String apiName = service.getApi();
-		API api = serviceDescriptor.getApi(apiName);
+		String requestName = service.getRequest();
+		Request request = serviceDescriptor.getRequest(requestName);
 		
 		String protocol = serviceDescriptor.getProtocol();
 		
@@ -85,7 +85,7 @@ public class ConnectionHelper {
 		String port = serviceDescriptor.getPort();
 		
 		String context = serviceDescriptor.getContext();
-		String apiPath = api.getApi();
+		String apiPath = request.getApi();
 		
 		StringBuilder url = new StringBuilder();
 
@@ -121,34 +121,34 @@ public class ConnectionHelper {
 		
 		ServiceDescriptor serviceDescriptor = service.getServiceDescriptor();
 		
-		String apiName = service.getApi();
-		API api = serviceDescriptor.getApi(apiName);
+		String requestName = service.getRequest();
+		Request request = serviceDescriptor.getRequest(requestName);
 		
-		return api.getQueryParameters();
+		return request.getQueryParameters();
 	}
 	
 	private static Iterator<HeaderParameter> formHeaderParameters(final IService service) {
 
 		ServiceDescriptor serviceDescriptor = service.getServiceDescriptor();
 		
-		String apiName = service.getApi();
-		API api = serviceDescriptor.getApi(apiName);
+		String requestName = service.getRequest();
+		Request request = serviceDescriptor.getRequest(requestName);
 		
-		return api.getHeaderParameters();
+		return request.getHeaderParameters();
 	}
 	
 	private static byte[] formDataStream(final IService service) {
 		
 		ServiceDescriptor serviceDescriptor = service.getServiceDescriptor();
 		
-		String apiName = service.getApi();
-		API api = serviceDescriptor.getApi(apiName);
+		String requestName = service.getRequest();
+		Request request = serviceDescriptor.getRequest(requestName);
 
-		if(api.getDataStream() == null) {
+		if(request.getDataStream() == null) {
 			return new byte[0];
 		}
 		
 		
-		return api.getDataStream().getBytes();
+		return request.getDataStream().getBytes();
 	}
 }

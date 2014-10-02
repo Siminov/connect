@@ -33,10 +33,10 @@ public interface IService extends IServiceEvents, IResource {
 	public void setService(final String service);
 	
 	
-	public String getApi();
+	public String getRequest();
 	
 	
-	public void setApi(final String api);
+	public void setRequest(final String request);
 	
 	
 	public ServiceDescriptor getServiceDescriptor();

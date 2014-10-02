@@ -25,7 +25,7 @@ import siminov.connect.Constants;
 import siminov.connect.IWorker;
 import siminov.connect.events.ISyncEvents;
 import siminov.connect.model.ServiceDescriptor;
-import siminov.connect.model.ServiceDescriptor.API;
+import siminov.connect.model.ServiceDescriptor.Request;
 import siminov.connect.model.SyncDescriptor;
 import siminov.connect.resource.ResourceManager;
 import siminov.connect.service.NameValuePair;
@@ -116,11 +116,11 @@ public class SyncWorker implements IWorker {
 					String service = services.next();
 					
 					String serviceName = service.substring(0, service.indexOf(Constants.SYNC_DESCRIPTOR_SERVICE_SEPARATOR));
-					String apiName = service.substring(service.indexOf(Constants.SYNC_DESCRIPTOR_SERVICE_SEPARATOR) + 1, service.length());
+					String requestName = service.substring(service.indexOf(Constants.SYNC_DESCRIPTOR_SERVICE_SEPARATOR) + 1, service.length());
 
 					
 					ServiceDescriptor serviceDescriptor = resourceManager.requiredServiceDescriptorBasedOnName(serviceName);
-					API api = serviceDescriptor.getApi(apiName);
+					Request api = serviceDescriptor.getRequest(requestName);
 					
 					String apiHandler = api.getHandler();
 					
