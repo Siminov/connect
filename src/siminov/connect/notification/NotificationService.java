@@ -30,6 +30,9 @@ import android.content.Intent;
 
 import com.google.android.gcm.GCMBaseIntentService;
 
+/**
+ * It extends GRCBaseIntentService to handle push notification events
+ */
 public class NotificationService extends GCMBaseIntentService {
 
 	private static String SENDER_ID = null;

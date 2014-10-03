@@ -31,6 +31,9 @@ import android.content.Context;
 
 import com.google.android.gcm.GCMRegistrar;
 
+/**
+ * It exposes APIs to deal with push notification
+ */
 public class NotificationManager implements INotification {
 
 	private static NotificationManager notificationManager = null;
@@ -39,10 +42,17 @@ public class NotificationManager implements INotification {
 	private ResourceManager connectResourceManager = ResourceManager.getInstance();
 	
 	
+	/**
+	 * Private NotificationManager Constructor
+	 */
 	private NotificationManager() {
 
 	}
 	
+	/**
+	 * It provides singleton instance of NotificationManager
+	 * @return NotificationManager singleton instance
+	 */
 	public static NotificationManager getInstance() {
 		
 		if(notificationManager == null) {

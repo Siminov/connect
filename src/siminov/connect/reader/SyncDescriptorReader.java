@@ -31,6 +31,42 @@ import siminov.orm.reader.SiminovSAXDefaultHandler;
 import siminov.orm.resource.ResourceManager;
 import android.content.Context;
 
+
+/**
+ * Exposes methods to parse Sync Descriptor information as per define in SyncDescriptor.si.xml file by application.
+	<p>
+		<pre>
+		
+Example:
+	{@code
+		<sync-descriptor>
+		            
+				<!-- Mandatory Field -->
+			<property name="name">name_of_sync_handler</property>
+					
+				<!-- Optional Field -->
+			<property name="sync_interval">sync_interval_in_millisecond</property>
+		     				
+				<!-- Optional Field -->
+					<!-- Default: SCREEN -->
+			<property name="type">INTERVAL|SCREEN|INTERVAL-SCREEN</property>
+					
+			<!-- Services -->
+				<!-- Service -->
+			<services>
+		     		    
+			    <service>name_of_service.name_of_api</service>
+		     		    
+			</services>
+		
+		</sync-descriptor>
+
+	}
+	
+		</pre>
+	</p>
+ *
+ */
 public class SyncDescriptorReader extends SiminovSAXDefaultHandler implements siminov.orm.Constants, Constants {
 
 	private ResourceManager resourceManager = ResourceManager.getInstance();

@@ -17,9 +17,21 @@
 
 package siminov.connect.notification.design;
 
+/**
+ * It is the blue print of class which contain push notification message
+ * It exposes APIs to Get and Set push notification message
+ */
 public interface IMessage {
 	
+	/**
+	 * Get push notification message
+	 * @return Message
+	 */
 	public String getMessage();
 	
+	/**
+	 * Set push notification message
+	 * @param message Message
+	 */
 	public void setMessage(final String message);
 }

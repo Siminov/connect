@@ -28,8 +28,18 @@ import siminov.orm.log.Log;
 import siminov.orm.model.IDescriptor;
 import siminov.orm.utils.ClassUtils;
 
+/**
+ * It is a resource utility class, it exposes APIs to get service dynamic resources
+ */
 public class ResourceUtils {
 
+	/**
+	 * It resolve dynamic resources
+	 * @param resourceValue Value of resource
+	 * @param descriptors 
+	 * @return
+	 * @throws ServiceException
+	 */
 	public static String resolve(final String resourceValue, final IDescriptor...descriptors) throws ServiceException {
 		
 		if(resourceValue == null) {

@@ -19,6 +19,10 @@ package siminov.connect.notification;
 
 import siminov.connect.notification.design.IRegistration;
 
+
+/**
+ * It implements IRegsitration to Get and Set push notification registration id
+ */
 public class Registration implements IRegistration {
 
 	private String registrationId = null;

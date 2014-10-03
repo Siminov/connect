@@ -26,20 +26,68 @@ import java.util.Map;
 import siminov.connect.Constants;
 import siminov.orm.model.IDescriptor;
 
+/**
+ * Exposes methods to GET and SET Sync Descriptor information as per define in SyncDescriptor.si.xml file by application.
+	<p>
+		<pre>
+		
+Example:
+	{@code
+
+	<sync-descriptor>
+	            
+			<!-- Mandatory Field -->
+		<property name="name">name_of_sync_handler</property>
+				
+			<!-- Optional Field -->
+		<property name="sync_interval">sync_interval_in_millisecond</property>
+	     				
+			<!-- Optional Field -->
+				<!-- Default: SCREEN -->
+		<property name="type">INTERVAL|SCREEN|INTERVAL-SCREEN</property>
+				
+		<!-- Services -->
+			<!-- Service -->
+		<services>
+	     		    
+		    <service>name_of_service.name_of_api</service>
+	     		    
+		</services>
+	
+	</sync-descriptor>
+	
+	}
+	
+		</pre>
+	</p>
+ *
+ */
 public class SyncDescriptor implements IDescriptor {
 
 	private Map<String, String> properties = new HashMap<String, String> ();
 	
 	private Collection<String> services = new ArrayList<String>();
 	
+	/**
+	 * Get sync descriptor name
+	 * @return Name of sync descriptor
+	 */
 	public String getName() {
 		return this.properties.get(Constants.SYNC_DESCRIPTOR_NAME);
 	}
 	
+	/**
+	 * Set sync descriptor name
+	 * @param name Name of sync descriptor
+	 */
 	public void setName(String name) {
 		this.properties.get(name);
 	}
 
+	/**
+	 * Get sync interval
+	 * @return Sync Interval
+	 */
 	public long getSyncInterval() {
 		String syncInterval = this.properties.get(Constants.SYNC_DESCRIPTOR_REFRESH_INTERVAL);
 		if(syncInterval == null || syncInterval.length() <= 0) {
@@ -49,6 +97,10 @@ public class SyncDescriptor implements IDescriptor {
 		return Long.valueOf(syncInterval);
 	}
 	
+	/**
+	 * Set sync interval
+	 * @param syncInterval Sync Interval
+	 */
 	public void setSyncInterval(long syncInterval) {
 		this.properties.put(Constants.SYNC_DESCRIPTOR_REFRESH_INTERVAL, Long.toString(syncInterval));
 	}
@@ -73,14 +125,26 @@ public class SyncDescriptor implements IDescriptor {
 		this.properties.remove(name);
 	}
 	
+	/**
+	 * Get all services
+	 * @return Services
+	 */
 	public Iterator<String> getServices() {
 		return this.services.iterator();
 	}
 	
+	/**
+	 * Add service
+	 * @param service Service
+	 */
 	public void addService(String service) {
 		this.services.add(service);
 	}
 	
+	/**
+	 * Remove service 
+	 * @param service Service
+	 */
 	public void removeService(String service) {
 		this.services.remove(service);
 	}

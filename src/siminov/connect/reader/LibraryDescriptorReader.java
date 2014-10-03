@@ -31,6 +31,63 @@ import siminov.orm.reader.SiminovSAXDefaultHandler;
 import siminov.orm.resource.ResourceManager;
 import android.content.Context;
 
+
+/**
+ * Exposes methods to parse Library Descriptor information as per define in LibraryDescriptor.si.xml file by application.
+	<p>
+		<pre>
+		
+Example:
+	{@code
+	
+	<library-descriptor>
+	
+	    <!-- General Properties Of Library -->
+	    
+	    <!-- Mandatory Field -->
+		<property name="name">name_of_library</property>
+		
+		<!-- Optional Field -->
+		<property name="description">description_of_library</property>
+	
+		
+		
+		<!-- Database Mappings Needed Under This Library Descriptor -->
+		
+		<!-- Optional Field -->
+			<!-- Database Mappings -->
+		<database-mapping-descriptors>
+			<database-mapping-descriptor>name_of_database_descriptor.full_path_of_database_mapping_descriptor_file</database-mapping-descriptor>
+		</database-mapping-descriptors>
+		 
+		
+		<!-- Service Descriptors -->
+			
+		<!-- Optional Field -->
+			<!-- Service Descriptor -->
+		<service-descriptors>
+		    <service-descriptor>full_path_of_service-descriptor_file</service-descriptor>
+		</service-descriptors>
+		
+		
+		<!-- Sync Descriptors -->
+		
+		<!-- Optional Field -->
+			<!-- Sync Descriptor -->
+		<sync-descriptors>
+		    <sync-descriptor>full_path_of_sync_descriptor_file</sync-descriptor>
+		</sync-descriptors>
+		
+		
+	</library-descriptor>
+
+
+	}
+	
+		</pre>
+	</p>
+ *
+ */
 public class LibraryDescriptorReader extends SiminovSAXDefaultHandler implements Constants {
 
 	private StringBuilder tempValue = new StringBuilder();
@@ -103,6 +160,10 @@ public class LibraryDescriptorReader extends SiminovSAXDefaultHandler implements
 		propertyName = attributes.getValue(LIBRARY_DESCRIPTOR_PROPERTY_NAME);
 	}
 	
+	/**
+	 * Get library descriptor
+	 * @return Library Descriptor
+	 */
 	public LibraryDescriptor getLibraryDescriptor() {
 		return this.libraryDescriptor;
 	}

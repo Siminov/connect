@@ -19,6 +19,9 @@ package siminov.connect.notification;
 
 import siminov.connect.notification.design.IMessage;
 
+/**
+ * It implements IMessage to Get and Set push notification message
+ */
 public class Message implements IMessage {
 
 	private String message = null;

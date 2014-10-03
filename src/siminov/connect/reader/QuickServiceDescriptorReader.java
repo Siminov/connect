@@ -36,7 +36,7 @@ import android.content.Context;
 
 
 /**
- * Exposes methods to quickly parse database mapping descriptor defined by application.
+ * Exposes methods to quickly parse service descriptor defined by application.
  */
 public class QuickServiceDescriptorReader extends SiminovSAXDefaultHandler implements Constants {
 
@@ -142,10 +142,18 @@ public class QuickServiceDescriptorReader extends SiminovSAXDefaultHandler imple
 	}
 
 
+	/**
+	 * Get service descriptor
+	 * @return Service Descriptor
+	 */
 	public ServiceDescriptor getServiceDescriptor() {
 		return this.serviceDescriptor;
 	}
 	
+	/**
+	 * Set service descriptor
+	 * @return Service Descriptor
+	 */
 	public boolean containServiceDescriptor() {
 		return this.doesMatch;
 	}

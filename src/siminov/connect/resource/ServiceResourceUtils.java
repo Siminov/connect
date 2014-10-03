@@ -27,8 +27,16 @@ import siminov.connect.model.ServiceDescriptor.Request.QueryParameter;
 import siminov.connect.service.NameValuePair;
 import siminov.connect.service.design.IService;
 
+/**
+ * It is a service resource utility class, it exposes APIs to get service dynamic resources
+ */
 public class ServiceResourceUtils {
 
+	/**
+	 * It resolve service descriptor instance 
+	 * @param service Service instance
+	 * @throws ServiceException If any exception occur while resolving dynamic resources
+	 */
 	public static void resolve(final IService service) throws ServiceException {
 
 		/*

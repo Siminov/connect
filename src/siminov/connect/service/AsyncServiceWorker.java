@@ -295,7 +295,7 @@ public class AsyncServiceWorker implements IWorker, IServiceWorker {
 				siminov.connect.model.ServiceRequest savedService = services[i];
 				if(service.getService().equalsIgnoreCase(savedService.getService())) {
 					
-					if(service.getApi().equalsIgnoreCase(savedService.getApi())) {
+					if(service.getRequest().equalsIgnoreCase(savedService.getRequest())) {
 						
 						boolean contain = true;
 						
@@ -335,7 +335,7 @@ public class AsyncServiceWorker implements IWorker, IServiceWorker {
 			IService iService = (IService) ClassUtils.createClassInstance(service.getInstanceOf());
 			iService.setRequestId(service.getRequestId());
 			iService.setService(service.getService());
-			iService.setRequest(service.getApi());
+			iService.setRequest(service.getRequest());
 			
 			Iterator<ServiceRequestResource> serviceRequestResources = service.getServiceRequestResources();
 			while(serviceRequestResources.hasNext()) {
@@ -356,7 +356,7 @@ public class AsyncServiceWorker implements IWorker, IServiceWorker {
 			siminov.connect.model.ServiceRequest serviceRequest = new siminov.connect.model.ServiceRequest();
 			serviceRequest.setRequestId(iService.getRequestId());
 			serviceRequest.setService(iService.getService());
-			serviceRequest.setApi(iService.getRequest());
+			serviceRequest.setRequest(iService.getRequest());
 			serviceRequest.setInstanceOf(iService.getClass().getName());
 			
 			Iterator<NameValuePair> resources = iService.getResources();

@@ -19,6 +19,9 @@ package siminov.connect.notification;
 
 import com.google.android.gcm.GCMBroadcastReceiver;
 
+/**
+ * It extends GRCBroadcastReceiver to handle push notification event
+ */
 public class NotificationReceiver extends GCMBroadcastReceiver {
 
 }

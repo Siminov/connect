@@ -19,6 +19,10 @@ package siminov.connect.model;
 
 import siminov.orm.database.Database;
 
+/**
+ * It exposes APIs to Get and Set service request resource information
+ * It helps framework to save ASYNC request in database
+ */
 public class ServiceRequestResource extends Database {
 
 	private ServiceRequest serviceRequest = null;
@@ -26,26 +30,50 @@ public class ServiceRequestResource extends Database {
 	private String name = null;
 	private String value = null;
 	
+	/**
+	 * Get service request
+	 * @return Service Request
+	 */
 	public ServiceRequest getServiceRequest() {
 		return this.serviceRequest;
 	}
 	
+	/**
+	 * Set service request
+	 * @param serviceRequest Service Request
+	 */
 	public void setServiceRequest(ServiceRequest serviceRequest) {
 		this.serviceRequest = serviceRequest;
 	}
 	
+	/**
+	 * Get resource name
+	 * @return Resource Name
+	 */
 	public String getName() {
 		return this.name;
 	}
 	
+	/**
+	 * Set resource name
+	 * @param name Resource Name
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 	
+	/**
+	 * Get resource value
+	 * @return Resource Value
+	 */
 	public String getValue() {
 		return this.value;
 	}
 	
+	/**
+	 * Set resource value
+	 * @param value Resource Value
+	 */
 	public void setValue(String value) {
 		this.value = value;
 	}

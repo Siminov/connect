@@ -17,21 +17,71 @@
 
 package siminov.connect.notification.design;
 
+import siminov.connect.exception.NotificationException;
 
+/**
+ * It is a blue print for classes which handle the push notification 
+ * It exposes APIs to handle push notification such as do registration, do unregistraton
+ */
 public interface INotification {
 
+	/**
+	 * Sender Id 
+	 */
 	public String SENDER_ID = "sender_id";
+	
+	/**
+	 * Application Id
+	 */
 	public String APPLICATION_ID = "application_id";
+	
+	/**
+	 * Registration Id
+	 */
 	public String REGISTRATION_ID = "registration_id";
+	
+	/**
+	 * Message
+	 */
 	public String MESSAGE = "message";
 	
+	/**
+	 * Do registration
+	 * <p>
+	 * 	This is used when application wants to register for push notification platform service
+	 */
 	public void doRegistration();
 
+	
+	/**
+	 * Do unregistration
+	 * <p>
+	 * 	This is used when application wants to unregister for push notification platform service
+	 */
 	public void doUnregistration();
 	
+	/**
+	 * This is called when application is successfully registred for push notification service
+	 * @param registration Registration instance
+	 */
 	public void onRegistration(IRegistration registration);
 
+	/**
+	 * This is called when application is successfully unregistred for push notification service
+	 * @param registration
+	 */
 	public void onUnregistration(IRegistration registration);
 	
+	/**
+	 * This is called when any notification is recevied from push notification service
+	 * @param message Message
+	 */
 	public void onNotification(IMessage message);
+	
+	
+	/**
+	 * This is called when there is any exception while handing push notification
+	 * @param notificationException NotificationException instance
+	 */
+	public void onError(NotificationException notificationException);
 }

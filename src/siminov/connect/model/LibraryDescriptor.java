@@ -84,28 +84,55 @@ public class LibraryDescriptor extends siminov.orm.model.LibraryDescriptor {
 
 	private Collection<String> serviceDescriptorPaths = new ConcurrentLinkedQueue<String> ();
 	private Map<String, String> serviceDescriptorNamesBasedOnPath = new HashMap<String, String>();
-	
+
+	/**
+	 * Add service descriptor path
+	 * @param serviceDescriptorPath Path of service descriptor
+	 */
 	public void addServiceDescriptorPath(String serviceDescriptorPath) {
 		this.serviceDescriptorPaths.add(serviceDescriptorPath);
 		this.serviceDescriptorNamesBasedOnPath.put(serviceDescriptorPath, null);
 	}
 	
+	/**
+	 * Remove service descriptor path
+	 * @param serviceDescriptorPath Path of service descriptor
+	 */
 	public void removeServiceDescriptorPath(String serviceDescriptorPath) {
 		this.serviceDescriptorPaths.remove(serviceDescriptorPath);
 	}
 	
+	/**
+	 * Get all service descriptor paths
+	 * @return Service descriptor paths
+	 */
 	public Iterator<String> getServiceDescriptorPaths() {
 		return this.serviceDescriptorPaths.iterator();
 	}
 
+	/**
+	 * Check whether service descriptor path based on name
+	 * @param serviceDescriptorName Name of service descriptor
+	 * @return (true/false) TRUE: If service descriptor path exists | FALSE: If service descriptor does not exists
+	 */
 	public boolean containServiceDescriptorPathBasedOnName(String serviceDescriptorName) {
 		return this.serviceDescriptorNamesBasedOnPath.containsValue(serviceDescriptorName);
 	}
 	
+	/**
+	 * Check whether service descriptor name exists based on path
+	 * @param serviceDescriptorPath Path of service descriptor
+	 * @return (true/false) TRUE: If service descriptor name exists | FALSE: If service descriptor name does not exists
+	 */
 	public boolean containServiceDescriptorNameBasedOnPath(String serviceDescriptorPath) {
 		return this.serviceDescriptorNamesBasedOnPath.containsKey(serviceDescriptorPath);
 	}
 	
+	/**
+	 * Get service descriptor path based on name
+	 * @param serviceDescriptorName Name of serivce descriptor
+	 * @return Path of service descriptor
+	 */
 	public String getServiceDescriptorPathBasedOnName(String serviceDescriptorName) {
 		
 		if(this.containServiceDescriptorPathBasedOnName(serviceDescriptorName)) {
@@ -125,10 +152,20 @@ public class LibraryDescriptor extends siminov.orm.model.LibraryDescriptor {
 		return null;
 	}
 	
+	/**
+	 * Add service descriptor name based on path
+	 * @param serviceDescriptorPath Path of service descriptor
+	 * @param serviceDescriptoName Name of service descriptor
+	 */
 	public void addServiceDescriptorNameBasedOnPath(String serviceDescriptorPath, String serviceDescriptoName) {
 		this.serviceDescriptorNamesBasedOnPath.put(serviceDescriptorPath, serviceDescriptoName);
 	}
 	
+	
+	/**
+	 * Remove service descriptor name based on path
+	 * @param serviceDescriptorPath Path of service descriptor
+	 */
 	public void removeServiceDescriptorNameBasedOnPath(String serviceDescriptorPath) {
 		this.serviceDescriptorNamesBasedOnPath.remove(serviceDescriptorPath);
 	}

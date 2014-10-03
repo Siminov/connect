@@ -17,9 +17,21 @@
 
 package siminov.connect.notification.design;
 
+/**
+ * It is a blue print for classes which contain push notification information
+ * It exposes APIs to Get and Set push notification information
+ */
 public interface IRegistration {
 	
+	/**
+	 * Get push notification registration id
+	 * @return Registration Id
+	 */
 	public String getRegistrationId();
 	
+	/**
+	 * Set push notification registration id
+	 * @param registrationId Registration Id
+	 */
 	public void setRegistrationId(final String registrationId);
 }

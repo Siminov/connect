@@ -32,16 +32,29 @@ import siminov.orm.exception.SiminovCriticalException;
 import siminov.orm.exception.SiminovException;
 import siminov.orm.log.Log;
 
+
+/**
+ * It handles and provides all resources needed by SIMINOV.
+ * <p>
+ * Such As: Provides Application Descriptor, Service Descriptor, Library Descriptor, Sync Descriptor, Notification Descriptor.
+ */
 public class ResourceManager {
 
 	private static ResourceManager resources = null;
 	
 	private ApplicationDescriptor applicationDescriptor = null;
 	
+	/**
+	 * ResourceManager private constructor
+	 */
 	private ResourceManager() {
 		
 	}
 	
+	/**
+	 * It provides ResourceManager singleton instance
+	 * @return ResourceManager
+	 */
 	public static ResourceManager getInstance() {
 		
 		if(resources == null) {
@@ -51,14 +64,27 @@ public class ResourceManager {
 		return resources;
 	}
 
+	/**
+	 * Get application descriptor
+	 * @return Application Descriptor
+	 */
 	public ApplicationDescriptor getApplicationDescriptor() {
 		return this.applicationDescriptor;
 	}
 	
+	/**
+	 * Set application descriptor
+	 * @param applicationDescriptor Application Descriptor
+	 */
 	public void setApplicationDescriptor(final ApplicationDescriptor applicationDescriptor) {
 		this.applicationDescriptor = applicationDescriptor;
 	}
 	
+	/**
+	 * Parse and get service descriptor based on path
+	 * @param serviceDescriptorPath Path of service descriptor
+	 * @return Service Descriptor
+	 */
 	public ServiceDescriptor requiredServiceDescriptorBasedOnPath(final String serviceDescriptorPath) {
 		
 		ServiceDescriptorReader serviceDescriptorReader = new ServiceDescriptorReader(serviceDescriptorPath);
@@ -69,6 +95,11 @@ public class ResourceManager {
 		return serviceDescriptor;
 	}
 
+	/**
+	 * Parse and get service descriptor based on name
+	 * @param serviceDescriptorName Name of service descriptor
+	 * @return Service Descriptor
+	 */
 	public ServiceDescriptor requiredServiceDescriptorBasedOnName(final String serviceDescriptorName) {
 		
 		if(!applicationDescriptor.containServiceDescriptorPathBasedOnName(serviceDescriptorName)) {
@@ -94,33 +125,61 @@ public class ResourceManager {
 	}
 
 		
-	
+	/**
+	 * Parse and get service request based on service descriptor path
+	 * @param serviceDescriptorPath Path of service descriptor
+	 * @param requestName Name of request
+	 * @return Request
+	 */
 	public Request requiredRequestBasedOnServiceDescriptorPath(final String serviceDescriptorPath, final String requestName) {
 		
 		ServiceDescriptor serviceDescriptor = this.requiredServiceDescriptorBasedOnPath(serviceDescriptorPath);
 		return serviceDescriptor.getRequest(requestName);
 	}
 	
-	public Request requireAPIBasedOnServiceDescriptorName(final String serviceDescriptorName, final String requestName) {
+	/**
+	 * Parse and get service request based on service descriptor name
+	 * @param serviceDescriptorName Name of service descriptor
+	 * @param requestName Name of request
+	 * @return Request
+	 */
+	public Request requireRequestBasedOnServiceDescriptorName(final String serviceDescriptorName, final String requestName) {
 		
 		ServiceDescriptor serviceDescriptor = this.requiredServiceDescriptorBasedOnName(serviceDescriptorName);
 		return serviceDescriptor.getRequest(requestName);
 	}
 	
+	/**
+	 * Get notification event handler
+	 * @return INotificationEvents instance
+	 */
 	public INotificationEvents getNotificationEventHandler() {
 		return EventHandler.getInstance().getNotificationEventHandler();
 	}
 	
+	/**
+	 * Get sync event handler
+	 * @return ISyncEvents instance
+	 */
 	public ISyncEvents getSyncEventHandler() {
 		return EventHandler.getInstance().getSyncEventHandler();
 	}
 	
+	/**
+	 * Get all sync descriptors
+	 * @return Sync Descriptors
+	 */
 	public Iterator<SyncDescriptor> getSyncDescriptors() {
 		
 		ApplicationDescriptor applicationDescriptor = getApplicationDescriptor();
 		return applicationDescriptor.getSyncDescriptors();
 	}
 	
+	/**
+	 * Get sync descriptor
+	 * @param syncDescriptorName Name of sync descriptor
+	 * @return Sync Descriptor
+	 */
 	public SyncDescriptor getSyncDescriptor(final String syncDescriptorName) {
 		
 		ApplicationDescriptor applicationDescriptor = getApplicationDescriptor();
