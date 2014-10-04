@@ -98,10 +98,10 @@ Within the lifecycle callback methods, you can declare how your service behaves 
 						There will be no lifecycle methods called after the Activity has been destroyed.
 				
 				
-				6. onApiInvoke(ConnectionRequest): This method is called before Service calls Web Service API. 
+				6. onRequestInvoke(ConnectionRequest): This method is called before Service calls Web Service Request. 
 				
 				
-				7. onApiFinish(ConnectionResponse): This method is called after Web Service API is executed.
+				7. onRequestFinish(ConnectionResponse): This method is called after Web Service Request is executed.
 				
 				
 				8. onTerminate(SiminovException): This method is called when there is any exception while executing the service. 

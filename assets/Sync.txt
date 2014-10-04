@@ -15,7 +15,7 @@ CREATING SYNC REQUEST
 	
 	ISyncRequest syncRequest = new SyncRequest();
 	syncRequest.setName(name_of_your_sync_request);
-	syncRequest.addResource(new NameValuePair(key_of_your_resource, resource));
+	syncRequest.addResource(key_of_your_resource, resource);
 	
 	SyncHandler syncHandler = new SyncHandler();
 	syncHandler.handle(syncRequest);

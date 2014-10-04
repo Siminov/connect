@@ -24,7 +24,6 @@ import siminov.connect.model.ServiceDescriptor;
 import siminov.connect.model.ServiceDescriptor.Request;
 import siminov.connect.model.ServiceDescriptor.Request.HeaderParameter;
 import siminov.connect.model.ServiceDescriptor.Request.QueryParameter;
-import siminov.connect.service.NameValuePair;
 import siminov.connect.service.design.IService;
 
 /**
@@ -44,13 +43,13 @@ public class ServiceResourceUtils {
 		 */
 		ServiceDescriptor serviceDescriptor = service.getServiceDescriptor();
 		
-		Iterator<NameValuePair> resources = service.getResources();
+		Iterator<String> resources = service.getResources();
 		while(resources.hasNext()) {
-			NameValuePair resource = resources.next();
-			Object resourceValue = resource.getValue();
+			String resourceName = resources.next();
+			Object resourceValue = service.getResource(resourceName);
 			
 			if(resourceValue instanceof String) {
-				serviceDescriptor.addProperty(resource.getName(), (String) resourceValue);
+				serviceDescriptor.addProperty(resourceName, (String) resourceValue);
 			}
 		}
 		

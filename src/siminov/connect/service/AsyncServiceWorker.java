@@ -19,6 +19,7 @@ package siminov.connect.service;
 
 import java.util.Iterator;
 
+import siminov.connect.IRequest;
 import siminov.connect.IWorker;
 import siminov.connect.connection.ConnectionManager;
 import siminov.connect.connection.design.IConnectionResponse;
@@ -29,7 +30,6 @@ import siminov.connect.model.ServiceRequestResource;
 import siminov.connect.resource.ResourceManager;
 import siminov.connect.resource.ServiceResourceUtils;
 import siminov.connect.service.design.IService;
-import siminov.connect.service.design.IServiceWorker;
 import siminov.connect.utils.Utils;
 import siminov.orm.database.design.IDatabase;
 import siminov.orm.exception.DatabaseException;
@@ -44,21 +44,28 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-public class AsyncServiceWorker implements IWorker, IServiceWorker {
+/**
+ * It provides implementation for IWorker.
+ * It processes all service ASYNC requests
+ */
+public class AsyncServiceWorker implements IWorker {
 
 	private static AsyncServiceWorker asyncServiceWorker = null;
 	
 	private AsyncServiceWorkerThread asyncServiceWorkerThread = null;
 	private ResourceManager resourceManager = null;
 	
-	private ServiceUtils serviceUtils = null;
+	private AsyncServiceWorkerHelper serviceUtils = null;
 	
 	private ConnectivityChangeReceiver connectivityChangeReceiver = new ConnectivityChangeReceiver();
-	
+
+	/**
+	 * AsyncServiceWorker Constructor
+	 */
 	private AsyncServiceWorker() {
 		
 		resourceManager = ResourceManager.getInstance();
-		serviceUtils = new ServiceUtils();
+		serviceUtils = new AsyncServiceWorkerHelper();
 		
 		startWorker();
 		
@@ -72,6 +79,10 @@ public class AsyncServiceWorker implements IWorker, IServiceWorker {
 	}
 	
 	
+	/**
+	 * It provides AsyncServiceWorker singleton instance
+	 * @return AsyncServiceWorker singleton instance
+	 */
 	public static AsyncServiceWorker getInstance() {
 		
 		if(asyncServiceWorker == null) {
@@ -81,7 +92,9 @@ public class AsyncServiceWorker implements IWorker, IServiceWorker {
 		return asyncServiceWorker;
 	}
 	
-	public void process(final IService iService) {
+	public void addRequest(final IRequest request) {
+		
+		IService iService = (IService) request;
 		
 		siminov.connect.model.ServiceRequest service = serviceUtils.convert(iService);
 		boolean contain = false;
@@ -126,6 +139,25 @@ public class AsyncServiceWorker implements IWorker, IServiceWorker {
 		startWorker();
 	}
 
+	public void removeRequest(final IRequest service) {
+		
+	}
+	
+	public boolean containsRequest(final IRequest request) {
+		
+		IService service = (IService) request;
+		siminov.connect.model.ServiceRequest serviceRequest = serviceUtils.convert(service);
+		
+		try {
+			return serviceUtils.containService(serviceRequest);
+		} catch(ServiceException se) {
+			Log.error(AsyncServiceWorker.class.getName(), "containsRequest", "ServiceException caught while checking exsisting service, " + se.getMessage());
+			service.onTerminate(se);
+			
+			return false;
+		}
+	}
+	
 	public void startWorker() {
 		
 		if(asyncServiceWorkerThread == null) {
@@ -161,6 +193,9 @@ public class AsyncServiceWorker implements IWorker, IServiceWorker {
 		return asyncServiceWorkerThread.isAlive();
 	}
 	
+	/**
+	 * It is the inner class of Async service worker which processes all the requests in the queue
+	 */
 	private class AsyncServiceWorkerThread extends Thread {
 		
 		public void run() {
@@ -272,9 +307,18 @@ public class AsyncServiceWorker implements IWorker, IServiceWorker {
 	}
 
 	
-	
-	private class ServiceUtils {
+	/**
+	 * It is the helper class for AsyncServiceWorker
+	 * It helps to convert request database instance to IService instance and vis versa
+	 */
+	private class AsyncServiceWorkerHelper {
 		
+		/**
+		 * Check whether it contains the requested service or not
+		 * @param service Service
+		 * @return (true/false) TRUE: If service request already exists | FALSE: If service does not exists
+		 * @throws ServiceException If there is any exception while checking for request
+		 */
 		public boolean containService(siminov.connect.model.ServiceRequest service) throws ServiceException {
 			
 			siminov.connect.model.ServiceRequest[] services = null;
@@ -330,6 +374,12 @@ public class AsyncServiceWorker implements IWorker, IServiceWorker {
 			return false;
 		}
 		
+		/**
+		 * Converts the service request database instance to IService instance
+		 * @param service ServiceRequest instance
+		 * @return IService instance
+		 * @throws ServiceException If any exception occur while converting the instance
+		 */
 		public IService convert(siminov.connect.model.ServiceRequest service) throws ServiceException {
 			
 			IService iService = (IService) ClassUtils.createClassInstance(service.getInstanceOf());
@@ -340,7 +390,7 @@ public class AsyncServiceWorker implements IWorker, IServiceWorker {
 			Iterator<ServiceRequestResource> serviceRequestResources = service.getServiceRequestResources();
 			while(serviceRequestResources.hasNext()) {
 				ServiceRequestResource serviceResource = serviceRequestResources.next();
-				iService.addResource(new NameValuePair(serviceResource.getName(), serviceResource.getValue()));
+				iService.addResource(serviceResource.getName(), serviceResource.getValue());
 			}
 
 			ServiceDescriptor serviceDescriptor = resourceManager.requiredServiceDescriptorBasedOnName(service.getService());
@@ -351,6 +401,11 @@ public class AsyncServiceWorker implements IWorker, IServiceWorker {
 			return iService;
 		}
 		
+		/**
+		 * It converts IService instance to database service request instance
+		 * @param iService IService instance
+		 * @return ServiceRequest Instance
+		 */
 		public siminov.connect.model.ServiceRequest convert(final IService iService) {
 			
 			siminov.connect.model.ServiceRequest serviceRequest = new siminov.connect.model.ServiceRequest();
@@ -359,10 +414,10 @@ public class AsyncServiceWorker implements IWorker, IServiceWorker {
 			serviceRequest.setRequest(iService.getRequest());
 			serviceRequest.setInstanceOf(iService.getClass().getName());
 			
-			Iterator<NameValuePair> resources = iService.getResources();
+			Iterator<String> resources = iService.getResources();
 			while(resources.hasNext()) {
-				NameValuePair resource = resources.next();
-				Object resourceValue = resource.getValue();
+				String resourceName = resources.next();
+				Object resourceValue = iService.getResource(resourceName);
 				
 				if(!(resourceValue instanceof String)) {
 					continue;
@@ -370,7 +425,7 @@ public class AsyncServiceWorker implements IWorker, IServiceWorker {
 				
 				ServiceRequestResource serviceRequestResource = new ServiceRequestResource();
 				serviceRequestResource.setServiceRequest(serviceRequest);
-				serviceRequestResource.setName(resource.getName());
+				serviceRequestResource.setName(resourceName);
 				serviceRequestResource.setValue((String) resourceValue);
 				
 				serviceRequest.addServiceRequestResource(serviceRequestResource);

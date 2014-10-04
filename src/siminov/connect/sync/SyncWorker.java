@@ -22,17 +22,22 @@ import java.util.Iterator;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 import siminov.connect.Constants;
+import siminov.connect.IRequest;
 import siminov.connect.IWorker;
 import siminov.connect.events.ISyncEvents;
 import siminov.connect.model.ServiceDescriptor;
 import siminov.connect.model.ServiceDescriptor.Request;
 import siminov.connect.model.SyncDescriptor;
 import siminov.connect.resource.ResourceManager;
-import siminov.connect.service.NameValuePair;
 import siminov.connect.service.design.IService;
 import siminov.connect.sync.design.ISyncRequest;
 import siminov.orm.utils.ClassUtils;
 
+
+/**
+ * It provides implementation for Sync IWorker
+ * It processes all sync requests
+ */
 public class SyncWorker implements IWorker {
 
 	private static SyncWorker syncWorker = null;
@@ -42,10 +47,17 @@ public class SyncWorker implements IWorker {
 	
 	private ResourceManager resourceManager = ResourceManager.getInstance();
 	
+	/**
+	 * SyncWorker Private Constructor
+	 */
 	private SyncWorker() {
 		
 	}
 
+	/**
+	 * It provides singleton instance of SyncWorker
+	 * @return Singleton instance of SyncWorker
+	 */
 	public static SyncWorker getInstance() {
 		
 		if(syncWorker == null) {
@@ -87,6 +99,9 @@ public class SyncWorker implements IWorker {
 	}
 	
 	
+	/**
+	 * 
+	 */
 	private class SyncWorkerThread extends Thread {
 		
 		public void run() {
@@ -127,9 +142,12 @@ public class SyncWorker implements IWorker {
 					IService serviceHandler = (IService) ClassUtils.createClassInstance(apiHandler);
 					serviceHandler.setServiceDescriptor(serviceDescriptor);
 
-					Iterator<NameValuePair> resources = syncRequest.getResources();
+					Iterator<String> resources = syncRequest.getResources();
 					while(resources.hasNext()) {
-						serviceHandler.addResource(resources.next());
+						String resourceName = resources.next();
+						Object resourceValue = syncRequest.getResource(resourceName);
+						
+						serviceHandler.addResource(resourceName, resourceValue);
 					}
 					
 					
@@ -154,9 +172,10 @@ public class SyncWorker implements IWorker {
 	}
 	
 
-	public void addRequest(final ISyncRequest syncRequest) {
+	public void addRequest(final IRequest request) {
 		
-		if(containRequest(syncRequest)) {
+		ISyncRequest syncRequest = (ISyncRequest) request;
+		if(containsRequest(syncRequest)) {
 			return;
 		}
 		
@@ -177,11 +196,11 @@ public class SyncWorker implements IWorker {
 		}
 	}
 	
-	public boolean containRequest(final ISyncRequest refreshRequest) {
+	public boolean containsRequest(final IRequest refreshRequest) {
 		return this.syncRequests.contains(refreshRequest);
 	}
 	
-	public void removeRequest(final ISyncRequest refreshRequest) {
+	public void removeRequest(final IRequest refreshRequest) {
 		this.syncRequests.remove(refreshRequest);
 	}
 }

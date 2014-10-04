@@ -58,14 +58,14 @@ STARTING A SERVICE
 	You can start your service by creating its instance, and calling invoke() API. You can pass additional resources to your 
 	service by using below Resource APIS:
 	
-		- addResource() - NameValuePair: Using this API you can add additional resources to your service.
+		- addResource(name, value): Using this API you can add additional resources to your service.
 		
-		- containResource() - NameValuePair: Using this API you can check whether resource exists with service or not.
+		- containResource(name): Using this API you can check whether resource exists with service or not.
 	
 
 	EXAMPLE:
 		LiquorBrand liquorBrand = new LiquorBrand();
-		liquorBrand.addResource(new NameValuePair(key_of_your_resource, your_resource));
+		liquorBrand.addResource(key_of_your_resource, your_resource);
 		liquorBrand.invoke();
 		
 

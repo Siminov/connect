@@ -17,36 +17,79 @@
 
 package siminov.connect.service.design;
 
+import siminov.connect.IRequest;
 import siminov.connect.model.ServiceDescriptor;
 
-public interface IService extends IServiceEvents, IResource {
 
+/**
+ * It provides blue print for classes which wants to implement service 
+ */
+public interface IService extends IRequest, IServiceEvents, IResource {
+
+	/**
+	 * Get service request id
+	 * @return Request id
+	 */
 	public long getRequestId();
 
 	
+	/**
+	 * Set service request id
+	 * @param requestId Request Id
+	 */
 	public void setRequestId(long requestId);
 	
 	
+	/**
+	 * Get service 
+	 * @return Service
+	 */
 	public String getService();
 	
 	
+	/**
+	 * Add service name
+	 * @param service Name of service
+	 */
 	public void setService(final String service);
 	
 	
+	/**
+	 * Get request name
+	 * @return Name of request
+	 */
 	public String getRequest();
 	
 	
+	/**
+	 * Set request name
+	 * @param request Name of request
+	 */
 	public void setRequest(final String request);
 	
 	
+	/**
+	 * Get service descriptor
+	 * @return Service Descriptor
+	 */
 	public ServiceDescriptor getServiceDescriptor();
 	
 	
+	/**
+	 * Set service descriptor
+	 * @param serviceDescriptor Service Descriptor
+	 */
 	public void setServiceDescriptor(final ServiceDescriptor serviceDescriptor);
 
 	
+	/**
+	 * Invoke the service
+	 */
 	public void invoke();
 	
 	
+	/**
+	 * Terminate the service
+	 */
 	public void terminate();
 }

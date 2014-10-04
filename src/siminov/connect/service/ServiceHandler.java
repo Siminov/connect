@@ -20,6 +20,7 @@ package siminov.connect.service;
 import java.util.Iterator;
 
 import siminov.connect.Constants;
+import siminov.connect.IWorker;
 import siminov.connect.exception.ServiceException;
 import siminov.connect.model.ServiceDescriptor;
 import siminov.connect.model.ServiceDescriptor.Request;
@@ -27,15 +28,14 @@ import siminov.connect.resource.ResourceManager;
 import siminov.connect.resource.ResourceUtils;
 import siminov.connect.resource.ServiceResourceUtils;
 import siminov.connect.service.design.IService;
-import siminov.connect.service.design.IServiceWorker;
 
 
 public class ServiceHandler {
 
 	private static ServiceHandler serviceHandler = null;
 	
-	private IServiceWorker syncServiceWorker = null;
-	private IServiceWorker asyncServiceWorker = null;
+	private SyncServiceWorker syncServiceWorker = null;
+	private IWorker asyncServiceWorker = null;
 	
 	private ResourceManager resourceManager = null;
 	
@@ -65,13 +65,13 @@ public class ServiceHandler {
 		}
 
 
-		Iterator<NameValuePair> resources = service.getResources();
+		Iterator<String> resources = service.getResources();
 		while(resources.hasNext()) {
-			NameValuePair resource = resources.next();
-			Object resourceValue = resource.getValue();
+			String resourceName = resources.next();
+			Object resourceValue = service.getResource(resourceName);
 			
 			if(resourceValue instanceof String) {
-				serviceDescriptor.addProperty(resource.getName(), (String) resourceValue);
+				serviceDescriptor.addProperty(resourceName, (String) resourceValue);
 			}
 		}
 
@@ -84,7 +84,7 @@ public class ServiceHandler {
 			ServiceResourceUtils.resolve(service);
 			syncServiceWorker.process(service);
 		} else if(mode.equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_REQUEST_ASYNC_REQUEST_MODE)) {
-			asyncServiceWorker.process(service);
+			asyncServiceWorker.addRequest(service);
 		}
 	}
 }

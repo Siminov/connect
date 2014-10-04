@@ -25,6 +25,10 @@ import siminov.connect.model.SyncDescriptor;
 import siminov.connect.resource.ResourceManager;
 import siminov.connect.sync.design.ISyncRequest;
 
+/**
+ * It is a singleton class which handle any sync request
+ * It exposes API to Handle, Remove sync request
+ */
 public class SyncHandler {
 
 	private ResourceManager resourceManager = ResourceManager.getInstance();
@@ -34,10 +38,17 @@ public class SyncHandler {
 
 	private static SyncHandler syncHandler = null;
 	
+	/**
+	 * SyncHandler Constructor
+	 */
 	private SyncHandler() {
 		
 	}
 	
+	/**
+	 * It provides singleton instance of SyncHandler
+	 * @return Singleton instance of SyncHandler
+	 */
 	public static SyncHandler getInstance() {
 		
 		if(syncHandler == null) {
@@ -47,6 +58,11 @@ public class SyncHandler {
 		return syncHandler;
 	}
 	
+	
+	/**
+	 * Handles sync request
+	 * @param syncRequest Sync Request
+	 */
 	public void handle(ISyncRequest syncRequest) {
 
 		SyncDescriptor syncDescriptor = resourceManager.getSyncDescriptor(syncRequest.getName());
@@ -70,5 +86,24 @@ public class SyncHandler {
 			syncWorker.addRequest(syncRequest);
 			requestTimestamps.put(syncRequest, Long.valueOf(Calendar.getInstance().get(Calendar.MILLISECOND)));
 		}
+	}
+	
+	
+	/**
+	 * Removes sync request
+	 * @param syncRequest Sync Request
+	 */
+	public void remove(ISyncRequest syncRequest) {
+		
+	}
+
+	
+	/**
+	 * Check whether it contains sync request or not
+	 * @param syncRequest Sync Request
+	 * @return (true/false) TRUE: If it contains sync request | FALSE: If it does not contains request
+	 */
+	public boolean contain(ISyncRequest syncRequest) {
+		return false;
 	}
 }

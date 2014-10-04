@@ -22,6 +22,9 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
+/**
+ * Exposes utility methods which can be used by both SIMINOV/Application. 
+ */
 public class Utils {
 
 	/**

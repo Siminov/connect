@@ -17,11 +17,26 @@
 
 package siminov.connect.sync.design;
 
+import siminov.connect.IRequest;
 import siminov.connect.service.design.IResource;
 
-public interface ISyncRequest extends IResource {
 
+/**
+ * It is a blue print for classes which wants to contain sync request information.
+ * It exposes APIs to Get and Set sync request details
+ */
+public interface ISyncRequest extends IRequest, IResource {
+
+	/**
+	 * Get sync request name
+	 * @return Name of sync request
+	 */
 	public String getName();
 	
+	
+	/**
+	 * Set sync request name
+	 * @param name Name of sync request
+	 */
 	public void setName(String name);
 }

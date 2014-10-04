@@ -18,13 +18,50 @@
 
 package siminov.connect;
 
+
+/**
+ * It is a blue print for classes which want to perform background processes
+ * It exposes APIs to start, stop worker
+ */
 public interface IWorker {
 
+	/**
+	 * Start the worker to handle the requests
+	 */
 	public void startWorker();
 	
 	
+	/**
+	 * Stop the worker
+	 */
 	public void stopWorker();
 
 	
+	/**
+	 * Check whether worker is running or not
+	 * @return (true/false) TRUE: If worker is running | FALSE: If worker is not running
+	 */
 	public boolean isWorkerRunning();
+	
+	
+	
+	/**
+	 * Add request
+	 * @param request IRequest
+	 */
+	public void addRequest(IRequest request);
+	
+	
+	/**
+	 * Remove request
+	 * @param request IRequest
+	 */
+	public void removeRequest(IRequest request);
+	
+	
+	/**
+	 * Check whether it contains request or not
+	 * @param request (true/false) TRUE: If it contains the request | FALSE: If it does not contains the request
+	 */
+	public boolean containsRequest(IRequest request);
 }

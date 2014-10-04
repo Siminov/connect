@@ -21,14 +21,14 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import siminov.connect.service.NameValuePair;
 import siminov.connect.sync.design.ISyncRequest;
+
 
 public class SyncRequest implements ISyncRequest {
 
 	private String name;
 	
-	private Map<String, NameValuePair> resources = new HashMap<String, NameValuePair>();
+	private Map<String, Object> resources = new HashMap<String, Object>();
 	
 	public String getName() {
 		return this.name;
@@ -38,19 +38,19 @@ public class SyncRequest implements ISyncRequest {
 		this.name = name;
 	}
 	
-	public Iterator<NameValuePair> getResources() {
-		return this.resources.values().iterator();
+	public Iterator<String> getResources() {
+		return this.resources.keySet().iterator();
 	}
 
 	public Object getResource(String name) {
-		return this.resources.get(name).getValue();
+		return this.resources.get(name);
 	}
 
-	public void addResource(final NameValuePair nameValuePair) {
-		this.resources.put(nameValuePair.getName(), nameValuePair);
+	public void addResource(final String name, final Object value) {
+		this.resources.put(name, value);
 	}
 
-	public boolean containResource(final NameValuePair nameValuePair) {
-		return this.resources.containsKey(nameValuePair.getName());
+	public boolean containResource(final String name) {
+		return this.resources.containsKey(name);
 	}
 }

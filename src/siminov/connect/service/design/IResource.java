@@ -19,18 +19,39 @@ package siminov.connect.service.design;
 
 import java.util.Iterator;
 
-import siminov.connect.service.NameValuePair;
 
+/**
+ * It exposes APIs to Get and Set resources
+ */
 public interface IResource {
-
-	public Iterator<NameValuePair> getResources();
+	
+	/**
+	 * Get all resources
+	 * @return Resources
+	 */
+	public Iterator<String> getResources();
 	
 
+	/**
+	 * Get resource based on name
+	 * @param name Name of resource
+	 * @return Resource
+	 */
 	public Object getResource(final String name);
 
 	
-	public void addResource(final NameValuePair nameValuePair);
+	/**
+	 * Add resource 
+	 * @param name Name of resource
+	 * @param value Value of resource
+	 */
+	public void addResource(final String name, final Object value);
 	
 	
-	public boolean containResource(final NameValuePair nameValuePair);
+	/**
+	 * Check whether it contains resource or not
+	 * @param name Name of resource
+	 * @return (true/false) TRUE: If resource exists | FALSE: If resource does not exists
+	 */
+	public boolean containResource(final String name);
 }

@@ -27,6 +27,9 @@ import siminov.connect.model.ServiceDescriptor;
 import siminov.connect.service.design.IService;
 import siminov.orm.log.Log;
 
+/**
+ * It exposes APIs to Get and Set service information by extending IService
+ */
 public abstract class Service implements IService {
 
 	private long requestId;
@@ -34,10 +37,13 @@ public abstract class Service implements IService {
 	private String service = null;
 	private String request = null;
 
-	private Map<String, NameValuePair> resources = new HashMap<String, NameValuePair>();
+	private Map<String, Object> resources = new HashMap<String, Object>();
 	
 	private ServiceDescriptor serviceDescriptor = null;
 
+	/**
+	 * Service Constructor
+	 */
 	public Service() {
 		requestId = new Random().nextLong();
 	}
@@ -66,20 +72,20 @@ public abstract class Service implements IService {
 		this.request = request;
 	}
 	
-	public Iterator<NameValuePair> getResources() {
-		return this.resources.values().iterator();
+	public Iterator<String> getResources() {
+		return this.resources.keySet().iterator();
 	}
 	
 	public Object getResource(final String name) {
-		return this.resources.get(name).getValue();
+		return this.resources.get(name);
 	}
 
-	public void addResource(final NameValuePair nameValuePair) {
-		this.resources.put(nameValuePair.getName(), nameValuePair);
+	public void addResource(final String name, final Object value) {
+		this.resources.put(name, name);
 	}
 	
-	public boolean containResource(final NameValuePair nameValuePair) {
-		return this.resources.containsKey(nameValuePair.getName());
+	public boolean containResource(final String name) {
+		return this.resources.containsKey(name);
 	}
 
 	public ServiceDescriptor getServiceDescriptor() {

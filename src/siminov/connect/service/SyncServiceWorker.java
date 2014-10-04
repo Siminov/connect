@@ -22,10 +22,9 @@ import siminov.connect.connection.design.IConnectionResponse;
 import siminov.connect.exception.ConnectionException;
 import siminov.connect.exception.ServiceException;
 import siminov.connect.service.design.IService;
-import siminov.connect.service.design.IServiceWorker;
 import siminov.orm.log.Log;
 
-public class SyncServiceWorker implements IServiceWorker {
+public class SyncServiceWorker {
 
 	public void process(final IService service) {
 
