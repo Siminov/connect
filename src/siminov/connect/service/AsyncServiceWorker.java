@@ -28,7 +28,7 @@ import siminov.connect.exception.ServiceException;
 import siminov.connect.model.ServiceDescriptor;
 import siminov.connect.model.ServiceRequestResource;
 import siminov.connect.resource.ResourceManager;
-import siminov.connect.resource.ServiceResourceUtils;
+import siminov.connect.resource.ResourceUtils;
 import siminov.connect.service.design.IService;
 import siminov.connect.utils.Utils;
 import siminov.orm.database.design.IDatabase;
@@ -396,7 +396,7 @@ public class AsyncServiceWorker implements IWorker {
 			ServiceDescriptor serviceDescriptor = resourceManager.requiredServiceDescriptorBasedOnName(service.getService());
 			iService.setServiceDescriptor(serviceDescriptor);
 			
-			ServiceResourceUtils.resolve(iService);
+			ResourceUtils.resolve(iService);
 
 			return iService;
 		}

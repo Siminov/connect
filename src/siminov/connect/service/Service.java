@@ -81,7 +81,7 @@ public abstract class Service implements IService {
 	}
 
 	public void addResource(final String name, final Object value) {
-		this.resources.put(name, name);
+		this.resources.put(name, value);
 	}
 	
 	public boolean containResource(final String name) {

@@ -19,6 +19,10 @@ package siminov.connect.exception;
 
 import siminov.orm.exception.SiminovException;
 
+
+/**
+ * It exposes APIs to Get and Set notification exception message information
+ */
 public class NotificationException extends SiminovException {
 
 	/**

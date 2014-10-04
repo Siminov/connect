@@ -24,8 +24,16 @@ import siminov.connect.exception.ServiceException;
 import siminov.connect.service.design.IService;
 import siminov.orm.log.Log;
 
+/**
+ * It handles all synchronous service request calls
+ */
 public class SyncServiceWorker {
 
+	
+	/**
+	 * It process the service request
+	 * @param service Service instance
+	 */
 	public void process(final IService service) {
 
 		IConnectionResponse connectionResponse = null;

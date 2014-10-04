@@ -26,10 +26,11 @@ import siminov.connect.model.ServiceDescriptor;
 import siminov.connect.model.ServiceDescriptor.Request;
 import siminov.connect.resource.ResourceManager;
 import siminov.connect.resource.ResourceUtils;
-import siminov.connect.resource.ServiceResourceUtils;
 import siminov.connect.service.design.IService;
 
-
+/**
+ * It is a singleton class which handles all service requests
+ */
 public class ServiceHandler {
 
 	private static ServiceHandler serviceHandler = null;
@@ -39,6 +40,9 @@ public class ServiceHandler {
 	
 	private ResourceManager resourceManager = null;
 	
+	/**
+	 * ServiceHandler Private Constructor
+	 */
 	private ServiceHandler() {
 		
 		syncServiceWorker =  new SyncServiceWorker();
@@ -47,6 +51,10 @@ public class ServiceHandler {
 		resourceManager = ResourceManager.getInstance();
 	}
 	
+	/**
+	 * It provides singleton instance of ServiceHandler class
+	 * @return ServiceHandler singleton instance
+	 */
 	public static ServiceHandler getInstance() {
 		
 		if(serviceHandler == null) {
@@ -56,6 +64,11 @@ public class ServiceHandler {
 		return serviceHandler;
 	}
 	
+	/**
+	 * It handles the service request
+	 * @param service Service instance
+	 * @throws ServiceException If any exception occur while handling the service request
+	 */
 	public void handle(final IService service) throws ServiceException {
 
 		ServiceDescriptor serviceDescriptor = service.getServiceDescriptor();
@@ -81,7 +94,7 @@ public class ServiceHandler {
 		
 		if(mode.equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_REQUEST_SYNC_REQUEST_MODE)) {
 
-			ServiceResourceUtils.resolve(service);
+			ResourceUtils.resolve(service);
 			syncServiceWorker.process(service);
 		} else if(mode.equalsIgnoreCase(Constants.SERVICE_DESCRIPTOR_REQUEST_ASYNC_REQUEST_MODE)) {
 			asyncServiceWorker.addRequest(service);

@@ -19,6 +19,9 @@ package siminov.connect.exception;
 
 import siminov.orm.exception.SiminovException;
 
+/**
+ * It exposes APIs to Get and Set service exception information
+ */
 public class ServiceException extends SiminovException {
 
 	/**
