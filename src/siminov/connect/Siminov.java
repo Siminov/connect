@@ -175,7 +175,7 @@ public class Siminov extends siminov.orm.Siminov {
 
 	
 	/**
-	 * It process ApplicationDescriptor.si.xml file defined in Application, and stores in Resources.
+	 * It process ApplicationDescriptor.si.xml file defined in Application, and stores in Resource Manager.
 	 */
 	protected static void processApplicationDescriptor() {
 		
@@ -192,7 +192,7 @@ public class Siminov extends siminov.orm.Siminov {
 	}
 	
 	/**
-	 * It process all DatabaseDescriptor.si.xml files defined by Application and stores in Resources.
+	 * It process all DatabaseDescriptor.si.xml files defined by Application and stores in Resource Manager.
 	 */
 	protected static void processDatabaseDescriptors() {
 		siminov.orm.Siminov.processDatabaseDescriptors();
@@ -205,14 +205,14 @@ public class Siminov extends siminov.orm.Siminov {
 	}
 
 	/**
-	 * It process all DatabaseMappingDescriptor.si.xml file defined in Application, and stores in Resources.
+	 * It process all DatabaseMappingDescriptor.si.xml file defined in Application, and stores in Resource Manager.
 	 */
 	protected static void processDatabaseMappingDescriptors() {
 		siminov.orm.Siminov.processDatabaseMappingDescriptors();
 	}
 
 	/**
-	 * It process all SyncDescriptor.si.xml file defined in Application, and stores in Resources.
+	 * It process all SyncDescriptor.si.xml file defined in Application, and stores in Resource Manager.
 	 */
 	protected static void processSyncDescriptors() {
 		
@@ -228,14 +228,14 @@ public class Siminov extends siminov.orm.Siminov {
 	}
 	
 	/**
-	 * It process all LibraryDescriptor.si.xml files defined by application, and stores in Resources.
+	 * It process all LibraryDescriptor.si.xml files defined by application, and stores in Resource Manager.
 	 */
 	protected static void processLibraries() {
 		siminov.orm.Siminov.processLibraries();
 	}
 	
 	/**
-	 * It process all DatabaseDescriptor.si.xml and initialize Database and stores in Resources.
+	 * It process all DatabaseDescriptor.si.xml and initialize Database and stores in Resource Manager.
 	 */
 	protected static void processDatabase() {
 		siminov.orm.Siminov.processDatabase();

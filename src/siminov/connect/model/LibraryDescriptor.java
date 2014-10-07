@@ -84,6 +84,9 @@ public class LibraryDescriptor extends siminov.orm.model.LibraryDescriptor {
 
 	private Collection<String> serviceDescriptorPaths = new ConcurrentLinkedQueue<String> ();
 	private Map<String, String> serviceDescriptorNamesBasedOnPath = new HashMap<String, String>();
+	
+	private Collection<String> syncDescriptorPaths = new ConcurrentLinkedQueue<String> ();
+	private Map<String, String> syncDescriptorNamesBasedOnPath = new HashMap<String, String>();
 
 	/**
 	 * Add service descriptor path
@@ -168,5 +171,91 @@ public class LibraryDescriptor extends siminov.orm.model.LibraryDescriptor {
 	 */
 	public void removeServiceDescriptorNameBasedOnPath(String serviceDescriptorPath) {
 		this.serviceDescriptorNamesBasedOnPath.remove(serviceDescriptorPath);
+	}
+	
+	
+	/**
+	 * Add sync descriptor path
+	 * @param syncDescriptorPath Path of sync descriptor
+	 */
+	public void addSyncDescriptorPath(String syncDescriptorPath) {
+		this.syncDescriptorPaths.add(syncDescriptorPath);
+		this.syncDescriptorNamesBasedOnPath.put(syncDescriptorPath, null);
+	}
+	
+	/**
+	 * Remove sync descriptor path
+	 * @param syncDescriptorPath Path of sync descriptor
+	 */
+	public void removeSyncDescriptorPath(String syncDescriptorPath) {
+		this.serviceDescriptorPaths.remove(syncDescriptorPath);
+	}
+	
+	/**
+	 * Get all sync descriptor paths
+	 * @return Sync descriptor paths
+	 */
+	public Iterator<String> getSyncDescriptorPaths() {
+		return this.syncDescriptorPaths.iterator();
+	}
+
+	/**
+	 * Check whether sync descriptor path based on name
+	 * @param syncDescriptorName Name of sync descriptor
+	 * @return (true/false) TRUE: If sync descriptor path exists | FALSE: If sync descriptor does not exists
+	 */
+	public boolean containSyncDescriptorPathBasedOnName(String syncDescriptorName) {
+		return this.serviceDescriptorNamesBasedOnPath.containsValue(syncDescriptorName);
+	}
+	
+	/**
+	 * Check whether sync descriptor name exists based on path
+	 * @param syncDescriptorPath Path of sync descriptor
+	 * @return (true/false) TRUE: If sync descriptor name exists | FALSE: If sync descriptor name does not exists
+	 */
+	public boolean containSyncDescriptorNameBasedOnPath(String syncDescriptorPath) {
+		return this.syncDescriptorNamesBasedOnPath.containsKey(syncDescriptorPath);
+	}
+	
+	/**
+	 * Get sync descriptor path based on name
+	 * @param syncDescriptorName Name of sync descriptor
+	 * @return Path of sync descriptor
+	 */
+	public String getSyncDescriptorPathBasedOnName(String syncDescriptorName) {
+		
+		if(this.containSyncDescriptorPathBasedOnName(syncDescriptorName)) {
+			
+			Iterator<String> syncDescriptorPaths = this.syncDescriptorNamesBasedOnPath.keySet().iterator();
+			while(syncDescriptorPaths.hasNext()) {
+				
+				String syncDescriptorPath = syncDescriptorPaths.next();
+				
+				String foundSyncDescriptorName = this.syncDescriptorNamesBasedOnPath.get(syncDescriptorPath);
+				if(foundSyncDescriptorName.equalsIgnoreCase(syncDescriptorName)) {
+					return this.syncDescriptorNamesBasedOnPath.get(syncDescriptorPath);
+				}
+			}
+		}
+		
+		return null;
+	}
+	
+	/**
+	 * Add sync descriptor name based on path
+	 * @param syncDescriptorPath Path of sync descriptor
+	 * @param syncDescriptoName Name of sync descriptor
+	 */
+	public void addSyncDescriptorNameBasedOnPath(String syncDescriptorPath, String syncDescriptoName) {
+		this.syncDescriptorNamesBasedOnPath.put(syncDescriptorPath, syncDescriptoName);
+	}
+	
+	
+	/**
+	 * Remove sync descriptor name based on path
+	 * @param syncDescriptorPath Path of sync descriptor
+	 */
+	public void removeSyncDescriptorNameBasedOnPath(String syncDescriptorPath) {
+		this.syncDescriptorNamesBasedOnPath.remove(syncDescriptorPath);
 	}
 }
