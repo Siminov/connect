@@ -66,7 +66,7 @@ public class SyncDescriptor implements IDescriptor {
 
 	private Map<String, String> properties = new HashMap<String, String> ();
 	
-	private Collection<String> services = new ArrayList<String>();
+	private Collection<String> serviceDescriptorNames = new ArrayList<String>();
 	
 	/**
 	 * Get sync descriptor name
@@ -126,26 +126,26 @@ public class SyncDescriptor implements IDescriptor {
 	}
 	
 	/**
-	 * Get all services
-	 * @return Services
+	 * Get all service descriptor names
+	 * @return Service Descriptor Names
 	 */
-	public Iterator<String> getServices() {
-		return this.services.iterator();
+	public Iterator<String> getServiceDescriptorNames() {
+		return this.serviceDescriptorNames.iterator();
 	}
 	
 	/**
-	 * Add service
-	 * @param service Service
+	 * Add service descriptor name
+	 * @param serviceDescriptorName Name of service descriptor
 	 */
-	public void addService(String service) {
-		this.services.add(service);
+	public void addServiceDescriptorName(String serviceDescriptorName) {
+		this.serviceDescriptorNames.add(serviceDescriptorName);
 	}
 	
 	/**
-	 * Remove service 
-	 * @param service Service
+	 * Remove service descriptor name
+	 * @param serviceDescriptorName Service Descriptor Name
 	 */
-	public void removeService(String service) {
-		this.services.remove(service);
+	public void removeServiceDescriptorName(String serviceDescriptorName) {
+		this.serviceDescriptorNames.remove(serviceDescriptorName);
 	}
 }

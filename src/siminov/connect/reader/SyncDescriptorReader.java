@@ -51,13 +51,13 @@ Example:
 					<!-- Default: SCREEN -->
 			<property name="type">INTERVAL|SCREEN|INTERVAL-SCREEN</property>
 					
-			<!-- Services -->
-				<!-- Service -->
-			<services>
+			<!-- Service Descriptors -->
+				<!-- Service Descriptor -->
+			<service-descriptors>
 		     		    
-			    <service>name_of_service.name_of_api</service>
+			    <service-descriptor>name_of_service_descriptor.name_of_api</service-descriptor>
 		     		    
-			</services>
+			</service-descriptors>
 		
 		</sync-descriptor>
 
@@ -140,7 +140,7 @@ public class SyncDescriptorReader extends SiminovSAXDefaultHandler implements si
 		if(localName.equalsIgnoreCase(APPLICATION_DESCRIPTOR_PROPERTY)) {
 			syncDescriptor.addProperty(propertyName, tempValue.toString());
 		} else if(localName.equalsIgnoreCase(SYNC_DESCRIPTOR_SERVICE_DESCRIPTOR)) {
-			syncDescriptor.addService(tempValue.toString());
+			syncDescriptor.addServiceDescriptorName(tempValue.toString());
 		}
 	}
 	
