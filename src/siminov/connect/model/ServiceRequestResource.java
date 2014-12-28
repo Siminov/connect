@@ -17,7 +17,7 @@
 
 package siminov.connect.model;
 
-import siminov.orm.database.Database;
+import siminov.core.database.Database;
 
 /**
  * It exposes APIs to Get and Set service request resource information

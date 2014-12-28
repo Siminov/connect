@@ -22,7 +22,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Random;
 
-import siminov.orm.database.Database;
+import siminov.core.database.Database;
 
 /**
  * It exposes APIs to Get and Set service request information

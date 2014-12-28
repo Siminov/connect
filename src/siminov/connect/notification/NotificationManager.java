@@ -25,8 +25,8 @@ import siminov.connect.notification.design.IMessage;
 import siminov.connect.notification.design.INotification;
 import siminov.connect.notification.design.IRegistration;
 import siminov.connect.resource.ResourceManager;
-import siminov.orm.exception.SiminovCriticalException;
-import siminov.orm.log.Log;
+import siminov.core.exception.SiminovCriticalException;
+import siminov.core.log.Log;
 import android.content.Context;
 
 import com.google.android.gcm.GCMRegistrar;
@@ -38,7 +38,7 @@ public class NotificationManager implements INotification {
 
 	private static NotificationManager notificationManager = null;
 
-	private siminov.orm.resource.ResourceManager ormResourceManager = siminov.orm.resource.ResourceManager.getInstance();
+	private siminov.core.resource.ResourceManager ormResourceManager = siminov.core.resource.ResourceManager.getInstance();
 	private ResourceManager connectResourceManager = ResourceManager.getInstance();
 	
 	

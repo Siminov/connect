@@ -29,10 +29,10 @@ import siminov.connect.model.ServiceDescriptor.Request;
 import siminov.connect.model.ServiceDescriptor.Request.HeaderParameter;
 import siminov.connect.model.ServiceDescriptor.Request.QueryParameter;
 import siminov.connect.service.design.IService;
-import siminov.orm.exception.SiminovException;
-import siminov.orm.log.Log;
-import siminov.orm.model.IDescriptor;
-import siminov.orm.utils.ClassUtils;
+import siminov.core.exception.SiminovException;
+import siminov.core.log.Log;
+import siminov.core.model.IDescriptor;
+import siminov.core.utils.ClassUtils;
 
 /**
  * It is a resource utility class, it exposes APIs to get service dynamic resources

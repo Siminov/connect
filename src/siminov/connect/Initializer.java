@@ -22,8 +22,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import siminov.orm.IInitializer;
-import siminov.orm.resource.ResourceManager;
+import siminov.core.IInitializer;
+import siminov.core.resource.ResourceManager;
 import android.content.Context;
 
 /**

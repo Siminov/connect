@@ -17,7 +17,7 @@
 
 package siminov.connect.utils;
 
-import siminov.orm.resource.ResourceManager;
+import siminov.core.resource.ResourceManager;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;

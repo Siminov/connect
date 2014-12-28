@@ -22,7 +22,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 import siminov.connect.Constants;
-import siminov.orm.model.IDescriptor;
+import siminov.core.model.IDescriptor;
 
 
 

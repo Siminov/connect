@@ -51,7 +51,7 @@ import siminov.connect.connection.design.IConnectionResponse;
 import siminov.connect.exception.ConnectionException;
 import siminov.connect.model.ServiceDescriptor.Request.HeaderParameter;
 import siminov.connect.model.ServiceDescriptor.Request.QueryParameter;
-import siminov.orm.log.Log;
+import siminov.core.log.Log;
 
 
 /**

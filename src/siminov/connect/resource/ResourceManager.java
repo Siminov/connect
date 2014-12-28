@@ -28,9 +28,9 @@ import siminov.connect.model.ServiceDescriptor.Request;
 import siminov.connect.model.SyncDescriptor;
 import siminov.connect.reader.QuickServiceDescriptorReader;
 import siminov.connect.reader.ServiceDescriptorReader;
-import siminov.orm.exception.SiminovCriticalException;
-import siminov.orm.exception.SiminovException;
-import siminov.orm.log.Log;
+import siminov.core.exception.SiminovCriticalException;
+import siminov.core.exception.SiminovException;
+import siminov.core.log.Log;
 
 
 /**

@@ -20,8 +20,8 @@ package siminov.connect.events;
 
 import java.util.Iterator;
 
-import siminov.orm.resource.ResourceManager;
-import siminov.orm.utils.ClassUtils;
+import siminov.core.resource.ResourceManager;
+import siminov.core.utils.ClassUtils;
 
 
 /**

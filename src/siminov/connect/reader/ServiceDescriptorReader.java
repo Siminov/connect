@@ -28,12 +28,11 @@ import siminov.connect.model.ServiceDescriptor;
 import siminov.connect.model.ServiceDescriptor.Request;
 import siminov.connect.model.ServiceDescriptor.Request.HeaderParameter;
 import siminov.connect.model.ServiceDescriptor.Request.QueryParameter;
-import siminov.orm.exception.DeploymentException;
-import siminov.orm.log.Log;
-import siminov.orm.reader.SiminovSAXDefaultHandler;
-import siminov.orm.resource.ResourceManager;
+import siminov.core.exception.DeploymentException;
+import siminov.core.log.Log;
+import siminov.core.reader.SiminovSAXDefaultHandler;
+import siminov.core.resource.ResourceManager;
 import android.content.Context;
-
 
 /**
  * Exposes methods to parse Service Descriptor information as per define in ServiceDescriptor.si.xml file by application.
@@ -246,7 +245,7 @@ public class ServiceDescriptorReader extends SiminovSAXDefaultHandler implements
 	public void characters(char[] ch, int start, int length) throws SAXException {
 		String value = new String(ch,start,length);
 		
-		if(value == null || value.length() <= 0 || value.equalsIgnoreCase(siminov.orm.Constants.NEW_LINE)) {
+		if(value == null || value.length() <= 0 || value.equalsIgnoreCase(siminov.core.Constants.NEW_LINE)) {
 			return;
 		}
 		

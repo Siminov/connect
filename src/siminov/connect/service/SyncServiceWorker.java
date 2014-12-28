@@ -22,7 +22,7 @@ import siminov.connect.connection.design.IConnectionResponse;
 import siminov.connect.exception.ConnectionException;
 import siminov.connect.exception.ServiceException;
 import siminov.connect.service.design.IService;
-import siminov.orm.log.Log;
+import siminov.core.log.Log;
 
 /**
  * It handles all synchronous service request calls

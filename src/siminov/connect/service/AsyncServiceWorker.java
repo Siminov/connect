@@ -31,12 +31,12 @@ import siminov.connect.resource.ResourceManager;
 import siminov.connect.resource.ResourceUtils;
 import siminov.connect.service.design.IService;
 import siminov.connect.utils.Utils;
-import siminov.orm.database.design.IDatabase;
-import siminov.orm.exception.DatabaseException;
-import siminov.orm.exception.SiminovCriticalException;
-import siminov.orm.exception.SiminovException;
-import siminov.orm.log.Log;
-import siminov.orm.utils.ClassUtils;
+import siminov.core.database.design.IDatabase;
+import siminov.core.exception.DatabaseException;
+import siminov.core.exception.SiminovCriticalException;
+import siminov.core.exception.SiminovException;
+import siminov.core.log.Log;
+import siminov.core.utils.ClassUtils;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -72,7 +72,7 @@ public class AsyncServiceWorker implements IWorker {
 		/*
 		 * Register Connectivity Change Receiver.
 		 */
-		siminov.orm.resource.ResourceManager ormResourceManager = siminov.orm.resource.ResourceManager.getInstance();
+		siminov.core.resource.ResourceManager ormResourceManager = siminov.core.resource.ResourceManager.getInstance();
 		Context applicationContext = ormResourceManager.getApplicationContext();
 		
 		applicationContext.registerReceiver(connectivityChangeReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));

@@ -31,7 +31,7 @@ import siminov.connect.model.SyncDescriptor;
 import siminov.connect.resource.ResourceManager;
 import siminov.connect.service.design.IService;
 import siminov.connect.sync.design.ISyncRequest;
-import siminov.orm.utils.ClassUtils;
+import siminov.core.utils.ClassUtils;
 
 
 /**

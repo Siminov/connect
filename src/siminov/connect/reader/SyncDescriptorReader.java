@@ -25,10 +25,10 @@ import org.xml.sax.SAXException;
 
 import siminov.connect.Constants;
 import siminov.connect.model.SyncDescriptor;
-import siminov.orm.exception.DeploymentException;
-import siminov.orm.log.Log;
-import siminov.orm.reader.SiminovSAXDefaultHandler;
-import siminov.orm.resource.ResourceManager;
+import siminov.core.exception.DeploymentException;
+import siminov.core.log.Log;
+import siminov.core.reader.SiminovSAXDefaultHandler;
+import siminov.core.resource.ResourceManager;
 import android.content.Context;
 
 
@@ -67,7 +67,7 @@ Example:
 	</p>
  *
  */
-public class SyncDescriptorReader extends SiminovSAXDefaultHandler implements siminov.orm.Constants, Constants {
+public class SyncDescriptorReader extends SiminovSAXDefaultHandler implements siminov.core.Constants, Constants {
 
 	private ResourceManager resourceManager = ResourceManager.getInstance();
 

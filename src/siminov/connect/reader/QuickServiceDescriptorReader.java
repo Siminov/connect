@@ -28,12 +28,11 @@ import siminov.connect.Constants;
 import siminov.connect.model.ApplicationDescriptor;
 import siminov.connect.model.ServiceDescriptor;
 import siminov.connect.resource.ResourceManager;
-import siminov.orm.exception.PrematureEndOfParseException;
-import siminov.orm.exception.SiminovException;
-import siminov.orm.log.Log;
-import siminov.orm.reader.SiminovSAXDefaultHandler;
+import siminov.core.exception.PrematureEndOfParseException;
+import siminov.core.exception.SiminovException;
+import siminov.core.log.Log;
+import siminov.core.reader.SiminovSAXDefaultHandler;
 import android.content.Context;
-
 
 /**
  * Exposes methods to quickly parse service descriptor defined by application.
@@ -50,7 +49,7 @@ public class QuickServiceDescriptorReader extends SiminovSAXDefaultHandler imple
 	private boolean doesMatch = false;
 	private boolean isNameProperty = false;
 	
-	private siminov.orm.resource.ResourceManager ormResourceManager = siminov.orm.resource.ResourceManager.getInstance();
+	private siminov.core.resource.ResourceManager ormResourceManager = siminov.core.resource.ResourceManager.getInstance();
 	private ResourceManager connectResourceManager = ResourceManager.getInstance();
 	
 	public QuickServiceDescriptorReader(final String findServiceDescriptorName) throws SiminovException {
@@ -119,7 +118,7 @@ public class QuickServiceDescriptorReader extends SiminovSAXDefaultHandler imple
 	public void characters(char[] ch, int start, int length) throws SAXException {
 		String value = new String(ch,start,length);
 		
-		if(value == null || value.length() <= 0 || value.equalsIgnoreCase(siminov.orm.Constants.NEW_LINE)) {
+		if(value == null || value.length() <= 0 || value.equalsIgnoreCase(siminov.core.Constants.NEW_LINE)) {
 			return;
 		}
 		

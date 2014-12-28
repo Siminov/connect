@@ -80,7 +80,7 @@ Example:
 	</p>
  *
  */
-public class LibraryDescriptor extends siminov.orm.model.LibraryDescriptor {
+public class LibraryDescriptor extends siminov.core.model.LibraryDescriptor {
 
 	private Collection<String> serviceDescriptorPaths = new ConcurrentLinkedQueue<String> ();
 	private Map<String, String> serviceDescriptorNamesBasedOnPath = new HashMap<String, String>();

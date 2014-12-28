@@ -25,7 +25,7 @@ import java.util.Random;
 import siminov.connect.exception.ServiceException;
 import siminov.connect.model.ServiceDescriptor;
 import siminov.connect.service.design.IService;
-import siminov.orm.log.Log;
+import siminov.core.log.Log;
 
 /**
  * It exposes APIs to Get and Set service information by extending IService

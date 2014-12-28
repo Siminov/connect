@@ -24,7 +24,7 @@ import siminov.connect.notification.design.IMessage;
 import siminov.connect.notification.design.INotification;
 import siminov.connect.notification.design.IRegistration;
 import siminov.connect.resource.ResourceManager;
-import siminov.orm.log.Log;
+import siminov.core.log.Log;
 import android.content.Context;
 import android.content.Intent;
 

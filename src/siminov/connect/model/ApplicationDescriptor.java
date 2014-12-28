@@ -105,7 +105,7 @@ Example:
 	</p>
  *
  */
-public class ApplicationDescriptor extends siminov.orm.model.ApplicationDescriptor {
+public class ApplicationDescriptor extends siminov.core.model.ApplicationDescriptor {
 
 	private Collection<String> serviceDescriptorPaths = new ConcurrentLinkedQueue<String> ();
 	private Map<String, String> serviceDescriptorNamesBasedOnPath = new HashMap<String, String>();

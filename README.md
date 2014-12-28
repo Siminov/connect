@@ -36,7 +36,7 @@ Synchronizing your app data with service data is a tough job.It allows app to au
   |- Time Interval + Screen Click
 
 ###### 5. Database Seeding
-Since it is build top on Siminov ORM, it provide all features related to database. You can easly map your Core Data Object with database.
+Since it is build top on Siminov Core, it provide all features related to database. You can easly map your Core Data Object with database.
 
 	|- Database Create and Drop
 	|- Table Create and Drop

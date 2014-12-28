@@ -24,13 +24,13 @@ import siminov.connect.reader.ApplicationDescriptorReader;
 import siminov.connect.reader.SyncDescriptorReader;
 import siminov.connect.resource.ResourceManager;
 import siminov.connect.service.AsyncServiceWorker;
-import siminov.orm.IInitializer;
-import siminov.orm.events.ISiminovEvents;
-import siminov.orm.exception.DeploymentException;
-import siminov.orm.exception.SiminovException;
-import siminov.orm.log.Log;
-import siminov.orm.model.DatabaseDescriptor;
-import siminov.orm.reader.DatabaseDescriptorReader;
+import siminov.core.IInitializer;
+import siminov.core.events.ISiminovEvents;
+import siminov.core.exception.DeploymentException;
+import siminov.core.exception.SiminovException;
+import siminov.core.log.Log;
+import siminov.core.model.DatabaseDescriptor;
+import siminov.core.reader.DatabaseDescriptorReader;
 
 
 /**
@@ -46,7 +46,7 @@ import siminov.orm.reader.DatabaseDescriptorReader;
  *		</p>
  *	</p>
  */
-public class Siminov extends siminov.orm.Siminov {
+public class Siminov extends siminov.core.Siminov {
 
 	protected static ResourceManager connectResourceManager = ResourceManager.getInstance();
 
@@ -61,7 +61,7 @@ public class Siminov extends siminov.orm.Siminov {
 	 * 
 	 */
 	public static void isActive() {
-		if(!isActive && !siminov.orm.Siminov.isActive) {
+		if(!isActive && !siminov.core.Siminov.isActive) {
 			throw new DeploymentException(Siminov.class.getName(), "isActive", "Siminov Not Active.");
 		}
 	}
@@ -141,7 +141,7 @@ public class Siminov extends siminov.orm.Siminov {
 
 		
 		isActive = true;
-		siminov.orm.Siminov.isActive = true;
+		siminov.core.Siminov.isActive = true;
 		
 		ISiminovEvents coreEventHandler = ormResourceManager.getSiminovEventHandler();
 		if(ormResourceManager.getSiminovEventHandler() != null) {
@@ -170,7 +170,7 @@ public class Siminov extends siminov.orm.Siminov {
 	 */
 	public static void shutdown() {
 		
-		siminov.orm.Siminov.shutdown();
+		siminov.core.Siminov.shutdown();
 	}
 
 	
@@ -195,7 +195,7 @@ public class Siminov extends siminov.orm.Siminov {
 	 * It process all DatabaseDescriptor.si.xml files defined by Application and stores in Resource Manager.
 	 */
 	protected static void processDatabaseDescriptors() {
-		siminov.orm.Siminov.processDatabaseDescriptors();
+		siminov.core.Siminov.processDatabaseDescriptors();
 		
 		DatabaseDescriptorReader databaseDescriptorReader = new DatabaseDescriptorReader(Constants.DATABASE_DESSCRIPTOR_PATH);
 		DatabaseDescriptor databaseDescriptor = databaseDescriptorReader.getDatabaseDescriptor();
@@ -208,7 +208,7 @@ public class Siminov extends siminov.orm.Siminov {
 	 * It process all DatabaseMappingDescriptor.si.xml file defined in Application, and stores in Resource Manager.
 	 */
 	protected static void processDatabaseMappingDescriptors() {
-		siminov.orm.Siminov.processDatabaseMappingDescriptors();
+		siminov.core.Siminov.processDatabaseMappingDescriptors();
 	}
 
 	/**
@@ -231,14 +231,14 @@ public class Siminov extends siminov.orm.Siminov {
 	 * It process all LibraryDescriptor.si.xml files defined by application, and stores in Resource Manager.
 	 */
 	protected static void processLibraries() {
-		siminov.orm.Siminov.processLibraries();
+		siminov.core.Siminov.processLibraries();
 	}
 	
 	/**
 	 * It process all DatabaseDescriptor.si.xml and initialize Database and stores in Resource Manager.
 	 */
 	protected static void processDatabase() {
-		siminov.orm.Siminov.processDatabase();
+		siminov.core.Siminov.processDatabase();
 	}
 	
 	/**

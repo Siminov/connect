@@ -21,7 +21,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import siminov.orm.model.IDescriptor;
+import siminov.core.model.IDescriptor;
 
 
 /**
