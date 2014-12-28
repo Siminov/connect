@@ -196,7 +196,7 @@ public class ServiceDescriptorReader extends SiminovSAXDefaultHandler implements
 		}
 
 		/*
-		 * Parse HybridDescriptor.
+		 * Parse Service Descriptor.
 		 */
 		InputStream applicationDescriptorStream = null;
 		

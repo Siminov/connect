@@ -89,7 +89,7 @@ public class SyncDescriptorReader extends SiminovSAXDefaultHandler implements si
 		}
 
 		/*
-		 * Parse HybridDescriptor.
+		 * Parse Sync Descriptor.
 		 */
 		InputStream applicationDescriptorStream = null;
 		
