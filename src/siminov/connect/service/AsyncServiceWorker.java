@@ -72,8 +72,8 @@ public class AsyncServiceWorker implements IWorker {
 		/*
 		 * Register Connectivity Change Receiver.
 		 */
-		siminov.core.resource.ResourceManager ormResourceManager = siminov.core.resource.ResourceManager.getInstance();
-		Context applicationContext = ormResourceManager.getApplicationContext();
+		siminov.core.resource.ResourceManager coreResourceManager = siminov.core.resource.ResourceManager.getInstance();
+		Context applicationContext = coreResourceManager.getApplicationContext();
 		
 		applicationContext.registerReceiver(connectivityChangeReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
 	}

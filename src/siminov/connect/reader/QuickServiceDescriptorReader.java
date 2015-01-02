@@ -49,7 +49,7 @@ public class QuickServiceDescriptorReader extends SiminovSAXDefaultHandler imple
 	private boolean doesMatch = false;
 	private boolean isNameProperty = false;
 	
-	private siminov.core.resource.ResourceManager ormResourceManager = siminov.core.resource.ResourceManager.getInstance();
+	private siminov.core.resource.ResourceManager coreResourceManager = siminov.core.resource.ResourceManager.getInstance();
 	private ResourceManager connectResourceManager = ResourceManager.getInstance();
 	
 	public QuickServiceDescriptorReader(final String findServiceDescriptorName) throws SiminovException {
@@ -63,7 +63,7 @@ public class QuickServiceDescriptorReader extends SiminovSAXDefaultHandler imple
 	}
 	
 	public void process() throws SiminovException {
-		context = ormResourceManager.getApplicationContext();
+		context = coreResourceManager.getApplicationContext();
 		if(context == null) {
 			Log.error(getClass().getName(), "process", "Invalid Application Context found.");
 			throw new SiminovException(getClass().getName(), "process", "Invalid Application Context found.");

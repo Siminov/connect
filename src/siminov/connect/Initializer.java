@@ -33,7 +33,7 @@ import android.content.Context;
  */
 public class Initializer implements IInitializer {
 
-	private ResourceManager ormResourceManager = ResourceManager.getInstance();
+	private ResourceManager coreResourceManager = ResourceManager.getInstance();
 	
 	private List<Object> parameters = new ArrayList<Object> ();
 	
@@ -61,7 +61,7 @@ public class Initializer implements IInitializer {
 			
 		}
 		
-		ormResourceManager.setApplicationContext(context);
+		coreResourceManager.setApplicationContext(context);
 		
 		Siminov.start();
 		

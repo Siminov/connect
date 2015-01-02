@@ -34,14 +34,14 @@ public class EventHandler {
 	private INotificationEvents notificationEventsHandler = null;
 	private ISyncEvents syncEvents = null;
 	
-	private ResourceManager ormResourceManager = ResourceManager.getInstance();
+	private ResourceManager coreResourceManager = ResourceManager.getInstance();
 	
 	/**
 	 * Private EventHandler Constructor
 	 */
 	private EventHandler() {
 		
-		Iterator<String> events = ormResourceManager.getApplicationDescriptor().getEvents();
+		Iterator<String> events = coreResourceManager.getApplicationDescriptor().getEvents();
 		while(events.hasNext()) {
 			String event = events.next();
 			

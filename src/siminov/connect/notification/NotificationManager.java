@@ -38,7 +38,7 @@ public class NotificationManager implements INotification {
 
 	private static NotificationManager notificationManager = null;
 
-	private siminov.core.resource.ResourceManager ormResourceManager = siminov.core.resource.ResourceManager.getInstance();
+	private siminov.core.resource.ResourceManager coreResourceManager = siminov.core.resource.ResourceManager.getInstance();
 	private ResourceManager connectResourceManager = ResourceManager.getInstance();
 	
 	
@@ -67,7 +67,7 @@ public class NotificationManager implements INotification {
 		ApplicationDescriptor applicationDescriptor = connectResourceManager.getApplicationDescriptor();
 		NotificationDescriptor notificationDescriptor = applicationDescriptor.getNotificationDescriptor();
 
-		Context applicationContext = ormResourceManager.getApplicationContext();
+		Context applicationContext = coreResourceManager.getApplicationContext();
 		
         GCMRegistrar.checkDevice(applicationContext);
         GCMRegistrar.checkManifest(applicationContext);
