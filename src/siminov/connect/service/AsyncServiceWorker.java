@@ -293,7 +293,7 @@ public class AsyncServiceWorker implements IWorker {
 				}
 			} else {
 				
-				if(asyncServiceWorkerThread.isAlive()) {
+				if(asyncServiceWorkerThread != null && asyncServiceWorkerThread.isAlive()) {
 					
 					try {
 						asyncServiceWorkerThread.wait();
