@@ -19,41 +19,59 @@
 
  -->
 
-<database-mapping-descriptor>
+<entity-descriptor>
 
-	<entity table_name="SERVICE_REQUEST" class_name="siminov.connect.model.ServiceRequest">
+    <property name="table_name">SERVICE_REQUEST</property>
+    <property name="class_name">siminov.connect.model.ServiceRequest</property>
+    
+	<attributes>
 
-		<attribute variable_name="requestId" column_name="REQUEST_ID"> 
-			<property name="type">long</property>
+		<attribute>
+		    <property name="variable_name">requestId</property>
+		    <property name="column_name">REQUEST_ID</property> 
+			<property name="type">primitive-long</property>
 			<property name="primary_key">true</property>
 			<property name="not_null">true</property>
 			<property name="unique">true</property>
 		</attribute>
 
-		<attribute variable_name="service" column_name="SERVICE"> 
-			<property name="type">java.lang.String</property>
+		<attribute>
+		    <property name="variable_name">service</property>
+		    <property name="column_name">SERVICE</property> 
+			<property name="type">String</property>
 			<property name="primary_key">true</property>
 			<property name="not_null">true</property>
 			<property name="unique">true</property>
 		</attribute>
 
-		<attribute variable_name="api" column_name="API"> 
-			<property name="type">java.lang.String</property>
+		<attribute>
+		    <property name="variable_name">request</property>
+		    <property name="column_name">REQUEST</property> 
+			<property name="type">String</property>
 			<property name="primary_key">true</property>
 			<property name="not_null">true</property>
 			<property name="unique">true</property>
 		</attribute>
 
-		<attribute variable_name="instanceOf" column_name="INSTANCE_OF"> 
-			<property name="type">java.lang.String</property>
+		<attribute>
+		    <property name="variable_name">instanceOf</property>
+		    <property name="column_name">INSTANCE_OF</property> 
+			<property name="type">String</property>
 		</attribute>
 		
-		<relationships>
-   			<one-to-many refer="serviceRequestResources" refer_to="siminov.connect.model.ServiceRequestResource" on_update="cascade" on_delete="cascade">
-   			    <property name="load">true</property>
-   			</one-to-many>		
-   		</relationships>
-				
-	</entity>
-	
-</database-mapping-descriptor>
+	</attributes>
+		
+	<relationships>
+	    
+		<relationship>
+			<property name="type">one-to-many</property>
+ 			<property name="refer">serviceRequestResources</property>
+ 			<property name="refer_to">siminov.connect.model.ServiceRequestResource</property>
+ 			<property name="on_update">cascade</property>
+ 			<property name="on_delete">cascade</property>
+ 			<property name="load">true</property>
+ 		</relationship>
+ 				
+ 	</relationships>
+		
+</entity-descriptor>

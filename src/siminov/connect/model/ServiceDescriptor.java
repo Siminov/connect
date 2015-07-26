@@ -512,15 +512,12 @@ public class ServiceDescriptor implements IDescriptor {
 			
 			private Map<String, String> properties = new HashMap<String, String> (); 
 
-			private String name = null;
-			private String value = null;
-			
 			/**
 			 * Get query parameter name
 			 * @return Name of query parameter
 			 */
 			public String getName() {
-				return this.name;
+				return this.properties.get(Constants.SERVICE_DESCRIPTOR_REQUEST_QUERY_PARAMETER_NAME);
 			}
 			
 			/**
@@ -528,7 +525,7 @@ public class ServiceDescriptor implements IDescriptor {
 			 * @param name Name of query parameter
 			 */
 			public void setName(final String name) {
-				this.name = name;
+				this.properties.put(Constants.SERVICE_DESCRIPTOR_REQUEST_QUERY_PARAMETER_NAME, name);
 			}
 			
 			/**
@@ -536,7 +533,7 @@ public class ServiceDescriptor implements IDescriptor {
 			 * @return Value of query parameter
 			 */
 			public String getValue() {
-				return this.value;
+				return this.properties.get(Constants.SERVICE_DESCRIPTOR_REQUEST_QUERY_PARAMETER_VALUE);
 			}
 			
 			/**
@@ -544,7 +541,7 @@ public class ServiceDescriptor implements IDescriptor {
 			 * @param value Query Parameter
 			 */
 			public void setValue(final String value) {
-				this.value = value;
+				this.properties.put(Constants.SERVICE_DESCRIPTOR_REQUEST_QUERY_PARAMETER_VALUE, value);
 			}
 
 			public Iterator<String> getProperties() {
@@ -576,15 +573,12 @@ public class ServiceDescriptor implements IDescriptor {
 			
 			private Map<String, String> properties = new HashMap<String, String> (); 
 
-			private String name = null;
-			private String value = null;
-			
 			/**
 			 * Get name of header parameter
 			 * @return Name of header parameter
 			 */
 			public String getName() {
-				return this.name;
+				return this.properties.get(Constants.SERVICE_DESCRIPTOR_REQUEST_HEADER_PARAMETER_NAME);
 			}
 			
 			/**
@@ -592,7 +586,7 @@ public class ServiceDescriptor implements IDescriptor {
 			 * @param name Name of header parameter
 			 */
 			public void setName(final String name) {
-				this.name = name;
+				this.properties.put(Constants.SERVICE_DESCRIPTOR_REQUEST_HEADER_PARAMETER_NAME, name);
 			}
 			
 			/**
@@ -600,7 +594,7 @@ public class ServiceDescriptor implements IDescriptor {
 			 * @return Value of header parameter
 			 */
 			public String getValue() {
-				return this.value;
+				return this.properties.get(Constants.SERVICE_DESCRIPTOR_REQUEST_HEADER_PARAMETER_VALUE);
 			}
 			
 			/**
@@ -608,7 +602,7 @@ public class ServiceDescriptor implements IDescriptor {
 			 * @param value Value of header parameter
 			 */
 			public void setValue(final String value) {
-				this.value = value;
+				this.properties.put(Constants.SERVICE_DESCRIPTOR_REQUEST_HEADER_PARAMETER_VALUE, value);
 			}
 
 			public Iterator<String> getProperties() {

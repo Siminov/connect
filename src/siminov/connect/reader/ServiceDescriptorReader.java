@@ -152,6 +152,8 @@ public class ServiceDescriptorReader extends SiminovSAXDefaultHandler implements
 	private HeaderParameter headerParameter = null;
 	
 	private boolean isRequest = false;
+	private boolean isQueryParameter = false;
+	private boolean isHeaderParameter = false;
 
 	private String propertyName = null;
 
@@ -220,7 +222,7 @@ public class ServiceDescriptorReader extends SiminovSAXDefaultHandler implements
 		tempValue = new StringBuilder();
 
 		if(localName.equalsIgnoreCase(SERVICE_DESCRIPTOR_PROPERTY)) {
-			initializeProperty(attributes);
+			propertyName = attributes.getValue(SERVICE_DESCRIPTOR_PROPERTY_NAME);
 		} else if(localName.equalsIgnoreCase(SERVICE_DESCRIPTOR_REQUEST)) {
 			
 			request = new ServiceDescriptor.Request();
@@ -228,17 +230,11 @@ public class ServiceDescriptorReader extends SiminovSAXDefaultHandler implements
 		} else if(localName.equalsIgnoreCase(SERVICE_DESCRIPTOR_REQUEST_QUERY_PARAMETER)) {
 		
 			queryParameter = new QueryParameter();
-			queryParameter.setName(attributes.getValue(SERVICE_DESCRIPTOR_REQUEST_QUERY_PARAMETER_NAME_ATTRIBUTE));
-			queryParameter.setValue(tempValue.toString());
-			
-			request.addQueryParameter(queryParameter);
+			isQueryParameter = true;
 		} else if(localName.equalsIgnoreCase(SERVICE_DESCRIPTOR_REQUEST_HEADER_PARAMETER)) {
 			
 			headerParameter = new HeaderParameter();
-			headerParameter.setName(attributes.getValue(SERVICE_DESCRIPTOR_REQUEST_HEADER_PARAMETER_NAME_ATTRIBUTE));
-			headerParameter.setValue(tempValue.toString());
-			
-			request.addHeaderParameter(headerParameter);
+			isHeaderParameter = true;
 		}
 	}
 	
@@ -264,26 +260,28 @@ public class ServiceDescriptorReader extends SiminovSAXDefaultHandler implements
 			request = null;
 			isRequest = false;
 		} else if(localName.equalsIgnoreCase(SERVICE_DESCRIPTOR_REQUEST_QUERY_PARAMETER)) {
-			
-			queryParameter.setValue(tempValue.toString());
 			request.addQueryParameter(queryParameter);
-		} else if(localName.equalsIgnoreCase(SERVICE_DESCRIPTOR_REQUEST_HEADER_PARAMETER)) {
 			
-			headerParameter.setValue(tempValue.toString());
+			queryParameter = null;
+			isQueryParameter = false;
+		} else if(localName.equalsIgnoreCase(SERVICE_DESCRIPTOR_REQUEST_HEADER_PARAMETER)) {
 			request.addHeaderParameter(headerParameter);
+			
+			headerParameter = null;
+			isHeaderParameter = false;
 		} else if(localName.equalsIgnoreCase(SERVICE_DESCRIPTOR_REQUEST_DATA_STREAM)) {
 			
 			request.setDataStream(tempValue.toString());
 		}
 	}
 	
-	private void initializeProperty(Attributes attributes) {
-		propertyName = attributes.getValue(SERVICE_DESCRIPTOR_PROPERTY_NAME);
-	}
-	
 	private void processProperty() {
 		
-		if(isRequest) {
+		if(isQueryParameter) {
+			queryParameter.addProperty(propertyName, tempValue.toString());			
+		} else if(isHeaderParameter) {
+			headerParameter.addProperty(propertyName, tempValue.toString());
+		} else if(isRequest) {
 			request.addProperty(propertyName, tempValue.toString());
 		} else {
 			serviceDescriptor.addProperty(propertyName, tempValue.toString());

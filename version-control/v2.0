@@ -15,5 +15,7 @@
  * limitations under the License.
  **/
  
- 
- - Initial Import
+
+- Service Descriptor redesigned  
+- Database Mapping Descriptor renamed to Entity Descriptor
+- Introducing generic data types

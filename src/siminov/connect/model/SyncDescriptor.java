@@ -81,7 +81,7 @@ public class SyncDescriptor implements IDescriptor {
 	 * @param name Name of sync descriptor
 	 */
 	public void setName(String name) {
-		this.properties.get(name);
+		this.properties.put(name, Constants.SYNC_DESCRIPTOR_NAME);
 	}
 
 	/**

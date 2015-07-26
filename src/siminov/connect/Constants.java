@@ -110,8 +110,13 @@ public interface Constants {
 	/**
 	 * Service Descriptor Request Query Parameter Name Attribute
 	 */
-	public String SERVICE_DESCRIPTOR_REQUEST_QUERY_PARAMETER_NAME_ATTRIBUTE = "name";
+	public String SERVICE_DESCRIPTOR_REQUEST_QUERY_PARAMETER_NAME = "name";
 
+	/**
+	 * Service Descriptor Request Query Parameter Value
+	 */
+	public String SERVICE_DESCRIPTOR_REQUEST_QUERY_PARAMETER_VALUE = "value";
+	
 	/**
 	 * Service Descriptor Request Header Parameter
 	 */
@@ -120,8 +125,13 @@ public interface Constants {
 	/**
 	 * Service Descriptor Request Header Parameter Name Attribute
 	 */
-	public String SERVICE_DESCRIPTOR_REQUEST_HEADER_PARAMETER_NAME_ATTRIBUTE = "name";
+	public String SERVICE_DESCRIPTOR_REQUEST_HEADER_PARAMETER_NAME = "name";
 
+	/**
+	 * Service Descriptor Request Header Parameter Value
+	 */
+	public String SERVICE_DESCRIPTOR_REQUEST_HEADER_PARAMETER_VALUE = "value";
+	
 	/**
 	 * Service Descriptor Name
 	 */

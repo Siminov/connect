@@ -127,18 +127,8 @@ public class Siminov extends siminov.core.Siminov {
 	 * @exception If any exception occur while deploying application it will through DeploymentException, which is RuntimeException.
 	 */
 	static void start() {
-		
-		processApplicationDescriptor();
-		
-		processDatabaseDescriptors();
-		processLibraries();
-		processDatabaseMappingDescriptors();
-		processSyncDescriptors();
-		
-		processDatabase();
-		
-		processServices();
-
+	
+		process();
 		
 		isActive = true;
 		siminov.core.Siminov.isActive = true;
@@ -151,6 +141,19 @@ public class Siminov extends siminov.core.Siminov {
 				coreEventHandler.onSiminovInitialized();
 			}
 		} 
+	}
+	
+	private static void process() {
+		processApplicationDescriptor();
+		
+		processDatabaseDescriptors();
+		processLibraries();
+		processDatabaseMappingDescriptors();
+		processSyncDescriptors();
+		
+		processDatabase();
+		
+		processServices();
 	}
 
 	/**
