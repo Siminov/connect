@@ -29,7 +29,7 @@
 		<attribute>
 		    <property name="variable_name">name</property>
 		    <property name="column_name">NAME</property> 
-			<property name="type">String</property>
+			<property name="type">string</property>
 			<property name="primary_key">true</property>
 			<property name="not_null">true</property>
 			<property name="unique">true</property>
@@ -38,7 +38,7 @@
 		<attribute>
 		    <property name="variable_name">value</property>
 		    <property name="column_name">VALUE</property> 
-			<property name="type">String</property>
+			<property name="type">string</property>
 		</attribute>
 
 	</attributes>	

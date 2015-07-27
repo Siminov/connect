@@ -38,7 +38,7 @@
 		<attribute>
 		    <property name="variable_name">service</property>
 		    <property name="column_name">SERVICE</property> 
-			<property name="type">String</property>
+			<property name="type">string</property>
 			<property name="primary_key">true</property>
 			<property name="not_null">true</property>
 			<property name="unique">true</property>
@@ -47,7 +47,7 @@
 		<attribute>
 		    <property name="variable_name">request</property>
 		    <property name="column_name">REQUEST</property> 
-			<property name="type">String</property>
+			<property name="type">string</property>
 			<property name="primary_key">true</property>
 			<property name="not_null">true</property>
 			<property name="unique">true</property>
@@ -56,7 +56,7 @@
 		<attribute>
 		    <property name="variable_name">instanceOf</property>
 		    <property name="column_name">INSTANCE_OF</property> 
-			<property name="type">String</property>
+			<property name="type">string</property>
 		</attribute>
 		
 	</attributes>
