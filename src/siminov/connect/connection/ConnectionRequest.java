@@ -27,7 +27,7 @@ import siminov.connect.model.ServiceDescriptor.Request.QueryParameter;
 
 
 /**
- * It is a POJO class, which contains information for the service request
+ * It is a mapped class, which contains information for the service request
  */
 public class ConnectionRequest implements IConnectionRequest {
 

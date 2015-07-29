@@ -148,7 +148,7 @@ public class Siminov extends siminov.core.Siminov {
 		
 		processDatabaseDescriptors();
 		processLibraries();
-		processDatabaseMappingDescriptors();
+		processEntityDescriptors();
 		processSyncDescriptors();
 		
 		processDatabase();
@@ -208,10 +208,10 @@ public class Siminov extends siminov.core.Siminov {
 	}
 
 	/**
-	 * It process all DatabaseMappingDescriptor.si.xml file defined in Application, and stores in Resource Manager.
+	 * It process all EntityDescriptor.si.xml file defined in Application, and stores in Resource Manager.
 	 */
-	protected static void processDatabaseMappingDescriptors() {
-		siminov.core.Siminov.processDatabaseMappingDescriptors();
+	protected static void processEntityDescriptors() {
+		siminov.core.Siminov.processEntityDescriptors();
 	}
 
 	/**

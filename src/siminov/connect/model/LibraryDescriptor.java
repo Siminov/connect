@@ -46,13 +46,13 @@ Example:
 	
 		
 		
-		<!-- Database Mappings Needed Under This Library Descriptor -->
+		<!-- Entity Descriptors Needed Under This Library Descriptor -->
 		
 		<!-- Optional Field -->
-			<!-- Database Mappings -->
-		<database-mapping-descriptors>
-			<database-mapping-descriptor>name_of_database_descriptor.full_path_of_database_mapping_descriptor_file</database-mapping-descriptor>
-		</database-mapping-descriptors>
+			<!-- Entity Descriptor -->
+		<entity-descriptors>
+			<entity-descriptor>name_of_database_descriptor.full_path_of_entity_descriptor_file</entity-descriptor>
+		</entity-descriptors>
 		 
 		
 		<!-- Service Descriptors -->

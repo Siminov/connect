@@ -77,16 +77,16 @@ public class QuickServiceDescriptorReader extends SiminovSAXDefaultHandler imple
 		while(serviceDescriptorPaths.hasNext()) {
 			String serviceDescriptorPath = serviceDescriptorPaths.next();
 			
-			InputStream databaseMappingDescriptorStream = null;
+			InputStream entityDescriptorStream = null;
 			try {
-				databaseMappingDescriptorStream = context.getAssets().open(serviceDescriptorPath);
+				entityDescriptorStream = context.getAssets().open(serviceDescriptorPath);
 			} catch(IOException ioException) {
 				Log.error(getClass().getName(), "process", "IOException caught while getting input stream of Service Descriptor: " + serviceDescriptorPath + ", " + ioException.getMessage());
 				throw new SiminovException(getClass().getName(), "process", "IOException caught while getting input stream of Service Descriptor: " + serviceDescriptorPath + ", " + ioException.getMessage());
 			}
 			
 			try {
-				parseMessage(databaseMappingDescriptorStream);
+				parseMessage(entityDescriptorStream);
 			} catch(Exception exception) {
 				Log.error(getClass().getName(), "process", "Exception caught while parsing Service Descriptor: " + serviceDescriptorPath + ", " + exception.getMessage());
 				throw new SiminovException(getClass().getName(), "process", "Exception caught while parsing Service Descriptor: " + serviceDescriptorPath + ", " + exception.getMessage());

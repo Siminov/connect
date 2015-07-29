@@ -36,9 +36,9 @@
 	<!-- Entity Descriptor Needed Under This Library Descriptor -->
 	
 	<!-- Optional Field -->
-		<!-- Database Mappings -->
+		<!-- Entity Descriptors -->
 	<entity-descriptors>
-		<entity-descriptor>name_of_database_descriptor.full_path_of_database_mapping_descriptor_file</entity-descriptor>
+		<entity-descriptor>name_of_database_descriptor.full_path_of_entity_descriptor_file</entity-descriptor>
 	</entity-descriptors>
 	 
 	
