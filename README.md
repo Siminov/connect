@@ -1,7 +1,7 @@
 Siminov Connect (RESTful) - Android
 ===================================================
 
-Consuming RESTful Web services that seemlessly support your data in a variety of representation media types and abtract away the low-level details of the client-server communication is not an easy task without a good toolkit. Siminov Connect RESTful Web Services framework is a open source, it is a powerful and exible toolkit that makes it easy to consume RESTful Services.
+Siminov Framework (Connect) is a open source framework used to consume RESTful Web Services for all different environments - (Android - Java, iOS - Objective-C|Swift, Windows - C#, OS X - Objective-C|Swift). Using this app developer can easily consume data from any of web services without worrying about underlying architecture of communication.
 
 Get Started
 -----------
