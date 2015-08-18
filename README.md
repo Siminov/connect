@@ -71,7 +71,7 @@ LICENSE
  
 <b> SIMINOV FRAMEWORK </b>
  <p>
- Copyright [2013] [Siminov Software Solution LLP|support@siminov.com]
+ Copyright [2015] [Siminov Software Solution LLP|support@siminov.com]
  
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
