@@ -27,6 +27,10 @@ import siminov.connect.service.design.IResource;
  */
 public interface ISyncRequest extends IRequest, IResource {
 
+	public long getRequestId();
+
+	public void setRequestId(long val);
+	
 	/**
 	 * Get sync request name
 	 * @return Name of sync request

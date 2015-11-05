@@ -26,9 +26,18 @@ import siminov.connect.sync.design.ISyncRequest;
 
 public class SyncRequest implements ISyncRequest {
 
+	private long requestId;
 	private String name;
 	
 	private Map<String, Object> resources = new HashMap<String, Object>();
+	
+	public long getRequestId() {
+		return this.requestId;
+	}
+	
+	public void setRequestId(long requestId) {
+		this.requestId = requestId;
+	}
 	
 	public String getName() {
 		return this.name;
