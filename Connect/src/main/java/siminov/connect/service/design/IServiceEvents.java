@@ -82,7 +82,7 @@ public interface IServiceEvents {
 	
 	
 	/**
-	 * This is the final method that is called on a Service instance before it’s destroyed and completely removed from memory.
+	 * This is the final method that is called on a Service instance before its destroyed and completely removed from memory.
 		<p>
 		There will be no lifecycle methods called after the Activity has been destroyed.
 	 */
