@@ -19,7 +19,7 @@
 
 -->
 
-<!-- Design of ServiceDescriptor.si.xml -->
+<!-- Design of ServiceDescriptor.xml -->
 
 <sync-descriptor>
             
@@ -45,7 +45,7 @@
 
 
 <!-- 
-SyncDescriptor.si.xml is the one in which define synchronization of data thorugh service.
+SyncDescriptor.xml is the one in which define synchronization of data thorugh service.
 
 Sync Descriptor Element:
 

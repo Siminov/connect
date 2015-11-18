@@ -19,7 +19,7 @@
 
 -->
 
-<!-- DESIGN OF LibraryDescriptor.si.xml -->
+<!-- DESIGN OF LibraryDescriptor.xml -->
 
 <library-descriptor>
 
@@ -67,7 +67,7 @@
 
 <!-- 
 
-LibraryDescriptor.si.xml is the one who shows library properties.
+LibraryDescriptor.xml is the one who shows library properties.
 	
 Type Of Properties: 
 	

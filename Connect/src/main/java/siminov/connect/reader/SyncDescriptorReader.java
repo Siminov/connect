@@ -33,7 +33,7 @@ import android.content.Context;
 
 
 /**
- * Exposes methods to parse Sync Descriptor information as per define in SyncDescriptor.si.xml file by application.
+ * Exposes methods to parse Sync Descriptor information as per define in SyncDescriptor.xml file by application.
 	<p>
 		<pre>
 		

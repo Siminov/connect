@@ -27,7 +27,7 @@ import siminov.core.model.IDescriptor;
 
 
 /**
- * Exposes methods to GET and SET Service Descriptor information as per define in ServiceDescriptor.si.xml file by application.
+ * Exposes methods to GET and SET Service Descriptor information as per define in ServiceDescriptor.xml file by application.
  *	<p>
 		<pre>
 		

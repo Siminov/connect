@@ -29,8 +29,8 @@
 	<property name="transaction_safe">true</property>
 	
 	<entity-descriptors>
-	    <entity-descriptor>siminov/connect/resource/ServiceRequest.si.xml</entity-descriptor>
-		<entity-descriptor>siminov/connect/resource/ServiceRequestResource.si.xml</entity-descriptor>
+	    <entity-descriptor>siminov/connect/resource/ServiceRequest.xml</entity-descriptor>
+		<entity-descriptor>siminov/connect/resource/ServiceRequestResource.xml</entity-descriptor>
 	</entity-descriptors>
 
 </database-descriptor>

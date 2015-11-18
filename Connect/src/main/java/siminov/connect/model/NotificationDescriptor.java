@@ -25,7 +25,7 @@ import siminov.core.model.IDescriptor;
 
 
 /**
- * Exposes methods to GET and SET Notification Descriptor information as per define in ApplicationDescriptor.si.xml file by application.
+ * Exposes methods to GET and SET Notification Descriptor information as per define in ApplicationDescriptor.xml file by application.
  *
  *	<p>
 		<pre>

@@ -35,7 +35,7 @@ import siminov.core.resource.ResourceManager;
 import android.content.Context;
 
 /**
- * Exposes methods to parse Service Descriptor information as per define in ServiceDescriptor.si.xml file by application.
+ * Exposes methods to parse Service Descriptor information as per define in ServiceDescriptor.xml file by application.
 	<p>
 		<pre>
 		

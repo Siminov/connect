@@ -27,7 +27,7 @@ import siminov.connect.Constants;
 import siminov.core.model.IDescriptor;
 
 /**
- * Exposes methods to GET and SET Sync Descriptor information as per define in SyncDescriptor.si.xml file by application.
+ * Exposes methods to GET and SET Sync Descriptor information as per define in SyncDescriptor.xml file by application.
 	<p>
 		<pre>
 		

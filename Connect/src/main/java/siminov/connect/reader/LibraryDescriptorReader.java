@@ -34,7 +34,7 @@ import android.content.Context;
 
 
 /**
- * Exposes methods to parse Library Descriptor information as per define in LibraryDescriptor.si.xml file by application.
+ * Exposes methods to parse Library Descriptor information as per define in LibraryDescriptor.xml file by application.
 	<p>
 		<pre>
 		

@@ -29,7 +29,7 @@ public interface Constants {
 	/**
 	 * Connect Database Descriptor Path
 	 */
-	public String DATABASE_DESSCRIPTOR_PATH = "siminov/connect/resource/DatabaseDescriptor.si.xml";
+	public String DATABASE_DESSCRIPTOR_PATH = "siminov/connect/resource/DatabaseDescriptor.xml";
 	
 	
 	//Application Descriptor Constants
@@ -249,7 +249,7 @@ public interface Constants {
 	/**
 	 * Library Descriptor File Name
 	 */
-	public String LIBRARY_DESCRIPTOR_FILE_NAME = "LibraryDescriptor.si.xml";
+	public String LIBRARY_DESCRIPTOR_FILE_NAME = "LibraryDescriptor.xml";
 	
 	/**
 	 * Library Descriptor Property

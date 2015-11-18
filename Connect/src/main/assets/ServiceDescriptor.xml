@@ -19,7 +19,7 @@
 
 -->
 
-<!-- Design of ServiceDescriptor.si.xml -->
+<!-- Design of ServiceDescriptor.xml -->
 
 <service-descriptor>
     
@@ -133,7 +133,7 @@
 			
 			
 <!-- 
-ServiceDescriptor.si.xml is the one in which define the structure of your RESTful Web Service API
+ServiceDescriptor.xml is the one in which define the structure of your RESTful Web Service API
 
 Service Descriptor Elements: 
 	

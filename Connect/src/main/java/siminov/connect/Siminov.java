@@ -178,7 +178,7 @@ public class Siminov extends siminov.core.Siminov {
 
 	
 	/**
-	 * It process ApplicationDescriptor.si.xml file defined in Application, and stores in Resource Manager.
+	 * It process ApplicationDescriptor.xml file defined in Application, and stores in Resource Manager.
 	 */
 	protected static void processApplicationDescriptor() {
 		
@@ -195,7 +195,7 @@ public class Siminov extends siminov.core.Siminov {
 	}
 	
 	/**
-	 * It process all DatabaseDescriptor.si.xml files defined by Application and stores in Resource Manager.
+	 * It process all DatabaseDescriptor.xml files defined by Application and stores in Resource Manager.
 	 */
 	protected static void processDatabaseDescriptors() {
 		siminov.core.Siminov.processDatabaseDescriptors();
@@ -208,14 +208,14 @@ public class Siminov extends siminov.core.Siminov {
 	}
 
 	/**
-	 * It process all EntityDescriptor.si.xml file defined in Application, and stores in Resource Manager.
+	 * It process all EntityDescriptor.xml file defined in Application, and stores in Resource Manager.
 	 */
 	protected static void processEntityDescriptors() {
 		siminov.core.Siminov.processEntityDescriptors();
 	}
 
 	/**
-	 * It process all SyncDescriptor.si.xml file defined in Application, and stores in Resource Manager.
+	 * It process all SyncDescriptor.xml file defined in Application, and stores in Resource Manager.
 	 */
 	protected static void processSyncDescriptors() {
 		
@@ -231,14 +231,14 @@ public class Siminov extends siminov.core.Siminov {
 	}
 	
 	/**
-	 * It process all LibraryDescriptor.si.xml files defined by application, and stores in Resource Manager.
+	 * It process all LibraryDescriptor.xml files defined by application, and stores in Resource Manager.
 	 */
 	protected static void processLibraries() {
 		siminov.core.Siminov.processLibraries();
 	}
 	
 	/**
-	 * It process all DatabaseDescriptor.si.xml and initialize Database and stores in Resource Manager.
+	 * It process all DatabaseDescriptor.xml and initialize Database and stores in Resource Manager.
 	 */
 	protected static void processDatabase() {
 		siminov.core.Siminov.processDatabase();
