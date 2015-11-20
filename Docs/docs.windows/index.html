@@ -1,0 +1,2331 @@
+
+
+<!doctype html>
+<html class="index">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Siminov Framework - Connect</title>
+        <meta name="viewport" content="width=device-width">
+
+		
+					<link rel="stylesheet" type="text/css" href="assets/css/font.css?version=0.9.6.8" />
+			<link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css?version=0.9.6.8" />
+			<link rel="stylesheet" type="text/css" href="assets/css/style.css?version=0.9.6.8" />
+			<link rel="stylesheet" type="text/css" href="assets/css/dynamic.css?version=0.9.6.8" />
+			
+		<link rel="stylesheet" type="text/css" href="assets/css/custom.css" />
+		<link rel="stylesheet" type="text/css" href="assets/css/dynamic.css" />
+		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="assets/css/override.css" />
+			
+			
+			<!--[if IE 8]>
+				<script src="assets/js/vendor.ie8.js?version=0.9.6.8"></script>
+			<![endif]-->
+			<![if !IE 8]>
+				<script src="assets/js/vendor.js?version=0.9.6.8"></script>
+			<![endif]>
+
+			<script src="assets/js/jquery.layout.min.js?version=0.9.6.8"></script>	
+			<script src="assets/js/app.js?version=0.9.6.8"></script>
+
+			<link rel="shortcut icon" href="assets/images/product_logo.ico">		
+
+		
+		<script>
+			var homeString = "Home";
+			var searchIndex = [ 
+	
+			
+
+
+
+
+
+
+
+
+
+
+
+	{ "Name" : "connect.Siminov.Connect.Sync", "Url" : "#namespace/connect.Siminov.Connect.Sync", "Type" : "Namespace" },
+	
+		{ "Name" : "SyncWorker", "Url" : "#type/SyncWorker", "Type" : "Type" },
+
+		
+			{ "Name" : "resourceManager", "Url" : "#type/SyncWorker?resourceManager", "Type" : "Field" },
+		
+			{ "Name" : "syncRequests", "Url" : "#type/SyncWorker?syncRequests", "Type" : "Field" },
+		
+			{ "Name" : "syncWorker", "Url" : "#type/SyncWorker?syncWorker", "Type" : "Field" },
+		
+			{ "Name" : "syncWorkerThread", "Url" : "#type/SyncWorker?syncWorkerThread", "Type" : "Field" },
+		
+			{ "Name" : "AddRequest", "Url" : "#type/SyncWorker?AddRequest4", "Type" : "Method" },
+		
+			{ "Name" : "ContainsRequest", "Url" : "#type/SyncWorker?ContainsRequest3", "Type" : "Method" },
+		
+			{ "Name" : "GetInstance", "Url" : "#type/SyncWorker?GetInstance9", "Type" : "Method" },
+		
+			{ "Name" : "HandleRequests", "Url" : "#type/SyncWorker?HandleRequests2", "Type" : "Method" },
+		
+			{ "Name" : "IsWorkerRunning", "Url" : "#type/SyncWorker?IsWorkerRunning3", "Type" : "Method" },
+		
+			{ "Name" : "removeRequest", "Url" : "#type/SyncWorker?removeRequest", "Type" : "Method" },
+		
+			{ "Name" : "RemoveRequest", "Url" : "#type/SyncWorker?RemoveRequest4", "Type" : "Method" },
+		
+			{ "Name" : "StartWorker", "Url" : "#type/SyncWorker?StartWorker3", "Type" : "Method" },
+		
+			{ "Name" : "StopWorker", "Url" : "#type/SyncWorker?StopWorker3", "Type" : "Method" },
+		
+	{ "Name" : "Siminov.Connect", "Url" : "#namespace/Siminov.Connect", "Type" : "Namespace" },
+	
+		{ "Name" : "Constants", "Url" : "#type/Constants", "Type" : "Type" },
+
+		
+			{ "Name" : "APPLICATION_DESCRIPTOR_SERVICE_DESCRIPTOR", "Url" : "#type/Constants?APPLICATION_DESCRIPTOR_SERVICE_DESCRIPTOR", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_HTTP", "Url" : "#type/Constants?CONNECTION_HTTP", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_HTTPS", "Url" : "#type/Constants?CONNECTION_HTTPS", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_QUERY_PARAMETER_KEYWORD", "Url" : "#type/Constants?CONNECTION_QUERY_PARAMETER_KEYWORD", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_100", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_100", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_101", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_101", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_200", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_200", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_201", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_201", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_202", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_202", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_203", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_203", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_204", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_204", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_205", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_205", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_206", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_206", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_300", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_300", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_301", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_301", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_302", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_302", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_303", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_303", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_304", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_304", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_305", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_305", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_306", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_306", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_307", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_307", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_400", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_400", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_401", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_401", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_402", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_402", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_403", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_403", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_404", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_404", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_405", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_405", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_406", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_406", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_407", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_407", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_408", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_408", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_409", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_409", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_410", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_410", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_411", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_411", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_412", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_412", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_413", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_413", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_414", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_414", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_415", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_415", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_416", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_416", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_417", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_417", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_426", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_426", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_500", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_500", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_501", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_501", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_502", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_502", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_503", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_503", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_504", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_504", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_RESPONSE_CODE_505", "Url" : "#type/Constants?CONNECTION_RESPONSE_CODE_505", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_0", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_0", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_100", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_100", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_101", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_101", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_102", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_102", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_103", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_103", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_122", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_122", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_200", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_200", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_201", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_201", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_202", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_202", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_203", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_203", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_204", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_204", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_205", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_205", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_206", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_206", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_207", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_207", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_208", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_208", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_226", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_226", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_300", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_300", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_301", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_301", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_302", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_302", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_303", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_303", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_304", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_304", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_305", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_305", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_306", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_306", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_307", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_307", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_308", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_308", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_400", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_400", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_401", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_401", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_402", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_402", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_403", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_403", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_404", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_404", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_405", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_405", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_406", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_406", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_407", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_407", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_408", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_408", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_409", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_409", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_410", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_410", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_411", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_411", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_412", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_412", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_413", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_413", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_414", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_414", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_415", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_415", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_416", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_416", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_417", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_417", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_418", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_418", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_420", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_420", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_422", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_422", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_423", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_423", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_424", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_424", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_426", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_426", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_428", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_428", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_429", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_429", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_431", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_431", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_444", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_444", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_449", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_449", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_450", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_450", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_451", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_451", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_499", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_499", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_500", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_500", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_501", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_501", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_502", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_502", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_503", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_503", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_504", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_504", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_505", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_505", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_506", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_506", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_507", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_507", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_508", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_508", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_509", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_509", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_510", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_510", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_511", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_511", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_598", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_598", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_CODE_599", "Url" : "#type/Constants?CONNECTION_STATUS_CODE_599", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_100", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_100", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_101", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_101", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_102", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_102", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_103", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_103", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_122", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_122", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_200", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_200", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_201", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_201", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_202", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_202", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_203", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_203", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_204", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_204", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_205", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_205", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_206", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_206", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_207", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_207", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_208", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_208", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_226", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_226", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_300", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_300", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_301", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_301", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_302", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_302", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_303", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_303", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_304", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_304", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_305", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_305", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_306", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_306", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_307", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_307", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_308", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_308", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_400", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_400", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_401", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_401", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_402", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_402", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_403", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_403", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_404", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_404", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_405", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_405", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_406", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_406", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_407", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_407", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_408", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_408", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_409", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_409", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_410", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_410", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_411", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_411", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_412", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_412", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_413", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_413", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_414", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_414", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_415", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_415", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_416", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_416", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_417", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_417", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_418", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_418", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_420", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_420", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_422", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_422", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_423", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_423", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_424", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_424", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_426", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_426", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_428", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_428", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_429", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_429", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_431", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_431", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_444", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_444", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_449", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_449", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_450", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_450", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_451", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_451", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_499", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_499", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_500", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_500", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_501", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_501", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_502", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_502", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_503", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_503", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_504", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_504", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_505", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_505", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_506", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_506", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_507", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_507", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_508", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_508", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_509", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_509", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_510", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_510", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_511", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_511", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_598", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_598", "Type" : "Field" },
+		
+			{ "Name" : "CONNECTION_STATUS_MESSAGE_599", "Url" : "#type/Constants?CONNECTION_STATUS_MESSAGE_599", "Type" : "Field" },
+		
+			{ "Name" : "DATABASE_DESSCRIPTOR_PATH", "Url" : "#type/Constants?DATABASE_DESSCRIPTOR_PATH", "Type" : "Field" },
+		
+			{ "Name" : "LIBRARY_DESCRIPTOR_FILE_NAME", "Url" : "#type/Constants?LIBRARY_DESCRIPTOR_FILE_NAME", "Type" : "Field" },
+		
+			{ "Name" : "LIBRARY_DESCRIPTOR_PROPERTY", "Url" : "#type/Constants?LIBRARY_DESCRIPTOR_PROPERTY", "Type" : "Field" },
+		
+			{ "Name" : "LIBRARY_DESCRIPTOR_PROPERTY_NAME", "Url" : "#type/Constants?LIBRARY_DESCRIPTOR_PROPERTY_NAME", "Type" : "Field" },
+		
+			{ "Name" : "LIBRARY_DESCRIPTOR_SERVICE_DESCRIPTOR", "Url" : "#type/Constants?LIBRARY_DESCRIPTOR_SERVICE_DESCRIPTOR", "Type" : "Field" },
+		
+			{ "Name" : "NOTIFICATION_DESCRIPTOR", "Url" : "#type/Constants?NOTIFICATION_DESCRIPTOR", "Type" : "Field" },
+		
+			{ "Name" : "RESOURCE_CLOSE_CURLY_BRACKET", "Url" : "#type/Constants?RESOURCE_CLOSE_CURLY_BRACKET", "Type" : "Field" },
+		
+			{ "Name" : "RESOURCE_COMMA", "Url" : "#type/Constants?RESOURCE_COMMA", "Type" : "Field" },
+		
+			{ "Name" : "RESOURCE_DOT", "Url" : "#type/Constants?RESOURCE_DOT", "Type" : "Field" },
+		
+			{ "Name" : "RESOURCE_OPEN_CURLY_BRACKET", "Url" : "#type/Constants?RESOURCE_OPEN_CURLY_BRACKET", "Type" : "Field" },
+		
+			{ "Name" : "RESOURCE_REFER_REFERENCE", "Url" : "#type/Constants?RESOURCE_REFER_REFERENCE", "Type" : "Field" },
+		
+			{ "Name" : "RESOURCE_REFERENCE", "Url" : "#type/Constants?RESOURCE_REFERENCE", "Type" : "Field" },
+		
+			{ "Name" : "RESOURCE_SELF_REFERENCE", "Url" : "#type/Constants?RESOURCE_SELF_REFERENCE", "Type" : "Field" },
+		
+			{ "Name" : "RESOURCE_SLASH", "Url" : "#type/Constants?RESOURCE_SLASH", "Type" : "Field" },
+		
+			{ "Name" : "RESOURCE_SPACE", "Url" : "#type/Constants?RESOURCE_SPACE", "Type" : "Field" },
+		
+			{ "Name" : "SERVICE_DESCRIPTOR_CONTEXT", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_CONTEXT", "Type" : "Field" },
+		
+			{ "Name" : "SERVICE_DESCRIPTOR_DESCRIPTION", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_DESCRIPTION", "Type" : "Field" },
+		
+			{ "Name" : "SERVICE_DESCRIPTOR_HTTP_PROTOCOL", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_HTTP_PROTOCOL", "Type" : "Field" },
+		
+			{ "Name" : "SERVICE_DESCRIPTOR_HTTPS_PROTOCOL", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_HTTPS_PROTOCOL", "Type" : "Field" },
+		
+			{ "Name" : "SERVICE_DESCRIPTOR_INSTANCE", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_INSTANCE", "Type" : "Field" },
+		
+			{ "Name" : "SERVICE_DESCRIPTOR_NAME", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_NAME", "Type" : "Field" },
+		
+			{ "Name" : "SERVICE_DESCRIPTOR_PORT", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_PORT", "Type" : "Field" },
+		
+			{ "Name" : "SERVICE_DESCRIPTOR_PROPERTY", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_PROPERTY", "Type" : "Field" },
+		
+			{ "Name" : "SERVICE_DESCRIPTOR_PROPERTY_NAME", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_PROPERTY_NAME", "Type" : "Field" },
+		
+			{ "Name" : "SERVICE_DESCRIPTOR_PROTOCOL", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_PROTOCOL", "Type" : "Field" },
+		
+			{ "Name" : "SERVICE_DESCRIPTOR_REQUEST", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_REQUEST", "Type" : "Field" },
+		
+			{ "Name" : "SERVICE_DESCRIPTOR_REQUEST_API", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_REQUEST_API", "Type" : "Field" },
+		
+			{ "Name" : "SERVICE_DESCRIPTOR_REQUEST_ASYNC_REQUEST_MODE", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_REQUEST_ASYNC_REQUEST_MODE", "Type" : "Field" },
+		
+			{ "Name" : "SERVICE_DESCRIPTOR_REQUEST_CONNECT_TYPE", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_REQUEST_CONNECT_TYPE", "Type" : "Field" },
+		
+			{ "Name" : "SERVICE_DESCRIPTOR_REQUEST_DATA_STREAM", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_REQUEST_DATA_STREAM", "Type" : "Field" },
+		
+			{ "Name" : "SERVICE_DESCRIPTOR_REQUEST_DELETE_TYPE", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_REQUEST_DELETE_TYPE", "Type" : "Field" },
+		
+			{ "Name" : "SERVICE_DESCRIPTOR_REQUEST_GET_TYPE", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_REQUEST_GET_TYPE", "Type" : "Field" },
+		
+			{ "Name" : "SERVICE_DESCRIPTOR_REQUEST_HANDLER", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_REQUEST_HANDLER", "Type" : "Field" },
+		
+			{ "Name" : "SERVICE_DESCRIPTOR_REQUEST_HEAD_TYPE", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_REQUEST_HEAD_TYPE", "Type" : "Field" },
+		
+			{ "Name" : "SERVICE_DESCRIPTOR_REQUEST_HEADER_PARAMETER", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_REQUEST_HEADER_PARAMETER", "Type" : "Field" },
+		
+			{ "Name" : "SERVICE_DESCRIPTOR_REQUEST_HEADER_PARAMETER_NAME_ATTRIBUTE", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_REQUEST_HEADER_PARAMETER_NAME_ATTRIBUTE", "Type" : "Field" },
+		
+			{ "Name" : "SERVICE_DESCRIPTOR_REQUEST_MODE", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_REQUEST_MODE", "Type" : "Field" },
+		
+			{ "Name" : "SERVICE_DESCRIPTOR_REQUEST_NAME", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_REQUEST_NAME", "Type" : "Field" },
+		
+			{ "Name" : "SERVICE_DESCRIPTOR_REQUEST_OPTIONS_TYPE", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_REQUEST_OPTIONS_TYPE", "Type" : "Field" },
+		
+			{ "Name" : "SERVICE_DESCRIPTOR_REQUEST_PATCH_TYPE", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_REQUEST_PATCH_TYPE", "Type" : "Field" },
+		
+			{ "Name" : "SERVICE_DESCRIPTOR_REQUEST_POST_TYPE", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_REQUEST_POST_TYPE", "Type" : "Field" },
+		
+			{ "Name" : "SERVICE_DESCRIPTOR_REQUEST_PUT_TYPE", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_REQUEST_PUT_TYPE", "Type" : "Field" },
+		
+			{ "Name" : "SERVICE_DESCRIPTOR_REQUEST_QUERY_PARAMETER", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_REQUEST_QUERY_PARAMETER", "Type" : "Field" },
+		
+			{ "Name" : "SERVICE_DESCRIPTOR_REQUEST_QUERY_PARAMETER_NAME_ATTRIBUTE", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_REQUEST_QUERY_PARAMETER_NAME_ATTRIBUTE", "Type" : "Field" },
+		
+			{ "Name" : "SERVICE_DESCRIPTOR_REQUEST_SYNC_REQUEST_MODE", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_REQUEST_SYNC_REQUEST_MODE", "Type" : "Field" },
+		
+			{ "Name" : "SERVICE_DESCRIPTOR_REQUEST_TRACE_TYPE", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_REQUEST_TRACE_TYPE", "Type" : "Field" },
+		
+			{ "Name" : "SERVICE_DESCRIPTOR_REQUEST_TYPE", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_REQUEST_TYPE", "Type" : "Field" },
+		
+			{ "Name" : "SERVICE_DESCRIPTOR_REQUESTS", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_REQUESTS", "Type" : "Field" },
+		
+			{ "Name" : "SYNC_DESCRIPTOR", "Url" : "#type/Constants?SYNC_DESCRIPTOR", "Type" : "Field" },
+		
+			{ "Name" : "SYNC_DESCRIPTOR_NAME", "Url" : "#type/Constants?SYNC_DESCRIPTOR_NAME", "Type" : "Field" },
+		
+			{ "Name" : "SYNC_DESCRIPTOR_PROPERTY", "Url" : "#type/Constants?SYNC_DESCRIPTOR_PROPERTY", "Type" : "Field" },
+		
+			{ "Name" : "SYNC_DESCRIPTOR_REFRESH_INTERVAL", "Url" : "#type/Constants?SYNC_DESCRIPTOR_REFRESH_INTERVAL", "Type" : "Field" },
+		
+			{ "Name" : "SYNC_DESCRIPTOR_SERVICE_DESCRIPTOR", "Url" : "#type/Constants?SYNC_DESCRIPTOR_SERVICE_DESCRIPTOR", "Type" : "Field" },
+		
+			{ "Name" : "SYNC_DESCRIPTOR_SERVICE_SEPARATOR", "Url" : "#type/Constants?SYNC_DESCRIPTOR_SERVICE_SEPARATOR", "Type" : "Field" },
+		
+		{ "Name" : "Initializer", "Url" : "#type/Initializer", "Type" : "Type" },
+
+		
+			{ "Name" : "parameters", "Url" : "#type/Initializer?parameters", "Type" : "Field" },
+		
+			{ "Name" : "AddParameter", "Url" : "#type/Initializer?AddParameter", "Type" : "Method" },
+		
+			{ "Name" : "Initialize", "Url" : "#type/Initializer?Initialize", "Type" : "Method" },
+		
+		{ "Name" : "IRequest", "Url" : "#type/IRequest", "Type" : "Type" },
+
+		
+		{ "Name" : "IWorker", "Url" : "#type/IWorker", "Type" : "Type" },
+
+		
+			{ "Name" : "AddRequest", "Url" : "#type/IWorker?AddRequest", "Type" : "Method" },
+		
+			{ "Name" : "ContainsRequest", "Url" : "#type/IWorker?ContainsRequest", "Type" : "Method" },
+		
+			{ "Name" : "IsWorkerRunning", "Url" : "#type/IWorker?IsWorkerRunning", "Type" : "Method" },
+		
+			{ "Name" : "RemoveRequest", "Url" : "#type/IWorker?RemoveRequest", "Type" : "Method" },
+		
+			{ "Name" : "StartWorker", "Url" : "#type/IWorker?StartWorker", "Type" : "Method" },
+		
+			{ "Name" : "StopWorker", "Url" : "#type/IWorker?StopWorker", "Type" : "Method" },
+		
+		{ "Name" : "Siminov", "Url" : "#type/Siminov", "Type" : "Type" },
+
+		
+			{ "Name" : "connectResourceManager", "Url" : "#type/Siminov?connectResourceManager", "Type" : "Field" },
+		
+			{ "Name" : "isActive", "Url" : "#type/Siminov?isActive", "Type" : "Field" },
+		
+			{ "Name" : "Initializer", "Url" : "#type/Siminov?Initializer2", "Type" : "Method" },
+		
+			{ "Name" : "IsActive", "Url" : "#type/Siminov?IsActive", "Type" : "Method" },
+		
+			{ "Name" : "ProcessApplicationDescriptor", "Url" : "#type/Siminov?ProcessApplicationDescriptor", "Type" : "Method" },
+		
+			{ "Name" : "ProcessDatabase", "Url" : "#type/Siminov?ProcessDatabase", "Type" : "Method" },
+		
+			{ "Name" : "ProcessDatabaseDescriptors", "Url" : "#type/Siminov?ProcessDatabaseDescriptors", "Type" : "Method" },
+		
+			{ "Name" : "ProcessDatabaseMappingDescriptors", "Url" : "#type/Siminov?ProcessDatabaseMappingDescriptors", "Type" : "Method" },
+		
+			{ "Name" : "ProcessLibraries", "Url" : "#type/Siminov?ProcessLibraries", "Type" : "Method" },
+		
+			{ "Name" : "ProcessServices", "Url" : "#type/Siminov?ProcessServices", "Type" : "Method" },
+		
+			{ "Name" : "ProcessSyncDescriptors", "Url" : "#type/Siminov?ProcessSyncDescriptors", "Type" : "Method" },
+		
+			{ "Name" : "Shutdown", "Url" : "#type/Siminov?Shutdown", "Type" : "Method" },
+		
+			{ "Name" : "Start", "Url" : "#type/Siminov?Start", "Type" : "Method" },
+		
+	{ "Name" : "Siminov.Connect.Connection", "Url" : "#namespace/Siminov.Connect.Connection", "Type" : "Namespace" },
+	
+		{ "Name" : "ConnectionHelper", "Url" : "#type/ConnectionHelper", "Type" : "Type" },
+
+		
+			{ "Name" : "FormDataStream", "Url" : "#type/ConnectionHelper?FormDataStream", "Type" : "Method" },
+		
+			{ "Name" : "FormHeaderParameters", "Url" : "#type/ConnectionHelper?FormHeaderParameters", "Type" : "Method" },
+		
+			{ "Name" : "FormQueryParameters", "Url" : "#type/ConnectionHelper?FormQueryParameters", "Type" : "Method" },
+		
+			{ "Name" : "FormUrl", "Url" : "#type/ConnectionHelper?FormUrl", "Type" : "Method" },
+		
+			{ "Name" : "PrepareConnectionRequest", "Url" : "#type/ConnectionHelper?PrepareConnectionRequest", "Type" : "Method" },
+		
+		{ "Name" : "ConnectionManager", "Url" : "#type/ConnectionManager", "Type" : "Type" },
+
+		
+			{ "Name" : "connectionManager", "Url" : "#type/ConnectionManager?connectionManager", "Type" : "Field" },
+		
+			{ "Name" : "httpConnection", "Url" : "#type/ConnectionManager?httpConnection", "Type" : "Field" },
+		
+			{ "Name" : "httpsConnection", "Url" : "#type/ConnectionManager?httpsConnection", "Type" : "Field" },
+		
+			{ "Name" : "GetInstance", "Url" : "#type/ConnectionManager?GetInstance", "Type" : "Method" },
+		
+			{ "Name" : "Handle", "Url" : "#type/ConnectionManager?Handle", "Type" : "Method" },
+		
+		{ "Name" : "ConnectionRequest", "Url" : "#type/ConnectionRequest", "Type" : "Type" },
+
+		
+			{ "Name" : "dataStream", "Url" : "#type/ConnectionRequest?dataStream", "Type" : "Field" },
+		
+			{ "Name" : "headerParameters", "Url" : "#type/ConnectionRequest?headerParameters", "Type" : "Field" },
+		
+			{ "Name" : "protocol", "Url" : "#type/ConnectionRequest?protocol", "Type" : "Field" },
+		
+			{ "Name" : "queryParameters", "Url" : "#type/ConnectionRequest?queryParameters", "Type" : "Field" },
+		
+			{ "Name" : "type", "Url" : "#type/ConnectionRequest?type", "Type" : "Field" },
+		
+			{ "Name" : "url", "Url" : "#type/ConnectionRequest?url", "Type" : "Field" },
+		
+			{ "Name" : "AddHeaderParameter", "Url" : "#type/ConnectionRequest?AddHeaderParameter", "Type" : "Method" },
+		
+			{ "Name" : "AddQueryParameter", "Url" : "#type/ConnectionRequest?AddQueryParameter", "Type" : "Method" },
+		
+			{ "Name" : "GetDataStream", "Url" : "#type/ConnectionRequest?GetDataStream", "Type" : "Method" },
+		
+			{ "Name" : "GetHeaderParameter", "Url" : "#type/ConnectionRequest?GetHeaderParameter", "Type" : "Method" },
+		
+			{ "Name" : "GetHeaderParameters", "Url" : "#type/ConnectionRequest?GetHeaderParameters", "Type" : "Method" },
+		
+			{ "Name" : "GetProtocol", "Url" : "#type/ConnectionRequest?GetProtocol", "Type" : "Method" },
+		
+			{ "Name" : "GetQueryParameter", "Url" : "#type/ConnectionRequest?GetQueryParameter", "Type" : "Method" },
+		
+			{ "Name" : "GetQueryParameters", "Url" : "#type/ConnectionRequest?GetQueryParameters", "Type" : "Method" },
+		
+			{ "Name" : "GetType", "Url" : "#type/ConnectionRequest?GetType", "Type" : "Method" },
+		
+			{ "Name" : "GetUrl", "Url" : "#type/ConnectionRequest?GetUrl", "Type" : "Method" },
+		
+			{ "Name" : "SetDataStream", "Url" : "#type/ConnectionRequest?SetDataStream", "Type" : "Method" },
+		
+			{ "Name" : "SetProtocol", "Url" : "#type/ConnectionRequest?SetProtocol", "Type" : "Method" },
+		
+			{ "Name" : "SetType", "Url" : "#type/ConnectionRequest?SetType", "Type" : "Method" },
+		
+			{ "Name" : "SetUrl", "Url" : "#type/ConnectionRequest?SetUrl", "Type" : "Method" },
+		
+		{ "Name" : "ConnectionResponse", "Url" : "#type/ConnectionResponse", "Type" : "Type" },
+
+		
+			{ "Name" : "response", "Url" : "#type/ConnectionResponse?response", "Type" : "Field" },
+		
+			{ "Name" : "statusCode", "Url" : "#type/ConnectionResponse?statusCode", "Type" : "Field" },
+		
+			{ "Name" : "statusMessage", "Url" : "#type/ConnectionResponse?statusMessage", "Type" : "Field" },
+		
+			{ "Name" : "GetResponse", "Url" : "#type/ConnectionResponse?GetResponse", "Type" : "Method" },
+		
+			{ "Name" : "GetStatusCode", "Url" : "#type/ConnectionResponse?GetStatusCode", "Type" : "Method" },
+		
+			{ "Name" : "GetStatusMessage", "Url" : "#type/ConnectionResponse?GetStatusMessage", "Type" : "Method" },
+		
+			{ "Name" : "SetResponse", "Url" : "#type/ConnectionResponse?SetResponse", "Type" : "Method" },
+		
+			{ "Name" : "SetStatusCode", "Url" : "#type/ConnectionResponse?SetStatusCode", "Type" : "Method" },
+		
+			{ "Name" : "SetStatusMessage", "Url" : "#type/ConnectionResponse?SetStatusMessage", "Type" : "Method" },
+		
+		{ "Name" : "ConnectionStatusCodes", "Url" : "#type/ConnectionStatusCodes", "Type" : "Type" },
+
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_100", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_100", "Type" : "Field" },
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_101", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_101", "Type" : "Field" },
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_200", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_200", "Type" : "Field" },
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_201", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_201", "Type" : "Field" },
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_202", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_202", "Type" : "Field" },
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_203", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_203", "Type" : "Field" },
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_204", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_204", "Type" : "Field" },
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_205", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_205", "Type" : "Field" },
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_206", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_206", "Type" : "Field" },
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_300", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_300", "Type" : "Field" },
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_301", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_301", "Type" : "Field" },
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_302", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_302", "Type" : "Field" },
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_303", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_303", "Type" : "Field" },
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_304", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_304", "Type" : "Field" },
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_305", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_305", "Type" : "Field" },
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_306", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_306", "Type" : "Field" },
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_307", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_307", "Type" : "Field" },
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_400", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_400", "Type" : "Field" },
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_401", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_401", "Type" : "Field" },
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_402", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_402", "Type" : "Field" },
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_403", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_403", "Type" : "Field" },
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_404", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_404", "Type" : "Field" },
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_405", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_405", "Type" : "Field" },
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_406", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_406", "Type" : "Field" },
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_407", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_407", "Type" : "Field" },
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_408", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_408", "Type" : "Field" },
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_409", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_409", "Type" : "Field" },
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_410", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_410", "Type" : "Field" },
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_411", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_411", "Type" : "Field" },
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_412", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_412", "Type" : "Field" },
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_413", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_413", "Type" : "Field" },
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_414", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_414", "Type" : "Field" },
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_415", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_415", "Type" : "Field" },
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_416", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_416", "Type" : "Field" },
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_417", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_417", "Type" : "Field" },
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_426", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_426", "Type" : "Field" },
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_500", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_500", "Type" : "Field" },
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_501", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_501", "Type" : "Field" },
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_502", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_502", "Type" : "Field" },
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_503", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_503", "Type" : "Field" },
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_504", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_504", "Type" : "Field" },
+		
+			{ "Name" : "RESPONSE_STATUS_CODE_505", "Url" : "#type/ConnectionStatusCodes?RESPONSE_STATUS_CODE_505", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_0", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_0", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_100", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_100", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_101", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_101", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_102", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_102", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_103", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_103", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_122", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_122", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_200", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_200", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_201", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_201", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_202", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_202", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_203", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_203", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_204", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_204", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_205", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_205", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_206", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_206", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_207", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_207", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_208", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_208", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_226", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_226", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_300", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_300", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_301", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_301", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_302", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_302", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_303", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_303", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_304", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_304", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_305", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_305", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_306", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_306", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_307", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_307", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_308", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_308", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_400", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_400", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_401", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_401", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_402", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_402", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_403", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_403", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_404", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_404", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_405", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_405", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_406", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_406", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_407", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_407", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_408", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_408", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_409", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_409", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_410", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_410", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_411", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_411", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_412", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_412", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_413", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_413", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_414", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_414", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_415", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_415", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_416", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_416", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_417", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_417", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_418", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_418", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_420", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_420", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_422", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_422", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_423", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_423", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_424", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_424", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_426", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_426", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_428", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_428", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_429", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_429", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_431", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_431", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_444", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_444", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_449", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_449", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_450", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_450", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_451", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_451", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_499", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_499", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_500", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_500", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_501", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_501", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_502", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_502", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_503", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_503", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_504", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_504", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_505", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_505", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_506", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_506", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_507", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_507", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_508", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_508", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_509", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_509", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_510", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_510", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_511", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_511", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_598", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_598", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_CODE_599", "Url" : "#type/ConnectionStatusCodes?STATUS_CODE_599", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_100", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_100", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_101", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_101", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_102", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_102", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_103", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_103", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_122", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_122", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_200", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_200", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_201", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_201", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_202", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_202", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_203", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_203", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_204", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_204", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_205", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_205", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_206", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_206", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_207", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_207", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_208", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_208", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_226", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_226", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_300", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_300", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_301", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_301", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_302", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_302", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_303", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_303", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_304", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_304", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_305", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_305", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_306", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_306", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_307", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_307", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_308", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_308", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_400", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_400", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_401", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_401", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_402", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_402", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_403", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_403", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_404", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_404", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_405", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_405", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_406", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_406", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_407", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_407", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_408", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_408", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_409", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_409", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_410", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_410", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_411", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_411", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_412", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_412", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_413", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_413", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_414", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_414", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_415", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_415", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_416", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_416", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_417", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_417", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_418", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_418", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_420", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_420", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_422", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_422", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_423", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_423", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_424", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_424", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_426", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_426", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_428", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_428", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_429", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_429", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_431", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_431", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_444", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_444", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_449", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_449", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_450", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_450", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_451", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_451", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_499", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_499", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_500", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_500", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_501", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_501", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_502", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_502", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_503", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_503", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_504", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_504", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_505", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_505", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_506", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_506", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_507", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_507", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_508", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_508", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_509", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_509", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_510", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_510", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_511", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_511", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_598", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_598", "Type" : "Field" },
+		
+			{ "Name" : "STATUS_MESSAGE_599", "Url" : "#type/ConnectionStatusCodes?STATUS_MESSAGE_599", "Type" : "Field" },
+		
+			{ "Name" : "GetStatusCode", "Url" : "#type/ConnectionStatusCodes?GetStatusCode2", "Type" : "Method" },
+		
+			{ "Name" : "GetStatusMessage", "Url" : "#type/ConnectionStatusCodes?GetStatusMessage2", "Type" : "Method" },
+		
+		{ "Name" : "HttpConnectionWorker", "Url" : "#type/HttpConnectionWorker", "Type" : "Type" },
+
+		
+			{ "Name" : "Connect", "Url" : "#type/HttpConnectionWorker?Connect2", "Type" : "Method" },
+		
+			{ "Name" : "Delete", "Url" : "#type/HttpConnectionWorker?Delete2", "Type" : "Method" },
+		
+			{ "Name" : "Get", "Url" : "#type/HttpConnectionWorker?Get2", "Type" : "Method" },
+		
+			{ "Name" : "Head", "Url" : "#type/HttpConnectionWorker?Head2", "Type" : "Method" },
+		
+			{ "Name" : "Options", "Url" : "#type/HttpConnectionWorker?Options2", "Type" : "Method" },
+		
+			{ "Name" : "Patch", "Url" : "#type/HttpConnectionWorker?Patch2", "Type" : "Method" },
+		
+			{ "Name" : "Post", "Url" : "#type/HttpConnectionWorker?Post2", "Type" : "Method" },
+		
+			{ "Name" : "Put", "Url" : "#type/HttpConnectionWorker?Put2", "Type" : "Method" },
+		
+			{ "Name" : "Trace", "Url" : "#type/HttpConnectionWorker?Trace2", "Type" : "Method" },
+		
+		{ "Name" : "HttpsConnectionWorker", "Url" : "#type/HttpsConnectionWorker", "Type" : "Type" },
+
+		
+			{ "Name" : "Connect", "Url" : "#type/HttpsConnectionWorker?Connect3", "Type" : "Method" },
+		
+			{ "Name" : "Delete", "Url" : "#type/HttpsConnectionWorker?Delete3", "Type" : "Method" },
+		
+			{ "Name" : "Get", "Url" : "#type/HttpsConnectionWorker?Get3", "Type" : "Method" },
+		
+			{ "Name" : "Head", "Url" : "#type/HttpsConnectionWorker?Head3", "Type" : "Method" },
+		
+			{ "Name" : "Options", "Url" : "#type/HttpsConnectionWorker?Options3", "Type" : "Method" },
+		
+			{ "Name" : "Patch", "Url" : "#type/HttpsConnectionWorker?Patch3", "Type" : "Method" },
+		
+			{ "Name" : "Post", "Url" : "#type/HttpsConnectionWorker?Post3", "Type" : "Method" },
+		
+			{ "Name" : "Put", "Url" : "#type/HttpsConnectionWorker?Put3", "Type" : "Method" },
+		
+			{ "Name" : "Trace", "Url" : "#type/HttpsConnectionWorker?Trace3", "Type" : "Method" },
+		
+	{ "Name" : "Siminov.Connect.Connection.Design", "Url" : "#namespace/Siminov.Connect.Connection.Design", "Type" : "Namespace" },
+	
+		{ "Name" : "IConnection", "Url" : "#type/IConnection", "Type" : "Type" },
+
+		
+			{ "Name" : "Connect", "Url" : "#type/IConnection?Connect", "Type" : "Method" },
+		
+			{ "Name" : "Delete", "Url" : "#type/IConnection?Delete", "Type" : "Method" },
+		
+			{ "Name" : "Get", "Url" : "#type/IConnection?Get", "Type" : "Method" },
+		
+			{ "Name" : "Head", "Url" : "#type/IConnection?Head", "Type" : "Method" },
+		
+			{ "Name" : "Options", "Url" : "#type/IConnection?Options", "Type" : "Method" },
+		
+			{ "Name" : "Patch", "Url" : "#type/IConnection?Patch", "Type" : "Method" },
+		
+			{ "Name" : "Post", "Url" : "#type/IConnection?Post", "Type" : "Method" },
+		
+			{ "Name" : "Put", "Url" : "#type/IConnection?Put", "Type" : "Method" },
+		
+			{ "Name" : "Trace", "Url" : "#type/IConnection?Trace", "Type" : "Method" },
+		
+		{ "Name" : "IConnectionRequest", "Url" : "#type/IConnectionRequest", "Type" : "Type" },
+
+		
+			{ "Name" : "AddHeaderParameter", "Url" : "#type/IConnectionRequest?AddHeaderParameter2", "Type" : "Method" },
+		
+			{ "Name" : "AddQueryParameter", "Url" : "#type/IConnectionRequest?AddQueryParameter2", "Type" : "Method" },
+		
+			{ "Name" : "GetDataStream", "Url" : "#type/IConnectionRequest?GetDataStream2", "Type" : "Method" },
+		
+			{ "Name" : "GetHeaderParameter", "Url" : "#type/IConnectionRequest?GetHeaderParameter2", "Type" : "Method" },
+		
+			{ "Name" : "GetHeaderParameters", "Url" : "#type/IConnectionRequest?GetHeaderParameters2", "Type" : "Method" },
+		
+			{ "Name" : "GetProtocol", "Url" : "#type/IConnectionRequest?GetProtocol2", "Type" : "Method" },
+		
+			{ "Name" : "GetQueryParameter", "Url" : "#type/IConnectionRequest?GetQueryParameter2", "Type" : "Method" },
+		
+			{ "Name" : "GetQueryParameters", "Url" : "#type/IConnectionRequest?GetQueryParameters2", "Type" : "Method" },
+		
+			{ "Name" : "GetType", "Url" : "#type/IConnectionRequest?GetType2", "Type" : "Method" },
+		
+			{ "Name" : "GetUrl", "Url" : "#type/IConnectionRequest?GetUrl2", "Type" : "Method" },
+		
+			{ "Name" : "SetDataStream", "Url" : "#type/IConnectionRequest?SetDataStream2", "Type" : "Method" },
+		
+			{ "Name" : "SetProtocol", "Url" : "#type/IConnectionRequest?SetProtocol2", "Type" : "Method" },
+		
+			{ "Name" : "SetType", "Url" : "#type/IConnectionRequest?SetType2", "Type" : "Method" },
+		
+			{ "Name" : "SetUrl", "Url" : "#type/IConnectionRequest?SetUrl2", "Type" : "Method" },
+		
+		{ "Name" : "IConnectionResponse", "Url" : "#type/IConnectionResponse", "Type" : "Type" },
+
+		
+			{ "Name" : "GetResponse", "Url" : "#type/IConnectionResponse?GetResponse2", "Type" : "Method" },
+		
+			{ "Name" : "GetStatusCode", "Url" : "#type/IConnectionResponse?GetStatusCode3", "Type" : "Method" },
+		
+			{ "Name" : "GetStatusMessage", "Url" : "#type/IConnectionResponse?GetStatusMessage3", "Type" : "Method" },
+		
+			{ "Name" : "SetResponse", "Url" : "#type/IConnectionResponse?SetResponse2", "Type" : "Method" },
+		
+			{ "Name" : "SetStatusCode", "Url" : "#type/IConnectionResponse?SetStatusCode2", "Type" : "Method" },
+		
+			{ "Name" : "SetStatusMessage", "Url" : "#type/IConnectionResponse?SetStatusMessage2", "Type" : "Method" },
+		
+	{ "Name" : "Siminov.Connect.Events", "Url" : "#namespace/Siminov.Connect.Events", "Type" : "Namespace" },
+	
+		{ "Name" : "EventHandler", "Url" : "#type/EventHandler", "Type" : "Type" },
+
+		
+			{ "Name" : "coreResourceManager", "Url" : "#type/EventHandler?coreResourceManager", "Type" : "Field" },
+		
+			{ "Name" : "eventHandler", "Url" : "#type/EventHandler?eventHandler", "Type" : "Field" },
+		
+			{ "Name" : "notificationEventsHandler", "Url" : "#type/EventHandler?notificationEventsHandler", "Type" : "Field" },
+		
+			{ "Name" : "syncEvents", "Url" : "#type/EventHandler?syncEvents", "Type" : "Field" },
+		
+			{ "Name" : "GetInstance", "Url" : "#type/EventHandler?GetInstance2", "Type" : "Method" },
+		
+			{ "Name" : "GetNotificationEventHandler", "Url" : "#type/EventHandler?GetNotificationEventHandler", "Type" : "Method" },
+		
+			{ "Name" : "GetSyncEventHandler", "Url" : "#type/EventHandler?GetSyncEventHandler", "Type" : "Method" },
+		
+		{ "Name" : "INotificationEvents", "Url" : "#type/INotificationEvents", "Type" : "Type" },
+
+		
+			{ "Name" : "OnError", "Url" : "#type/INotificationEvents?OnError", "Type" : "Method" },
+		
+			{ "Name" : "OnNotification", "Url" : "#type/INotificationEvents?OnNotification", "Type" : "Method" },
+		
+			{ "Name" : "OnRegistration", "Url" : "#type/INotificationEvents?OnRegistration", "Type" : "Method" },
+		
+			{ "Name" : "OnUnregistration", "Url" : "#type/INotificationEvents?OnUnregistration", "Type" : "Method" },
+		
+		{ "Name" : "ISyncEvents", "Url" : "#type/ISyncEvents", "Type" : "Type" },
+
+		
+			{ "Name" : "OnFinish", "Url" : "#type/ISyncEvents?OnFinish", "Type" : "Method" },
+		
+			{ "Name" : "OnQueue", "Url" : "#type/ISyncEvents?OnQueue", "Type" : "Method" },
+		
+			{ "Name" : "OnStart", "Url" : "#type/ISyncEvents?OnStart", "Type" : "Method" },
+		
+			{ "Name" : "OnTerminate", "Url" : "#type/ISyncEvents?OnTerminate", "Type" : "Method" },
+		
+	{ "Name" : "Siminov.Connect.Exception", "Url" : "#namespace/Siminov.Connect.Exception", "Type" : "Namespace" },
+	
+		{ "Name" : "ConnectionException", "Url" : "#type/ConnectionException", "Type" : "Type" },
+
+		
+		{ "Name" : "NotificationException", "Url" : "#type/NotificationException", "Type" : "Type" },
+
+		
+		{ "Name" : "ServiceException", "Url" : "#type/ServiceException", "Type" : "Type" },
+
+		
+		{ "Name" : "SyncException", "Url" : "#type/SyncException", "Type" : "Type" },
+
+		
+	{ "Name" : "Siminov.Connect.Model", "Url" : "#namespace/Siminov.Connect.Model", "Type" : "Namespace" },
+	
+		{ "Name" : "ApplicationDescriptor", "Url" : "#type/ApplicationDescriptor", "Type" : "Type" },
+
+		
+			{ "Name" : "notificationDescriptor", "Url" : "#type/ApplicationDescriptor?notificationDescriptor", "Type" : "Field" },
+		
+			{ "Name" : "serviceDescriptorNamesBasedOnPath", "Url" : "#type/ApplicationDescriptor?serviceDescriptorNamesBasedOnPath", "Type" : "Field" },
+		
+			{ "Name" : "serviceDescriptorPaths", "Url" : "#type/ApplicationDescriptor?serviceDescriptorPaths", "Type" : "Field" },
+		
+			{ "Name" : "syncDescriptorPaths", "Url" : "#type/ApplicationDescriptor?syncDescriptorPaths", "Type" : "Field" },
+		
+			{ "Name" : "syncDescriptorsBasedOnName", "Url" : "#type/ApplicationDescriptor?syncDescriptorsBasedOnName", "Type" : "Field" },
+		
+			{ "Name" : "syncDescriptorsBasedOnPath", "Url" : "#type/ApplicationDescriptor?syncDescriptorsBasedOnPath", "Type" : "Field" },
+		
+			{ "Name" : "AddServiceDescriptorNameBasedOnPath", "Url" : "#type/ApplicationDescriptor?AddServiceDescriptorNameBasedOnPath", "Type" : "Method" },
+		
+			{ "Name" : "AddServiceDescriptorPath", "Url" : "#type/ApplicationDescriptor?AddServiceDescriptorPath", "Type" : "Method" },
+		
+			{ "Name" : "AddSyncDescriptor", "Url" : "#type/ApplicationDescriptor?AddSyncDescriptor", "Type" : "Method" },
+		
+			{ "Name" : "AddSyncDescriptorPath", "Url" : "#type/ApplicationDescriptor?AddSyncDescriptorPath", "Type" : "Method" },
+		
+			{ "Name" : "ContainServiceDescriptorNameBasedOnPath", "Url" : "#type/ApplicationDescriptor?ContainServiceDescriptorNameBasedOnPath", "Type" : "Method" },
+		
+			{ "Name" : "ContainServiceDescriptorPathBasedOnName", "Url" : "#type/ApplicationDescriptor?ContainServiceDescriptorPathBasedOnName", "Type" : "Method" },
+		
+			{ "Name" : "ContainSyncDescriptor", "Url" : "#type/ApplicationDescriptor?ContainSyncDescriptor", "Type" : "Method" },
+		
+			{ "Name" : "ContainSyncDescriptorPath", "Url" : "#type/ApplicationDescriptor?ContainSyncDescriptorPath", "Type" : "Method" },
+		
+			{ "Name" : "GetNotificationDescriptor", "Url" : "#type/ApplicationDescriptor?GetNotificationDescriptor", "Type" : "Method" },
+		
+			{ "Name" : "GetServiceDescriptorPathBasedOnName", "Url" : "#type/ApplicationDescriptor?GetServiceDescriptorPathBasedOnName", "Type" : "Method" },
+		
+			{ "Name" : "GetServiceDescriptorPaths", "Url" : "#type/ApplicationDescriptor?GetServiceDescriptorPaths", "Type" : "Method" },
+		
+			{ "Name" : "GetSyncDescriptorBasedOnName", "Url" : "#type/ApplicationDescriptor?GetSyncDescriptorBasedOnName", "Type" : "Method" },
+		
+			{ "Name" : "GetSyncDescriptorBasedOnPath", "Url" : "#type/ApplicationDescriptor?GetSyncDescriptorBasedOnPath", "Type" : "Method" },
+		
+			{ "Name" : "GetSyncDescriptorPaths", "Url" : "#type/ApplicationDescriptor?GetSyncDescriptorPaths", "Type" : "Method" },
+		
+			{ "Name" : "GetSyncDescriptors", "Url" : "#type/ApplicationDescriptor?GetSyncDescriptors", "Type" : "Method" },
+		
+			{ "Name" : "RemoveServiceDescriptorNameBasedOnPath", "Url" : "#type/ApplicationDescriptor?RemoveServiceDescriptorNameBasedOnPath", "Type" : "Method" },
+		
+			{ "Name" : "RemoveServiceDescriptorPath", "Url" : "#type/ApplicationDescriptor?RemoveServiceDescriptorPath", "Type" : "Method" },
+		
+			{ "Name" : "RemoveSyncDescriptor", "Url" : "#type/ApplicationDescriptor?RemoveSyncDescriptor", "Type" : "Method" },
+		
+			{ "Name" : "RemoveSyncDescriptorPath", "Url" : "#type/ApplicationDescriptor?RemoveSyncDescriptorPath", "Type" : "Method" },
+		
+			{ "Name" : "SetNotificationDescriptor", "Url" : "#type/ApplicationDescriptor?SetNotificationDescriptor", "Type" : "Method" },
+		
+		{ "Name" : "LibraryDescriptor", "Url" : "#type/LibraryDescriptor", "Type" : "Type" },
+
+		
+			{ "Name" : "serviceDescriptorNamesBasedOnPath", "Url" : "#type/LibraryDescriptor?serviceDescriptorNamesBasedOnPath", "Type" : "Field" },
+		
+			{ "Name" : "serviceDescriptorPaths", "Url" : "#type/LibraryDescriptor?serviceDescriptorPaths", "Type" : "Field" },
+		
+			{ "Name" : "syncDescriptorNamesBasedOnPath", "Url" : "#type/LibraryDescriptor?syncDescriptorNamesBasedOnPath", "Type" : "Field" },
+		
+			{ "Name" : "syncDescriptorPaths", "Url" : "#type/LibraryDescriptor?syncDescriptorPaths", "Type" : "Field" },
+		
+			{ "Name" : "AddServiceDescriptorNameBasedOnPath", "Url" : "#type/LibraryDescriptor?AddServiceDescriptorNameBasedOnPath2", "Type" : "Method" },
+		
+			{ "Name" : "AddServiceDescriptorPath", "Url" : "#type/LibraryDescriptor?AddServiceDescriptorPath2", "Type" : "Method" },
+		
+			{ "Name" : "AddSyncDescriptorNameBasedOnPath", "Url" : "#type/LibraryDescriptor?AddSyncDescriptorNameBasedOnPath", "Type" : "Method" },
+		
+			{ "Name" : "AddSyncDescriptorPath", "Url" : "#type/LibraryDescriptor?AddSyncDescriptorPath2", "Type" : "Method" },
+		
+			{ "Name" : "ContainServiceDescriptorNameBasedOnPath", "Url" : "#type/LibraryDescriptor?ContainServiceDescriptorNameBasedOnPath2", "Type" : "Method" },
+		
+			{ "Name" : "ContainServiceDescriptorPathBasedOnName", "Url" : "#type/LibraryDescriptor?ContainServiceDescriptorPathBasedOnName2", "Type" : "Method" },
+		
+			{ "Name" : "ContainSyncDescriptorNameBasedOnPath", "Url" : "#type/LibraryDescriptor?ContainSyncDescriptorNameBasedOnPath", "Type" : "Method" },
+		
+			{ "Name" : "ContainSyncDescriptorPathBasedOnName", "Url" : "#type/LibraryDescriptor?ContainSyncDescriptorPathBasedOnName", "Type" : "Method" },
+		
+			{ "Name" : "GetServiceDescriptorPathBasedOnName", "Url" : "#type/LibraryDescriptor?GetServiceDescriptorPathBasedOnName2", "Type" : "Method" },
+		
+			{ "Name" : "GetServiceDescriptorPaths", "Url" : "#type/LibraryDescriptor?GetServiceDescriptorPaths2", "Type" : "Method" },
+		
+			{ "Name" : "GetSyncDescriptorPathBasedOnName", "Url" : "#type/LibraryDescriptor?GetSyncDescriptorPathBasedOnName", "Type" : "Method" },
+		
+			{ "Name" : "GetSyncDescriptorPaths", "Url" : "#type/LibraryDescriptor?GetSyncDescriptorPaths2", "Type" : "Method" },
+		
+			{ "Name" : "RemoveServiceDescriptorNameBasedOnPath", "Url" : "#type/LibraryDescriptor?RemoveServiceDescriptorNameBasedOnPath2", "Type" : "Method" },
+		
+			{ "Name" : "RemoveServiceDescriptorPath", "Url" : "#type/LibraryDescriptor?RemoveServiceDescriptorPath2", "Type" : "Method" },
+		
+			{ "Name" : "RemoveSyncDescriptorNameBasedOnPath", "Url" : "#type/LibraryDescriptor?RemoveSyncDescriptorNameBasedOnPath", "Type" : "Method" },
+		
+			{ "Name" : "RemoveSyncDescriptorPath", "Url" : "#type/LibraryDescriptor?RemoveSyncDescriptorPath2", "Type" : "Method" },
+		
+		{ "Name" : "NotificationDescriptor", "Url" : "#type/NotificationDescriptor", "Type" : "Type" },
+
+		
+			{ "Name" : "properties", "Url" : "#type/NotificationDescriptor?properties", "Type" : "Field" },
+		
+			{ "Name" : "AddProperty", "Url" : "#type/NotificationDescriptor?AddProperty", "Type" : "Method" },
+		
+			{ "Name" : "ContainProperty", "Url" : "#type/NotificationDescriptor?ContainProperty", "Type" : "Method" },
+		
+			{ "Name" : "GetProperties", "Url" : "#type/NotificationDescriptor?GetProperties", "Type" : "Method" },
+		
+			{ "Name" : "GetProperty", "Url" : "#type/NotificationDescriptor?GetProperty", "Type" : "Method" },
+		
+			{ "Name" : "RemoveProperty", "Url" : "#type/NotificationDescriptor?RemoveProperty", "Type" : "Method" },
+		
+		{ "Name" : "ServiceDescriptor", "Url" : "#type/ServiceDescriptor", "Type" : "Type" },
+
+		
+			{ "Name" : "properties", "Url" : "#type/ServiceDescriptor?properties", "Type" : "Field" },
+		
+			{ "Name" : "requests", "Url" : "#type/ServiceDescriptor?requests", "Type" : "Field" },
+		
+			{ "Name" : "AddProperty", "Url" : "#type/ServiceDescriptor?AddProperty2", "Type" : "Method" },
+		
+			{ "Name" : "AddRequest", "Url" : "#type/ServiceDescriptor?AddRequest2", "Type" : "Method" },
+		
+			{ "Name" : "ContainProperty", "Url" : "#type/ServiceDescriptor?ContainProperty2", "Type" : "Method" },
+		
+			{ "Name" : "ContainRequest", "Url" : "#type/ServiceDescriptor?ContainRequest", "Type" : "Method" },
+		
+			{ "Name" : "GetContext", "Url" : "#type/ServiceDescriptor?GetContext", "Type" : "Method" },
+		
+			{ "Name" : "GetDescription", "Url" : "#type/ServiceDescriptor?GetDescription", "Type" : "Method" },
+		
+			{ "Name" : "GetInstance", "Url" : "#type/ServiceDescriptor?GetInstance3", "Type" : "Method" },
+		
+			{ "Name" : "GetName", "Url" : "#type/ServiceDescriptor?GetName", "Type" : "Method" },
+		
+			{ "Name" : "GetPort", "Url" : "#type/ServiceDescriptor?GetPort", "Type" : "Method" },
+		
+			{ "Name" : "GetProperties", "Url" : "#type/ServiceDescriptor?GetProperties2", "Type" : "Method" },
+		
+			{ "Name" : "GetProperty", "Url" : "#type/ServiceDescriptor?GetProperty2", "Type" : "Method" },
+		
+			{ "Name" : "GetProtocol", "Url" : "#type/ServiceDescriptor?GetProtocol3", "Type" : "Method" },
+		
+			{ "Name" : "GetRequest", "Url" : "#type/ServiceDescriptor?GetRequest", "Type" : "Method" },
+		
+			{ "Name" : "GetRequest", "Url" : "#type/ServiceDescriptor?GetRequest2", "Type" : "Method" },
+		
+			{ "Name" : "RemoveProperty", "Url" : "#type/ServiceDescriptor?RemoveProperty2", "Type" : "Method" },
+		
+			{ "Name" : "RemoveRequest", "Url" : "#type/ServiceDescriptor?RemoveRequest2", "Type" : "Method" },
+		
+			{ "Name" : "SetContext", "Url" : "#type/ServiceDescriptor?SetContext", "Type" : "Method" },
+		
+			{ "Name" : "SetDescription", "Url" : "#type/ServiceDescriptor?SetDescription", "Type" : "Method" },
+		
+			{ "Name" : "SetInstance", "Url" : "#type/ServiceDescriptor?SetInstance", "Type" : "Method" },
+		
+			{ "Name" : "SetName", "Url" : "#type/ServiceDescriptor?SetName", "Type" : "Method" },
+		
+			{ "Name" : "SetPort", "Url" : "#type/ServiceDescriptor?SetPort", "Type" : "Method" },
+		
+			{ "Name" : "SetProtocol", "Url" : "#type/ServiceDescriptor?SetProtocol3", "Type" : "Method" },
+		
+		{ "Name" : "ServiceRequest", "Url" : "#type/ServiceRequest", "Type" : "Type" },
+
+		
+			{ "Name" : "instanceOf", "Url" : "#type/ServiceRequest?instanceOf", "Type" : "Field" },
+		
+			{ "Name" : "request", "Url" : "#type/ServiceRequest?request", "Type" : "Field" },
+		
+			{ "Name" : "requestId", "Url" : "#type/ServiceRequest?requestId", "Type" : "Field" },
+		
+			{ "Name" : "service", "Url" : "#type/ServiceRequest?service", "Type" : "Field" },
+		
+			{ "Name" : "serviceRequestResources", "Url" : "#type/ServiceRequest?serviceRequestResources", "Type" : "Field" },
+		
+			{ "Name" : "AddServiceRequestResource", "Url" : "#type/ServiceRequest?AddServiceRequestResource", "Type" : "Method" },
+		
+			{ "Name" : "ContainServiceRequestResource", "Url" : "#type/ServiceRequest?ContainServiceRequestResource", "Type" : "Method" },
+		
+			{ "Name" : "GetInstanceOf", "Url" : "#type/ServiceRequest?GetInstanceOf", "Type" : "Method" },
+		
+			{ "Name" : "GetRequest", "Url" : "#type/ServiceRequest?GetRequest3", "Type" : "Method" },
+		
+			{ "Name" : "GetRequestId", "Url" : "#type/ServiceRequest?GetRequestId", "Type" : "Method" },
+		
+			{ "Name" : "GetService", "Url" : "#type/ServiceRequest?GetService", "Type" : "Method" },
+		
+			{ "Name" : "GetServiceRequestResource", "Url" : "#type/ServiceRequest?GetServiceRequestResource", "Type" : "Method" },
+		
+			{ "Name" : "GetServiceRequestResources", "Url" : "#type/ServiceRequest?GetServiceRequestResources", "Type" : "Method" },
+		
+			{ "Name" : "SetInstanceOf", "Url" : "#type/ServiceRequest?SetInstanceOf", "Type" : "Method" },
+		
+			{ "Name" : "SetRequest", "Url" : "#type/ServiceRequest?SetRequest", "Type" : "Method" },
+		
+			{ "Name" : "SetRequestId", "Url" : "#type/ServiceRequest?SetRequestId", "Type" : "Method" },
+		
+			{ "Name" : "SetService", "Url" : "#type/ServiceRequest?SetService", "Type" : "Method" },
+		
+			{ "Name" : "SetServiceRequestResources", "Url" : "#type/ServiceRequest?SetServiceRequestResources", "Type" : "Method" },
+		
+		{ "Name" : "ServiceRequestResource", "Url" : "#type/ServiceRequestResource", "Type" : "Type" },
+
+		
+			{ "Name" : "name", "Url" : "#type/ServiceRequestResource?name", "Type" : "Field" },
+		
+			{ "Name" : "serviceRequest", "Url" : "#type/ServiceRequestResource?serviceRequest", "Type" : "Field" },
+		
+			{ "Name" : "value", "Url" : "#type/ServiceRequestResource?value", "Type" : "Field" },
+		
+			{ "Name" : "GetName", "Url" : "#type/ServiceRequestResource?GetName2", "Type" : "Method" },
+		
+			{ "Name" : "GetServiceRequest", "Url" : "#type/ServiceRequestResource?GetServiceRequest", "Type" : "Method" },
+		
+			{ "Name" : "GetValue", "Url" : "#type/ServiceRequestResource?GetValue", "Type" : "Method" },
+		
+			{ "Name" : "SetName", "Url" : "#type/ServiceRequestResource?SetName2", "Type" : "Method" },
+		
+			{ "Name" : "SetServiceRequest", "Url" : "#type/ServiceRequestResource?SetServiceRequest", "Type" : "Method" },
+		
+			{ "Name" : "SetValue", "Url" : "#type/ServiceRequestResource?SetValue", "Type" : "Method" },
+		
+		{ "Name" : "SyncDescriptor", "Url" : "#type/SyncDescriptor", "Type" : "Type" },
+
+		
+			{ "Name" : "properties", "Url" : "#type/SyncDescriptor?properties", "Type" : "Field" },
+		
+			{ "Name" : "serviceDescriptorNames", "Url" : "#type/SyncDescriptor?serviceDescriptorNames", "Type" : "Field" },
+		
+			{ "Name" : "AddProperty", "Url" : "#type/SyncDescriptor?AddProperty3", "Type" : "Method" },
+		
+			{ "Name" : "AddServiceDescriptorName", "Url" : "#type/SyncDescriptor?AddServiceDescriptorName", "Type" : "Method" },
+		
+			{ "Name" : "ContainProperty", "Url" : "#type/SyncDescriptor?ContainProperty3", "Type" : "Method" },
+		
+			{ "Name" : "GetName", "Url" : "#type/SyncDescriptor?GetName3", "Type" : "Method" },
+		
+			{ "Name" : "GetProperties", "Url" : "#type/SyncDescriptor?GetProperties3", "Type" : "Method" },
+		
+			{ "Name" : "GetProperty", "Url" : "#type/SyncDescriptor?GetProperty3", "Type" : "Method" },
+		
+			{ "Name" : "GetServiceDescriptorNames", "Url" : "#type/SyncDescriptor?GetServiceDescriptorNames", "Type" : "Method" },
+		
+			{ "Name" : "GetSyncInterval", "Url" : "#type/SyncDescriptor?GetSyncInterval", "Type" : "Method" },
+		
+			{ "Name" : "RemoveProperty", "Url" : "#type/SyncDescriptor?RemoveProperty3", "Type" : "Method" },
+		
+			{ "Name" : "RemoveServiceDescriptorName", "Url" : "#type/SyncDescriptor?RemoveServiceDescriptorName", "Type" : "Method" },
+		
+			{ "Name" : "SetName", "Url" : "#type/SyncDescriptor?SetName3", "Type" : "Method" },
+		
+			{ "Name" : "SetSyncInterval", "Url" : "#type/SyncDescriptor?SetSyncInterval", "Type" : "Method" },
+		
+	{ "Name" : "Siminov.Connect.Notification", "Url" : "#namespace/Siminov.Connect.Notification", "Type" : "Namespace" },
+	
+		{ "Name" : "Message", "Url" : "#type/Message", "Type" : "Type" },
+
+		
+			{ "Name" : "message", "Url" : "#type/Message?message", "Type" : "Field" },
+		
+			{ "Name" : "GetMessage", "Url" : "#type/Message?GetMessage2", "Type" : "Method" },
+		
+			{ "Name" : "SetMessage", "Url" : "#type/Message?SetMessage2", "Type" : "Method" },
+		
+		{ "Name" : "NotificationManager", "Url" : "#type/NotificationManager", "Type" : "Type" },
+
+		
+			{ "Name" : "connectResourceManager", "Url" : "#type/NotificationManager?connectResourceManager", "Type" : "Field" },
+		
+			{ "Name" : "coreResourceManager", "Url" : "#type/NotificationManager?coreResourceManager", "Type" : "Field" },
+		
+			{ "Name" : "notificationManager", "Url" : "#type/NotificationManager?notificationManager", "Type" : "Field" },
+		
+			{ "Name" : "DoRegistration", "Url" : "#type/NotificationManager?DoRegistration2", "Type" : "Method" },
+		
+			{ "Name" : "DoUnregistration", "Url" : "#type/NotificationManager?DoUnregistration2", "Type" : "Method" },
+		
+			{ "Name" : "GetInstance", "Url" : "#type/NotificationManager?GetInstance4", "Type" : "Method" },
+		
+			{ "Name" : "OnError", "Url" : "#type/NotificationManager?OnError3", "Type" : "Method" },
+		
+			{ "Name" : "OnNotification", "Url" : "#type/NotificationManager?OnNotification3", "Type" : "Method" },
+		
+			{ "Name" : "OnRegistration", "Url" : "#type/NotificationManager?OnRegistration3", "Type" : "Method" },
+		
+			{ "Name" : "OnUnregistration", "Url" : "#type/NotificationManager?OnUnregistration3", "Type" : "Method" },
+		
+		{ "Name" : "NotificationReceiver", "Url" : "#type/NotificationReceiver", "Type" : "Type" },
+
+		
+		{ "Name" : "NotificationService", "Url" : "#type/NotificationService", "Type" : "Type" },
+
+		
+			{ "Name" : "applicationDescriptor", "Url" : "#type/NotificationService?applicationDescriptor", "Type" : "Field" },
+		
+			{ "Name" : "notificationDescriptor", "Url" : "#type/NotificationService?notificationDescriptor", "Type" : "Field" },
+		
+			{ "Name" : "resourceManager", "Url" : "#type/NotificationService?resourceManager", "Type" : "Field" },
+		
+			{ "Name" : "SENDER_ID", "Url" : "#type/NotificationService?SENDER_ID", "Type" : "Field" },
+		
+			{ "Name" : "OnError", "Url" : "#type/NotificationService?OnError4", "Type" : "Method" },
+		
+			{ "Name" : "OnMessage", "Url" : "#type/NotificationService?OnMessage", "Type" : "Method" },
+		
+			{ "Name" : "OnRegistered", "Url" : "#type/NotificationService?OnRegistered", "Type" : "Method" },
+		
+			{ "Name" : "OnUnregistered", "Url" : "#type/NotificationService?OnUnregistered", "Type" : "Method" },
+		
+		{ "Name" : "Registration", "Url" : "#type/Registration", "Type" : "Type" },
+
+		
+			{ "Name" : "registrationId", "Url" : "#type/Registration?registrationId", "Type" : "Field" },
+		
+			{ "Name" : "GetRegistrationId", "Url" : "#type/Registration?GetRegistrationId2", "Type" : "Method" },
+		
+			{ "Name" : "SetRegistrationId", "Url" : "#type/Registration?SetRegistrationId2", "Type" : "Method" },
+		
+	{ "Name" : "Siminov.Connect.Notification.Design", "Url" : "#namespace/Siminov.Connect.Notification.Design", "Type" : "Namespace" },
+	
+		{ "Name" : "IMessage", "Url" : "#type/IMessage", "Type" : "Type" },
+
+		
+			{ "Name" : "GetMessage", "Url" : "#type/IMessage?GetMessage", "Type" : "Method" },
+		
+			{ "Name" : "SetMessage", "Url" : "#type/IMessage?SetMessage", "Type" : "Method" },
+		
+		{ "Name" : "INotification", "Url" : "#type/INotification", "Type" : "Type" },
+
+		
+			{ "Name" : "DoRegistration", "Url" : "#type/INotification?DoRegistration", "Type" : "Method" },
+		
+			{ "Name" : "DoUnregistration", "Url" : "#type/INotification?DoUnregistration", "Type" : "Method" },
+		
+			{ "Name" : "OnError", "Url" : "#type/INotification?OnError2", "Type" : "Method" },
+		
+			{ "Name" : "OnNotification", "Url" : "#type/INotification?OnNotification2", "Type" : "Method" },
+		
+			{ "Name" : "OnRegistration", "Url" : "#type/INotification?OnRegistration2", "Type" : "Method" },
+		
+			{ "Name" : "OnUnregistration", "Url" : "#type/INotification?OnUnregistration2", "Type" : "Method" },
+		
+		{ "Name" : "IRegistration", "Url" : "#type/IRegistration", "Type" : "Type" },
+
+		
+			{ "Name" : "GetRegistrationId", "Url" : "#type/IRegistration?GetRegistrationId", "Type" : "Method" },
+		
+			{ "Name" : "SetRegistrationId", "Url" : "#type/IRegistration?SetRegistrationId", "Type" : "Method" },
+		
+	{ "Name" : "Siminov.Connect.Reader", "Url" : "#namespace/Siminov.Connect.Reader", "Type" : "Namespace" },
+	
+		{ "Name" : "ApplicationDescriptorReader", "Url" : "#type/ApplicationDescriptorReader", "Type" : "Type" },
+
+		
+			{ "Name" : "applicationDescriptor", "Url" : "#type/ApplicationDescriptorReader?applicationDescriptor", "Type" : "Field" },
+		
+			{ "Name" : "isNotificationDescriptor", "Url" : "#type/ApplicationDescriptorReader?isNotificationDescriptor", "Type" : "Field" },
+		
+			{ "Name" : "notificationDescriptor", "Url" : "#type/ApplicationDescriptorReader?notificationDescriptor", "Type" : "Field" },
+		
+			{ "Name" : "propertyName", "Url" : "#type/ApplicationDescriptorReader?propertyName", "Type" : "Field" },
+		
+			{ "Name" : "resourceManager", "Url" : "#type/ApplicationDescriptorReader?resourceManager", "Type" : "Field" },
+		
+			{ "Name" : "tempValue", "Url" : "#type/ApplicationDescriptorReader?tempValue", "Type" : "Field" },
+		
+			{ "Name" : "Characters", "Url" : "#type/ApplicationDescriptorReader?Characters", "Type" : "Method" },
+		
+			{ "Name" : "EndElement", "Url" : "#type/ApplicationDescriptorReader?EndElement", "Type" : "Method" },
+		
+			{ "Name" : "GetApplicationDescriptor", "Url" : "#type/ApplicationDescriptorReader?GetApplicationDescriptor", "Type" : "Method" },
+		
+			{ "Name" : "InitializeProperty", "Url" : "#type/ApplicationDescriptorReader?InitializeProperty", "Type" : "Method" },
+		
+			{ "Name" : "ProcessProperty", "Url" : "#type/ApplicationDescriptorReader?ProcessProperty", "Type" : "Method" },
+		
+			{ "Name" : "StartElement", "Url" : "#type/ApplicationDescriptorReader?StartElement", "Type" : "Method" },
+		
+		{ "Name" : "LibraryDescriptorReader", "Url" : "#type/LibraryDescriptorReader", "Type" : "Type" },
+
+		
+			{ "Name" : "libraryDescriptor", "Url" : "#type/LibraryDescriptorReader?libraryDescriptor", "Type" : "Field" },
+		
+			{ "Name" : "propertyName", "Url" : "#type/LibraryDescriptorReader?propertyName", "Type" : "Field" },
+		
+			{ "Name" : "tempValue", "Url" : "#type/LibraryDescriptorReader?tempValue", "Type" : "Field" },
+		
+			{ "Name" : "Characters", "Url" : "#type/LibraryDescriptorReader?Characters2", "Type" : "Method" },
+		
+			{ "Name" : "EndElement", "Url" : "#type/LibraryDescriptorReader?EndElement2", "Type" : "Method" },
+		
+			{ "Name" : "GetLibraryDescriptor", "Url" : "#type/LibraryDescriptorReader?GetLibraryDescriptor", "Type" : "Method" },
+		
+			{ "Name" : "InitializeProperty", "Url" : "#type/LibraryDescriptorReader?InitializeProperty2", "Type" : "Method" },
+		
+			{ "Name" : "StartElement", "Url" : "#type/LibraryDescriptorReader?StartElement2", "Type" : "Method" },
+		
+		{ "Name" : "QuickServiceDescriptorReader", "Url" : "#type/QuickServiceDescriptorReader", "Type" : "Type" },
+
+		
+			{ "Name" : "connectResourceManager", "Url" : "#type/QuickServiceDescriptorReader?connectResourceManager", "Type" : "Field" },
+		
+			{ "Name" : "coreResourceManager", "Url" : "#type/QuickServiceDescriptorReader?coreResourceManager", "Type" : "Field" },
+		
+			{ "Name" : "doesMatch", "Url" : "#type/QuickServiceDescriptorReader?doesMatch", "Type" : "Field" },
+		
+			{ "Name" : "finalServiceDescriptorName", "Url" : "#type/QuickServiceDescriptorReader?finalServiceDescriptorName", "Type" : "Field" },
+		
+			{ "Name" : "isNameProperty", "Url" : "#type/QuickServiceDescriptorReader?isNameProperty", "Type" : "Field" },
+		
+			{ "Name" : "serviceDescriptor", "Url" : "#type/QuickServiceDescriptorReader?serviceDescriptor", "Type" : "Field" },
+		
+			{ "Name" : "tempValue", "Url" : "#type/QuickServiceDescriptorReader?tempValue", "Type" : "Field" },
+		
+			{ "Name" : "Characters", "Url" : "#type/QuickServiceDescriptorReader?Characters3", "Type" : "Method" },
+		
+			{ "Name" : "ContainServiceDescriptor", "Url" : "#type/QuickServiceDescriptorReader?ContainServiceDescriptor", "Type" : "Method" },
+		
+			{ "Name" : "EndElement", "Url" : "#type/QuickServiceDescriptorReader?EndElement3", "Type" : "Method" },
+		
+			{ "Name" : "GetServiceDescriptor", "Url" : "#type/QuickServiceDescriptorReader?GetServiceDescriptor", "Type" : "Method" },
+		
+			{ "Name" : "Process", "Url" : "#type/QuickServiceDescriptorReader?Process", "Type" : "Method" },
+		
+			{ "Name" : "StartElement", "Url" : "#type/QuickServiceDescriptorReader?StartElement3", "Type" : "Method" },
+		
+		{ "Name" : "ServiceDescriptorReader", "Url" : "#type/ServiceDescriptorReader", "Type" : "Type" },
+
+		
+			{ "Name" : "headerParameter", "Url" : "#type/ServiceDescriptorReader?headerParameter", "Type" : "Field" },
+		
+			{ "Name" : "isRequest", "Url" : "#type/ServiceDescriptorReader?isRequest", "Type" : "Field" },
+		
+			{ "Name" : "propertyName", "Url" : "#type/ServiceDescriptorReader?propertyName", "Type" : "Field" },
+		
+			{ "Name" : "queryParameter", "Url" : "#type/ServiceDescriptorReader?queryParameter", "Type" : "Field" },
+		
+			{ "Name" : "request", "Url" : "#type/ServiceDescriptorReader?request", "Type" : "Field" },
+		
+			{ "Name" : "resourceManager", "Url" : "#type/ServiceDescriptorReader?resourceManager", "Type" : "Field" },
+		
+			{ "Name" : "serviceDescriptor", "Url" : "#type/ServiceDescriptorReader?serviceDescriptor", "Type" : "Field" },
+		
+			{ "Name" : "tempValue", "Url" : "#type/ServiceDescriptorReader?tempValue", "Type" : "Field" },
+		
+			{ "Name" : "Characters", "Url" : "#type/ServiceDescriptorReader?Characters4", "Type" : "Method" },
+		
+			{ "Name" : "EndElement", "Url" : "#type/ServiceDescriptorReader?EndElement4", "Type" : "Method" },
+		
+			{ "Name" : "GetServiceDescriptor", "Url" : "#type/ServiceDescriptorReader?GetServiceDescriptor2", "Type" : "Method" },
+		
+			{ "Name" : "InitializeProperty", "Url" : "#type/ServiceDescriptorReader?InitializeProperty3", "Type" : "Method" },
+		
+			{ "Name" : "Parse", "Url" : "#type/ServiceDescriptorReader?Parse", "Type" : "Method" },
+		
+			{ "Name" : "ProcessProperty", "Url" : "#type/ServiceDescriptorReader?ProcessProperty2", "Type" : "Method" },
+		
+			{ "Name" : "StartElement", "Url" : "#type/ServiceDescriptorReader?StartElement4", "Type" : "Method" },
+		
+		{ "Name" : "SyncDescriptorReader", "Url" : "#type/SyncDescriptorReader", "Type" : "Type" },
+
+		
+			{ "Name" : "propertyName", "Url" : "#type/SyncDescriptorReader?propertyName", "Type" : "Field" },
+		
+			{ "Name" : "resourceManager", "Url" : "#type/SyncDescriptorReader?resourceManager", "Type" : "Field" },
+		
+			{ "Name" : "syncDescriptor", "Url" : "#type/SyncDescriptorReader?syncDescriptor", "Type" : "Field" },
+		
+			{ "Name" : "tempValue", "Url" : "#type/SyncDescriptorReader?tempValue", "Type" : "Field" },
+		
+			{ "Name" : "Characters", "Url" : "#type/SyncDescriptorReader?Characters5", "Type" : "Method" },
+		
+			{ "Name" : "EndElement", "Url" : "#type/SyncDescriptorReader?EndElement5", "Type" : "Method" },
+		
+			{ "Name" : "GetSyncDescriptor", "Url" : "#type/SyncDescriptorReader?GetSyncDescriptor", "Type" : "Method" },
+		
+			{ "Name" : "Parse", "Url" : "#type/SyncDescriptorReader?Parse2", "Type" : "Method" },
+		
+			{ "Name" : "StartElement", "Url" : "#type/SyncDescriptorReader?StartElement5", "Type" : "Method" },
+		
+	{ "Name" : "Siminov.Connect.Resource", "Url" : "#namespace/Siminov.Connect.Resource", "Type" : "Namespace" },
+	
+		{ "Name" : "ResourceManager", "Url" : "#type/ResourceManager", "Type" : "Type" },
+
+		
+			{ "Name" : "applicationDescriptor", "Url" : "#type/ResourceManager?applicationDescriptor", "Type" : "Field" },
+		
+			{ "Name" : "resources", "Url" : "#type/ResourceManager?resources", "Type" : "Field" },
+		
+			{ "Name" : "GetApplicationDescriptor", "Url" : "#type/ResourceManager?GetApplicationDescriptor2", "Type" : "Method" },
+		
+			{ "Name" : "GetInstance", "Url" : "#type/ResourceManager?GetInstance5", "Type" : "Method" },
+		
+			{ "Name" : "GetNotificationEventHandler", "Url" : "#type/ResourceManager?GetNotificationEventHandler2", "Type" : "Method" },
+		
+			{ "Name" : "GetSyncDescriptor", "Url" : "#type/ResourceManager?GetSyncDescriptor2", "Type" : "Method" },
+		
+			{ "Name" : "GetSyncDescriptors", "Url" : "#type/ResourceManager?GetSyncDescriptors2", "Type" : "Method" },
+		
+			{ "Name" : "GetSyncEventHandler", "Url" : "#type/ResourceManager?GetSyncEventHandler2", "Type" : "Method" },
+		
+			{ "Name" : "RequiredRequestBasedOnServiceDescriptorPath", "Url" : "#type/ResourceManager?RequiredRequestBasedOnServiceDescriptorPath", "Type" : "Method" },
+		
+			{ "Name" : "RequiredServiceDescriptorBasedOnName", "Url" : "#type/ResourceManager?RequiredServiceDescriptorBasedOnName", "Type" : "Method" },
+		
+			{ "Name" : "RequiredServiceDescriptorBasedOnPath", "Url" : "#type/ResourceManager?RequiredServiceDescriptorBasedOnPath", "Type" : "Method" },
+		
+			{ "Name" : "RequireRequestBasedOnServiceDescriptorName", "Url" : "#type/ResourceManager?RequireRequestBasedOnServiceDescriptorName", "Type" : "Method" },
+		
+			{ "Name" : "SetApplicationDescriptor", "Url" : "#type/ResourceManager?SetApplicationDescriptor", "Type" : "Method" },
+		
+		{ "Name" : "ResourceUtils", "Url" : "#type/ResourceUtils", "Type" : "Type" },
+
+		
+			{ "Name" : "Resolve", "Url" : "#type/ResourceUtils?Resolve2", "Type" : "Method" },
+		
+			{ "Name" : "Resolve", "Url" : "#type/ResourceUtils?Resolve", "Type" : "Method" },
+		
+	{ "Name" : "Siminov.Connect.Service", "Url" : "#namespace/Siminov.Connect.Service", "Type" : "Namespace" },
+	
+		{ "Name" : "AsyncServiceWorker", "Url" : "#type/AsyncServiceWorker", "Type" : "Type" },
+
+		
+			{ "Name" : "asyncServiceWorker", "Url" : "#type/AsyncServiceWorker?asyncServiceWorker", "Type" : "Field" },
+		
+			{ "Name" : "asyncServiceWorkerThread", "Url" : "#type/AsyncServiceWorker?asyncServiceWorkerThread", "Type" : "Field" },
+		
+			{ "Name" : "connectivityChangeReceiver", "Url" : "#type/AsyncServiceWorker?connectivityChangeReceiver", "Type" : "Field" },
+		
+			{ "Name" : "resourceManager", "Url" : "#type/AsyncServiceWorker?resourceManager", "Type" : "Field" },
+		
+			{ "Name" : "serviceUtils", "Url" : "#type/AsyncServiceWorker?serviceUtils", "Type" : "Field" },
+		
+			{ "Name" : "AddRequest", "Url" : "#type/AsyncServiceWorker?AddRequest3", "Type" : "Method" },
+		
+			{ "Name" : "ContainsRequest", "Url" : "#type/AsyncServiceWorker?ContainsRequest2", "Type" : "Method" },
+		
+			{ "Name" : "GetInstance", "Url" : "#type/AsyncServiceWorker?GetInstance6", "Type" : "Method" },
+		
+			{ "Name" : "Handle", "Url" : "#type/AsyncServiceWorker?Handle2", "Type" : "Method" },
+		
+			{ "Name" : "HandleRequests", "Url" : "#type/AsyncServiceWorker?HandleRequests", "Type" : "Method" },
+		
+			{ "Name" : "IsWorkerRunning", "Url" : "#type/AsyncServiceWorker?IsWorkerRunning2", "Type" : "Method" },
+		
+			{ "Name" : "RemoveRequest", "Url" : "#type/AsyncServiceWorker?RemoveRequest3", "Type" : "Method" },
+		
+			{ "Name" : "StartWorker", "Url" : "#type/AsyncServiceWorker?StartWorker2", "Type" : "Method" },
+		
+			{ "Name" : "StopWorker", "Url" : "#type/AsyncServiceWorker?StopWorker2", "Type" : "Method" },
+		
+		{ "Name" : "Service", "Url" : "#type/Service", "Type" : "Type" },
+
+		
+			{ "Name" : "request", "Url" : "#type/Service?request", "Type" : "Field" },
+		
+			{ "Name" : "requestId", "Url" : "#type/Service?requestId", "Type" : "Field" },
+		
+			{ "Name" : "resources", "Url" : "#type/Service?resources", "Type" : "Field" },
+		
+			{ "Name" : "service", "Url" : "#type/Service?service", "Type" : "Field" },
+		
+			{ "Name" : "serviceDescriptor", "Url" : "#type/Service?serviceDescriptor", "Type" : "Field" },
+		
+			{ "Name" : "AddResource", "Url" : "#type/Service?AddResource2", "Type" : "Method" },
+		
+			{ "Name" : "ContainResource", "Url" : "#type/Service?ContainResource2", "Type" : "Method" },
+		
+			{ "Name" : "GetRequest", "Url" : "#type/Service?GetRequest5", "Type" : "Method" },
+		
+			{ "Name" : "GetRequestId", "Url" : "#type/Service?GetRequestId3", "Type" : "Method" },
+		
+			{ "Name" : "GetResource", "Url" : "#type/Service?GetResource2", "Type" : "Method" },
+		
+			{ "Name" : "GetResources", "Url" : "#type/Service?GetResources2", "Type" : "Method" },
+		
+			{ "Name" : "GetService", "Url" : "#type/Service?GetService3", "Type" : "Method" },
+		
+			{ "Name" : "GetServiceDescriptor", "Url" : "#type/Service?GetServiceDescriptor4", "Type" : "Method" },
+		
+			{ "Name" : "Invoke", "Url" : "#type/Service?Invoke2", "Type" : "Method" },
+		
+			{ "Name" : "OnFinish", "Url" : "#type/Service?OnFinish3", "Type" : "Method" },
+		
+			{ "Name" : "OnPause", "Url" : "#type/Service?OnPause2", "Type" : "Method" },
+		
+			{ "Name" : "OnQueue", "Url" : "#type/Service?OnQueue3", "Type" : "Method" },
+		
+			{ "Name" : "OnRequestFinish", "Url" : "#type/Service?OnRequestFinish2", "Type" : "Method" },
+		
+			{ "Name" : "OnRequestInvoke", "Url" : "#type/Service?OnRequestInvoke2", "Type" : "Method" },
+		
+			{ "Name" : "OnResume", "Url" : "#type/Service?OnResume2", "Type" : "Method" },
+		
+			{ "Name" : "OnStart", "Url" : "#type/Service?OnStart3", "Type" : "Method" },
+		
+			{ "Name" : "OnTerminate", "Url" : "#type/Service?OnTerminate3", "Type" : "Method" },
+		
+			{ "Name" : "SetRequest", "Url" : "#type/Service?SetRequest3", "Type" : "Method" },
+		
+			{ "Name" : "SetRequestId", "Url" : "#type/Service?SetRequestId3", "Type" : "Method" },
+		
+			{ "Name" : "SetService", "Url" : "#type/Service?SetService3", "Type" : "Method" },
+		
+			{ "Name" : "SetServiceDescriptor", "Url" : "#type/Service?SetServiceDescriptor2", "Type" : "Method" },
+		
+			{ "Name" : "Terminate", "Url" : "#type/Service?Terminate2", "Type" : "Method" },
+		
+		{ "Name" : "ServiceHandler", "Url" : "#type/ServiceHandler", "Type" : "Type" },
+
+		
+			{ "Name" : "asyncServiceWorker", "Url" : "#type/ServiceHandler?asyncServiceWorker", "Type" : "Field" },
+		
+			{ "Name" : "resourceManager", "Url" : "#type/ServiceHandler?resourceManager", "Type" : "Field" },
+		
+			{ "Name" : "serviceHandler", "Url" : "#type/ServiceHandler?serviceHandler", "Type" : "Field" },
+		
+			{ "Name" : "syncServiceWorker", "Url" : "#type/ServiceHandler?syncServiceWorker", "Type" : "Field" },
+		
+			{ "Name" : "GetInstance", "Url" : "#type/ServiceHandler?GetInstance7", "Type" : "Method" },
+		
+			{ "Name" : "Handle", "Url" : "#type/ServiceHandler?Handle3", "Type" : "Method" },
+		
+		{ "Name" : "SyncServiceWorker", "Url" : "#type/SyncServiceWorker", "Type" : "Type" },
+
+		
+			{ "Name" : "Process", "Url" : "#type/SyncServiceWorker?Process2", "Type" : "Method" },
+		
+	{ "Name" : "Siminov.Connect.Service.Design", "Url" : "#namespace/Siminov.Connect.Service.Design", "Type" : "Namespace" },
+	
+		{ "Name" : "IResource", "Url" : "#type/IResource", "Type" : "Type" },
+
+		
+			{ "Name" : "AddResource", "Url" : "#type/IResource?AddResource", "Type" : "Method" },
+		
+			{ "Name" : "ContainResource", "Url" : "#type/IResource?ContainResource", "Type" : "Method" },
+		
+			{ "Name" : "GetResource", "Url" : "#type/IResource?GetResource", "Type" : "Method" },
+		
+			{ "Name" : "GetResources", "Url" : "#type/IResource?GetResources", "Type" : "Method" },
+		
+		{ "Name" : "IService", "Url" : "#type/IService", "Type" : "Type" },
+
+		
+			{ "Name" : "GetRequest", "Url" : "#type/IService?GetRequest4", "Type" : "Method" },
+		
+			{ "Name" : "GetRequestId", "Url" : "#type/IService?GetRequestId2", "Type" : "Method" },
+		
+			{ "Name" : "GetService", "Url" : "#type/IService?GetService2", "Type" : "Method" },
+		
+			{ "Name" : "GetServiceDescriptor", "Url" : "#type/IService?GetServiceDescriptor3", "Type" : "Method" },
+		
+			{ "Name" : "Invoke", "Url" : "#type/IService?Invoke", "Type" : "Method" },
+		
+			{ "Name" : "SetRequest", "Url" : "#type/IService?SetRequest2", "Type" : "Method" },
+		
+			{ "Name" : "SetRequestId", "Url" : "#type/IService?SetRequestId2", "Type" : "Method" },
+		
+			{ "Name" : "SetService", "Url" : "#type/IService?SetService2", "Type" : "Method" },
+		
+			{ "Name" : "SetServiceDescriptor", "Url" : "#type/IService?SetServiceDescriptor", "Type" : "Method" },
+		
+			{ "Name" : "Terminate", "Url" : "#type/IService?Terminate", "Type" : "Method" },
+		
+		{ "Name" : "IServiceEvents", "Url" : "#type/IServiceEvents", "Type" : "Type" },
+
+		
+			{ "Name" : "OnFinish", "Url" : "#type/IServiceEvents?OnFinish2", "Type" : "Method" },
+		
+			{ "Name" : "OnPause", "Url" : "#type/IServiceEvents?OnPause", "Type" : "Method" },
+		
+			{ "Name" : "OnQueue", "Url" : "#type/IServiceEvents?OnQueue2", "Type" : "Method" },
+		
+			{ "Name" : "OnRequestFinish", "Url" : "#type/IServiceEvents?OnRequestFinish", "Type" : "Method" },
+		
+			{ "Name" : "OnRequestInvoke", "Url" : "#type/IServiceEvents?OnRequestInvoke", "Type" : "Method" },
+		
+			{ "Name" : "OnResume", "Url" : "#type/IServiceEvents?OnResume", "Type" : "Method" },
+		
+			{ "Name" : "OnStart", "Url" : "#type/IServiceEvents?OnStart2", "Type" : "Method" },
+		
+			{ "Name" : "OnTerminate", "Url" : "#type/IServiceEvents?OnTerminate2", "Type" : "Method" },
+		
+	{ "Name" : "Siminov.Connect.Sync", "Url" : "#namespace/Siminov.Connect.Sync", "Type" : "Namespace" },
+	
+		{ "Name" : "SyncHandler", "Url" : "#type/SyncHandler", "Type" : "Type" },
+
+		
+			{ "Name" : "requestTimestamps", "Url" : "#type/SyncHandler?requestTimestamps", "Type" : "Field" },
+		
+			{ "Name" : "resourceManager", "Url" : "#type/SyncHandler?resourceManager", "Type" : "Field" },
+		
+			{ "Name" : "syncHandler", "Url" : "#type/SyncHandler?syncHandler", "Type" : "Field" },
+		
+			{ "Name" : "syncWorker", "Url" : "#type/SyncHandler?syncWorker", "Type" : "Field" },
+		
+			{ "Name" : "Contain", "Url" : "#type/SyncHandler?Contain", "Type" : "Method" },
+		
+			{ "Name" : "GetInstance", "Url" : "#type/SyncHandler?GetInstance8", "Type" : "Method" },
+		
+			{ "Name" : "Handle", "Url" : "#type/SyncHandler?Handle4", "Type" : "Method" },
+		
+			{ "Name" : "Remove", "Url" : "#type/SyncHandler?Remove", "Type" : "Method" },
+		
+		{ "Name" : "SyncRequest", "Url" : "#type/SyncRequest", "Type" : "Type" },
+
+		
+			{ "Name" : "name", "Url" : "#type/SyncRequest?name", "Type" : "Field" },
+		
+			{ "Name" : "resources", "Url" : "#type/SyncRequest?resources", "Type" : "Field" },
+		
+			{ "Name" : "AddResource", "Url" : "#type/SyncRequest?AddResource3", "Type" : "Method" },
+		
+			{ "Name" : "ContainResource", "Url" : "#type/SyncRequest?ContainResource3", "Type" : "Method" },
+		
+			{ "Name" : "GetName", "Url" : "#type/SyncRequest?GetName5", "Type" : "Method" },
+		
+			{ "Name" : "GetResource", "Url" : "#type/SyncRequest?GetResource3", "Type" : "Method" },
+		
+			{ "Name" : "GetResources", "Url" : "#type/SyncRequest?GetResources3", "Type" : "Method" },
+		
+			{ "Name" : "SetName", "Url" : "#type/SyncRequest?SetName5", "Type" : "Method" },
+		
+	{ "Name" : "Siminov.Connect.Sync.Design", "Url" : "#namespace/Siminov.Connect.Sync.Design", "Type" : "Namespace" },
+	
+		{ "Name" : "ISyncRequest", "Url" : "#type/ISyncRequest", "Type" : "Type" },
+
+		
+			{ "Name" : "GetName", "Url" : "#type/ISyncRequest?GetName4", "Type" : "Method" },
+		
+			{ "Name" : "SetName", "Url" : "#type/ISyncRequest?SetName4", "Type" : "Method" },
+		
+	{ "Name" : "Siminov.Connect.Utils", "Url" : "#namespace/Siminov.Connect.Utils", "Type" : "Namespace" },
+	
+		{ "Name" : "Utils", "Url" : "#type/Utils", "Type" : "Type" },
+
+		
+			{ "Name" : "HasCoverage", "Url" : "#type/Utils?HasCoverage", "Type" : "Method" },
+		
+			{ "Name" : "ToStream", "Url" : "#type/Utils?ToStream", "Type" : "Method" },
+		
+
+		];
+		</script>
+
+    </head>
+    <body>   
+	
+		<div class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<h1 class="brand" style="padding: 10px 16px 10px; height: 20px; line-height: 20px; margin-left: 0;">
+				<img alt="Siminov Framework - Core" src="assets/images/product_logo.ico" title="Siminov Framework - Core">
+					Siminov Framework - Connect
+				</h1>
+				
+				<div class="nav">
+						<li class="divider-vertical"></li>
+						<li>
+							<p class="navbar-text">
+								API Docs for Version: <b>1.0</b>
+							</p>
+						</li>
+				</div>
+			</div>
+		</div>
+	
+	    <div class="ui-layout-south">
+			<div class="user-footer markdown">
+				
+			</div>
+			<div class="sd-footer">
+				 <a href="index.html" target="_blank">© 2015 Siminov Software Solution LLP. All Rights Reserved.</a>generated by <a href="http://sharpDox.de" target="_blank">sharpDox</a>
+			</div>
+		</div>
+
+        <div class="ui-layout-west">
+			<div id="search">
+				<i class="icon-search"></i> <input id="searchInput" type="text" />
+				<div id="searchResults">
+				</div>
+			</div>
+			<div id="navigation">
+				<ul>
+	<li data-jstree='{"icon":"icon-home"}' id="node-home" class="jstree-open"><a href="#home">Home</a>
+	<ul>
+						
+
+	
+		<li data-jstree='{"icon":"./assets/images/icons/namespace_public.png"}' id="node-namespace/connect.Siminov.Connect.Sync"><a href="#namespace/connect.Siminov.Connect.Sync">connect.Siminov.Connect.Sync</a> 
+ 
+
+<ul>
+
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/SyncWorker"><a href="#type/SyncWorker">SyncWorker</a></li>
+
+</ul>
+
+</li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/namespace_public.png"}' id="node-namespace/Siminov.Connect"><a href="#namespace/Siminov.Connect">Siminov.Connect</a> 
+ 
+
+<ul>
+
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/Constants"><a href="#type/Constants">Constants</a></li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/Initializer"><a href="#type/Initializer">Initializer</a></li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/interface_public.png"}' id="node-type/IRequest"><a href="#type/IRequest">IRequest</a></li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/interface_public.png"}' id="node-type/IWorker"><a href="#type/IWorker">IWorker</a></li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/Siminov"><a href="#type/Siminov">Siminov</a></li>
+
+</ul>
+
+</li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/namespace_public.png"}' id="node-namespace/Siminov.Connect.Connection"><a href="#namespace/Siminov.Connect.Connection">Siminov.Connect.Connection</a> 
+ 
+
+<ul>
+
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/ConnectionHelper"><a href="#type/ConnectionHelper">ConnectionHelper</a></li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/ConnectionManager"><a href="#type/ConnectionManager">ConnectionManager</a></li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/ConnectionRequest"><a href="#type/ConnectionRequest">ConnectionRequest</a></li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/ConnectionResponse"><a href="#type/ConnectionResponse">ConnectionResponse</a></li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/ConnectionStatusCodes"><a href="#type/ConnectionStatusCodes">ConnectionStatusCodes</a></li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/HttpConnectionWorker"><a href="#type/HttpConnectionWorker">HttpConnectionWorker</a></li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/HttpsConnectionWorker"><a href="#type/HttpsConnectionWorker">HttpsConnectionWorker</a></li>
+
+</ul>
+
+</li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/namespace_public.png"}' id="node-namespace/Siminov.Connect.Connection.Design"><a href="#namespace/Siminov.Connect.Connection.Design">Siminov.Connect.Connection.Design</a> 
+ 
+
+<ul>
+
+	
+		<li data-jstree='{"icon":"./assets/images/icons/interface_public.png"}' id="node-type/IConnection"><a href="#type/IConnection">IConnection</a></li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/interface_public.png"}' id="node-type/IConnectionRequest"><a href="#type/IConnectionRequest">IConnectionRequest</a></li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/interface_public.png"}' id="node-type/IConnectionResponse"><a href="#type/IConnectionResponse">IConnectionResponse</a></li>
+
+</ul>
+
+</li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/namespace_public.png"}' id="node-namespace/Siminov.Connect.Events"><a href="#namespace/Siminov.Connect.Events">Siminov.Connect.Events</a> 
+ 
+
+<ul>
+
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/EventHandler"><a href="#type/EventHandler">EventHandler</a></li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/interface_public.png"}' id="node-type/INotificationEvents"><a href="#type/INotificationEvents">INotificationEvents</a></li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/interface_public.png"}' id="node-type/ISyncEvents"><a href="#type/ISyncEvents">ISyncEvents</a></li>
+
+</ul>
+
+</li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/namespace_public.png"}' id="node-namespace/Siminov.Connect.Exception"><a href="#namespace/Siminov.Connect.Exception">Siminov.Connect.Exception</a> 
+ 
+
+<ul>
+
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/ConnectionException"><a href="#type/ConnectionException">ConnectionException</a></li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/NotificationException"><a href="#type/NotificationException">NotificationException</a></li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/ServiceException"><a href="#type/ServiceException">ServiceException</a></li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/SyncException"><a href="#type/SyncException">SyncException</a></li>
+
+</ul>
+
+</li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/namespace_public.png"}' id="node-namespace/Siminov.Connect.Model"><a href="#namespace/Siminov.Connect.Model">Siminov.Connect.Model</a> 
+ 
+
+<ul>
+
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/ApplicationDescriptor"><a href="#type/ApplicationDescriptor">ApplicationDescriptor</a></li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/LibraryDescriptor"><a href="#type/LibraryDescriptor">LibraryDescriptor</a></li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/NotificationDescriptor"><a href="#type/NotificationDescriptor">NotificationDescriptor</a></li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/ServiceDescriptor"><a href="#type/ServiceDescriptor">ServiceDescriptor</a></li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/ServiceRequest"><a href="#type/ServiceRequest">ServiceRequest</a></li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/ServiceRequestResource"><a href="#type/ServiceRequestResource">ServiceRequestResource</a></li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/SyncDescriptor"><a href="#type/SyncDescriptor">SyncDescriptor</a></li>
+
+</ul>
+
+</li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/namespace_public.png"}' id="node-namespace/Siminov.Connect.Notification"><a href="#namespace/Siminov.Connect.Notification">Siminov.Connect.Notification</a> 
+ 
+
+<ul>
+
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/Message"><a href="#type/Message">Message</a></li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/NotificationManager"><a href="#type/NotificationManager">NotificationManager</a></li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/NotificationReceiver"><a href="#type/NotificationReceiver">NotificationReceiver</a></li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/NotificationService"><a href="#type/NotificationService">NotificationService</a></li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/Registration"><a href="#type/Registration">Registration</a></li>
+
+</ul>
+
+</li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/namespace_public.png"}' id="node-namespace/Siminov.Connect.Notification.Design"><a href="#namespace/Siminov.Connect.Notification.Design">Siminov.Connect.Notification.Design</a> 
+ 
+
+<ul>
+
+	
+		<li data-jstree='{"icon":"./assets/images/icons/interface_public.png"}' id="node-type/IMessage"><a href="#type/IMessage">IMessage</a></li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/interface_public.png"}' id="node-type/INotification"><a href="#type/INotification">INotification</a></li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/interface_public.png"}' id="node-type/IRegistration"><a href="#type/IRegistration">IRegistration</a></li>
+
+</ul>
+
+</li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/namespace_public.png"}' id="node-namespace/Siminov.Connect.Reader"><a href="#namespace/Siminov.Connect.Reader">Siminov.Connect.Reader</a> 
+ 
+
+<ul>
+
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/ApplicationDescriptorReader"><a href="#type/ApplicationDescriptorReader">ApplicationDescriptorReader</a></li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/LibraryDescriptorReader"><a href="#type/LibraryDescriptorReader">LibraryDescriptorReader</a></li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/QuickServiceDescriptorReader"><a href="#type/QuickServiceDescriptorReader">QuickServiceDescriptorReader</a></li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/ServiceDescriptorReader"><a href="#type/ServiceDescriptorReader">ServiceDescriptorReader</a></li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/SyncDescriptorReader"><a href="#type/SyncDescriptorReader">SyncDescriptorReader</a></li>
+
+</ul>
+
+</li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/namespace_public.png"}' id="node-namespace/Siminov.Connect.Resource"><a href="#namespace/Siminov.Connect.Resource">Siminov.Connect.Resource</a> 
+ 
+
+<ul>
+
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/ResourceManager"><a href="#type/ResourceManager">ResourceManager</a></li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/ResourceUtils"><a href="#type/ResourceUtils">ResourceUtils</a></li>
+
+</ul>
+
+</li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/namespace_public.png"}' id="node-namespace/Siminov.Connect.Service"><a href="#namespace/Siminov.Connect.Service">Siminov.Connect.Service</a> 
+ 
+
+<ul>
+
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/AsyncServiceWorker"><a href="#type/AsyncServiceWorker">AsyncServiceWorker</a></li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/Service"><a href="#type/Service">Service</a></li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/ServiceHandler"><a href="#type/ServiceHandler">ServiceHandler</a></li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/SyncServiceWorker"><a href="#type/SyncServiceWorker">SyncServiceWorker</a></li>
+
+</ul>
+
+</li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/namespace_public.png"}' id="node-namespace/Siminov.Connect.Service.Design"><a href="#namespace/Siminov.Connect.Service.Design">Siminov.Connect.Service.Design</a> 
+ 
+
+<ul>
+
+	
+		<li data-jstree='{"icon":"./assets/images/icons/interface_public.png"}' id="node-type/IResource"><a href="#type/IResource">IResource</a></li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/interface_public.png"}' id="node-type/IService"><a href="#type/IService">IService</a></li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/interface_public.png"}' id="node-type/IServiceEvents"><a href="#type/IServiceEvents">IServiceEvents</a></li>
+
+</ul>
+
+</li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/namespace_public.png"}' id="node-namespace/Siminov.Connect.Sync"><a href="#namespace/Siminov.Connect.Sync">Siminov.Connect.Sync</a> 
+ 
+
+<ul>
+
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/SyncHandler"><a href="#type/SyncHandler">SyncHandler</a></li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/SyncRequest"><a href="#type/SyncRequest">SyncRequest</a></li>
+
+</ul>
+
+</li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/namespace_public.png"}' id="node-namespace/Siminov.Connect.Sync.Design"><a href="#namespace/Siminov.Connect.Sync.Design">Siminov.Connect.Sync.Design</a> 
+ 
+
+<ul>
+
+	
+		<li data-jstree='{"icon":"./assets/images/icons/interface_public.png"}' id="node-type/ISyncRequest"><a href="#type/ISyncRequest">ISyncRequest</a></li>
+
+</ul>
+
+</li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/namespace_public.png"}' id="node-namespace/Siminov.Connect.Utils"><a href="#namespace/Siminov.Connect.Utils">Siminov.Connect.Utils</a> 
+ 
+
+<ul>
+
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/Utils"><a href="#type/Utils">Utils</a></li>
+
+</ul>
+
+</li>
+
+
+			</ul>
+	</li>	
+</ul>
+			</div>
+		</div>
+		<div id="loader"><i class="icon-refresh icon-spin"></i></div>
+		<iframe id="content" class="ui-layout-center" frameborder="0" width="100%" src="article/home.html"></iframe>
+    </body>
+</html>
+

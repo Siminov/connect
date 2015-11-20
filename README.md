@@ -1,4 +1,4 @@
-Siminov Connect (RESTful) - Android
+Siminov Connect (RESTful) - Android, iOS, Windows
 ===================================================
 
 Siminov Framework (Connect) is a open source framework used to consume RESTful Web Services for all different environments - (Android - Java, iOS - Objective-C|Swift, Windows - C#, OS X - Objective-C|Swift). Using this app developer can easily consume data from any of web services without worrying about underlying architecture of communication.
@@ -7,7 +7,7 @@ Get Started
 -----------
 Get the source
 
-  git clone git://github.com/siminov/android-connect.git
+  git clone git://github.com/siminov/connect.git
   
 	
 Features
@@ -16,11 +16,11 @@ Features
 ###### 1. Simple
 Working on communication layer on any of the platform (Android, iOS, Windows Phone) is combersome. It provides an easy set of defined descriptors, using these you can easy describe your RESTful Web Services.
 
-	|- ApplicationDescriptor.si.xml 
-	|- ServiceDescriptor.si.xml
-	|- SyncDescriptor.si.xml
-	|- NotificationDescriptor.si.xml
-	|- LibraryDescriptor.si.xml
+	|- ApplicationDescriptor.xml 
+	|- ServiceDescriptor.xml
+	|- SyncDescriptor.xml
+	|- NotificationDescriptor.xml
+	|- LibraryDescriptor.xml
 
 ###### 2. Push Notification
 Push notification is provide by all the platforms but in different forms and implementation. It provides a unique and generic implementation on all platforms with same APIs bundle and architecture.

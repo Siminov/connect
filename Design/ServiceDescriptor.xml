@@ -1,0 +1,186 @@
+<!-- 
+/** 
+ * [SIMINOV FRAMEWORK]
+ * Copyright [2015] [Siminov Software Solution LLP|support@siminov.com]
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ **/
+
+
+-->
+
+<!-- Design of ServiceDescriptor.xml -->
+
+<service-descriptor>
+    
+	<!-- General Service Properties -->
+    	<!-- Mandatory Field -->
+    <property name="name">name_of_service</property>
+    
+    	<!-- Optional Field -->
+    <property name="description">description_of_service</property>
+    
+    	<!-- Optional Field (DEFAULT: HTTP) -->
+    <property name="protocol">HTTP|HTTPS</property>
+    
+    	<!-- Mandatory Field -->
+    <property name="instance">address_of_instance</property>
+    
+    	<!-- Optional Field -->
+    <property name="port">port_number</property>
+
+    	<!-- Optional Field -->
+    <property name="context">context_of_service</property>
+         
+	<!-- Requests -->
+		<!-- Request -->
+    <request>
+            
+		<request>
+
+			<!-- General Request Properties -->
+         
+	        	<!-- Mandatory Field -->
+	       	<property name="name">name_of_request</property>
+         
+         		<!-- Mandatory Field -->
+         	<property name="type">GET|HEAD|POST|PUT|DELETE|TRACE|OPTIONS|CONNECT|PATCH</property>
+
+         		<!-- Mandatory Field -->
+         	<property name="api">full_request_path</property>
+
+         		<!-- Mandatory Field -->
+         	<property name="handler">handler_of_request</property>
+         	
+      			<!-- Optional Field (DEFAULT: SYNC)-->
+      		<property name="mode">SYNC|ASYNC</property>
+
+      		
+      					
+      		<!-- Query Parameters -->
+      			<!-- Query Parameter -->
+      		<query-parameters>
+          
+      			<query-parameter>
+      			    
+      			    <!-- Mandatory Field -->
+      			    <property name="name">name_of_query_parameter</property>
+      			    
+      			    <!-- Mandatory Field -->
+      			    <property name="value">value_of_query_parameter</property>
+      			    
+      			</query-parameter>
+      		
+      		</query-parameters>
+      
+      
+      		<!-- Header Parameters -->
+      			<!-- Header Parameter -->
+      		<header-parameters>
+          
+      			<header-parameter>
+      			    
+      			    <!-- Mandatory Field -->
+      			    <property name="name">name_of_header_parameter</property>
+      			    
+      			    <!-- Mandatory Field -->
+      			    <property name="value">value_of_header_parameter</property>
+      			    
+      			</header-parameter>
+      		
+        	</header-parameters>
+
+      		
+      		<!-- Stream of Data Under Request Body -->
+      			<!-- It is Optional Property -->
+      		<data-stream>stream_of_data</data-stream>	
+     	
+     	</request>
+    </requests>
+    
+</service-descriptor>
+
+
+
+* Referring Resources
+	- Resource: {@resource KEY_OF_RESOURCE}, Passing resource as a parameter to request itself.
+		Example:
+			<proprty name="name_of_proprty">{@resource KEY_OF_RESOURCE}</proprty>
+			
+			request.addResource(KEY_OF_RESOURCE, VALUE_OF_RESOURCE);
+			
+			
+	- Reference Resource: {@refer REFERENCE_RESOURCE_FULL_PATH-PARAMETERS_TO_REFERENCE_RESOURCE}, Call refered resource location to get value for property. 
+		Example:
+			<property name=name_of_property"">{@refer REFERENCE_RESOURCE_FULL_PATH-PARAMETERS_TO_REFERENCE_RESOURCE}</property>
+	
+			
+	- Self Reference Resource: {@self NAME_OF_PROPERTY_CONTAINED_WITHIN}, Get self reference resource from service descriptor itself.
+		Example:
+			<property name="name_of_property">{@self NAME_OF_PROPERTY_CONTAINED_WITHIN}</property>		
+
+
+			
+			
+<!-- 
+ServiceDescriptor.xml is the one in which define the structure of your RESTful Web Service API
+
+Service Descriptor Elements: 
+	
+	i. General Properties About Service: It contain common properties to a service.
+	
+		-> name* : Name of the service. It is Mandatory property.
+		
+		-> description: Description of the service. It is optional property.
+		
+		-> protocol: HTTP/HTTPS. Protocol used by the service. It is optional property. Default value is HTTP
+		
+		-> instance* : Instance (IP Address) of the service. It is mandatory property.
+		
+		-> port: Port number used by the service. It is optional property.
+		
+		-> context: Context used by the service. It is optional property.
+		
+		
+	ii.	Request: It defines the structure Web Service request	
+		
+			i. Properties: Properties about the API
+		
+				-> name* : Name of the API. It is mandatory property.
+				
+				-> type* : GET|HEAD|POST|PUT|DELETE|TRACE|OPTIONS|CONNECT|PATCH. Type of API. It is mandatory property.
+		
+				-> api* : Path of API. It is mandatory field.
+				
+				-> handler* : Handler of the API. It is mandatory property.
+				
+				-> mode: SYNC|ASYNC. Mode of API. Is is optional property. Default is SYNC.			
+			
+			ii. Query Parameters Properties: It is key|value pair property which define the query parameter, if any associated to the API.		
+					
+					-> name* : Name of Query Parameter. It is mandatory property.
+					
+					-> value* : Value of Query Parameter. It is mandatory property.
+
+					
+			iii. Header Parameters Properties:	It is key|value pair property which define the header parameter, if any associated to the API.
+					
+					-> name* : Name of Header Parameter. It is mandatory property.
+					
+					-> value* : Value of Header Parameter. It is mandatory property.
+						
+				
+			iv. Data Stream: Data Part Under Request. Is is optional property.
+				
+ -->			
+						

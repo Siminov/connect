@@ -1,0 +1,866 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CEA830F11B774B9000DAD08C /* DataHandlerEvents.java in Sources */ = {isa = PBXBuildFile; fileRef = CEA8306F1B774B9000DAD08C /* DataHandlerEvents.java */; };
+		CEA830F21B774B9000DAD08C /* NotificationEvents.java in Sources */ = {isa = PBXBuildFile; fileRef = CEA830721B774B9000DAD08C /* NotificationEvents.java */; };
+		CEA830F31B774B9000DAD08C /* ServiceLifecycleEvent.java in Sources */ = {isa = PBXBuildFile; fileRef = CEA830751B774B9000DAD08C /* ServiceLifecycleEvent.java */; };
+		CEA830F41B774B9000DAD08C /* SyncHandlerEvents.java in Sources */ = {isa = PBXBuildFile; fileRef = CEA830781B774B9000DAD08C /* SyncHandlerEvents.java */; };
+		CEA831921B7751B300DAD08C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA831911B7751B300DAD08C /* SystemConfiguration.framework */; };
+		CEA831941B7751C300DAD08C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA831931B7751C300DAD08C /* Foundation.framework */; };
+		CEA8368C1B7762D600DAD08C /* SIKConnectionHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA8361E1B7762D500DAD08C /* SIKConnectionHelper.m */; };
+		CEA8368D1B7762D600DAD08C /* SIKConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA836201B7762D500DAD08C /* SIKConnectionManager.m */; };
+		CEA8368E1B7762D600DAD08C /* SIKConnectionRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA836221B7762D500DAD08C /* SIKConnectionRequest.m */; };
+		CEA8368F1B7762D600DAD08C /* SIKConnectionResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA836241B7762D500DAD08C /* SIKConnectionResponse.m */; };
+		CEA836901B7762D600DAD08C /* SIKConnectionStatusCodes.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA836261B7762D500DAD08C /* SIKConnectionStatusCodes.m */; };
+		CEA836911B7762D600DAD08C /* SIKHttpConnectionWorker.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA836281B7762D500DAD08C /* SIKHttpConnectionWorker.m */; };
+		CEA836921B7762D600DAD08C /* SIKHttpsConnectionWorker.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA8362A1B7762D500DAD08C /* SIKHttpsConnectionWorker.m */; };
+		CEA836931B7762D600DAD08C /* SIKEventHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA8362D1B7762D500DAD08C /* SIKEventHandler.m */; };
+		CEA836941B7762D600DAD08C /* SIKConnectionException.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA836321B7762D500DAD08C /* SIKConnectionException.m */; };
+		CEA836951B7762D600DAD08C /* SIKNotificationException.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA836341B7762D500DAD08C /* SIKNotificationException.m */; };
+		CEA836961B7762D600DAD08C /* SIKServiceException.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA836361B7762D500DAD08C /* SIKServiceException.m */; };
+		CEA836971B7762D600DAD08C /* SIKSyncException.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA836381B7762D500DAD08C /* SIKSyncException.m */; };
+		CEA836981B7762D600DAD08C /* SIKApplicationDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA8363B1B7762D500DAD08C /* SIKApplicationDescriptor.m */; };
+		CEA836991B7762D600DAD08C /* SIKLibraryDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA8363D1B7762D500DAD08C /* SIKLibraryDescriptor.m */; };
+		CEA8369A1B7762D600DAD08C /* SIKNotificationDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA8363F1B7762D500DAD08C /* SIKNotificationDescriptor.m */; };
+		CEA8369B1B7762D600DAD08C /* SIKServiceDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA836411B7762D500DAD08C /* SIKServiceDescriptor.m */; };
+		CEA8369C1B7762D600DAD08C /* SIKServiceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA836431B7762D500DAD08C /* SIKServiceRequest.m */; };
+		CEA8369D1B7762D600DAD08C /* SIKServiceRequestResource.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA836451B7762D500DAD08C /* SIKServiceRequestResource.m */; };
+		CEA8369E1B7762D600DAD08C /* SIKSyncDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA836471B7762D500DAD08C /* SIKSyncDescriptor.m */; };
+		CEA8369F1B7762D600DAD08C /* SIKMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA8364E1B7762D500DAD08C /* SIKMessage.m */; };
+		CEA836A01B7762D600DAD08C /* SIKNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA836501B7762D500DAD08C /* SIKNotificationManager.m */; };
+		CEA836A11B7762D600DAD08C /* SIKNotificationReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA836521B7762D500DAD08C /* SIKNotificationReceiver.m */; };
+		CEA836A21B7762D600DAD08C /* SIKNotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA836541B7762D500DAD08C /* SIKNotificationService.m */; };
+		CEA836A31B7762D600DAD08C /* SIKRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA836561B7762D500DAD08C /* SIKRegistration.m */; };
+		CEA836A41B7762D600DAD08C /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA836581B7762D500DAD08C /* Reachability.m */; };
+		CEA836A51B7762D600DAD08C /* SIKApplicationDescriptorReader.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA8365B1B7762D500DAD08C /* SIKApplicationDescriptorReader.m */; };
+		CEA836A61B7762D600DAD08C /* SIKLibraryDescriptorReader.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA8365D1B7762D600DAD08C /* SIKLibraryDescriptorReader.m */; };
+		CEA836A71B7762D600DAD08C /* SIKQuickServiceDescriptorReader.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA8365F1B7762D600DAD08C /* SIKQuickServiceDescriptorReader.m */; };
+		CEA836A81B7762D600DAD08C /* SIKServiceDescriptorReader.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA836611B7762D600DAD08C /* SIKServiceDescriptorReader.m */; };
+		CEA836A91B7762D600DAD08C /* SIKSyncDescriptorReader.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA836631B7762D600DAD08C /* SIKSyncDescriptorReader.m */; };
+		CEA836AA1B7762D600DAD08C /* SIKResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA836691B7762D600DAD08C /* SIKResourceManager.m */; };
+		CEA836AB1B7762D600DAD08C /* SIKResourceUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA8366B1B7762D600DAD08C /* SIKResourceUtils.m */; };
+		CEA836AC1B7762D600DAD08C /* SIKAsyncServiceWorker.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA836721B7762D600DAD08C /* SIKAsyncServiceWorker.m */; };
+		CEA836AD1B7762D600DAD08C /* SIKService.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA836741B7762D600DAD08C /* SIKService.m */; };
+		CEA836AE1B7762D600DAD08C /* SIKServiceHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA836761B7762D600DAD08C /* SIKServiceHandler.m */; };
+		CEA836AF1B7762D600DAD08C /* SIKSyncServiceWorker.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA836781B7762D600DAD08C /* SIKSyncServiceWorker.m */; };
+		CEA836B01B7762D600DAD08C /* SIKInitializer.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA8367B1B7762D600DAD08C /* SIKInitializer.m */; };
+		CEA836B11B7762D600DAD08C /* SIKSiminov.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA8367F1B7762D600DAD08C /* SIKSiminov.m */; };
+		CEA836B21B7762D600DAD08C /* SIKSyncHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA836841B7762D600DAD08C /* SIKSyncHandler.m */; };
+		CEA836B31B7762D600DAD08C /* SIKSyncRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA836861B7762D600DAD08C /* SIKSyncRequest.m */; };
+		CEA836B41B7762D600DAD08C /* SIKSyncWorker.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA836881B7762D600DAD08C /* SIKSyncWorker.m */; };
+		CEA836B51B7762D600DAD08C /* SIKUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA8368B1B7762D600DAD08C /* SIKUtils.m */; };
+		CEA836B61B7762E400DAD08C /* DatabaseDescriptor.si.xml in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA836651B7762D600DAD08C /* DatabaseDescriptor.si.xml */; };
+		CEA836B71B7762E400DAD08C /* ServiceRequest.si.xml in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA836661B7762D600DAD08C /* ServiceRequest.si.xml */; };
+		CEA836B81B7762E400DAD08C /* ServiceRequestResource.si.xml in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA836671B7762D600DAD08C /* ServiceRequestResource.si.xml */; };
+		CEA836B91B7762EE00DAD08C /* SIKIConnection.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA8361A1B7762D500DAD08C /* SIKIConnection.h */; };
+		CEA836BA1B7762EE00DAD08C /* SIKIConnectionRequest.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA8361B1B7762D500DAD08C /* SIKIConnectionRequest.h */; };
+		CEA836BB1B7762EE00DAD08C /* SIKIConnectionResponse.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA8361C1B7762D500DAD08C /* SIKIConnectionResponse.h */; };
+		CEA836BC1B7762EE00DAD08C /* SIKConnectionHelper.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA8361D1B7762D500DAD08C /* SIKConnectionHelper.h */; };
+		CEA836BD1B7762EE00DAD08C /* SIKConnectionManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA8361F1B7762D500DAD08C /* SIKConnectionManager.h */; };
+		CEA836BE1B7762EE00DAD08C /* SIKConnectionRequest.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA836211B7762D500DAD08C /* SIKConnectionRequest.h */; };
+		CEA836BF1B7762EE00DAD08C /* SIKConnectionResponse.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA836231B7762D500DAD08C /* SIKConnectionResponse.h */; };
+		CEA836C01B7762EE00DAD08C /* SIKConnectionStatusCodes.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA836251B7762D500DAD08C /* SIKConnectionStatusCodes.h */; };
+		CEA836C11B7762EE00DAD08C /* SIKHttpConnectionWorker.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA836271B7762D500DAD08C /* SIKHttpConnectionWorker.h */; };
+		CEA836C21B7762EE00DAD08C /* SIKHttpsConnectionWorker.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA836291B7762D500DAD08C /* SIKHttpsConnectionWorker.h */; };
+		CEA836C31B7762EE00DAD08C /* SIKEventHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA8362C1B7762D500DAD08C /* SIKEventHandler.h */; };
+		CEA836C41B7762EE00DAD08C /* SIKINotificationEvents.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA8362E1B7762D500DAD08C /* SIKINotificationEvents.h */; };
+		CEA836C51B7762EE00DAD08C /* SIKISyncEvents.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA8362F1B7762D500DAD08C /* SIKISyncEvents.h */; };
+		CEA836C61B7762EE00DAD08C /* SIKIMessage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA8364A1B7762D500DAD08C /* SIKIMessage.h */; };
+		CEA836C71B7762EE00DAD08C /* SIKINotification.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA8364B1B7762D500DAD08C /* SIKINotification.h */; };
+		CEA836C81B7762EE00DAD08C /* SIKIRegistration.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA8364C1B7762D500DAD08C /* SIKIRegistration.h */; };
+		CEA836C91B7762EE00DAD08C /* SIKMessage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA8364D1B7762D500DAD08C /* SIKMessage.h */; };
+		CEA836CA1B7762EE00DAD08C /* SIKNotificationManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA8364F1B7762D500DAD08C /* SIKNotificationManager.h */; };
+		CEA836CB1B7762EE00DAD08C /* SIKNotificationReceiver.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA836511B7762D500DAD08C /* SIKNotificationReceiver.h */; };
+		CEA836CC1B7762EE00DAD08C /* SIKNotificationService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA836531B7762D500DAD08C /* SIKNotificationService.h */; };
+		CEA836CD1B7762EE00DAD08C /* SIKRegistration.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA836551B7762D500DAD08C /* SIKRegistration.h */; };
+		CEA836CE1B7762EE00DAD08C /* Reachability.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA836571B7762D500DAD08C /* Reachability.h */; };
+		CEA836CF1B7762EE00DAD08C /* SIKConstants.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA836791B7762D600DAD08C /* SIKConstants.h */; };
+		CEA836D01B7762EE00DAD08C /* SIKInitializer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA8367A1B7762D600DAD08C /* SIKInitializer.h */; };
+		CEA836D11B7762EE00DAD08C /* SIKIRequest.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA8367C1B7762D600DAD08C /* SIKIRequest.h */; };
+		CEA836D21B7762EE00DAD08C /* SIKIWorker.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA8367D1B7762D600DAD08C /* SIKIWorker.h */; };
+		CEA836D31B7762EE00DAD08C /* SIKSiminov.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA8367E1B7762D600DAD08C /* SIKSiminov.h */; };
+		CEA836D41B7762EE00DAD08C /* SIKISyncRequest.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA836821B7762D600DAD08C /* SIKISyncRequest.h */; };
+		CEA836D51B7762EE00DAD08C /* SIKSyncHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA836831B7762D600DAD08C /* SIKSyncHandler.h */; };
+		CEA836D61B7762EE00DAD08C /* SIKSyncRequest.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA836851B7762D600DAD08C /* SIKSyncRequest.h */; };
+		CEA836D71B7762EE00DAD08C /* SIKSyncWorker.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA836871B7762D600DAD08C /* SIKSyncWorker.h */; };
+		CEA836D81B7762EE00DAD08C /* SIKUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA8368A1B7762D600DAD08C /* SIKUtils.h */; };
+		CEA836DD1B77637200DAD08C /* SIKConnectionException.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA836311B7762D500DAD08C /* SIKConnectionException.h */; };
+		CEA836DE1B77637200DAD08C /* SIKNotificationException.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA836331B7762D500DAD08C /* SIKNotificationException.h */; };
+		CEA836DF1B77637200DAD08C /* SIKServiceException.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA836351B7762D500DAD08C /* SIKServiceException.h */; };
+		CEA836E01B77637200DAD08C /* SIKSyncException.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA836371B7762D500DAD08C /* SIKSyncException.h */; };
+		CEA836E11B77637200DAD08C /* SIKApplicationDescriptor.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA8363A1B7762D500DAD08C /* SIKApplicationDescriptor.h */; };
+		CEA836E21B77637200DAD08C /* SIKLibraryDescriptor.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA8363C1B7762D500DAD08C /* SIKLibraryDescriptor.h */; };
+		CEA836E31B77637200DAD08C /* SIKNotificationDescriptor.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA8363E1B7762D500DAD08C /* SIKNotificationDescriptor.h */; };
+		CEA836E41B77637200DAD08C /* SIKServiceDescriptor.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA836401B7762D500DAD08C /* SIKServiceDescriptor.h */; };
+		CEA836E51B77637200DAD08C /* SIKServiceRequest.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA836421B7762D500DAD08C /* SIKServiceRequest.h */; };
+		CEA836E61B77637200DAD08C /* SIKServiceRequestResource.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA836441B7762D500DAD08C /* SIKServiceRequestResource.h */; };
+		CEA836E71B77637200DAD08C /* SIKSyncDescriptor.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA836461B7762D500DAD08C /* SIKSyncDescriptor.h */; };
+		CEA836E81B77637200DAD08C /* SIKApplicationDescriptorReader.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA8365A1B7762D500DAD08C /* SIKApplicationDescriptorReader.h */; };
+		CEA836E91B77637200DAD08C /* SIKLibraryDescriptorReader.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA8365C1B7762D500DAD08C /* SIKLibraryDescriptorReader.h */; };
+		CEA836EA1B77637200DAD08C /* SIKQuickServiceDescriptorReader.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA8365E1B7762D600DAD08C /* SIKQuickServiceDescriptorReader.h */; };
+		CEA836EB1B77637200DAD08C /* SIKServiceDescriptorReader.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA836601B7762D600DAD08C /* SIKServiceDescriptorReader.h */; };
+		CEA836EC1B77637200DAD08C /* SIKSyncDescriptorReader.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA836621B7762D600DAD08C /* SIKSyncDescriptorReader.h */; };
+		CEA836ED1B77637200DAD08C /* SIKResourceManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA836681B7762D600DAD08C /* SIKResourceManager.h */; };
+		CEA836EE1B77637200DAD08C /* SIKResourceUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA8366A1B7762D600DAD08C /* SIKResourceUtils.h */; };
+		CEA836EF1B77637200DAD08C /* SIKIResource.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA8366E1B7762D600DAD08C /* SIKIResource.h */; };
+		CEA836F01B77637200DAD08C /* SIKIService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA8366F1B7762D600DAD08C /* SIKIService.h */; };
+		CEA836F11B77637200DAD08C /* SIKIServiceEvents.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA836701B7762D600DAD08C /* SIKIServiceEvents.h */; };
+		CEA836F21B77637200DAD08C /* SIKAsyncServiceWorker.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA836711B7762D600DAD08C /* SIKAsyncServiceWorker.h */; };
+		CEA836F31B77637200DAD08C /* SIKService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA836731B7762D600DAD08C /* SIKService.h */; };
+		CEA836F41B77637200DAD08C /* SIKServiceHandler.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA836751B7762D600DAD08C /* SIKServiceHandler.h */; };
+		CEA836F51B77637200DAD08C /* SIKSyncServiceWorker.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEA836771B7762D600DAD08C /* SIKSyncServiceWorker.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CEA830501B774B6300DAD08C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = include;
+			dstSubfolderSpec = 16;
+			files = (
+				CEA836DD1B77637200DAD08C /* SIKConnectionException.h in CopyFiles */,
+				CEA836DE1B77637200DAD08C /* SIKNotificationException.h in CopyFiles */,
+				CEA836DF1B77637200DAD08C /* SIKServiceException.h in CopyFiles */,
+				CEA836E01B77637200DAD08C /* SIKSyncException.h in CopyFiles */,
+				CEA836E11B77637200DAD08C /* SIKApplicationDescriptor.h in CopyFiles */,
+				CEA836E21B77637200DAD08C /* SIKLibraryDescriptor.h in CopyFiles */,
+				CEA836E31B77637200DAD08C /* SIKNotificationDescriptor.h in CopyFiles */,
+				CEA836E41B77637200DAD08C /* SIKServiceDescriptor.h in CopyFiles */,
+				CEA836E51B77637200DAD08C /* SIKServiceRequest.h in CopyFiles */,
+				CEA836E61B77637200DAD08C /* SIKServiceRequestResource.h in CopyFiles */,
+				CEA836E71B77637200DAD08C /* SIKSyncDescriptor.h in CopyFiles */,
+				CEA836E81B77637200DAD08C /* SIKApplicationDescriptorReader.h in CopyFiles */,
+				CEA836E91B77637200DAD08C /* SIKLibraryDescriptorReader.h in CopyFiles */,
+				CEA836EA1B77637200DAD08C /* SIKQuickServiceDescriptorReader.h in CopyFiles */,
+				CEA836EB1B77637200DAD08C /* SIKServiceDescriptorReader.h in CopyFiles */,
+				CEA836EC1B77637200DAD08C /* SIKSyncDescriptorReader.h in CopyFiles */,
+				CEA836ED1B77637200DAD08C /* SIKResourceManager.h in CopyFiles */,
+				CEA836EE1B77637200DAD08C /* SIKResourceUtils.h in CopyFiles */,
+				CEA836EF1B77637200DAD08C /* SIKIResource.h in CopyFiles */,
+				CEA836F01B77637200DAD08C /* SIKIService.h in CopyFiles */,
+				CEA836F11B77637200DAD08C /* SIKIServiceEvents.h in CopyFiles */,
+				CEA836F21B77637200DAD08C /* SIKAsyncServiceWorker.h in CopyFiles */,
+				CEA836F31B77637200DAD08C /* SIKService.h in CopyFiles */,
+				CEA836F41B77637200DAD08C /* SIKServiceHandler.h in CopyFiles */,
+				CEA836F51B77637200DAD08C /* SIKSyncServiceWorker.h in CopyFiles */,
+				CEA836B91B7762EE00DAD08C /* SIKIConnection.h in CopyFiles */,
+				CEA836BA1B7762EE00DAD08C /* SIKIConnectionRequest.h in CopyFiles */,
+				CEA836BB1B7762EE00DAD08C /* SIKIConnectionResponse.h in CopyFiles */,
+				CEA836BC1B7762EE00DAD08C /* SIKConnectionHelper.h in CopyFiles */,
+				CEA836BD1B7762EE00DAD08C /* SIKConnectionManager.h in CopyFiles */,
+				CEA836BE1B7762EE00DAD08C /* SIKConnectionRequest.h in CopyFiles */,
+				CEA836BF1B7762EE00DAD08C /* SIKConnectionResponse.h in CopyFiles */,
+				CEA836C01B7762EE00DAD08C /* SIKConnectionStatusCodes.h in CopyFiles */,
+				CEA836C11B7762EE00DAD08C /* SIKHttpConnectionWorker.h in CopyFiles */,
+				CEA836C21B7762EE00DAD08C /* SIKHttpsConnectionWorker.h in CopyFiles */,
+				CEA836C31B7762EE00DAD08C /* SIKEventHandler.h in CopyFiles */,
+				CEA836C41B7762EE00DAD08C /* SIKINotificationEvents.h in CopyFiles */,
+				CEA836C51B7762EE00DAD08C /* SIKISyncEvents.h in CopyFiles */,
+				CEA836C61B7762EE00DAD08C /* SIKIMessage.h in CopyFiles */,
+				CEA836C71B7762EE00DAD08C /* SIKINotification.h in CopyFiles */,
+				CEA836C81B7762EE00DAD08C /* SIKIRegistration.h in CopyFiles */,
+				CEA836C91B7762EE00DAD08C /* SIKMessage.h in CopyFiles */,
+				CEA836CA1B7762EE00DAD08C /* SIKNotificationManager.h in CopyFiles */,
+				CEA836CB1B7762EE00DAD08C /* SIKNotificationReceiver.h in CopyFiles */,
+				CEA836CC1B7762EE00DAD08C /* SIKNotificationService.h in CopyFiles */,
+				CEA836CD1B7762EE00DAD08C /* SIKRegistration.h in CopyFiles */,
+				CEA836CE1B7762EE00DAD08C /* Reachability.h in CopyFiles */,
+				CEA836CF1B7762EE00DAD08C /* SIKConstants.h in CopyFiles */,
+				CEA836D01B7762EE00DAD08C /* SIKInitializer.h in CopyFiles */,
+				CEA836D11B7762EE00DAD08C /* SIKIRequest.h in CopyFiles */,
+				CEA836D21B7762EE00DAD08C /* SIKIWorker.h in CopyFiles */,
+				CEA836D31B7762EE00DAD08C /* SIKSiminov.h in CopyFiles */,
+				CEA836D41B7762EE00DAD08C /* SIKISyncRequest.h in CopyFiles */,
+				CEA836D51B7762EE00DAD08C /* SIKSyncHandler.h in CopyFiles */,
+				CEA836D61B7762EE00DAD08C /* SIKSyncRequest.h in CopyFiles */,
+				CEA836D71B7762EE00DAD08C /* SIKSyncWorker.h in CopyFiles */,
+				CEA836D81B7762EE00DAD08C /* SIKUtils.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEA8318D1B774F1A00DAD08C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = include/Siminov.Connect.Resource;
+			dstSubfolderSpec = 7;
+			files = (
+				CEA836B61B7762E400DAD08C /* DatabaseDescriptor.si.xml in CopyFiles */,
+				CEA836B71B7762E400DAD08C /* ServiceRequest.si.xml in CopyFiles */,
+				CEA836B81B7762E400DAD08C /* ServiceRequestResource.si.xml in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		CEA830521B774B6300DAD08C /* libConnect.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libConnect.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEA8306D1B774B9000DAD08C /* ApplicationDescriptor.si.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ApplicationDescriptor.si.xml; sourceTree = "<group>"; };
+		CEA8306E1B774B9000DAD08C /* Connect.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Connect.txt; sourceTree = "<group>"; };
+		CEA8306F1B774B9000DAD08C /* DataHandlerEvents.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = DataHandlerEvents.java; sourceTree = "<group>"; };
+		CEA830701B774B9000DAD08C /* LibraryDescriptor.si.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LibraryDescriptor.si.xml; sourceTree = "<group>"; };
+		CEA830711B774B9000DAD08C /* Notification.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Notification.txt; sourceTree = "<group>"; };
+		CEA830721B774B9000DAD08C /* NotificationEvents.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = NotificationEvents.java; sourceTree = "<group>"; };
+		CEA830731B774B9000DAD08C /* Service.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Service.txt; sourceTree = "<group>"; };
+		CEA830741B774B9000DAD08C /* ServiceDescriptor.si.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ServiceDescriptor.si.xml; sourceTree = "<group>"; };
+		CEA830751B774B9000DAD08C /* ServiceLifecycleEvent.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = ServiceLifecycleEvent.java; sourceTree = "<group>"; };
+		CEA830761B774B9000DAD08C /* Sync.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Sync.txt; sourceTree = "<group>"; };
+		CEA830771B774B9000DAD08C /* SyncDescriptors.si.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SyncDescriptors.si.xml; sourceTree = "<group>"; };
+		CEA830781B774B9000DAD08C /* SyncHandlerEvents.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = SyncHandlerEvents.java; sourceTree = "<group>"; };
+		CEA830F01B774B9000DAD08C /* v2.0 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = v2.0; sourceTree = "<group>"; };
+		CEA831911B7751B300DAD08C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		CEA831931B7751C300DAD08C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CEA8361A1B7762D500DAD08C /* SIKIConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKIConnection.h; sourceTree = "<group>"; };
+		CEA8361B1B7762D500DAD08C /* SIKIConnectionRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKIConnectionRequest.h; sourceTree = "<group>"; };
+		CEA8361C1B7762D500DAD08C /* SIKIConnectionResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKIConnectionResponse.h; sourceTree = "<group>"; };
+		CEA8361D1B7762D500DAD08C /* SIKConnectionHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKConnectionHelper.h; sourceTree = "<group>"; };
+		CEA8361E1B7762D500DAD08C /* SIKConnectionHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIKConnectionHelper.m; sourceTree = "<group>"; };
+		CEA8361F1B7762D500DAD08C /* SIKConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKConnectionManager.h; sourceTree = "<group>"; };
+		CEA836201B7762D500DAD08C /* SIKConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIKConnectionManager.m; sourceTree = "<group>"; };
+		CEA836211B7762D500DAD08C /* SIKConnectionRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKConnectionRequest.h; sourceTree = "<group>"; };
+		CEA836221B7762D500DAD08C /* SIKConnectionRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIKConnectionRequest.m; sourceTree = "<group>"; };
+		CEA836231B7762D500DAD08C /* SIKConnectionResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKConnectionResponse.h; sourceTree = "<group>"; };
+		CEA836241B7762D500DAD08C /* SIKConnectionResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIKConnectionResponse.m; sourceTree = "<group>"; };
+		CEA836251B7762D500DAD08C /* SIKConnectionStatusCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKConnectionStatusCodes.h; sourceTree = "<group>"; };
+		CEA836261B7762D500DAD08C /* SIKConnectionStatusCodes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIKConnectionStatusCodes.m; sourceTree = "<group>"; };
+		CEA836271B7762D500DAD08C /* SIKHttpConnectionWorker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKHttpConnectionWorker.h; sourceTree = "<group>"; };
+		CEA836281B7762D500DAD08C /* SIKHttpConnectionWorker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIKHttpConnectionWorker.m; sourceTree = "<group>"; };
+		CEA836291B7762D500DAD08C /* SIKHttpsConnectionWorker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKHttpsConnectionWorker.h; sourceTree = "<group>"; };
+		CEA8362A1B7762D500DAD08C /* SIKHttpsConnectionWorker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIKHttpsConnectionWorker.m; sourceTree = "<group>"; };
+		CEA8362C1B7762D500DAD08C /* SIKEventHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKEventHandler.h; sourceTree = "<group>"; };
+		CEA8362D1B7762D500DAD08C /* SIKEventHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIKEventHandler.m; sourceTree = "<group>"; };
+		CEA8362E1B7762D500DAD08C /* SIKINotificationEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKINotificationEvents.h; sourceTree = "<group>"; };
+		CEA8362F1B7762D500DAD08C /* SIKISyncEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKISyncEvents.h; sourceTree = "<group>"; };
+		CEA836311B7762D500DAD08C /* SIKConnectionException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKConnectionException.h; sourceTree = "<group>"; };
+		CEA836321B7762D500DAD08C /* SIKConnectionException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIKConnectionException.m; sourceTree = "<group>"; };
+		CEA836331B7762D500DAD08C /* SIKNotificationException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKNotificationException.h; sourceTree = "<group>"; };
+		CEA836341B7762D500DAD08C /* SIKNotificationException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIKNotificationException.m; sourceTree = "<group>"; };
+		CEA836351B7762D500DAD08C /* SIKServiceException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKServiceException.h; sourceTree = "<group>"; };
+		CEA836361B7762D500DAD08C /* SIKServiceException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIKServiceException.m; sourceTree = "<group>"; };
+		CEA836371B7762D500DAD08C /* SIKSyncException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKSyncException.h; sourceTree = "<group>"; };
+		CEA836381B7762D500DAD08C /* SIKSyncException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIKSyncException.m; sourceTree = "<group>"; };
+		CEA8363A1B7762D500DAD08C /* SIKApplicationDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKApplicationDescriptor.h; sourceTree = "<group>"; };
+		CEA8363B1B7762D500DAD08C /* SIKApplicationDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIKApplicationDescriptor.m; sourceTree = "<group>"; };
+		CEA8363C1B7762D500DAD08C /* SIKLibraryDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKLibraryDescriptor.h; sourceTree = "<group>"; };
+		CEA8363D1B7762D500DAD08C /* SIKLibraryDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIKLibraryDescriptor.m; sourceTree = "<group>"; };
+		CEA8363E1B7762D500DAD08C /* SIKNotificationDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKNotificationDescriptor.h; sourceTree = "<group>"; };
+		CEA8363F1B7762D500DAD08C /* SIKNotificationDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIKNotificationDescriptor.m; sourceTree = "<group>"; };
+		CEA836401B7762D500DAD08C /* SIKServiceDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKServiceDescriptor.h; sourceTree = "<group>"; };
+		CEA836411B7762D500DAD08C /* SIKServiceDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIKServiceDescriptor.m; sourceTree = "<group>"; };
+		CEA836421B7762D500DAD08C /* SIKServiceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKServiceRequest.h; sourceTree = "<group>"; };
+		CEA836431B7762D500DAD08C /* SIKServiceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIKServiceRequest.m; sourceTree = "<group>"; };
+		CEA836441B7762D500DAD08C /* SIKServiceRequestResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKServiceRequestResource.h; sourceTree = "<group>"; };
+		CEA836451B7762D500DAD08C /* SIKServiceRequestResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIKServiceRequestResource.m; sourceTree = "<group>"; };
+		CEA836461B7762D500DAD08C /* SIKSyncDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKSyncDescriptor.h; sourceTree = "<group>"; };
+		CEA836471B7762D500DAD08C /* SIKSyncDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIKSyncDescriptor.m; sourceTree = "<group>"; };
+		CEA8364A1B7762D500DAD08C /* SIKIMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKIMessage.h; sourceTree = "<group>"; };
+		CEA8364B1B7762D500DAD08C /* SIKINotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKINotification.h; sourceTree = "<group>"; };
+		CEA8364C1B7762D500DAD08C /* SIKIRegistration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKIRegistration.h; sourceTree = "<group>"; };
+		CEA8364D1B7762D500DAD08C /* SIKMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKMessage.h; sourceTree = "<group>"; };
+		CEA8364E1B7762D500DAD08C /* SIKMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIKMessage.m; sourceTree = "<group>"; };
+		CEA8364F1B7762D500DAD08C /* SIKNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKNotificationManager.h; sourceTree = "<group>"; };
+		CEA836501B7762D500DAD08C /* SIKNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIKNotificationManager.m; sourceTree = "<group>"; };
+		CEA836511B7762D500DAD08C /* SIKNotificationReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKNotificationReceiver.h; sourceTree = "<group>"; };
+		CEA836521B7762D500DAD08C /* SIKNotificationReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIKNotificationReceiver.m; sourceTree = "<group>"; };
+		CEA836531B7762D500DAD08C /* SIKNotificationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKNotificationService.h; sourceTree = "<group>"; };
+		CEA836541B7762D500DAD08C /* SIKNotificationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIKNotificationService.m; sourceTree = "<group>"; };
+		CEA836551B7762D500DAD08C /* SIKRegistration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKRegistration.h; sourceTree = "<group>"; };
+		CEA836561B7762D500DAD08C /* SIKRegistration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIKRegistration.m; sourceTree = "<group>"; };
+		CEA836571B7762D500DAD08C /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		CEA836581B7762D500DAD08C /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		CEA8365A1B7762D500DAD08C /* SIKApplicationDescriptorReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKApplicationDescriptorReader.h; sourceTree = "<group>"; };
+		CEA8365B1B7762D500DAD08C /* SIKApplicationDescriptorReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIKApplicationDescriptorReader.m; sourceTree = "<group>"; };
+		CEA8365C1B7762D500DAD08C /* SIKLibraryDescriptorReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKLibraryDescriptorReader.h; sourceTree = "<group>"; };
+		CEA8365D1B7762D600DAD08C /* SIKLibraryDescriptorReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIKLibraryDescriptorReader.m; sourceTree = "<group>"; };
+		CEA8365E1B7762D600DAD08C /* SIKQuickServiceDescriptorReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKQuickServiceDescriptorReader.h; sourceTree = "<group>"; };
+		CEA8365F1B7762D600DAD08C /* SIKQuickServiceDescriptorReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIKQuickServiceDescriptorReader.m; sourceTree = "<group>"; };
+		CEA836601B7762D600DAD08C /* SIKServiceDescriptorReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKServiceDescriptorReader.h; sourceTree = "<group>"; };
+		CEA836611B7762D600DAD08C /* SIKServiceDescriptorReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIKServiceDescriptorReader.m; sourceTree = "<group>"; };
+		CEA836621B7762D600DAD08C /* SIKSyncDescriptorReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKSyncDescriptorReader.h; sourceTree = "<group>"; };
+		CEA836631B7762D600DAD08C /* SIKSyncDescriptorReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIKSyncDescriptorReader.m; sourceTree = "<group>"; };
+		CEA836651B7762D600DAD08C /* DatabaseDescriptor.si.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = DatabaseDescriptor.si.xml; sourceTree = "<group>"; };
+		CEA836661B7762D600DAD08C /* ServiceRequest.si.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ServiceRequest.si.xml; sourceTree = "<group>"; };
+		CEA836671B7762D600DAD08C /* ServiceRequestResource.si.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ServiceRequestResource.si.xml; sourceTree = "<group>"; };
+		CEA836681B7762D600DAD08C /* SIKResourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKResourceManager.h; sourceTree = "<group>"; };
+		CEA836691B7762D600DAD08C /* SIKResourceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIKResourceManager.m; sourceTree = "<group>"; };
+		CEA8366A1B7762D600DAD08C /* SIKResourceUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKResourceUtils.h; sourceTree = "<group>"; };
+		CEA8366B1B7762D600DAD08C /* SIKResourceUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIKResourceUtils.m; sourceTree = "<group>"; };
+		CEA8366E1B7762D600DAD08C /* SIKIResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKIResource.h; sourceTree = "<group>"; };
+		CEA8366F1B7762D600DAD08C /* SIKIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKIService.h; sourceTree = "<group>"; };
+		CEA836701B7762D600DAD08C /* SIKIServiceEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKIServiceEvents.h; sourceTree = "<group>"; };
+		CEA836711B7762D600DAD08C /* SIKAsyncServiceWorker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKAsyncServiceWorker.h; sourceTree = "<group>"; };
+		CEA836721B7762D600DAD08C /* SIKAsyncServiceWorker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIKAsyncServiceWorker.m; sourceTree = "<group>"; };
+		CEA836731B7762D600DAD08C /* SIKService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKService.h; sourceTree = "<group>"; };
+		CEA836741B7762D600DAD08C /* SIKService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIKService.m; sourceTree = "<group>"; };
+		CEA836751B7762D600DAD08C /* SIKServiceHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKServiceHandler.h; sourceTree = "<group>"; };
+		CEA836761B7762D600DAD08C /* SIKServiceHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIKServiceHandler.m; sourceTree = "<group>"; };
+		CEA836771B7762D600DAD08C /* SIKSyncServiceWorker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKSyncServiceWorker.h; sourceTree = "<group>"; };
+		CEA836781B7762D600DAD08C /* SIKSyncServiceWorker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIKSyncServiceWorker.m; sourceTree = "<group>"; };
+		CEA836791B7762D600DAD08C /* SIKConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKConstants.h; sourceTree = "<group>"; };
+		CEA8367A1B7762D600DAD08C /* SIKInitializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKInitializer.h; sourceTree = "<group>"; };
+		CEA8367B1B7762D600DAD08C /* SIKInitializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIKInitializer.m; sourceTree = "<group>"; };
+		CEA8367C1B7762D600DAD08C /* SIKIRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKIRequest.h; sourceTree = "<group>"; };
+		CEA8367D1B7762D600DAD08C /* SIKIWorker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKIWorker.h; sourceTree = "<group>"; };
+		CEA8367E1B7762D600DAD08C /* SIKSiminov.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKSiminov.h; sourceTree = "<group>"; };
+		CEA8367F1B7762D600DAD08C /* SIKSiminov.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIKSiminov.m; sourceTree = "<group>"; };
+		CEA836821B7762D600DAD08C /* SIKISyncRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKISyncRequest.h; sourceTree = "<group>"; };
+		CEA836831B7762D600DAD08C /* SIKSyncHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKSyncHandler.h; sourceTree = "<group>"; };
+		CEA836841B7762D600DAD08C /* SIKSyncHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIKSyncHandler.m; sourceTree = "<group>"; };
+		CEA836851B7762D600DAD08C /* SIKSyncRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKSyncRequest.h; sourceTree = "<group>"; };
+		CEA836861B7762D600DAD08C /* SIKSyncRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIKSyncRequest.m; sourceTree = "<group>"; };
+		CEA836871B7762D600DAD08C /* SIKSyncWorker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKSyncWorker.h; sourceTree = "<group>"; };
+		CEA836881B7762D600DAD08C /* SIKSyncWorker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIKSyncWorker.m; sourceTree = "<group>"; };
+		CEA8368A1B7762D600DAD08C /* SIKUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIKUtils.h; sourceTree = "<group>"; };
+		CEA8368B1B7762D600DAD08C /* SIKUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIKUtils.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CEA8304F1B774B6300DAD08C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEA831941B7751C300DAD08C /* Foundation.framework in Frameworks */,
+				CEA831921B7751B300DAD08C /* SystemConfiguration.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CEA830491B774B6300DAD08C = {
+			isa = PBXGroup;
+			children = (
+				CEA836161B7762D500DAD08C /* Siminov */,
+				CEA831931B7751C300DAD08C /* Foundation.framework */,
+				CEA831911B7751B300DAD08C /* SystemConfiguration.framework */,
+				CEA8306C1B774B9000DAD08C /* Assets */,
+				CEA830EF1B774B9000DAD08C /* Version-Control */,
+				CEA830531B774B6300DAD08C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CEA830531B774B6300DAD08C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CEA830521B774B6300DAD08C /* libConnect.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CEA8306C1B774B9000DAD08C /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				CEA8306D1B774B9000DAD08C /* ApplicationDescriptor.si.xml */,
+				CEA8306E1B774B9000DAD08C /* Connect.txt */,
+				CEA8306F1B774B9000DAD08C /* DataHandlerEvents.java */,
+				CEA830701B774B9000DAD08C /* LibraryDescriptor.si.xml */,
+				CEA830711B774B9000DAD08C /* Notification.txt */,
+				CEA830721B774B9000DAD08C /* NotificationEvents.java */,
+				CEA830731B774B9000DAD08C /* Service.txt */,
+				CEA830741B774B9000DAD08C /* ServiceDescriptor.si.xml */,
+				CEA830751B774B9000DAD08C /* ServiceLifecycleEvent.java */,
+				CEA830761B774B9000DAD08C /* Sync.txt */,
+				CEA830771B774B9000DAD08C /* SyncDescriptors.si.xml */,
+				CEA830781B774B9000DAD08C /* SyncHandlerEvents.java */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		CEA830EF1B774B9000DAD08C /* Version-Control */ = {
+			isa = PBXGroup;
+			children = (
+				CEA830F01B774B9000DAD08C /* v2.0 */,
+			);
+			path = "Version-Control";
+			sourceTree = "<group>";
+		};
+		CEA836161B7762D500DAD08C /* Siminov */ = {
+			isa = PBXGroup;
+			children = (
+				CEA836171B7762D500DAD08C /* Connect */,
+			);
+			path = Siminov;
+			sourceTree = "<group>";
+		};
+		CEA836171B7762D500DAD08C /* Connect */ = {
+			isa = PBXGroup;
+			children = (
+				CEA836181B7762D500DAD08C /* Connection */,
+				CEA8362B1B7762D500DAD08C /* Events */,
+				CEA836301B7762D500DAD08C /* Exception */,
+				CEA836391B7762D500DAD08C /* Model */,
+				CEA836481B7762D500DAD08C /* Notification */,
+				CEA836571B7762D500DAD08C /* Reachability.h */,
+				CEA836581B7762D500DAD08C /* Reachability.m */,
+				CEA836591B7762D500DAD08C /* Reader */,
+				CEA836641B7762D600DAD08C /* Resource */,
+				CEA8366C1B7762D600DAD08C /* Service */,
+				CEA836791B7762D600DAD08C /* SIKConstants.h */,
+				CEA8367A1B7762D600DAD08C /* SIKInitializer.h */,
+				CEA8367B1B7762D600DAD08C /* SIKInitializer.m */,
+				CEA8367C1B7762D600DAD08C /* SIKIRequest.h */,
+				CEA8367D1B7762D600DAD08C /* SIKIWorker.h */,
+				CEA8367E1B7762D600DAD08C /* SIKSiminov.h */,
+				CEA8367F1B7762D600DAD08C /* SIKSiminov.m */,
+				CEA836801B7762D600DAD08C /* Sync */,
+				CEA836891B7762D600DAD08C /* Utils */,
+			);
+			path = Connect;
+			sourceTree = "<group>";
+		};
+		CEA836181B7762D500DAD08C /* Connection */ = {
+			isa = PBXGroup;
+			children = (
+				CEA836191B7762D500DAD08C /* Design */,
+				CEA8361D1B7762D500DAD08C /* SIKConnectionHelper.h */,
+				CEA8361E1B7762D500DAD08C /* SIKConnectionHelper.m */,
+				CEA8361F1B7762D500DAD08C /* SIKConnectionManager.h */,
+				CEA836201B7762D500DAD08C /* SIKConnectionManager.m */,
+				CEA836211B7762D500DAD08C /* SIKConnectionRequest.h */,
+				CEA836221B7762D500DAD08C /* SIKConnectionRequest.m */,
+				CEA836231B7762D500DAD08C /* SIKConnectionResponse.h */,
+				CEA836241B7762D500DAD08C /* SIKConnectionResponse.m */,
+				CEA836251B7762D500DAD08C /* SIKConnectionStatusCodes.h */,
+				CEA836261B7762D500DAD08C /* SIKConnectionStatusCodes.m */,
+				CEA836271B7762D500DAD08C /* SIKHttpConnectionWorker.h */,
+				CEA836281B7762D500DAD08C /* SIKHttpConnectionWorker.m */,
+				CEA836291B7762D500DAD08C /* SIKHttpsConnectionWorker.h */,
+				CEA8362A1B7762D500DAD08C /* SIKHttpsConnectionWorker.m */,
+			);
+			path = Connection;
+			sourceTree = "<group>";
+		};
+		CEA836191B7762D500DAD08C /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				CEA8361A1B7762D500DAD08C /* SIKIConnection.h */,
+				CEA8361B1B7762D500DAD08C /* SIKIConnectionRequest.h */,
+				CEA8361C1B7762D500DAD08C /* SIKIConnectionResponse.h */,
+			);
+			path = Design;
+			sourceTree = "<group>";
+		};
+		CEA8362B1B7762D500DAD08C /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				CEA8362C1B7762D500DAD08C /* SIKEventHandler.h */,
+				CEA8362D1B7762D500DAD08C /* SIKEventHandler.m */,
+				CEA8362E1B7762D500DAD08C /* SIKINotificationEvents.h */,
+				CEA8362F1B7762D500DAD08C /* SIKISyncEvents.h */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		CEA836301B7762D500DAD08C /* Exception */ = {
+			isa = PBXGroup;
+			children = (
+				CEA836311B7762D500DAD08C /* SIKConnectionException.h */,
+				CEA836321B7762D500DAD08C /* SIKConnectionException.m */,
+				CEA836331B7762D500DAD08C /* SIKNotificationException.h */,
+				CEA836341B7762D500DAD08C /* SIKNotificationException.m */,
+				CEA836351B7762D500DAD08C /* SIKServiceException.h */,
+				CEA836361B7762D500DAD08C /* SIKServiceException.m */,
+				CEA836371B7762D500DAD08C /* SIKSyncException.h */,
+				CEA836381B7762D500DAD08C /* SIKSyncException.m */,
+			);
+			path = Exception;
+			sourceTree = "<group>";
+		};
+		CEA836391B7762D500DAD08C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CEA8363A1B7762D500DAD08C /* SIKApplicationDescriptor.h */,
+				CEA8363B1B7762D500DAD08C /* SIKApplicationDescriptor.m */,
+				CEA8363C1B7762D500DAD08C /* SIKLibraryDescriptor.h */,
+				CEA8363D1B7762D500DAD08C /* SIKLibraryDescriptor.m */,
+				CEA8363E1B7762D500DAD08C /* SIKNotificationDescriptor.h */,
+				CEA8363F1B7762D500DAD08C /* SIKNotificationDescriptor.m */,
+				CEA836401B7762D500DAD08C /* SIKServiceDescriptor.h */,
+				CEA836411B7762D500DAD08C /* SIKServiceDescriptor.m */,
+				CEA836421B7762D500DAD08C /* SIKServiceRequest.h */,
+				CEA836431B7762D500DAD08C /* SIKServiceRequest.m */,
+				CEA836441B7762D500DAD08C /* SIKServiceRequestResource.h */,
+				CEA836451B7762D500DAD08C /* SIKServiceRequestResource.m */,
+				CEA836461B7762D500DAD08C /* SIKSyncDescriptor.h */,
+				CEA836471B7762D500DAD08C /* SIKSyncDescriptor.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CEA836481B7762D500DAD08C /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				CEA836491B7762D500DAD08C /* Design */,
+				CEA8364D1B7762D500DAD08C /* SIKMessage.h */,
+				CEA8364E1B7762D500DAD08C /* SIKMessage.m */,
+				CEA8364F1B7762D500DAD08C /* SIKNotificationManager.h */,
+				CEA836501B7762D500DAD08C /* SIKNotificationManager.m */,
+				CEA836511B7762D500DAD08C /* SIKNotificationReceiver.h */,
+				CEA836521B7762D500DAD08C /* SIKNotificationReceiver.m */,
+				CEA836531B7762D500DAD08C /* SIKNotificationService.h */,
+				CEA836541B7762D500DAD08C /* SIKNotificationService.m */,
+				CEA836551B7762D500DAD08C /* SIKRegistration.h */,
+				CEA836561B7762D500DAD08C /* SIKRegistration.m */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		CEA836491B7762D500DAD08C /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				CEA8364A1B7762D500DAD08C /* SIKIMessage.h */,
+				CEA8364B1B7762D500DAD08C /* SIKINotification.h */,
+				CEA8364C1B7762D500DAD08C /* SIKIRegistration.h */,
+			);
+			path = Design;
+			sourceTree = "<group>";
+		};
+		CEA836591B7762D500DAD08C /* Reader */ = {
+			isa = PBXGroup;
+			children = (
+				CEA8365A1B7762D500DAD08C /* SIKApplicationDescriptorReader.h */,
+				CEA8365B1B7762D500DAD08C /* SIKApplicationDescriptorReader.m */,
+				CEA8365C1B7762D500DAD08C /* SIKLibraryDescriptorReader.h */,
+				CEA8365D1B7762D600DAD08C /* SIKLibraryDescriptorReader.m */,
+				CEA8365E1B7762D600DAD08C /* SIKQuickServiceDescriptorReader.h */,
+				CEA8365F1B7762D600DAD08C /* SIKQuickServiceDescriptorReader.m */,
+				CEA836601B7762D600DAD08C /* SIKServiceDescriptorReader.h */,
+				CEA836611B7762D600DAD08C /* SIKServiceDescriptorReader.m */,
+				CEA836621B7762D600DAD08C /* SIKSyncDescriptorReader.h */,
+				CEA836631B7762D600DAD08C /* SIKSyncDescriptorReader.m */,
+			);
+			path = Reader;
+			sourceTree = "<group>";
+		};
+		CEA836641B7762D600DAD08C /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				CEA836651B7762D600DAD08C /* DatabaseDescriptor.si.xml */,
+				CEA836661B7762D600DAD08C /* ServiceRequest.si.xml */,
+				CEA836671B7762D600DAD08C /* ServiceRequestResource.si.xml */,
+				CEA836681B7762D600DAD08C /* SIKResourceManager.h */,
+				CEA836691B7762D600DAD08C /* SIKResourceManager.m */,
+				CEA8366A1B7762D600DAD08C /* SIKResourceUtils.h */,
+				CEA8366B1B7762D600DAD08C /* SIKResourceUtils.m */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		CEA8366C1B7762D600DAD08C /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				CEA8366D1B7762D600DAD08C /* Design */,
+				CEA836711B7762D600DAD08C /* SIKAsyncServiceWorker.h */,
+				CEA836721B7762D600DAD08C /* SIKAsyncServiceWorker.m */,
+				CEA836731B7762D600DAD08C /* SIKService.h */,
+				CEA836741B7762D600DAD08C /* SIKService.m */,
+				CEA836751B7762D600DAD08C /* SIKServiceHandler.h */,
+				CEA836761B7762D600DAD08C /* SIKServiceHandler.m */,
+				CEA836771B7762D600DAD08C /* SIKSyncServiceWorker.h */,
+				CEA836781B7762D600DAD08C /* SIKSyncServiceWorker.m */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		CEA8366D1B7762D600DAD08C /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				CEA8366E1B7762D600DAD08C /* SIKIResource.h */,
+				CEA8366F1B7762D600DAD08C /* SIKIService.h */,
+				CEA836701B7762D600DAD08C /* SIKIServiceEvents.h */,
+			);
+			path = Design;
+			sourceTree = "<group>";
+		};
+		CEA836801B7762D600DAD08C /* Sync */ = {
+			isa = PBXGroup;
+			children = (
+				CEA836811B7762D600DAD08C /* Design */,
+				CEA836831B7762D600DAD08C /* SIKSyncHandler.h */,
+				CEA836841B7762D600DAD08C /* SIKSyncHandler.m */,
+				CEA836851B7762D600DAD08C /* SIKSyncRequest.h */,
+				CEA836861B7762D600DAD08C /* SIKSyncRequest.m */,
+				CEA836871B7762D600DAD08C /* SIKSyncWorker.h */,
+				CEA836881B7762D600DAD08C /* SIKSyncWorker.m */,
+			);
+			path = Sync;
+			sourceTree = "<group>";
+		};
+		CEA836811B7762D600DAD08C /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				CEA836821B7762D600DAD08C /* SIKISyncRequest.h */,
+			);
+			path = Design;
+			sourceTree = "<group>";
+		};
+		CEA836891B7762D600DAD08C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CEA8368A1B7762D600DAD08C /* SIKUtils.h */,
+				CEA8368B1B7762D600DAD08C /* SIKUtils.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CEA830511B774B6300DAD08C /* Connect */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CEA830661B774B6300DAD08C /* Build configuration list for PBXNativeTarget "Connect" */;
+			buildPhases = (
+				CEA8304E1B774B6300DAD08C /* Sources */,
+				CEA8304F1B774B6300DAD08C /* Frameworks */,
+				CEA830501B774B6300DAD08C /* CopyFiles */,
+				CEA8318D1B774F1A00DAD08C /* CopyFiles */,
+				CEA835721B775DAE00DAD08C /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Connect;
+			productName = Connect;
+			productReference = CEA830521B774B6300DAD08C /* libConnect.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CEA8304A1B774B6300DAD08C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = Siminov;
+				TargetAttributes = {
+					CEA830511B774B6300DAD08C = {
+						CreatedOnToolsVersion = 6.2;
+					};
+				};
+			};
+			buildConfigurationList = CEA8304D1B774B6300DAD08C /* Build configuration list for PBXProject "Connect" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CEA830491B774B6300DAD08C;
+			productRefGroup = CEA830531B774B6300DAD08C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CEA830511B774B6300DAD08C /* Connect */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CEA835721B775DAE00DAD08C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nset -o pipefail\n\n#################[ Tests: helps workaround any future bugs in Xcode ]########\n#\nDEBUG_THIS_SCRIPT=\"false\"\n\nif [ $DEBUG_THIS_SCRIPT = \"true\" ]\nthen\necho \"########### TESTS #############\"\necho \"Use the following variables when debugging this script; note that they may change on recursions\"\necho \"BUILD_DIR = $BUILD_DIR\"\necho \"BUILD_ROOT = $BUILD_ROOT\"\necho \"CONFIGURATION_BUILD_DIR = $CONFIGURATION_BUILD_DIR\"\necho \"BUILT_PRODUCTS_DIR = $BUILT_PRODUCTS_DIR\"\necho \"CONFIGURATION_TEMP_DIR = $CONFIGURATION_TEMP_DIR\"\necho \"TARGET_BUILD_DIR = $TARGET_BUILD_DIR\"\nfi\n\n#####################[ part 1 ]##################\n# First, work out the BASESDK version number (NB: Apple ought to report this, but they hide it)\n#    (incidental: searching for substrings in sh is a nightmare! Sob)\n\nSDK_VERSION=$(echo ${SDK_NAME} | grep -o '.\\{3\\}$')\n\n# Next, work out if we're in SIM or DEVICE\n\nif [ ${PLATFORM_NAME} = \"iphonesimulator\" ]\nthen\nOTHER_SDK_TO_BUILD=iphoneos${SDK_VERSION}\nelse\nOTHER_SDK_TO_BUILD=iphonesimulator${SDK_VERSION}\nfi\n\necho \"XCode has selected SDK: ${PLATFORM_NAME} with version: ${SDK_VERSION} (although back-targetting: ${IPHONEOS_DEPLOYMENT_TARGET})\"\necho \"...therefore, OTHER_SDK_TO_BUILD = ${OTHER_SDK_TO_BUILD}\"\n#\n#####################[ end of part 1 ]##################\n\n#####################[ part 2 ]##################\n#\n# IF this is the original invocation, invoke WHATEVER other builds are required\n#\n# Xcode is already building ONE target...\n#\n# ...but this is a LIBRARY, so Apple is wrong to set it to build just one.\n# ...we need to build ALL targets\n# ...we MUST NOT re-build the target that is ALREADY being built: Xcode WILL CRASH YOUR COMPUTER if you try this (infinite recursion!)\n#\n#\n# So: build ONLY the missing platforms/configurations.\n\nif [ \"true\" == ${ALREADYINVOKED:-false} ]\nthen\necho \"RECURSION: I am NOT the root invocation, so I'm NOT going to recurse\"\nelse\n# CRITICAL:\n# Prevent infinite recursion (Xcode sucks)\nexport ALREADYINVOKED=\"true\"\n\necho \"RECURSION: I am the root ... recursing all missing build targets NOW...\"\necho \"RECURSION: ...about to invoke: xcodebuild -configuration \\\"${CONFIGURATION}\\\" -project \\\"${PROJECT_NAME}.xcodeproj\\\" -target \\\"${TARGET_NAME}\\\" -sdk \\\"${OTHER_SDK_TO_BUILD}\\\" ${ACTION} RUN_CLANG_STATIC_ANALYZER=NO\" BUILD_DIR=\\\"${BUILD_DIR}\\\" BUILD_ROOT=\\\"${BUILD_ROOT}\\\" SYMROOT=\\\"${SYMROOT}\\\"\n\nxcodebuild -configuration \"${CONFIGURATION}\" -project \"${PROJECT_NAME}.xcodeproj\" -target \"${TARGET_NAME}\" -sdk \"${OTHER_SDK_TO_BUILD}\" ${ACTION} RUN_CLANG_STATIC_ANALYZER=NO BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" SYMROOT=\"${SYMROOT}\"\n\nACTION=\"build\"\n\n#Merge all platform binaries as a fat binary for each configurations.\n\n# Calculate where the (multiple) built files are coming from:\nCURRENTCONFIG_DEVICE_DIR=${SYMROOT}/${CONFIGURATION}-iphoneos\nCURRENTCONFIG_SIMULATOR_DIR=${SYMROOT}/${CONFIGURATION}-iphonesimulator\n\necho \"Taking device build from: ${CURRENTCONFIG_DEVICE_DIR}\"\necho \"Taking simulator build from: ${CURRENTCONFIG_SIMULATOR_DIR}\"\n\nCREATING_UNIVERSAL_DIR=${SYMROOT}/${CONFIGURATION}-universal\necho \"...I will output a universal build to: ${CREATING_UNIVERSAL_DIR}\"\n\n# ... remove the products of previous runs of this script\n#      NB: this directory is ONLY created by this script - it should be safe to delete!\n\nrm -rf \"${CREATING_UNIVERSAL_DIR}\"\nmkdir \"${CREATING_UNIVERSAL_DIR}\"\n\n#\necho \"lipo: for current configuration (${CONFIGURATION}) creating output file: ${CREATING_UNIVERSAL_DIR}/${EXECUTABLE_NAME}\"\nxcrun -sdk iphoneos lipo -create -output \"${CREATING_UNIVERSAL_DIR}/${EXECUTABLE_NAME}\" \"${CURRENTCONFIG_DEVICE_DIR}/${EXECUTABLE_NAME}\" \"${CURRENTCONFIG_SIMULATOR_DIR}/${EXECUTABLE_NAME}\"\n\n#########\n#\n# Added: StackOverflow suggestion to also copy \"include\" files\n#    (untested, but should work OK)\n#\necho \"Fetching headers from ${PUBLIC_HEADERS_FOLDER_PATH}\"\necho \"  (if you embed your library project in another project, you will need to add\"\necho \"   a \"User Search Headers\" build setting of: (NB INCLUDE THE DOUBLE QUOTES BELOW!)\"\necho '        \"$(TARGET_BUILD_DIR)/include/\"'\nif [ -d \"${CURRENTCONFIG_DEVICE_DIR}/include/\" ]\nthen\nmkdir -p \"${CREATING_UNIVERSAL_DIR}/include/\"\n# * needs to be outside the double quotes?\ncp -r \"${CURRENTCONFIG_DEVICE_DIR}/include/\"* \"${CREATING_UNIVERSAL_DIR}/include\"\nfi\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CEA8304E1B774B6300DAD08C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEA836A61B7762D600DAD08C /* SIKLibraryDescriptorReader.m in Sources */,
+				CEA836AA1B7762D600DAD08C /* SIKResourceManager.m in Sources */,
+				CEA836971B7762D600DAD08C /* SIKSyncException.m in Sources */,
+				CEA8368F1B7762D600DAD08C /* SIKConnectionResponse.m in Sources */,
+				CEA836A31B7762D600DAD08C /* SIKRegistration.m in Sources */,
+				CEA836911B7762D600DAD08C /* SIKHttpConnectionWorker.m in Sources */,
+				CEA8369F1B7762D600DAD08C /* SIKMessage.m in Sources */,
+				CEA8369D1B7762D600DAD08C /* SIKServiceRequestResource.m in Sources */,
+				CEA8368C1B7762D600DAD08C /* SIKConnectionHelper.m in Sources */,
+				CEA8369B1B7762D600DAD08C /* SIKServiceDescriptor.m in Sources */,
+				CEA836A71B7762D600DAD08C /* SIKQuickServiceDescriptorReader.m in Sources */,
+				CEA830F11B774B9000DAD08C /* DataHandlerEvents.java in Sources */,
+				CEA836901B7762D600DAD08C /* SIKConnectionStatusCodes.m in Sources */,
+				CEA836A21B7762D600DAD08C /* SIKNotificationService.m in Sources */,
+				CEA836981B7762D600DAD08C /* SIKApplicationDescriptor.m in Sources */,
+				CEA836AC1B7762D600DAD08C /* SIKAsyncServiceWorker.m in Sources */,
+				CEA836AF1B7762D600DAD08C /* SIKSyncServiceWorker.m in Sources */,
+				CEA836B51B7762D600DAD08C /* SIKUtils.m in Sources */,
+				CEA836B11B7762D600DAD08C /* SIKSiminov.m in Sources */,
+				CEA836A01B7762D600DAD08C /* SIKNotificationManager.m in Sources */,
+				CEA830F31B774B9000DAD08C /* ServiceLifecycleEvent.java in Sources */,
+				CEA836A51B7762D600DAD08C /* SIKApplicationDescriptorReader.m in Sources */,
+				CEA836AD1B7762D600DAD08C /* SIKService.m in Sources */,
+				CEA836991B7762D600DAD08C /* SIKLibraryDescriptor.m in Sources */,
+				CEA836A11B7762D600DAD08C /* SIKNotificationReceiver.m in Sources */,
+				CEA8368D1B7762D600DAD08C /* SIKConnectionManager.m in Sources */,
+				CEA836B41B7762D600DAD08C /* SIKSyncWorker.m in Sources */,
+				CEA8369C1B7762D600DAD08C /* SIKServiceRequest.m in Sources */,
+				CEA836A81B7762D600DAD08C /* SIKServiceDescriptorReader.m in Sources */,
+				CEA836B21B7762D600DAD08C /* SIKSyncHandler.m in Sources */,
+				CEA836931B7762D600DAD08C /* SIKEventHandler.m in Sources */,
+				CEA836951B7762D600DAD08C /* SIKNotificationException.m in Sources */,
+				CEA836941B7762D600DAD08C /* SIKConnectionException.m in Sources */,
+				CEA8369A1B7762D600DAD08C /* SIKNotificationDescriptor.m in Sources */,
+				CEA836B01B7762D600DAD08C /* SIKInitializer.m in Sources */,
+				CEA8368E1B7762D600DAD08C /* SIKConnectionRequest.m in Sources */,
+				CEA836921B7762D600DAD08C /* SIKHttpsConnectionWorker.m in Sources */,
+				CEA836AB1B7762D600DAD08C /* SIKResourceUtils.m in Sources */,
+				CEA836B31B7762D600DAD08C /* SIKSyncRequest.m in Sources */,
+				CEA836A41B7762D600DAD08C /* Reachability.m in Sources */,
+				CEA836961B7762D600DAD08C /* SIKServiceException.m in Sources */,
+				CEA830F41B774B9000DAD08C /* SyncHandlerEvents.java in Sources */,
+				CEA830F21B774B9000DAD08C /* NotificationEvents.java in Sources */,
+				CEA836A91B7762D600DAD08C /* SIKSyncDescriptorReader.m in Sources */,
+				CEA836AE1B7762D600DAD08C /* SIKServiceHandler.m in Sources */,
+				CEA8369E1B7762D600DAD08C /* SIKSyncDescriptor.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		CEA830641B774B6300DAD08C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		CEA830651B774B6300DAD08C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CEA830671B774B6300DAD08C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/hybrid-sample-azdvmzlaormkedenokxopdxanfgk/Build/Products/Debug-iphoneos",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/hybrid-sample-azdvmzlaormkedenokxopdxanfgk/Build/Products/Debug-universal",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		CEA830681B774B6300DAD08C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/hybrid-sample-azdvmzlaormkedenokxopdxanfgk/Build/Products/Debug-iphoneos",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/hybrid-sample-azdvmzlaormkedenokxopdxanfgk/Build/Products/Debug-universal",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CEA8304D1B774B6300DAD08C /* Build configuration list for PBXProject "Connect" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEA830641B774B6300DAD08C /* Debug */,
+				CEA830651B774B6300DAD08C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CEA830661B774B6300DAD08C /* Build configuration list for PBXNativeTarget "Connect" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEA830671B774B6300DAD08C /* Debug */,
+				CEA830681B774B6300DAD08C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CEA8304A1B774B6300DAD08C /* Project object */;
+}
