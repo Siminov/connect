@@ -15,6 +15,13 @@
  * limitations under the License.
  **/
 
+#if __MOBILE__
+#define XAMARIN
+#endif
+
+#if !__MOBILE__
+#define WINDOWS
+#endif
 
 
 using Siminov.Connect.Model;
@@ -94,9 +101,15 @@ namespace Siminov.Connect.Reader
 			    Log.Error(this.GetType().Name, "Constructor", "Invalid Library Name Found.");
 			    throw new SiminovException(this.GetType().Name, "Constructor", "Invalid Library Name Found.");
 		    }
-		
-            Stream libraryDescriptorStream = FileUtils.SearchFile(libraryName, Constants.LIBRARY_DESCRIPTOR_FILE_NAME, FileUtils.INSTALLED_FOLDER);
-		    if(libraryDescriptorStream == null) 
+
+
+            #if XAMARIN
+                Stream libraryDescriptorStream = FileUtils.ReadFileFromEmbeddedResources(libraryName + "." + Constants.LIBRARY_DESCRIPTOR_FILE_NAME);
+            #elif WINDOWS
+                Stream libraryDescriptorStream = FileUtils.SearchFile(libraryName, Constants.LIBRARY_DESCRIPTOR_FILE_NAME, FileUtils.INSTALLED_FOLDER);
+            #endif
+
+            if(libraryDescriptorStream == null) 
             {
 			    Log.Error(this.GetType().Name, "Constructor", "Invalid Library Descriptor Stream Found, LIBRARY-NAME: " + libraryName + ", PATH: " + libraryName.Replace(".", "/") + "/" + Constants.LIBRARY_DESCRIPTOR_FILE_NAME);
 			    throw new SiminovException(this.GetType().Name, "Constructor", "Invalid Library Descriptor Stream Found, LIBRARY-NAME: " + libraryName + ", PATH: " + libraryName.Replace(".", "/") + "/" + Constants.LIBRARY_DESCRIPTOR_FILE_NAME);

@@ -15,6 +15,13 @@
  * limitations under the License.
  **/
 
+#if __MOBILE__
+#define XAMARIN
+#endif
+
+#if !__MOBILE__
+#define WINDOWS
+#endif
 
 
 using Siminov.Connect.Model;
@@ -88,11 +95,20 @@ namespace Siminov.Connect.Reader
             syncDescriptorFilePath = syncDescriptorPath.Substring(0, syncDescriptorPath.LastIndexOf("/"));
             syncDescriptorFileName = syncDescriptorPath.Substring(syncDescriptorPath.LastIndexOf("/") + 1, (syncDescriptorPath.Length - syncDescriptorPath.LastIndexOf("/")) - 1);
 
-		    Stream applicationDescriptorStream = null;
+		    Stream syncDescriptorStream = null;
 		
 		    try 
             {
-                applicationDescriptorStream = FileUtils.SearchFile(syncDescriptorFilePath, syncDescriptorFileName, FileUtils.INSTALLED_FOLDER);
+                
+                #if XAMARIN
+                        syncDescriptorStream = FileUtils.ReadFileFromEmbeddedResources("Assets." + syncDescriptorFilePath + "." + syncDescriptorFileName);
+				        if(syncDescriptorStream == null) 
+				        {
+					        syncDescriptorStream = FileUtils.ReadFileFromEmbeddedResources(syncDescriptorFilePath + "." + syncDescriptorFileName);					
+				        }
+                #elif WINDOWS
+                    syncDescriptorStream = FileUtils.SearchFile(syncDescriptorFilePath, syncDescriptorFileName, FileUtils.INSTALLED_FOLDER);
+                #endif
 		    } 
             catch(IOException ioException) 
             {
@@ -102,7 +118,7 @@ namespace Siminov.Connect.Reader
 		
 		    try 
             {
-			    ParseMessage(applicationDescriptorStream);
+			    ParseMessage(syncDescriptorStream);
 		    } 
             catch(System.Exception exception) 
             {

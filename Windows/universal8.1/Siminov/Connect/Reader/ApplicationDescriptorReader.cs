@@ -15,6 +15,13 @@
  * limitations under the License.
  **/
 
+#if __MOBILE__
+#define XAMARIN
+#endif
+
+#if !__MOBILE__
+#define WINDOWS
+#endif
 
 
 using Siminov.Connect.Model;
@@ -129,7 +136,13 @@ namespace Siminov.Connect.Reader
 		
 		    try 
             {
+
+                #if XAMARIN
+                applicationDescriptorStream = FileUtils.ReadFileFromEmbeddedResources("Assets." + Core.Constants.APPLICATION_DESCRIPTOR_FILE_NAME);
+                #elif WINDOWS
                 applicationDescriptorStream = FileUtils.ReadFile("Assets", Core.Constants.APPLICATION_DESCRIPTOR_FILE_NAME, FileUtils.INSTALLED_FOLDER);
+                #endif
+
 		    } 
             catch(IOException ioException) 
             {

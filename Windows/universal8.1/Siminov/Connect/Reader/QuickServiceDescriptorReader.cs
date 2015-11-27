@@ -17,6 +17,15 @@
 
 
 
+#if __MOBILE__
+#define XAMARIN
+#endif
+
+#if !__MOBILE__
+#define WINDOWS
+#endif
+
+
 using Siminov.Connect.Model;
 using Siminov.Connect.Resource;
 using Siminov.Core.Exception;
@@ -79,7 +88,17 @@ namespace Siminov.Connect.Reader
 
                 try 
                 {
-                    serviceDescriptorStream = FileUtils.SearchFile(serviceDescriptorFilePath, serviceDescriptorFileName, FileUtils.INSTALLED_FOLDER);
+                    
+                    #if XAMARIN
+                        serviceDescriptorStream = FileUtils.ReadFileFromEmbeddedResources("Assets." + serviceDescriptorFilePath + "." + serviceDescriptorFileName);
+				        if(serviceDescriptorStream == null) 
+				        {
+					        serviceDescriptorStream = FileUtils.ReadFileFromEmbeddedResources(serviceDescriptorFilePath + "." + serviceDescriptorFileName);					
+				        }
+                    #elif WINDOWS
+                        serviceDescriptorStream = FileUtils.SearchFile(serviceDescriptorFilePath, serviceDescriptorFileName, FileUtils.INSTALLED_FOLDER);
+                    #endif
+
                 } 
                 catch(System.Exception ioException) 
                 {

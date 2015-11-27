@@ -18,6 +18,7 @@
 
 
 using Siminov.Core;
+using Siminov.Core.Resource;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +34,8 @@ namespace Siminov.Connect
     /// </summary>
     public class Initializer : IInitializer
     {
-	
+
+        private ResourceManager resourceManager = ResourceManager.GetInstance();
 	    private ICollection<Object> parameters = new List<Object> ();
 	
         /// <summary>
@@ -50,6 +52,15 @@ namespace Siminov.Connect
         /// </summary>
 	    public void Initialize() 
         {
+
+            IEnumerator<Object> iterator = parameters.GetEnumerator();
+            while (iterator.MoveNext())
+            {
+
+                Object value = iterator.Current;
+                resourceManager.AddApplicationContext(value);
+            }
+
 		    Siminov.Start();
 	    }
     }

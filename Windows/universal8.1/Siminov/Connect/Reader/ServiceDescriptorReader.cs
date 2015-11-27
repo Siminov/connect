@@ -16,6 +16,14 @@
  **/
 
 
+#if __MOBILE__
+#define XAMARIN
+#endif
+
+#if !__MOBILE__
+#define WINDOWS
+#endif
+
 
 using Siminov.Connect.Model;
 using Siminov.Connect.Resource;
@@ -164,11 +172,21 @@ namespace Siminov.Connect.Reader
 		    /*
 		     * Parse Adapter.
 		     */
-		    Stream serviceStream = null;
+            Stream serviceDescriptorStream = null;
 		
 		    try 
             {
-                serviceStream = FileUtils.SearchFile(libraryPackageName.Replace(".", "/") + serviceDescriptorFilePath, serviceDescriptorFileName, FileUtils.INSTALLED_FOLDER);
+                
+                #if XAMARIN
+                        serviceDescriptorStream = FileUtils.ReadFileFromEmbeddedResources("Assets." + serviceDescriptorFilePath + "." + serviceDescriptorFileName);
+				        if(serviceDescriptorStream == null) 
+				        {
+					        serviceDescriptorStream = FileUtils.ReadFileFromEmbeddedResources(serviceDescriptorFilePath + "." + serviceDescriptorFileName);					
+				        }
+                #elif WINDOWS
+                    serviceDescriptorStream = FileUtils.SearchFile(serviceDescriptorFilePath, serviceDescriptorFileName, FileUtils.INSTALLED_FOLDER);
+                #endif
+
 		    } 
             catch(System.Exception exception) 
             {
@@ -178,7 +196,7 @@ namespace Siminov.Connect.Reader
 		
 		    try 
             {
-                ParseMessage(serviceStream);
+                ParseMessage(serviceDescriptorStream);
 		    } 
             catch(System.Exception exception) 
             {
@@ -199,11 +217,19 @@ namespace Siminov.Connect.Reader
             /*
              * Parse Service Descriptor.
              */
-            Stream serviceStream = null;
+            Stream serviceDescriptorStream = null;
 		
 		    try 
             {
-                serviceStream = FileUtils.SearchFile(serviceDescriptorFilePath, serviceDescriptorFileName, FileUtils.INSTALLED_FOLDER);
+                #if XAMARIN
+				    serviceDescriptorStream = FileUtils.ReadFileFromEmbeddedResources("Assets." + serviceDescriptorFilePath + "." + serviceDescriptorFileName);
+				    if(serviceDescriptorStream == null) 
+				    {
+					    serviceDescriptorStream = FileUtils.ReadFileFromEmbeddedResources(serviceDescriptorFilePath + "." + serviceDescriptorFileName);					
+				    }
+                #elif WINDOWS
+                    serviceDescriptorStream = FileUtils.SearchFile(serviceDescriptorFilePath, serviceDescriptorFileName, FileUtils.INSTALLED_FOLDER);
+                #endif
             } 
             catch(IOException ioException) 
             {
@@ -213,7 +239,7 @@ namespace Siminov.Connect.Reader
 		
 		    //try 
             {
-                ParseMessage(serviceStream);
+                ParseMessage(serviceDescriptorStream);
 		    } 
             //catch(System.Exception exception) 
             //{
