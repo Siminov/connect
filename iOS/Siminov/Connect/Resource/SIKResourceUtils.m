@@ -32,7 +32,7 @@
         
         NSString *resourceKey;
         
-        if(doubleClosingCurlyBracketIndex != -1) {
+        if(doubleClosingCurlyBracketIndex > -1) {
             
             resourceKey = [resourceValue substringFromIndex:doubleClosingCurlyBracketIndex+1];
             NSUInteger slashIndex = [resourceKey rangeOfString:RESOURCE_SLASH options:NSBackwardsSearch].location;
