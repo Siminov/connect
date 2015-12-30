@@ -1,6 +1,6 @@
-/** 
- * [SIMINOV FRAMEWORK]
- * Copyright [2015] [Siminov Software Solution LLP|support@siminov.com]
+/**
+ * [SIMINOV FRAMEWORK - CONNECT]
+ * Copyright [2014-2016] [Siminov Software Solution LLP|support@siminov.com]
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.client.methods.HttpDelete;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpHead;
 import org.apache.http.client.methods.HttpOptions;
 import org.apache.http.client.methods.HttpPost;
@@ -55,39 +56,39 @@ public class HttpConnectionWorker implements IConnection {
 
 	public IConnectionResponse get(final IConnectionRequest connectionRequest) throws ConnectionException {
 
-		if(connectionRequest == null) {
+		/*if(connectionRequest == null) {
 			Log.error(HttpConnectionWorker.class.getName(), "get", "Invalid Connection Request.");
 			throw new ConnectionException(HttpConnectionWorker.class.getName(), "get", "Invalid Connection Request.");
 		}
 		
-		if(connectionRequest.getUrl().contains("get_liquors")) {
-			String liquors = "<liquors><liquor><name>Gin</name><description>Gin is a spirit made with juniper berries.</description><histroy>By the 11th century, Italian monks were flavoring crudely distilled spirits with juniper berries. During the Black Death, this drink was used, although ineffectively, as a remedy. As the science of distillation advanced from the Middle Ages into the Renaissance period, juniper was one of many botanicals employed by virtue of its perfume, flavour, and purported medicinal properties</histroy><link>http://en.wikipedia.org/wiki/Gin</link><alchol_content>Gin has a minimum alcohol content of 40 percent in the US (80 proof).</alchol_content></liquor><liquor><name>Rum</name><description>Rum is a distilled liquid made from molasses and sugarcane juice.</description><histroy>The first distillation of rum originated in the Caribbean in the 17th centry.</histroy><link>http://en.wikipedia.org/wiki/Rum</link><alchol_content>Rum typically has an alcohol content in the range of 20 to 80 percent by volume (40 to 160 proof).</alchol_content></liquor><liquor><name>Tequila</name><description>Tequila is a spirit made with Blue Agave.</description><histroy>The first distillation of tequila originated in Mexico in the 16th centry.</histroy><link>http://en.wikipedia.org/wiki/Tequila</link><alchol_content>Tequila typically has an alcohol content in the range of 35 to 55 percent by volume (70 to 110 proof).</alchol_content></liquor><liquor><name>Vodka</name><description>Vodka is a colorless liquid that contains a mixture of water and distilled ethanol. Vodka is made from a fermented substance such as potatoes, rye, wheat or sugar beet molasses.</description><histroy>Vodka originated in Russia inthe 14th centry.</histroy><link>http://en.wikipedia.org/wiki/Vodka</link><alchol_content>Vodka typically has an alcohol content in the range of 35 to 50 percent by volume (70 to 100 proof).</alchol_content></liquor><liquor><name>Whiskey</name><description>Whiskey (or whisky) is a distilled liquid made from fermented grain mash.</description><histroy>Distillation spread from Ireland to Scotland (about one hundred years later) and originated from the European continent in the later medieval centuries</histroy><link>http://en.wikipedia.org/wiki/Whisky</link><alchol_content>Whiskey has varying proof levels depending on the specific whiskey. Read more: http://wiki.answers.com/Q/What_percentage_of_alcohol_is_in_whisky#ixzz25n6vmBTZ</alchol_content></liquor><liquor><name>Beer</name><description>Beer is produced by the saccharification of starch and fermentation of the resulting sugar.</description><histroy>Beer is one of the worlds oldest prepared beverages, possibly dating back to the early Neolithic or 9500 BC, when cereal was first farmed, and is recorded in the written history of ancient Egypt and Mesopotamia.</histroy><link>http://en.wikipedia.org/wiki/Beer</link><alchol_content>A beer that is 4.0 percent by volume is about 3.2 percent by weight</alchol_content></liquor><liquor><name>Wine</name><description>Wine is typically made of fermented grape juice.</description><histroy>Wine dates back to 6000 BC and is believed to have originated in the area now considered Iran and Georgia.</histroy><link>http://en.wikipedia.org/wiki/Wine</link><alchol_content>100 grams (g) of wine is equivalent to 100 milliliters (mL) or 3.4 fluid ounces (fl oz.) of wine. 10.6 g of alcohol in 3.4 fl ounces is 13 percent alcohol by volume.</alchol_content></liquor></liquors>";
-			InputStream liquorsStream;
+		if(connectionRequest.getUrl().contains("get_books")) {
+			String books = "<books><book><name>C</name><description>C Description</description><author>C Author</author><link>C Link</link></book><book><name>C Plus</name><description>C Plus Description</description><author>C Plus Author</author><link>C Plus Link</link></book><book><name>C Sharp</name><description>C Sharp Description</description><author>C Sharp Author</author><link>C Sharp Link</link></book><book><name>Java</name><description>Java Description</description><author>Java Author</author><link>Java Link</link></book><book><name>JavaScript</name><description>JavaScript Description</description><author>Java Author</author><link>Java Link</link></book><book><name>JavaScript</name><description>JavaScript Description</description><author>JavaScript Author</author><link>JavaScript Link</link></book><book><name>Objective C</name><description>Objective C Description</description><author>Objective C Author</author><link>Objective C Link</link></book></books>";
+			InputStream booksStream;
 			
 			try {
-				liquorsStream = Utils.toInputStream(liquors); 
-				return new ConnectionResponse(200, liquorsStream);
+				booksStream = Utils.toInputStream(books);
+				return new ConnectionResponse(200, booksStream);
 			} catch(SiminovException se) {
 				
 			}
 		} else {
-			String liquorBrands = "<brands><brand><name>The Botanist</name><country>Islay</country><description>The Botanist is a brand of gin produced by distilling nine botanicals into the alcohol through direct boiling followed by passing the vapors through a basket containing an additional 22 herbal ingredients.</description><link>http://www.bruichladdich.com</link></brand><brand><name>Tanqueray</name><country>United Kingtom</country><description>Tanqueray is a form of London dry gin, a spirit produced through double-distillation with botanicals added to the spirit during the second distillation phase. Tanqueray was first distilled in 1830 in England, with production moved to Scotland after World War II.</description><link>http://www.tanqueray.com/</link></brand></brands>";
-	        InputStream liquorBrandsStream;
+			String lessions = "<lessions><lession><name>C First Lession</name><description>C First Lession Description</description><link>C First Lession Link</link></lession><lession><name>C Second Lession</name><description>C Second Lession Description</description><link>C Second Lession Link</link></lession></lessions>";
+	        InputStream bookStream;
 			
 	        try {
-	        	liquorBrandsStream = Utils.toInputStream(liquorBrands);
-				return new ConnectionResponse(200, liquorBrandsStream);
+	        	bookStream = Utils.toInputStream(lessions);
+				return new ConnectionResponse(200, bookStream);
 	        } catch(SiminovException se) {
 	        	
 	        }
 		}
 		
-		return new ConnectionResponse(200, "");
+		return new ConnectionResponse(200, "");*/
 		
 		/*
 		 * Request Parameters
 		 */
-		/*StringBuffer url = new StringBuffer(connectionRequest.getUrl());
+		StringBuffer url = new StringBuffer(connectionRequest.getUrl());
 		
 		Iterator<String> queryParameters = connectionRequest.getQueryParameters();
 		Iterator<String> headerParameters = connectionRequest.getHeaderParameters();
@@ -96,14 +97,14 @@ public class HttpConnectionWorker implements IConnection {
 		/*
 		 * Make Request
 		 */
-		/*DefaultHttpClient httpClient = new DefaultHttpClient();
+		DefaultHttpClient httpClient = new DefaultHttpClient();
 		HttpGet httpGet = null;
 
 		
 		/*
 		 * Add Query Parameters
 		 */
-		/*List<NameValuePair> httpParams = new ArrayList<NameValuePair>();
+		List<NameValuePair> httpParams = new ArrayList<NameValuePair>();
 		while(queryParameters.hasNext()) {
 			
 			String parameter = queryParameters.next();
@@ -132,7 +133,7 @@ public class HttpConnectionWorker implements IConnection {
 		/*
 		 * Add Header Parameters
 		 */
-		/*while(headerParameters.hasNext()) {
+		while(headerParameters.hasNext()) {
 			
 			String header = headerParameters.next();
 			HeaderParameter headerParameter = connectionRequest.getHeaderParameter(header);
@@ -142,7 +143,7 @@ public class HttpConnectionWorker implements IConnection {
 		
 
         /* execute */
-        /*BasicHttpResponse httpResponse = null;
+        BasicHttpResponse httpResponse = null;
         
         try {
         	httpResponse = (BasicHttpResponse) httpClient.execute(httpGet);        	 
@@ -154,7 +155,7 @@ public class HttpConnectionWorker implements IConnection {
 
         
         /* return response */
-        /*int responseCode = httpResponse.getStatusLine().getStatusCode();
+        int responseCode = httpResponse.getStatusLine().getStatusCode();
         if(responseCode != HttpsURLConnection.HTTP_OK) {
         	return new ConnectionResponse(responseCode, new ConnectionStatusCodes().getStatusMessage(responseCode));
         }
@@ -171,7 +172,7 @@ public class HttpConnectionWorker implements IConnection {
         }
 
         
-        return new ConnectionResponse(responseCode, inputStream);*/
+        return new ConnectionResponse(responseCode, inputStream);
 	}
 	
 	public IConnectionResponse head(final IConnectionRequest connectionRequest) throws ConnectionException {
