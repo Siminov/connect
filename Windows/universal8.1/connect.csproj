@@ -97,9 +97,21 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Siminov\Connect\Resource\DatabaseDescriptor.xml" />
-    <Content Include="Siminov\Connect\Resource\ServiceRequest.xml" />
-    <Content Include="Siminov\Connect\Resource\ServiceRequestResource.xml" />
+    <EmbeddedResource Include="Siminov\Connect\Resource\DatabaseDescriptor.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Siminov\Connect\Resource\ServiceRequest.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Siminov\Connect\Resource\ServiceRequestResource.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Core\Windows\universal8.1\core.csproj">
+      <Project>{bab29a50-621e-48c6-9f73-c0a9bba3b2d5}</Project>
+      <Name>core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
