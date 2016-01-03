@@ -29,7 +29,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace connect.Siminov.Connect.Sync
+namespace Siminov.Connect.Sync
 {
 
     /// <summary>

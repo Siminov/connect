@@ -16,7 +16,7 @@
 
 
 
-using connect.Siminov.Connect.Sync;
+using Siminov.Connect.Sync;
 using Siminov.Connect.Model;
 using Siminov.Connect.Resource;
 using Siminov.Connect.Sync.Design;
