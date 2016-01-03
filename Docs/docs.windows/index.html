@@ -5,7 +5,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Siminov Framework - Connect</title>
+        <title>Connect</title>
         <meta name="viewport" content="width=device-width">
 
 		
@@ -14,12 +14,15 @@
 			<link rel="stylesheet" type="text/css" href="assets/css/style.css?version=0.9.6.8" />
 			<link rel="stylesheet" type="text/css" href="assets/css/dynamic.css?version=0.9.6.8" />
 			
-		<link rel="stylesheet" type="text/css" href="assets/css/custom.css" />
-		<link rel="stylesheet" type="text/css" href="assets/css/dynamic.css" />
-		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
-		<link rel="stylesheet" type="text/css" href="assets/css/override.css" />
-			
-			
+            
+            <link rel="stylesheet" type="text/css" href="assets/css/custom.css" />
+            <link rel="stylesheet" type="text/css" href="assets/css/dynamic.css" />
+            <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
+            <link rel="stylesheet" type="text/css" href="assets/css/override.css" />
+            
+            
+            <link rel="shortcut icon" href="assets/images/product_logo.ico">
+            
 			<!--[if IE 8]>
 				<script src="assets/js/vendor.ie8.js?version=0.9.6.8"></script>
 			<![endif]-->
@@ -29,9 +32,6 @@
 
 			<script src="assets/js/jquery.layout.min.js?version=0.9.6.8"></script>	
 			<script src="assets/js/app.js?version=0.9.6.8"></script>
-
-			<link rel="shortcut icon" href="assets/images/product_logo.ico">		
-
 		
 		<script>
 			var homeString = "Home";
@@ -49,37 +49,6 @@
 
 
 
-	{ "Name" : "connect.Siminov.Connect.Sync", "Url" : "#namespace/connect.Siminov.Connect.Sync", "Type" : "Namespace" },
-	
-		{ "Name" : "SyncWorker", "Url" : "#type/SyncWorker", "Type" : "Type" },
-
-		
-			{ "Name" : "resourceManager", "Url" : "#type/SyncWorker?resourceManager", "Type" : "Field" },
-		
-			{ "Name" : "syncRequests", "Url" : "#type/SyncWorker?syncRequests", "Type" : "Field" },
-		
-			{ "Name" : "syncWorker", "Url" : "#type/SyncWorker?syncWorker", "Type" : "Field" },
-		
-			{ "Name" : "syncWorkerThread", "Url" : "#type/SyncWorker?syncWorkerThread", "Type" : "Field" },
-		
-			{ "Name" : "AddRequest", "Url" : "#type/SyncWorker?AddRequest4", "Type" : "Method" },
-		
-			{ "Name" : "ContainsRequest", "Url" : "#type/SyncWorker?ContainsRequest3", "Type" : "Method" },
-		
-			{ "Name" : "GetInstance", "Url" : "#type/SyncWorker?GetInstance9", "Type" : "Method" },
-		
-			{ "Name" : "HandleRequests", "Url" : "#type/SyncWorker?HandleRequests2", "Type" : "Method" },
-		
-			{ "Name" : "IsWorkerRunning", "Url" : "#type/SyncWorker?IsWorkerRunning3", "Type" : "Method" },
-		
-			{ "Name" : "removeRequest", "Url" : "#type/SyncWorker?removeRequest", "Type" : "Method" },
-		
-			{ "Name" : "RemoveRequest", "Url" : "#type/SyncWorker?RemoveRequest4", "Type" : "Method" },
-		
-			{ "Name" : "StartWorker", "Url" : "#type/SyncWorker?StartWorker3", "Type" : "Method" },
-		
-			{ "Name" : "StopWorker", "Url" : "#type/SyncWorker?StopWorker3", "Type" : "Method" },
-		
 	{ "Name" : "Siminov.Connect", "Url" : "#namespace/Siminov.Connect", "Type" : "Namespace" },
 	
 		{ "Name" : "Constants", "Url" : "#type/Constants", "Type" : "Type" },
@@ -529,7 +498,9 @@
 		
 			{ "Name" : "SERVICE_DESCRIPTOR_REQUEST_HEADER_PARAMETER", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_REQUEST_HEADER_PARAMETER", "Type" : "Field" },
 		
-			{ "Name" : "SERVICE_DESCRIPTOR_REQUEST_HEADER_PARAMETER_NAME_ATTRIBUTE", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_REQUEST_HEADER_PARAMETER_NAME_ATTRIBUTE", "Type" : "Field" },
+			{ "Name" : "SERVICE_DESCRIPTOR_REQUEST_HEADER_PARAMETER_NAME", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_REQUEST_HEADER_PARAMETER_NAME", "Type" : "Field" },
+		
+			{ "Name" : "SERVICE_DESCRIPTOR_REQUEST_HEADER_PARAMETER_VALUE", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_REQUEST_HEADER_PARAMETER_VALUE", "Type" : "Field" },
 		
 			{ "Name" : "SERVICE_DESCRIPTOR_REQUEST_MODE", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_REQUEST_MODE", "Type" : "Field" },
 		
@@ -545,7 +516,9 @@
 		
 			{ "Name" : "SERVICE_DESCRIPTOR_REQUEST_QUERY_PARAMETER", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_REQUEST_QUERY_PARAMETER", "Type" : "Field" },
 		
-			{ "Name" : "SERVICE_DESCRIPTOR_REQUEST_QUERY_PARAMETER_NAME_ATTRIBUTE", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_REQUEST_QUERY_PARAMETER_NAME_ATTRIBUTE", "Type" : "Field" },
+			{ "Name" : "SERVICE_DESCRIPTOR_REQUEST_QUERY_PARAMETER_NAME", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_REQUEST_QUERY_PARAMETER_NAME", "Type" : "Field" },
+		
+			{ "Name" : "SERVICE_DESCRIPTOR_REQUEST_QUERY_PARAMETER_VALUE", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_REQUEST_QUERY_PARAMETER_VALUE", "Type" : "Field" },
 		
 			{ "Name" : "SERVICE_DESCRIPTOR_REQUEST_SYNC_REQUEST_MODE", "Url" : "#type/Constants?SERVICE_DESCRIPTOR_REQUEST_SYNC_REQUEST_MODE", "Type" : "Field" },
 		
@@ -571,6 +544,8 @@
 
 		
 			{ "Name" : "parameters", "Url" : "#type/Initializer?parameters", "Type" : "Field" },
+		
+			{ "Name" : "resourceManager", "Url" : "#type/Initializer?resourceManager", "Type" : "Field" },
 		
 			{ "Name" : "AddParameter", "Url" : "#type/Initializer?AddParameter", "Type" : "Method" },
 		
@@ -611,7 +586,7 @@
 		
 			{ "Name" : "ProcessDatabaseDescriptors", "Url" : "#type/Siminov?ProcessDatabaseDescriptors", "Type" : "Method" },
 		
-			{ "Name" : "ProcessDatabaseMappingDescriptors", "Url" : "#type/Siminov?ProcessDatabaseMappingDescriptors", "Type" : "Method" },
+			{ "Name" : "ProcessEntityDescriptors", "Url" : "#type/Siminov?ProcessEntityDescriptors", "Type" : "Method" },
 		
 			{ "Name" : "ProcessLibraries", "Url" : "#type/Siminov?ProcessLibraries", "Type" : "Method" },
 		
@@ -1689,6 +1664,10 @@
 		
 			{ "Name" : "headerParameter", "Url" : "#type/ServiceDescriptorReader?headerParameter", "Type" : "Field" },
 		
+			{ "Name" : "isHeaderParameter", "Url" : "#type/ServiceDescriptorReader?isHeaderParameter", "Type" : "Field" },
+		
+			{ "Name" : "isQueryParameter", "Url" : "#type/ServiceDescriptorReader?isQueryParameter", "Type" : "Field" },
+		
 			{ "Name" : "isRequest", "Url" : "#type/ServiceDescriptorReader?isRequest", "Type" : "Field" },
 		
 			{ "Name" : "propertyName", "Url" : "#type/ServiceDescriptorReader?propertyName", "Type" : "Field" },
@@ -1708,8 +1687,6 @@
 			{ "Name" : "EndElement", "Url" : "#type/ServiceDescriptorReader?EndElement4", "Type" : "Method" },
 		
 			{ "Name" : "GetServiceDescriptor", "Url" : "#type/ServiceDescriptorReader?GetServiceDescriptor2", "Type" : "Method" },
-		
-			{ "Name" : "InitializeProperty", "Url" : "#type/ServiceDescriptorReader?InitializeProperty3", "Type" : "Method" },
 		
 			{ "Name" : "Parse", "Url" : "#type/ServiceDescriptorReader?Parse", "Type" : "Method" },
 		
@@ -1981,6 +1958,35 @@
 		
 			{ "Name" : "SetName", "Url" : "#type/SyncRequest?SetName5", "Type" : "Method" },
 		
+		{ "Name" : "SyncWorker", "Url" : "#type/SyncWorker", "Type" : "Type" },
+
+		
+			{ "Name" : "resourceManager", "Url" : "#type/SyncWorker?resourceManager", "Type" : "Field" },
+		
+			{ "Name" : "syncRequests", "Url" : "#type/SyncWorker?syncRequests", "Type" : "Field" },
+		
+			{ "Name" : "syncWorker", "Url" : "#type/SyncWorker?syncWorker", "Type" : "Field" },
+		
+			{ "Name" : "syncWorkerThread", "Url" : "#type/SyncWorker?syncWorkerThread", "Type" : "Field" },
+		
+			{ "Name" : "AddRequest", "Url" : "#type/SyncWorker?AddRequest4", "Type" : "Method" },
+		
+			{ "Name" : "ContainsRequest", "Url" : "#type/SyncWorker?ContainsRequest3", "Type" : "Method" },
+		
+			{ "Name" : "GetInstance", "Url" : "#type/SyncWorker?GetInstance9", "Type" : "Method" },
+		
+			{ "Name" : "HandleRequests", "Url" : "#type/SyncWorker?HandleRequests2", "Type" : "Method" },
+		
+			{ "Name" : "IsWorkerRunning", "Url" : "#type/SyncWorker?IsWorkerRunning3", "Type" : "Method" },
+		
+			{ "Name" : "removeRequest", "Url" : "#type/SyncWorker?removeRequest", "Type" : "Method" },
+		
+			{ "Name" : "RemoveRequest", "Url" : "#type/SyncWorker?RemoveRequest4", "Type" : "Method" },
+		
+			{ "Name" : "StartWorker", "Url" : "#type/SyncWorker?StartWorker3", "Type" : "Method" },
+		
+			{ "Name" : "StopWorker", "Url" : "#type/SyncWorker?StopWorker3", "Type" : "Method" },
+		
 	{ "Name" : "Siminov.Connect.Sync.Design", "Url" : "#namespace/Siminov.Connect.Sync.Design", "Type" : "Namespace" },
 	
 		{ "Name" : "ISyncRequest", "Url" : "#type/ISyncRequest", "Type" : "Type" },
@@ -2004,35 +2010,36 @@
 		</script>
 
     </head>
-    <body>   
-	
-		<div class="navbar navbar-fixed-top">
-			<div class="navbar-inner">
-				<h1 class="brand" style="padding: 10px 16px 10px; height: 20px; line-height: 20px; margin-left: 0;">
-				<img alt="Siminov Framework - Core" src="assets/images/product_logo.ico" title="Siminov Framework - Core">
-					Siminov Framework - Connect
-				</h1>
-				
-				<div class="nav">
-						<li class="divider-vertical"></li>
-						<li>
-							<p class="navbar-text">
-								API Docs for Version: <b>1.0</b>
-							</p>
-						</li>
-				</div>
-			</div>
-		</div>
-	
-	    <div class="ui-layout-south">
+    <body>
+        
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <h1 class="brand" style="padding: 10px 16px 10px; height: 20px; line-height: 20px; margin-left: 0;">
+                    <img alt="Siminov Framework - Core" src="assets/images/product_logo.ico" title="Siminov Framework - Core">
+                        Siminov Framework - Connect
+                        </h1>
+                
+                <div class="nav">
+                    <li class="divider-vertical"></li>
+                    <li>
+                        <p class="navbar-text">
+                        API Docs for Version: <b>1.0</b>
+                        </p>
+                    </li>
+                </div>
+            </div>
+        </div>
+        
+		
+        <div class="ui-layout-south">
 			<div class="user-footer markdown">
 				
 			</div>
 			<div class="sd-footer">
-				 <a href="index.html" target="_blank">© 2015 Siminov Software Solution LLP. All Rights Reserved.</a>generated by <a href="http://sharpDox.de" target="_blank">sharpDox</a>
+				
+				 Â© 2014-2016 Siminov Software Solution LLP. All Rights Reserved.   - generated by <a href="http://sharpDox.de" target="_blank">sharpDox</a>
 			</div>
 		</div>
-
         <div class="ui-layout-west">
 			<div id="search">
 				<i class="icon-search"></i> <input id="searchInput" type="text" />
@@ -2045,18 +2052,6 @@
 	<ul>
 						
 
-	
-		<li data-jstree='{"icon":"./assets/images/icons/namespace_public.png"}' id="node-namespace/connect.Siminov.Connect.Sync"><a href="#namespace/connect.Siminov.Connect.Sync">connect.Siminov.Connect.Sync</a> 
- 
-
-<ul>
-
-	
-		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/SyncWorker"><a href="#type/SyncWorker">SyncWorker</a></li>
-
-</ul>
-
-</li>
 	
 		<li data-jstree='{"icon":"./assets/images/icons/namespace_public.png"}' id="node-namespace/Siminov.Connect"><a href="#namespace/Siminov.Connect">Siminov.Connect</a> 
  
@@ -2289,6 +2284,8 @@
 		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/SyncHandler"><a href="#type/SyncHandler">SyncHandler</a></li>
 	
 		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/SyncRequest"><a href="#type/SyncRequest">SyncRequest</a></li>
+	
+		<li data-jstree='{"icon":"./assets/images/icons/class_public.png"}' id="node-type/SyncWorker"><a href="#type/SyncWorker">SyncWorker</a></li>
 
 </ul>
 
