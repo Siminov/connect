@@ -28,7 +28,7 @@ namespace Siminov.Connect.Connection
 
 
     /// <summary>
-    /// It is a POJO class, which contains information for the service request
+    /// It is a mapped class, which contains information for the service request
     /// </summary>
     public class ConnectionRequest : IConnectionRequest
     {

@@ -45,6 +45,11 @@ namespace Siminov.Connect.Utils
             return true;
 	    }
 
+        /// <summary>
+        /// Convert's byte array to stream
+        /// </summary>
+        /// <param name="value">byte array</param>
+        /// <returns>Memory Stream</returns>
         public static Stream ToStream(byte[] value)
         {
             if (value == null || value.Length <= 0)
