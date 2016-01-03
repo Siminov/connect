@@ -1,10 +1,20 @@
-//
-//  SIKHttpConnectionWorker.m
-//  Connect
-//
-//  Created by user on 21/04/15.
-//  Copyright (c) 2015 Siminov. All rights reserved.
-//
+///
+/// [SIMINOV FRAMEWORK - CONNECT]
+/// Copyright [2014-2016] [Siminov Software Solution LLP|support@siminov.com]
+///
+/// Licensed under the Apache License, Version 2.0 (the "License");
+/// you may not use this file except in compliance with the License.
+/// You may obtain a copy of the License at
+///
+///     http://www.apache.org/licenses/LICENSE-2.0
+///
+/// Unless required by applicable law or agreed to in writing, software
+/// distributed under the License is distributed on an "AS IS" BASIS,
+/// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+/// See the License for the specific language governing permissions and
+/// limitations under the License.
+///
+
 
 #import "SIKHttpConnectionWorker.h"
 #import "SICLog.h"
@@ -18,7 +28,7 @@
 - (id<SIKIConnectionResponse>)get:(id<SIKIConnectionRequest> const)connectionRequest {
     
     NSString *uri = [connectionRequest getUrl];
-    id<SIKIConnectionResponse> connectionResponse = [[SIKConnectionResponse alloc] init];
+    /*id<SIKIConnectionResponse> connectionResponse = [[SIKConnectionResponse alloc] init];
     [connectionResponse setStatusCode:200];
     
     if([uri containsString:@"get_books"]) {
@@ -29,9 +39,9 @@
         [connectionResponse setResponse:[lessions dataUsingEncoding:NSUTF8StringEncoding]];
     }
     
-    return connectionResponse;
+    return connectionResponse;*/
     
-    /*if(connectionRequest == nil) {
+    if(connectionRequest == nil) {
         [SICLog error:NSStringFromClass([self class]) methodName:@"get" message:@"Invalid Connection Request."];
         @throw [[SIKConnectionException alloc] initWithClassName:NSStringFromClass([self class]) methodName:@"get" message:@"Invalid Connection Request."];
     }
@@ -40,14 +50,14 @@
      * Request Parameters
      */
     
-    /*NSEnumerator *queryParameters = [connectionRequest getQueryParameters];
+    NSEnumerator *queryParameters = [connectionRequest getQueryParameters];
     NSEnumerator *headerParameters = [connectionRequest getHeaderParameters];
     
     /*
      * Make Request
      */
     
-    /*NSMutableString *url = [[NSMutableString alloc]initWithFormat:@"%@",[connectionRequest getUrl]];
+    NSMutableString *url = [[NSMutableString alloc]initWithFormat:@"%@",[connectionRequest getUrl]];
     
     NSURLComponents *components = [[NSURLComponents alloc] init];
     
@@ -55,7 +65,7 @@
      * Add Query Parameters
      */
     
-    /*NSMutableArray *httpParams = NSMutableArray.array;
+    NSMutableArray *httpParams = NSMutableArray.array;
     
     for (NSString *parameter in queryParameters) {
         
@@ -81,7 +91,7 @@
      * Add Header Parameters
      */
     
-    /*NSString *header = nil;
+    NSString *header = nil;
     while (header = [headerParameters nextObject]) {
         SIKHeaderParameter *headerParameter = [connectionRequest getHeaderParameter:header];
         [request setValue:[headerParameter getValue] forHTTPHeaderField:header];
@@ -92,7 +102,7 @@
     NSError *error = nil;
     
     /* execute */
-    /*NSData *inputStream;
+    NSData *inputStream;
     @try {
         inputStream = [NSURLConnection sendSynchronousRequest:request returningResponse:&httpResponse error:&error];
     }
@@ -102,13 +112,12 @@
         @throw [[SIKConnectionException alloc] initWithClassName:NSStringFromClass([self class]) methodName:@"get" message:[NSString stringWithFormat:@"Exception caught while executing request, %@",[exception reason]]];
     }
     
-    /* return response */
-    /*int responseCode = (int)[(NSHTTPURLResponse*)httpResponse statusCode];
+    int responseCode = (int)[(NSHTTPURLResponse*)httpResponse statusCode];
     if (responseCode != 200) {
         return (id<SIKIConnectionResponse>)[[SIKConnectionResponse alloc]initWithStatusCode:responseCode statusMessage:[[[SIKConnectionStatusCodes alloc] init] getStatusMessage:responseCode]];
     }
     
-    return [[SIKConnectionResponse alloc]initWithStatusCode:responseCode inputStream:inputStream];*/
+    return [[SIKConnectionResponse alloc]initWithStatusCode:responseCode inputStream:inputStream];
 }
 
 - (id<SIKIConnectionResponse>)head:(id<SIKIConnectionRequest> const) connectionRequest {
