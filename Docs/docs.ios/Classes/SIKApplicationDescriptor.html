@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>SIKApplicationDescriptor Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1333)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">Connect </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Siminov Software Solution LLP</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/addServiceDescriptorNameBasedOnPath:serviceDescriptorName:">- addServiceDescriptorNameBasedOnPath:serviceDescriptorName:</option>
+		
+		<option value="//api/name/addServiceDescriptorPath:">- addServiceDescriptorPath:</option>
+		
+		<option value="//api/name/addSyncDescriptor:syncDescriptor:">- addSyncDescriptor:syncDescriptor:</option>
+		
+		<option value="//api/name/addSyncDescriptorPath:">- addSyncDescriptorPath:</option>
+		
+		<option value="//api/name/containServiceDescriptorNameBasedOnPath:">- containServiceDescriptorNameBasedOnPath:</option>
+		
+		<option value="//api/name/containServiceDescriptorPathBasedOnName:">- containServiceDescriptorPathBasedOnName:</option>
+		
+		<option value="//api/name/containSyncDescriptor:">- containSyncDescriptor:</option>
+		
+		<option value="//api/name/containSyncDescriptorPath:">- containSyncDescriptorPath:</option>
+		
+		<option value="//api/name/getNotificationDescriptor">- getNotificationDescriptor</option>
+		
+		<option value="//api/name/getServiceDescriptorPathBasedOnName:">- getServiceDescriptorPathBasedOnName:</option>
+		
+		<option value="//api/name/getServiceDescriptorPaths">- getServiceDescriptorPaths</option>
+		
+		<option value="//api/name/getSyncDescriptorBasedOnName:">- getSyncDescriptorBasedOnName:</option>
+		
+		<option value="//api/name/getSyncDescriptorBasedOnPath:">- getSyncDescriptorBasedOnPath:</option>
+		
+		<option value="//api/name/getSyncDescriptorPaths">- getSyncDescriptorPaths</option>
+		
+		<option value="//api/name/getSyncDescriptors">- getSyncDescriptors</option>
+		
+		<option value="//api/name/removeServiceDescriptorNameBasedOnPath:">- removeServiceDescriptorNameBasedOnPath:</option>
+		
+		<option value="//api/name/removeServiceDescriptorPath:">- removeServiceDescriptorPath:</option>
+		
+		<option value="//api/name/removeSyncDescriptor:">- removeSyncDescriptor:</option>
+		
+		<option value="//api/name/removeSyncDescriptorPath:">- removeSyncDescriptorPath:</option>
+		
+		<option value="//api/name/setNotificationDescriptor:">- setNotificationDescriptor:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">SIKApplicationDescriptor Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>SICApplicationDescriptor</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>SIKApplicationDescriptor.h<br />SIKApplicationDescriptor.m</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<ul>
+<li>Exposes methods to GET and SET Application Descriptor information as per define in ApplicationDescriptor.xml file by application.
+  <p></li>
+</ul>
+
+
+<pre>
+
+Example:
+    {@code
+
+    <siminov>
+
+        <!-- General Application Description Properties -->
+
+            <!-- Mandatory Field -->
+        <property name="name">application_name</property>
+
+            <!-- Optional Field -->
+        <property name="description">application_description</property>
+
+            <!-- Mandatory Field (Default is 0.0) -->
+        <property name="version">application_version</property>
+    
+    
+
+        <!-- Database Descriptors Used By Application (zero-to-many) -->
+            <!-- Optional Field's -->
+        <database-descriptors>
+            <database-descriptor>full_path_of_database_descriptor_file</database-descriptor>
+        </database-descriptors>
+
+    
+        <!-- Service Descriptors -->
+        <service-descriptors>
+
+            <!-- Service Descriptor -->
+            <service-descriptor>full_path_of_service_descriptor</service-descriptor>
+
+        </service-descriptors>
+    
+
+
+        <!-- Sync Descriptors -->
+            <!-- Sync Descriptor -->
+        <sync-descriptors>
+
+            <sync-descriptor>full_path_of_sync_descriptor</sync-descriptor>
+
+        </sync-descriptors>
+
+    
+        <!-- Notification Descriptor -->
+        <notification-descriptor>
+
+                <!-- Optional Field -->
+            <property name="name_of_property">value_of_property</property>
+    
+        </notification-descriptor>
+
+
+
+        <!-- Library Descriptors Used By Application (zero-to-many) -->
+            <!-- Optional Field's -->
+        <library-descriptors>
+            <library-descriptor>full_path_of_library_descriptor_file</library-descriptor>
+        </librar-descriptors>
+
+
+        <!-- Event Handlers Implemented By Application (zero-to-many) -->
+
+            <!-- Optional Field's -->
+        <event-handlers>
+            <event-handler>full_class_path_of_event_handler_(ISiminovHandler/IDatabaseHandler)</event-handler>
+        </event-handlers>
+    
+    </siminov>
+    
+    }
+    
+</pre>
+
+
+<pre><code>&lt;/p&gt;
+</code></pre>
+
+<p>*</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/addServiceDescriptorPath:" title="addServiceDescriptorPath:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addServiceDescriptorPath:">&ndash;&nbsp;addServiceDescriptorPath:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Add service descriptor path</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)addServiceDescriptorPath:(NSString *)<em>serviceDescriptorPath</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>serviceDescriptorPath</code></th>
+						<td><p>Path of service descriptor</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Add service descriptor path</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">SIKApplicationDescriptor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/removeServiceDescriptorPath:" title="removeServiceDescriptorPath:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/removeServiceDescriptorPath:">&ndash;&nbsp;removeServiceDescriptorPath:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Remove service descriptor path</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)removeServiceDescriptorPath:(NSString *)<em>serviceDescriptorPath</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>serviceDescriptorPath</code></th>
+						<td><p>Path of service descriptor</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Remove service descriptor path</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">SIKApplicationDescriptor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getServiceDescriptorPaths" title="getServiceDescriptorPaths"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getServiceDescriptorPaths">&ndash;&nbsp;getServiceDescriptorPaths</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Get all service descriptor paths</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSEnumerator *)getServiceDescriptorPaths</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Path of service descriptor</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Get all service descriptor paths</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">SIKApplicationDescriptor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/containServiceDescriptorPathBasedOnName:" title="containServiceDescriptorPathBasedOnName:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/containServiceDescriptorPathBasedOnName:">&ndash;&nbsp;containServiceDescriptorPathBasedOnName:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Check whether service descriptor exists or not based on name</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (bool)containServiceDescriptorPathBasedOnName:(NSString *)<em>serviceDescriptorName</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>serviceDescriptorName</code></th>
+						<td><p>Name of service descriptor</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>(true/false) TRUE: If service descriptor exists | FALSE: If service descriptor does not exists</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Check whether service descriptor exists or not based on name</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">SIKApplicationDescriptor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/containServiceDescriptorNameBasedOnPath:" title="containServiceDescriptorNameBasedOnPath:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/containServiceDescriptorNameBasedOnPath:">&ndash;&nbsp;containServiceDescriptorNameBasedOnPath:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Check whether service descriptor exists or not based on path</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (bool)containServiceDescriptorNameBasedOnPath:(NSString *)<em>serviceDescriptorPath</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>serviceDescriptorPath</code></th>
+						<td><p>Path of service descriptor</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>(true/false) TRUE: If service descriptor exists | FALSE: If service descriptor does not exists</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Check whether service descriptor exists or not based on path</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">SIKApplicationDescriptor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getServiceDescriptorPathBasedOnName:" title="getServiceDescriptorPathBasedOnName:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getServiceDescriptorPathBasedOnName:">&ndash;&nbsp;getServiceDescriptorPathBasedOnName:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Get service descriptor path based on name</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSString *)getServiceDescriptorPathBasedOnName:(NSString *)<em>serviceDescriptorName</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>serviceDescriptorName</code></th>
+						<td><p>Name of service descriptor</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Path of service descriptor</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Get service descriptor path based on name</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">SIKApplicationDescriptor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/addServiceDescriptorNameBasedOnPath:serviceDescriptorName:" title="addServiceDescriptorNameBasedOnPath:serviceDescriptorName:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addServiceDescriptorNameBasedOnPath:serviceDescriptorName:">&ndash;&nbsp;addServiceDescriptorNameBasedOnPath:serviceDescriptorName:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Add service descriptor name based on path</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)addServiceDescriptorNameBasedOnPath:(NSString *)<em>serviceDescriptorPath</em> serviceDescriptorName:(NSString *)<em>serviceDescriptoName</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>serviceDescriptorPath</code></th>
+						<td><p>Path of service descriptor</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>serviceDescriptoName</code></th>
+						<td><p>Name of service descriptor</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Add service descriptor name based on path</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">SIKApplicationDescriptor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/removeServiceDescriptorNameBasedOnPath:" title="removeServiceDescriptorNameBasedOnPath:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/removeServiceDescriptorNameBasedOnPath:">&ndash;&nbsp;removeServiceDescriptorNameBasedOnPath:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Remove service descriptor name based on path</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)removeServiceDescriptorNameBasedOnPath:(NSString *)<em>serviceDescriptorPath</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>serviceDescriptorPath</code></th>
+						<td><p>Path of service descriptor</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Remove service descriptor name based on path</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">SIKApplicationDescriptor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getSyncDescriptorPaths" title="getSyncDescriptorPaths"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getSyncDescriptorPaths">&ndash;&nbsp;getSyncDescriptorPaths</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Get sync descriptor paths</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSEnumerator *)getSyncDescriptorPaths</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Paths of sync descriptors</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Get sync descriptor paths</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">SIKApplicationDescriptor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/addSyncDescriptorPath:" title="addSyncDescriptorPath:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addSyncDescriptorPath:">&ndash;&nbsp;addSyncDescriptorPath:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Add sync descriptor path</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)addSyncDescriptorPath:(NSString *)<em>syncDescriptorPath</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>syncDescriptorPath</code></th>
+						<td><p>Path of sync descriptor</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Add sync descriptor path</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">SIKApplicationDescriptor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/removeSyncDescriptorPath:" title="removeSyncDescriptorPath:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/removeSyncDescriptorPath:">&ndash;&nbsp;removeSyncDescriptorPath:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Remove sync descriptor path</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)removeSyncDescriptorPath:(NSString *)<em>syncDescriptorPath</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>syncDescriptorPath</code></th>
+						<td><p>Path of sync descriptor</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Remove sync descriptor path</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">SIKApplicationDescriptor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/containSyncDescriptorPath:" title="containSyncDescriptorPath:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/containSyncDescriptorPath:">&ndash;&nbsp;containSyncDescriptorPath:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Check whether sync descriptor path exists or not</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (bool)containSyncDescriptorPath:(NSString *)<em>syncDescriptorPath</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>syncDescriptorPath</code></th>
+						<td><p>Path of sync descriptor</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>(true/false) TRUE: If sync descriptor path exists | FALSE: If sync descriptor path does not exists</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Check whether sync descriptor path exists or not</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">SIKApplicationDescriptor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getSyncDescriptors" title="getSyncDescriptors"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getSyncDescriptors">&ndash;&nbsp;getSyncDescriptors</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Get all sync descriptors</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSEnumerator *)getSyncDescriptors</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Sync Descriptors</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Get all sync descriptors</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">SIKApplicationDescriptor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getSyncDescriptorBasedOnPath:" title="getSyncDescriptorBasedOnPath:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getSyncDescriptorBasedOnPath:">&ndash;&nbsp;getSyncDescriptorBasedOnPath:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Get sync descriptor based on path</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (SIKSyncDescriptor *)getSyncDescriptorBasedOnPath:(NSString *)<em>syncDescriptorPath</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>syncDescriptorPath</code></th>
+						<td><p>Path of sync descriptor</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Sync Descriptor</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Get sync descriptor based on path</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">SIKApplicationDescriptor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getSyncDescriptorBasedOnName:" title="getSyncDescriptorBasedOnName:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getSyncDescriptorBasedOnName:">&ndash;&nbsp;getSyncDescriptorBasedOnName:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Get sync descriptor based on name</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (SIKSyncDescriptor *)getSyncDescriptorBasedOnName:(NSString *)<em>syncDescriptorName</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>syncDescriptorName</code></th>
+						<td><p>Name of sync descriptor</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Sync Descriptor</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Get sync descriptor based on name</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">SIKApplicationDescriptor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/addSyncDescriptor:syncDescriptor:" title="addSyncDescriptor:syncDescriptor:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addSyncDescriptor:syncDescriptor:">&ndash;&nbsp;addSyncDescriptor:syncDescriptor:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Add sync descriptor</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)addSyncDescriptor:(NSString *)<em>syncDescriptorPath</em> syncDescriptor:(SIKSyncDescriptor *)<em>syncDescriptor</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>syncDescriptorPath</code></th>
+						<td><p>Path of sync descriptor</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>syncDescriptor</code></th>
+						<td><p>Sync Descriptor</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Add sync descriptor</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">SIKApplicationDescriptor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/containSyncDescriptor:" title="containSyncDescriptor:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/containSyncDescriptor:">&ndash;&nbsp;containSyncDescriptor:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Check whether sync descriptor exists or not</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (bool)containSyncDescriptor:(NSString *)<em>syncDescriptorName</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>syncDescriptorName</code></th>
+						<td><p>Name of sync descriptor</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>(true/false) TRUE: If sync descriptor exists |  FALSE: If sync descriptor does not exists</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Check whether sync descriptor exists or not</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">SIKApplicationDescriptor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/removeSyncDescriptor:" title="removeSyncDescriptor:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/removeSyncDescriptor:">&ndash;&nbsp;removeSyncDescriptor:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Remove sync descriptor</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)removeSyncDescriptor:(NSString *)<em>syncDescriptorName</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>syncDescriptorName</code></th>
+						<td><p>Name of sync descriptor</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Remove sync descriptor</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">SIKApplicationDescriptor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getNotificationDescriptor" title="getNotificationDescriptor"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getNotificationDescriptor">&ndash;&nbsp;getNotificationDescriptor</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Get notification descriptor</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (SIKNotificationDescriptor *)getNotificationDescriptor</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Notification Descriptor</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Get notification descriptor</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">SIKApplicationDescriptor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setNotificationDescriptor:" title="setNotificationDescriptor:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setNotificationDescriptor:">&ndash;&nbsp;setNotificationDescriptor:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Set notification descriptor</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setNotificationDescriptor:(SIKNotificationDescriptor *)<em>notificationDescriptor</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>notificationDescriptor</code></th>
+						<td><p>Notification Descriptor</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Set notification descriptor</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">SIKApplicationDescriptor.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2016 Siminov Software Solution LLP. All rights reserved. Updated: 2016-01-04</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

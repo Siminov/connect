@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>SIKServiceDescriptorReader Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1333)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">Connect </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Siminov Software Solution LLP</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/getServiceDescriptor">- getServiceDescriptor</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">SIKServiceDescriptorReader Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>SICSiminovSAXDefaultHandler</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>SIKServiceDescriptorReader.h<br />SIKServiceDescriptorReader.m</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<ul>
+<li>Exposes methods to parse Service Descriptor information as per define in ServiceDescriptor.xml file by application.
+  <p></li>
+</ul>
+
+
+<pre>
+
+Example:
+    {@code
+
+    <service-descriptor>
+
+        <!-- General Service Properties -->
+            <!-- Mandatory Field -->
+        <property name="name">name_of_service</property>
+
+            <!-- Optional Field -->
+        <property name="description">description_of_service</property>
+
+            <!-- Optional Field (DEFAULT: HTTP) -->
+        <property name="protocol">HTTP|HTTPS</property>
+
+            <!-- Mandatory Field -->
+        <property name="instance">address_of_instance</property>
+
+            <!-- Optional Field -->
+        <property name="port">port_number</property>
+    
+            <!-- Optional Field -->
+        <property name="context">context_of_service</property>
+
+        <!-- Requests -->
+            <!-- Request -->
+        <request>
+
+            <request>
+    
+                <!-- General Request Properties -->
+
+                    <!-- Mandatory Field -->
+                <property name="name">name_of_request</property>
+
+                    <!-- Mandatory Field -->
+                <property name="type">GET|HEAD|POST|PUT|DELETE|TRACE|OPTIONS|CONNECT|PATCH</property>
+    
+                    <!-- Mandatory Field -->
+                <property name="api">full_request_path</property>
+    
+                    <!-- Mandatory Field -->
+                <property name="handler">handler_of_request</property>
+
+                    <!-- Optional Field (DEFAULT: SYNC)-->
+                <property name="mode">SYNC|ASYNC</property>
+    
+
+
+                <!-- Query Parameters -->
+                    <!-- Query Parameter -->
+                <query-parameters>
+
+                    <query-parameter>
+
+                            <!-- Mandatory Field -->
+                        <property name="name">name_of_query_parameter</property>
+
+                            <!-- Mandatory Field -->
+                        <property name="value">value_of_query_parameter</property>
+
+                    </query-parameter>
+
+                </query-parameters>
+
+
+                <!-- Header Parameters -->
+                    <!-- Header Parameter -->
+                <header-parameters>
+
+                    <header-parameter>
+
+                            <!-- Mandatory Field -->
+                        <property name="name">name_of_header_parameter</property>
+
+                            <!-- Mandatory Field -->
+                        <property name="value">value_of_header_parameter</property>
+
+                    </header-parameter>
+
+                </header-parameters>
+    
+
+                <!-- Stream of Data Under Request Body -->
+                    <!-- It is Optional Property -->
+                <data-stream>stream_of_data</data-stream>
+
+            </request>
+        </requests>
+
+    </service-descriptor>
+    
+
+
+    }
+    
+</pre>
+
+
+<pre><code>&lt;/p&gt;
+</code></pre>
+
+<p>*</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/getServiceDescriptor" title="getServiceDescriptor"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getServiceDescriptor">&ndash;&nbsp;getServiceDescriptor</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Get service descriptor</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (SIKServiceDescriptor *)getServiceDescriptor</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Service Descriptor</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Get service descriptor</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">SIKServiceDescriptorReader.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2016 Siminov Software Solution LLP. All rights reserved. Updated: 2016-01-04</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

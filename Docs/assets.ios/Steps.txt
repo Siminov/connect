@@ -1,0 +1,7 @@
+
+
+Steps to generate the documentation:
+
+	- brew install appledoc
+
+	- appledoc --project-name Connect --project-company "Siminov Software Solution LLP" --company-id Siminov.Connect  --output /private/var/user/Documents/App/Connect/Docs/docs.ios  .
