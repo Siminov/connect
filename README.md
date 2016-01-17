@@ -1,6 +1,8 @@
 ![siminov](https://github.com/Siminov/connect/blob/master/Docs/assets.ios/logo.png)
 ===================================================
 
+[![Join the chat at https://gitter.im/Siminov/connect](https://badges.gitter.im/Siminov/connect.svg)](https://gitter.im/Siminov/connect?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Siminov Framework (Connect) is a open source framework used to consume RESTful Web Services for all different environments - (Android - Java, iOS - Objective-C|Swift, Windows - C#, OS X - Objective-C|Swift). Using this app developer can easily consume data from any of web services without worrying about underlying architecture of communication.
 
 Get Started
