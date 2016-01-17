@@ -98,6 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Siminov\Connect\Resource\DatabaseDescriptor.xml">
+      <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Siminov\Connect\Resource\ServiceRequest.xml">
@@ -108,10 +109,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Core\Windows\universal8.1\core.csproj">
-      <Project>{bab29a50-621e-48c6-9f73-c0a9bba3b2d5}</Project>
-      <Name>core</Name>
-    </ProjectReference>
+    <Reference Include="core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Core\Build\v2.0\build.windows\core.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
