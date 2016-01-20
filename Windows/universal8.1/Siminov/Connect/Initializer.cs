@@ -15,6 +15,14 @@
 /// limitations under the License.
 
 
+#if __MOBILE__
+#define XAMARIN
+#endif
+
+#if !__MOBILE__
+#define WINDOWS
+#endif
+
 
 
 using Siminov.Core;
@@ -24,6 +32,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection;
+using System.IO;
 
 namespace Siminov.Connect
 {
@@ -61,7 +71,12 @@ namespace Siminov.Connect
                 resourceManager.AddApplicationContext(value);
             }
 
-		    Siminov.Start();
-	    }
+                /*
+                 * Add Connect Assembly
+                 */
+                resourceManager.AddApplicationContext(typeof(Connect.Siminov).GetTypeInfo().Assembly);
+           
+            Siminov.Start();
+        }
     }
 }
