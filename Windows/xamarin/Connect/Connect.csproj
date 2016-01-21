@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{545C5B92-5B85-4D19-9B3B-BAF595E9CF51}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Connect</RootNamespace>
+    <AssemblyName>Connect</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Siminov\Connect\Constants.cs" />
+    <Compile Include="Siminov\Connect\IRequest.cs" />
+    <Compile Include="Siminov\Connect\IWorker.cs" />
+    <Compile Include="Siminov\Connect\Initializer.cs" />
+    <Compile Include="Siminov\Connect\Siminov.cs" />
+    <Compile Include="Siminov\Connect\Connection\ConnectionHelper.cs" />
+    <Compile Include="Siminov\Connect\Connection\ConnectionManager.cs" />
+    <Compile Include="Siminov\Connect\Connection\ConnectionRequest.cs" />
+    <Compile Include="Siminov\Connect\Connection\ConnectionResponse.cs" />
+    <Compile Include="Siminov\Connect\Connection\ConnectionStatusCodes.cs" />
+    <Compile Include="Siminov\Connect\Connection\HttpConnectionWorker.cs" />
+    <Compile Include="Siminov\Connect\Connection\HttpsConnectionWorker.cs" />
+    <Compile Include="Siminov\Connect\Connection\Design\IConnection.cs" />
+    <Compile Include="Siminov\Connect\Connection\Design\IConnectionRequest.cs" />
+    <Compile Include="Siminov\Connect\Connection\Design\IConnectionResponse.cs" />
+    <Compile Include="Siminov\Connect\Events\EventHandler.cs" />
+    <Compile Include="Siminov\Connect\Events\INotificationEvents.cs" />
+    <Compile Include="Siminov\Connect\Events\ISyncEvents.cs" />
+    <Compile Include="Siminov\Connect\Exception\ConnectionException.cs" />
+    <Compile Include="Siminov\Connect\Exception\NotificationException.cs" />
+    <Compile Include="Siminov\Connect\Exception\ServiceException.cs" />
+    <Compile Include="Siminov\Connect\Exception\SyncException.cs" />
+    <Compile Include="Siminov\Connect\Model\ApplicationDescriptor.cs" />
+    <Compile Include="Siminov\Connect\Model\LibraryDescriptor.cs" />
+    <Compile Include="Siminov\Connect\Model\NotificationDescriptor.cs" />
+    <Compile Include="Siminov\Connect\Model\ServiceDescriptor.cs" />
+    <Compile Include="Siminov\Connect\Model\ServiceRequest.cs" />
+    <Compile Include="Siminov\Connect\Model\ServiceRequestResource.cs" />
+    <Compile Include="Siminov\Connect\Model\SyncDescriptor.cs" />
+    <Compile Include="Siminov\Connect\Notification\Message.cs" />
+    <Compile Include="Siminov\Connect\Notification\NotificationManager.cs" />
+    <Compile Include="Siminov\Connect\Notification\NotificationReceiver.cs" />
+    <Compile Include="Siminov\Connect\Notification\NotificationService.cs" />
+    <Compile Include="Siminov\Connect\Notification\Registration.cs" />
+    <Compile Include="Siminov\Connect\Notification\Design\IMessage.cs" />
+    <Compile Include="Siminov\Connect\Notification\Design\INotification.cs" />
+    <Compile Include="Siminov\Connect\Notification\Design\IRegistration.cs" />
+    <Compile Include="Siminov\Connect\Reader\LibraryDescriptorReader.cs" />
+    <Compile Include="Siminov\Connect\Reader\QuickServiceDescriptorReader.cs" />
+    <Compile Include="Siminov\Connect\Reader\ServiceDescriptorReader.cs" />
+    <Compile Include="Siminov\Connect\Reader\SyncDescriptorReader.cs" />
+    <Compile Include="Siminov\Connect\Resource\ResourceManager.cs" />
+    <Compile Include="Siminov\Connect\Resource\ResourceUtils.cs" />
+    <Compile Include="Siminov\Connect\Service\AsyncServiceWorker.cs" />
+    <Compile Include="Siminov\Connect\Service\Service.cs" />
+    <Compile Include="Siminov\Connect\Service\ServiceHandler.cs" />
+    <Compile Include="Siminov\Connect\Service\SyncServiceWorker.cs" />
+    <Compile Include="Siminov\Connect\Service\Design\IResource.cs" />
+    <Compile Include="Siminov\Connect\Service\Design\IService.cs" />
+    <Compile Include="Siminov\Connect\Service\Design\IServiceEvents.cs" />
+    <Compile Include="Siminov\Connect\Sync\SyncHandler.cs" />
+    <Compile Include="Siminov\Connect\Sync\SyncRequest.cs" />
+    <Compile Include="Siminov\Connect\Sync\SyncWorker.cs" />
+    <Compile Include="Siminov\Connect\Sync\Design\ISyncRequest.cs" />
+    <Compile Include="Siminov\Connect\Utils\Utils.cs" />
+    <Compile Include="Siminov\Connect\Reader\ApplicationDescriptorReader.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Siminov\Connect\Resource\DatabaseDescriptor.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <LogicalName>Siminov.Connect.Resource.DatabaseDescriptor.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Siminov\Connect\Resource\ServiceRequest.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <LogicalName>Siminov.Connect.Resource.ServiceRequest.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Siminov\Connect\Resource\ServiceRequestResource.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <LogicalName>Siminov.Connect.Resource.ServiceRequestResource.xml</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Core">
+      <HintPath>..\..\..\..\Core\Build\v2.0\build.windows\core.xamarin.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>
