@@ -2,8 +2,9 @@
 ===================================================
 [![Build Status](https://travis-ci.org/Siminov/connect.svg?branch=master)](https://travis-ci.org/Siminov/connect) [![Gitter chat](https://badges.gitter.im/gitterHQ/services.png)](https://gitter.im/Siminov) [![NPM version](https://badge.fury.io/js/siminov.svg)](https://npmjs.org/package/siminov) [![Documentation](https://img.shields.io/badge/docs-latest-brightgreen.svg?style=flat)](https://github.com/Siminov/connect/wiki)
 
+Siminov is a open source framework which allows you to easily build your mobile apps without worrying about data storage and backend communication.
 
-Siminov Framework (Connect) is a open source framework used to consume RESTful Web Services for all different environments - (Android - Java, iOS - Objective-C|Swift, Windows - C#, OS X - Objective-C|Swift). Using this app developer can easily consume data from any of web services without worrying about underlying architecture of communication.
+Connect allows you to easly consume RESTful Web Services for all different environments - (Android - Java, iOS - Objective-C|Swift, Windows - C#, OS X - Objective-C|Swift). Using this app developer can easily consume data from any of web services without worrying about underlying architecture of communication.
 
 Get Started
 -----------
